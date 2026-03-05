@@ -48,6 +48,11 @@ public class UIController : MonoBehaviour
         HUD.SetActive(true); //Colocar um efeito de fade in aqui 
     }
 
+    public void OpenMenuPanel()
+    {
+
+    }
+
     //MUDAR ISSO PARA ALTERAR O TIME SCALE PARA ZERO. DO CONTRÁRIO ESTAREI PARANDO APENAS O PLAYER!!
     public void PauseMenu()
     {
@@ -110,7 +115,6 @@ public class UIController : MonoBehaviour
 
 
     #endregion
-
 
     #region Level Selection
 
