@@ -65,8 +65,8 @@ public class LevelManager : MonoBehaviour
 
         currentPrefab = Instantiate(currentLevelPrefabs[0], startSpawn.position, startSpawn.rotation);
 
-        Debug.Log("O primeiro elemento do array no Obstacle Spawn é " + 
-            GameController.gameController.obstacleManager.spawnPointsMatrizA[0, 0]);
+        //Debug.Log("O primeiro elemento do array no Obstacle Spawn é " + 
+        //    GameController.gameController.obstacleManager.spawnPointsMatrizA[0, 0]);
 
         //GameController.gameController.obstacleManager.spawnPointsMatrizA = 
         //currentPrefab.GetComponent<LevelRoot>().obstaclesSpawnPointsMatriz;

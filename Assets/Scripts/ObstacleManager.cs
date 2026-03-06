@@ -15,7 +15,7 @@ public class ObstacleManager : MonoBehaviour
         GameController.gameController.obstacleManager = this;
         levelManager = GameController.gameController.levelManager;
 
-        //Initialize();
+        Initialize();
     }
 
     public void Initialize()
