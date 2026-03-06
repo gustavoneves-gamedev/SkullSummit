@@ -121,6 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6158257045200734804}
+  - component: {fileID: 3534449992082910620}
   m_Layer: 0
   m_Name: SpawnPoint1 (16)
   m_TagString: Untagged
@@ -143,6 +144,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7584196407551998173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3534449992082910620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459061637637418119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 1
 --- !u!1 &632040197802978490
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3117305078147322711}
+  - component: {fileID: 3292900548287693523}
   m_Layer: 0
   m_Name: SpawnPoint1 (3)
   m_TagString: Untagged
@@ -174,6 +190,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1983568038941131846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3292900548287693523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632040197802978490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 0
 --- !u!1 &743230421791107819
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4114334811398465228}
+  - component: {fileID: 3173924516089974752}
   m_Layer: 0
   m_Name: SpawnPoint1 (13)
   m_TagString: Untagged
@@ -205,6 +236,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7584196407551998173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3173924516089974752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743230421791107819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 1
 --- !u!1 &976886322157872740
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 689596283228133280}
+  - component: {fileID: 4043917118085030178}
   m_Layer: 0
   m_Name: SpawnPoint1 (24)
   m_TagString: Untagged
@@ -460,6 +506,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 288861501214824860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4043917118085030178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034187805663439894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 2
 --- !u!1 &1174450345674729939
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8266380574821830898}
+  - component: {fileID: 1210311477595614745}
   m_Layer: 0
   m_Name: SpawnPoint1 (1)
   m_TagString: Untagged
@@ -491,6 +552,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1983568038941131846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1210311477595614745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174450345674729939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 0
 --- !u!1 &1252624854937656911
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,6 +698,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelPrefabSpawnPoint: {fileID: 5364343729445884606}
+  obstaclesSpawnPoints:
+  - {fileID: 8400790380412624780}
+  - {fileID: 1210311477595614745}
+  - {fileID: 87046522602623180}
+  - {fileID: 3292900548287693523}
+  - {fileID: 1043772635831199581}
+  - {fileID: 1741756930532874623}
+  - {fileID: 6206636175213114401}
+  - {fileID: 6805879982739003929}
+  - {fileID: 5101262344165325911}
+  - {fileID: 4329040783034007955}
+  - {fileID: 891016506023105883}
+  - {fileID: 4073513849664028312}
+  - {fileID: 7804758082156149827}
+  - {fileID: 3173924516089974752}
+  - {fileID: 1251572694069803127}
+  - {fileID: 4325573096911519999}
+  - {fileID: 3534449992082910620}
+  - {fileID: 2185040246009076619}
+  - {fileID: 7640198783453469374}
+  - {fileID: 8787025138720534406}
+  - {fileID: 615024050355872472}
+  - {fileID: 8541285150688497055}
+  - {fileID: 349642398764143049}
+  - {fileID: 8329381412142461979}
+  - {fileID: 4043917118085030178}
+  - {fileID: 3462506167665655797}
+  - {fileID: 7140197880082850837}
 --- !u!1 &1312570078313194035
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1827464647557123092}
+  - component: {fileID: 8329381412142461979}
   m_Layer: 0
   m_Name: SpawnPoint1 (23)
   m_TagString: Untagged
@@ -654,6 +758,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 288861501214824860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8329381412142461979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312570078313194035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 2
 --- !u!1 &1938893119376793668
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +1005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4008606857268493553}
+  - component: {fileID: 3462506167665655797}
   m_Layer: 0
   m_Name: SpawnPoint1 (25)
   m_TagString: Untagged
@@ -909,6 +1028,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 288861501214824860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3462506167665655797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2583286073324460046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 2
 --- !u!1 &2589851168776511336
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,6 +1051,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4843899440093124764}
+  - component: {fileID: 1741756930532874623}
   m_Layer: 0
   m_Name: SpawnPoint1 (5)
   m_TagString: Untagged
@@ -940,6 +1074,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1983568038941131846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1741756930532874623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2589851168776511336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 0
 --- !u!1 &2954179584274859780
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,6 +1097,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5516538909277749046}
+  - component: {fileID: 615024050355872472}
   m_Layer: 0
   m_Name: SpawnPoint1 (20)
   m_TagString: Untagged
@@ -971,6 +1120,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 288861501214824860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &615024050355872472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954179584274859780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 2
 --- !u!1 &3072455199690226156
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,6 +1143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6592212681699596578}
+  - component: {fileID: 5101262344165325911}
   m_Layer: 0
   m_Name: SpawnPoint1 (8)
   m_TagString: Untagged
@@ -1002,6 +1166,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1983568038941131846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5101262344165325911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3072455199690226156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 0
 --- !u!1 &3224678816568463477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,6 +1189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8519106395606777107}
+  - component: {fileID: 4073513849664028312}
   m_Layer: 0
   m_Name: SpawnPoint1 (11)
   m_TagString: Untagged
@@ -1033,6 +1212,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7584196407551998173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4073513849664028312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224678816568463477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 1
 --- !u!1 &3302444860758727228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,6 +1235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7745194320834037793}
+  - component: {fileID: 8400790380412624780}
   m_Layer: 0
   m_Name: SpawnPoint1
   m_TagString: Untagged
@@ -1064,6 +1258,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1983568038941131846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8400790380412624780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3302444860758727228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 0
 --- !u!1 &3451692529873293518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,6 +1281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6140528720522913929}
+  - component: {fileID: 8541285150688497055}
   m_Layer: 0
   m_Name: SpawnPoint1 (21)
   m_TagString: Untagged
@@ -1095,6 +1304,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 288861501214824860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8541285150688497055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3451692529873293518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 2
 --- !u!1 &3467342820891430124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,6 +1551,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3968052961682519759}
+  - component: {fileID: 1043772635831199581}
   m_Layer: 0
   m_Name: SpawnPoint1 (4)
   m_TagString: Untagged
@@ -1350,6 +1574,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1983568038941131846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1043772635831199581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4622957340656006089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 0
 --- !u!1 &5004850888590405515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,6 +1830,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9081923567936440437}
+  - component: {fileID: 349642398764143049}
   m_Layer: 0
   m_Name: SpawnPoint1 (22)
   m_TagString: Untagged
@@ -1614,6 +1853,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 288861501214824860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &349642398764143049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5126412541152801985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 2
 --- !u!1 &5166745652928070828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,6 +2221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2746786340198826518}
+  - component: {fileID: 1251572694069803127}
   m_Layer: 0
   m_Name: SpawnPoint1 (14)
   m_TagString: Untagged
@@ -1990,6 +2244,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7584196407551998173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1251572694069803127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5896663906840696951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 1
 --- !u!1 &5956861765256738170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,6 +2267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7229247141119882958}
+  - component: {fileID: 7640198783453469374}
   m_Layer: 0
   m_Name: SpawnPoint1 (18)
   m_TagString: Untagged
@@ -2021,6 +2290,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 288861501214824860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7640198783453469374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5956861765256738170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 2
 --- !u!1 &6029760395852541176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,6 +2456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7381088879445267570}
+  - component: {fileID: 7140197880082850837}
   m_Layer: 0
   m_Name: SpawnPoint1 (26)
   m_TagString: Untagged
@@ -2195,6 +2479,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 288861501214824860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7140197880082850837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6160362643183289382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 2
 --- !u!1 &6345033724262158571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2204,6 +2502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4407213691507986347}
+  - component: {fileID: 6805879982739003929}
   m_Layer: 0
   m_Name: SpawnPoint1 (7)
   m_TagString: Untagged
@@ -2226,6 +2525,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1983568038941131846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6805879982739003929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6345033724262158571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 0
 --- !u!1 &6419714947069973196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2235,6 +2548,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2976492633697516045}
+  - component: {fileID: 4329040783034007955}
   m_Layer: 0
   m_Name: SpawnPoint1 (9)
   m_TagString: Untagged
@@ -2257,6 +2571,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7584196407551998173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4329040783034007955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6419714947069973196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 1
 --- !u!1 &6492000726688618842
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,6 +2740,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5312551583711836588}
+  - component: {fileID: 891016506023105883}
   m_Layer: 0
   m_Name: SpawnPoint1 (10)
   m_TagString: Untagged
@@ -2434,6 +2763,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7584196407551998173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &891016506023105883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6821703864487067630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 1
 --- !u!1 &6875428040176912191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2443,6 +2786,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4940460147234105648}
+  - component: {fileID: 7804758082156149827}
   m_Layer: 0
   m_Name: SpawnPoint1 (12)
   m_TagString: Untagged
@@ -2465,6 +2809,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7584196407551998173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7804758082156149827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6875428040176912191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 1
 --- !u!1 &7301592479432307743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2698,6 +3056,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7178126225340711234}
+  - component: {fileID: 6206636175213114401}
   m_Layer: 0
   m_Name: SpawnPoint1 (6)
   m_TagString: Untagged
@@ -2720,6 +3079,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1983568038941131846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6206636175213114401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7568150283479137907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 0
 --- !u!1 &7573727619012525200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,6 +3102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3953669975582955482}
+  - component: {fileID: 4325573096911519999}
   m_Layer: 0
   m_Name: SpawnPoint1 (15)
   m_TagString: Untagged
@@ -2751,6 +3125,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7584196407551998173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4325573096911519999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7573727619012525200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 1
 --- !u!1 &7661915103541778411
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,6 +3484,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5830660199460530753}
+  - component: {fileID: 87046522602623180}
   m_Layer: 0
   m_Name: SpawnPoint1 (2)
   m_TagString: Untagged
@@ -3118,6 +3507,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1983568038941131846}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &87046522602623180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7974449836598715339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 0
 --- !u!1 &8041691201423741399
 GameObject:
   m_ObjectHideFlags: 0
@@ -3239,6 +3642,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 498640974247842801}
+  - component: {fileID: 2185040246009076619}
   m_Layer: 0
   m_Name: SpawnPoint1 (17)
   m_TagString: Untagged
@@ -3261,6 +3665,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7584196407551998173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2185040246009076619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8053135738399453730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 1
 --- !u!1 &8459244101007371843
 GameObject:
   m_ObjectHideFlags: 0
@@ -3270,6 +3688,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2557930866058250550}
+  - component: {fileID: 8787025138720534406}
   m_Layer: 0
   m_Name: SpawnPoint1 (19)
   m_TagString: Untagged
@@ -3292,6 +3711,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 288861501214824860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8787025138720534406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8459244101007371843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
+  isFree: 1
+  lane: 2
 --- !u!1 &9056614182983437785
 GameObject:
   m_ObjectHideFlags: 0
