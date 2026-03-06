@@ -1,11 +1,7 @@
 using UnityEngine;
 
-public class LevelRoot : MonoBehaviour
+public class ObstacleSpawn : MonoBehaviour
 {
-    
-    public Transform levelPrefabSpawnPoint;
-    private bool[] obstaclesSpawnPoints;
-    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
