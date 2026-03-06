@@ -4,7 +4,7 @@ public class ObstacleSpawn : MonoBehaviour
 {
 
     public bool isFree;
-    [SerializeField] private int lane;
+    public int lane;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -13,9 +13,5 @@ public class ObstacleSpawn : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
