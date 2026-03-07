@@ -51,13 +51,28 @@ public class ObstacleManager : MonoBehaviour
         if (matrizFlowControl)
         {
             spawnPointsMatrizA = matriz;
-            StaticObjectsSpawn(spawnPointsMatrizA);
+            //StaticObjectsSpawn(spawnPointsMatrizA);
+            //Invoke("StaticObjectsSpawnManager", .5f);
         }
         else
         {
             spawnPointsMatrizB = matriz;
-            StaticObjectsSpawn(spawnPointsMatrizB);
+            //StaticObjectsSpawn(spawnPointsMatrizB);
+            //Invoke("StaticObjectsSpawnManager", .5f);
         }
+
+        Invoke("StaticObjectsSpawnManager", .5f);
+
+        
+    }
+
+    private void StaticObjectsSpawnManager()
+    {
+        
+        if (matrizFlowControl)        
+            StaticObjectsSpawn(spawnPointsMatrizA);        
+        else
+            StaticObjectsSpawn(spawnPointsMatrizB);
 
         matrizFlowControl = !matrizFlowControl;
     }
@@ -80,6 +95,7 @@ public class ObstacleManager : MonoBehaviour
                 matriz[row, 1].isFree = false;
                 matriz[row, 2].isFree = false;
             }
+            
         }
     }
     
