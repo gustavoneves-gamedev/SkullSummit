@@ -64,7 +64,23 @@ public class ObstacleManager : MonoBehaviour
 
     private void StaticObjectsSpawn(ObstacleSpawn[,] matriz)
     {
+        System.Random rb = new System.Random();
+        int lane = 0, row = 0;
+        
+        for (int i = 0; i < matriz.GetLength(0); i++)
+        {
+            row = rb.Next(0, matriz.GetLength(0));
+            lane = rb.Next(0, matriz.GetLength(1));
 
+            if (matriz[row, lane].isFree)
+            {
+                Debug.Log("Spawnei obstáculo fixo na [lane, row]: [" + lane + ", " + row + "]");
+                matriz[row, lane].isFree = false;
+                matriz[row, 0].isFree = false;
+                matriz[row, 1].isFree = false;
+                matriz[row, 2].isFree = false;
+            }
+        }
     }
     
 }
