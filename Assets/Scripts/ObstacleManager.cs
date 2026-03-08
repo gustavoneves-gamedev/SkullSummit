@@ -89,7 +89,7 @@ public class ObstacleManager : MonoBehaviour
 
             if (matriz[row, lane].isFree)
             {
-                Debug.Log("Spawnei obstáculo fixo na [lane, row]: [" + lane + ", " + row + "]");
+                //Debug.Log("Spawnei obstáculo fixo na [lane, row]: [" + lane + ", " + row + "]");
 
                 Instantiate(staticObstacles[rb.Next(0, staticObstacles.Length)], matriz[row, lane].
                     transform.position, matriz[row, lane].transform.rotation);
