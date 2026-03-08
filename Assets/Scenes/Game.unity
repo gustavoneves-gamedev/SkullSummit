@@ -4800,8 +4800,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd0ebb4c67697e489d0ed1ea30a9503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleManager
-  staticObstacles: []
-  movableObstacles: []
+  staticObstacles:
+  - {fileID: 1728778713127497232, guid: bb5fa3a96349e9c488c4d3bcb44bbed7, type: 3}
+  - {fileID: 6023950075848797583, guid: dd57475a01b9c3a42b84ee2bbd4e7293, type: 3}
+  - {fileID: 799595111697802400, guid: 556bd94fe1461d24e8981d0dd0e2833c, type: 3}
+  movableObstacles:
+  - {fileID: 5359629852202726598, guid: a8b9d30b52a416a488b625ba79eab6f7, type: 3}
+  - {fileID: 8459530097593972147, guid: a10dade5ee5446b46b40708be0dd375e, type: 3}
 --- !u!4 &794875639
 Transform:
   m_ObjectHideFlags: 0

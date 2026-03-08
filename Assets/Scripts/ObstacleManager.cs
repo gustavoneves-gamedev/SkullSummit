@@ -50,15 +50,11 @@ public class ObstacleManager : MonoBehaviour
     {
         if (matrizFlowControl)
         {
-            spawnPointsMatrizA = matriz;
-            //StaticObjectsSpawn(spawnPointsMatrizA);
-            //Invoke("StaticObjectsSpawnManager", .5f);
+            spawnPointsMatrizA = matriz;            
         }
         else
         {
-            spawnPointsMatrizB = matriz;
-            //StaticObjectsSpawn(spawnPointsMatrizB);
-            //Invoke("StaticObjectsSpawnManager", .5f);
+            spawnPointsMatrizB = matriz;            
         }
 
         Invoke("StaticObjectsSpawnManager", .5f);
@@ -90,6 +86,7 @@ public class ObstacleManager : MonoBehaviour
             if (matriz[row, lane].isFree)
             {
                 Debug.Log("Spawnei obstáculo fixo na [lane, row]: [" + lane + ", " + row + "]");
+                Instantiate(staticObstacles[0], matriz[row, lane].transform.position, matriz[row, lane].transform.rotation);
                 matriz[row, lane].isFree = false;
                 matriz[row, 0].isFree = false;
                 matriz[row, 1].isFree = false;
