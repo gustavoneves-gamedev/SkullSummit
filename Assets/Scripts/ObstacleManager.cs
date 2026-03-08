@@ -3,14 +3,18 @@ using UnityEngine;
 
 public class ObstacleManager : MonoBehaviour
 {
-    private Transform[] spawnPositions;
+    [Header("Spawn Management")]
+    [SerializeField] private int staticObstacleSpawnRate = 5;
     public ObstacleSpawn[,] spawnPointsMatrizA = new ObstacleSpawn[9,3];
     public ObstacleSpawn[,] spawnPointsMatrizB = new ObstacleSpawn[9,3];
     private bool matrizFlowControl = true;
-    private LevelManager levelManager;
+
+    [Header("Obstacles")]
     [SerializeField] private GameObject[] staticObstacles;
     [SerializeField] private GameObject[] movableObstacles;
 
+    [Header("References")]
+    private LevelManager levelManager;
 
     void Start()
     {
@@ -78,7 +82,7 @@ public class ObstacleManager : MonoBehaviour
         System.Random rb = new System.Random();
         int lane = 0, row = 0;
         
-        for (int i = 0; i < matriz.GetLength(0); i++)
+        for (int i = 0; i < staticObstacleSpawnRate; i++)
         {
             row = rb.Next(0, matriz.GetLength(0));
             lane = rb.Next(0, matriz.GetLength(1));
@@ -86,7 +90,10 @@ public class ObstacleManager : MonoBehaviour
             if (matriz[row, lane].isFree)
             {
                 Debug.Log("Spawnei obstáculo fixo na [lane, row]: [" + lane + ", " + row + "]");
-                Instantiate(staticObstacles[0], matriz[row, lane].transform.position, matriz[row, lane].transform.rotation);
+
+                Instantiate(staticObstacles[rb.Next(0, staticObstacles.Length)], matriz[row, lane].
+                    transform.position, matriz[row, lane].transform.rotation);
+                
                 matriz[row, lane].isFree = false;
                 matriz[row, 0].isFree = false;
                 matriz[row, 1].isFree = false;

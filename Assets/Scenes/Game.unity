@@ -3193,16 +3193,20 @@ MonoBehaviour:
   - {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
   - {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
   cowboyLevelPrefabsB:
-  - {fileID: 1252624854937656911, guid: 44d4151ee1968f8449d7c5c4f3ff33e8, type: 3}
-  - {fileID: 1252624854937656911, guid: 44d4151ee1968f8449d7c5c4f3ff33e8, type: 3}
-  - {fileID: 1252624854937656911, guid: 44d4151ee1968f8449d7c5c4f3ff33e8, type: 3}
-  - {fileID: 1252624854937656911, guid: 44d4151ee1968f8449d7c5c4f3ff33e8, type: 3}
+  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
+  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
+  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
+  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
   cowboyLevelPrefabsC:
-  - {fileID: 1252624854937656911, guid: 9f297531ec1481e409dab49ede0ed242, type: 3}
-  - {fileID: 1252624854937656911, guid: 9f297531ec1481e409dab49ede0ed242, type: 3}
-  - {fileID: 1252624854937656911, guid: 9f297531ec1481e409dab49ede0ed242, type: 3}
-  - {fileID: 1252624854937656911, guid: 9f297531ec1481e409dab49ede0ed242, type: 3}
-  cowboyLevelPrefabsD: []
+  - {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
+  - {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
+  - {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
+  - {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
+  cowboyLevelPrefabsD:
+  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
+  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
+  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
+  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
   samuraiLevelPrefabs:
   - {fileID: 1252624854937656911, guid: 44d4151ee1968f8449d7c5c4f3ff33e8, type: 3}
   alpinistaLevelPrefabs:
@@ -4800,6 +4804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd0ebb4c67697e489d0ed1ea30a9503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleManager
+  staticObstacleSpawnRate: 20
   staticObstacles:
   - {fileID: 1728778713127497232, guid: bb5fa3a96349e9c488c4d3bcb44bbed7, type: 3}
   - {fileID: 6023950075848797583, guid: dd57475a01b9c3a42b84ee2bbd4e7293, type: 3}
@@ -13921,6 +13926,10 @@ PrefabInstance:
     - target: {fileID: 8175012108453252897, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175012108453252897, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: 8175012108453252897, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
       propertyPath: m_LocalPosition.z
