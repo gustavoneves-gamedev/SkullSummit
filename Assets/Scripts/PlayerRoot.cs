@@ -48,8 +48,6 @@ public class PlayerRoot : MonoBehaviour
     [SerializeField] private GameObject[] characterModels;
 
 
-
-
     void Start()
     {
         GameController.gameController.playerRoot = this;
@@ -125,17 +123,13 @@ public class PlayerRoot : MonoBehaviour
     public void BeginRunAnimation()
     {
 
-
         //PlayRunAnimation -> Terei que elaborar isso aqui, definir qual animação deverá tocar (jogador está no checkpoin
         //ou no início da Run?)
 
         //Depois disso a animação terá um event trigger que irá mudar a bool isRunning para true. Para testes, irei colocar 
         //aqui o gatilho para começar a corrida
 
-
         BeginRunEvent();
-
-
     }
 
     //Reseta os valores para a nova Run
@@ -179,17 +173,12 @@ public class PlayerRoot : MonoBehaviour
                 Debug.Log("Sem munição suficiente");
             else if (cooldownRemaining >= 0)
                 Debug.Log("Ataque em cooldown ainda");
-
         }
-
-
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GameController.gameController.UpdateCheckpoint();
         }
-
-
         
     }
 

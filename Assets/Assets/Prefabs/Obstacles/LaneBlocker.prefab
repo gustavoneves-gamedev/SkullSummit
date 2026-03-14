@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleRoot
   obstacle: {fileID: 2663223377362006881}
+  damage: 5
 --- !u!65 &4857563642830259297
 BoxCollider:
   m_ObjectHideFlags: 0
