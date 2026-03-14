@@ -7,7 +7,7 @@ public class UIController : MonoBehaviour
 
     [Header("MainMenu")]
     [SerializeField] private GameObject mainMenu;//É tudo no Menu Principal
-    [SerializeField] private GameObject menu;
+    //[SerializeField] private GameObject menu;
     [SerializeField] private GameObject tapToPlayText;
 
     [Header("CharacterMenu")]    
@@ -35,6 +35,11 @@ public class UIController : MonoBehaviour
     void Start()
     {
         GameController.gameController.uiController = this;
+        mainMenu.SetActive(true);
+        pauseMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+        levelSelectionMenu.SetActive(false);
+        HUD.SetActive(false);
 
         Invoke("Initialize", .1f);
     }
