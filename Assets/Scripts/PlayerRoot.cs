@@ -164,7 +164,7 @@ public class PlayerRoot : MonoBehaviour
     {
         if (canRun == false || isDead || isGamePaused) return;
 
-        //Calcula a altura escalada pelo jogador
+        //Calcula a altura escalada pelo jogador - APRIMORAR
         heightClimbed = transform.position.z - initialHeight;
 
         PlayerMovement();
@@ -172,7 +172,7 @@ public class PlayerRoot : MonoBehaviour
         AttackTimeCounter();
         StaminaConsumption();
 
-        //Atualiza a barra de stamina na HUD - Verificar se não é melhor passar para o UI Controller
+        //Atualiza a barra de stamina na HUD
         GameController.gameController.uiController.UpdateHUD(currentStamina / maxStamina);
 
 
@@ -192,6 +192,54 @@ public class PlayerRoot : MonoBehaviour
         //}
         
     }
+
+    #region Movement
+    private void PlayerMovement()
+    {
+        move = transform.forward * movementSpeed;
+
+        if (Input.GetKeyDown(KeyCode.D) && desiredLane < 1 && !isChangingLane)
+        {
+            desiredLane = desiredLane + 1;
+            //isChangingLane = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.A) && desiredLane > -1 && !isChangingLane)
+        {
+            desiredLane = desiredLane - 1;
+            //isChangingLane = true;
+        }
+
+        float targetX = Mathf.Lerp(transform.position.x, desiredLane * 4, horizontalSpeed * Time.deltaTime);
+
+        move.x = (targetX - transform.position.x) / Time.deltaTime;      
+
+
+        cc.Move(move * Time.deltaTime);
+    }
+
+    private void SpeedScale()
+    {
+        acelerationCooldown -= ((1 / (2 - aceleration)) * Time.deltaTime);
+
+        if (acelerationCooldown >= 0 || movementSpeed >= maxSpeed) return;
+
+        movementSpeed += .5f * Time.deltaTime;
+
+        if (movementSpeed >= maxSpeed) movementSpeed = maxSpeed;
+    }
+
+    //Irei chamar esta função lá no script de obstáculo para que apenas acionar quando o jogador colidir
+    //evitando que seja chamada quando o jogador realizar alguma outra ação que consuma stamina
+    //CASO a gente decida que ele não consumirá stamina ao atacar ou trocar de lane, poderei mover esta função
+    //para dentro do stamina update e chamar caso o valor passado seja negativo
+    public void SpeedReset()
+    {
+        acelerationCooldown = defaultAcelerationCooldown;
+        movementSpeed = initialSpeed;
+    }
+
+    #endregion
 
     #region Stamina Management
     private void StaminaConsumption()
@@ -258,40 +306,6 @@ public class PlayerRoot : MonoBehaviour
 
     #endregion
 
-    private void PlayerMovement()
-    {
-        move = transform.forward * movementSpeed;
-
-        if (Input.GetKeyDown(KeyCode.D) && desiredLane < 1 && !isChangingLane)
-        {
-            desiredLane = desiredLane + 1;
-            //isChangingLane = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.A) && desiredLane > -1 && !isChangingLane)
-        {
-            desiredLane = desiredLane - 1;
-            //isChangingLane = true;
-        }
-
-        float targetX = Mathf.Lerp(transform.position.x, desiredLane * 4, horizontalSpeed * Time.deltaTime);
-
-        move.x = (targetX - transform.position.x) / Time.deltaTime;      
-
-
-        cc.Move(move * Time.deltaTime);
-    }
-
-    private void SpeedScale()
-    {
-        acelerationCooldown -= ((1 / ( 2 - aceleration)) * Time.deltaTime);
-
-        if(acelerationCooldown >= 0 || movementSpeed >= maxSpeed) return;
-
-        movementSpeed += .5f * Time.deltaTime;
-
-        if (movementSpeed >= maxSpeed) movementSpeed = maxSpeed;
-    }
 
     //O CONTROLE DE PAUSE ESTÁ NO GAME CONTROLLER POR ENQUANTO!!!
     private void Pause()
