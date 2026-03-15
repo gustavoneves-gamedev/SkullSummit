@@ -78,9 +78,9 @@ public class GameController : MonoBehaviour
 
     public void ResetPlayerPosition()
     {
-        //IPC: ESTA LINHA DE CÓDIGO NÃO ESTÁ BOA AQUI, O JOGADOR DÁ UMA LEVE TELETRANSPORTADA QUANDO DOU PLAY!!
-        //Reseta a posição do jogador com base no checkpoint desbloqueado da fase
-        Vector3 worldPos = Vector3.forward * currentLevelCheckpointDistance * 0;
+        //Reseta a posição do jogador (Esse valor é o Y do Player na cena, estou colocando aqui em vez de zerar para
+        //evitar que o jogador dê uma flicada)
+        Vector3 worldPos = Vector3.up * 0.79f;
 
         playerRoot.ResetPosition(worldPos);
     }

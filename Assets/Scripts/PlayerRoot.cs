@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerRoot : MonoBehaviour
 {
+    //TENHO QUE REVER AS FUNÇÕES QUE ENVOLVEM A ALTURA!!
     [Header("Run")]
     public bool canRun;
     private bool isDead;
