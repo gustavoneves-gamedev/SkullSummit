@@ -103,7 +103,7 @@ public class PlayerRoot : MonoBehaviour
 
         movementSpeed = characterDatas[charCode].baseMovementSpeed + ProgressManager.progressManager.movementSpeedIncrement;
         initialSpeed = movementSpeed * 0.6f;
-        maxSpeed = movementSpeed * 1.5f;
+        maxSpeed = movementSpeed * 1.2f;
 
         damage = characterDatas[charCode].baseDamage + ProgressManager.progressManager.damageIncrement;
 
