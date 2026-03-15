@@ -136,6 +136,7 @@ public class PlayerRoot : MonoBehaviour
     private void BeginRunEvent()
     {
         isDead = false;
+        desiredLane = 0;
         currentStamina = maxStamina;
         coinsCollected = 0;
         rubiesCollected = 0;
