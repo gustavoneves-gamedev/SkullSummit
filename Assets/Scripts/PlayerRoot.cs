@@ -24,8 +24,11 @@ public class PlayerRoot : MonoBehaviour
     public float currentStamina;
     public float maxStamina;
     [SerializeField] private float movementSpeed;
-    private float initialSpeed;
-    private float maxSpeed;
+    public float initialSpeed;
+    public float maxSpeed;
+    public float aceleration;
+    private float acelerationCooldown;
+    private float defaultAcelerationCooldown = 10f;
     [SerializeField] private float horizontalSpeed;
     public float damage;
     public float cooldown;
@@ -99,6 +102,8 @@ public class PlayerRoot : MonoBehaviour
         maxStamina = characterDatas[charCode].baseMaxStamina + ProgressManager.progressManager.staminaIncrement;
 
         movementSpeed = characterDatas[charCode].baseMovementSpeed + ProgressManager.progressManager.movementSpeedIncrement;
+        initialSpeed = movementSpeed * 0.6f;
+        maxSpeed = movementSpeed * 1.5f;
 
         damage = characterDatas[charCode].baseDamage + ProgressManager.progressManager.damageIncrement;
 
@@ -140,6 +145,8 @@ public class PlayerRoot : MonoBehaviour
         isDead = false;
         desiredLane = 0;
         currentStamina = maxStamina;
+        movementSpeed = initialSpeed;
+        acelerationCooldown = defaultAcelerationCooldown;
         coinsCollected = 0;
         rubiesCollected = 0;
         obstaclesDestroyed = 0;
@@ -161,6 +168,7 @@ public class PlayerRoot : MonoBehaviour
         heightClimbed = transform.position.z - initialHeight;
 
         PlayerMovement();
+        SpeedScale();
         AttackTimeCounter();
         StaminaConsumption();
 
@@ -178,37 +186,14 @@ public class PlayerRoot : MonoBehaviour
                 Debug.Log("Ataque em cooldown ainda");
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GameController.gameController.UpdateCheckpoint();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    GameController.gameController.UpdateCheckpoint();
+        //}
         
     }
 
-    private void AttackTimeCounter()
-    {
-        if (currentAmmo < maxAmmo)
-        {
-            if (reloadTimeRemaining <= 0)
-            {
-                currentAmmo++;
-                reloadTimeRemaining = reloadTime;
-            }
-            else
-                reloadTimeRemaining -= Time.deltaTime;
-        }
-
-        if (cooldownRemaining <= 0 && currentAmmo >= 1)
-        {
-            canAttack = true;
-        }
-        else if (cooldownRemaining >= 0)
-        {
-            cooldownRemaining -= Time.deltaTime;
-        }
-
-    }
-
+    #region Stamina Management
     private void StaminaConsumption()
     {
         currentStamina -= ((2 - resistance / 10f) * Time.deltaTime);
@@ -236,6 +221,33 @@ public class PlayerRoot : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Attack
+    private void AttackTimeCounter()
+    {
+        if (currentAmmo < maxAmmo)
+        {
+            if (reloadTimeRemaining <= 0)
+            {
+                currentAmmo++;
+                reloadTimeRemaining = reloadTime;
+            }
+            else
+                reloadTimeRemaining -= Time.deltaTime;
+        }
+
+        if (cooldownRemaining <= 0 && currentAmmo >= 1)
+        {
+            canAttack = true;
+        }
+        else if (cooldownRemaining >= 0)
+        {
+            cooldownRemaining -= Time.deltaTime;
+        }
+
+    }
+
     private void Attack()
     {
         Debug.Log("Ataquei!!");
@@ -243,6 +255,8 @@ public class PlayerRoot : MonoBehaviour
         cooldownRemaining = cooldown;
         canAttack = false;
     }
+
+    #endregion
 
     private void PlayerMovement()
     {
@@ -266,6 +280,17 @@ public class PlayerRoot : MonoBehaviour
 
 
         cc.Move(move * Time.deltaTime);
+    }
+
+    private void SpeedScale()
+    {
+        acelerationCooldown -= ((1 / ( 2 - aceleration)) * Time.deltaTime);
+
+        if(acelerationCooldown >= 0 || movementSpeed >= maxSpeed) return;
+
+        movementSpeed += .5f * Time.deltaTime;
+
+        if (movementSpeed >= maxSpeed) movementSpeed = maxSpeed;
     }
 
     //O CONTROLE DE PAUSE ESTÁ NO GAME CONTROLLER POR ENQUANTO!!!
