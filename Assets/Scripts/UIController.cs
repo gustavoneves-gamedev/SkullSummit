@@ -133,13 +133,13 @@ public class UIController : MonoBehaviour
     public void PreviousLevel()
     {
         
-        if (isLevelSelecting && levelCode - 1 > 0)
+        if (isLevelSelecting && levelCode - 1 >= 0)
         {
             levelMenuArray[levelCode - 1].SetActive(true);
             levelMenuArray[levelCode].SetActive(false);
             levelCode--;
         }
-        else if (isCharSelecting && charCode - 1 > 0)
+        else if (isCharSelecting && charCode - 1 >= 0)
         {
             characterMenuArray[charCode - 1].SetActive(true);
             characterMenuArray[charCode].SetActive(false);
