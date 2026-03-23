@@ -309,6 +309,7 @@ public class PlayerRoot : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.bulletSpeed = movementSpeed + bulletScript.defaultBulletSpeed;
+       // bulletScript.Movement();
         currentAmmo--;
         cooldownRemaining = cooldown;
         canAttack = false;

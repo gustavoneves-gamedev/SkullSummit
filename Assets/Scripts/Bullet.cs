@@ -30,4 +30,6 @@ public class Bullet : MonoBehaviour
     {
         rb.linearVelocity = transform.forward * bulletSpeed;
     }
+
+    
 }
