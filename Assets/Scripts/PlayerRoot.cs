@@ -102,6 +102,7 @@ public class PlayerRoot : MonoBehaviour
             InitializePlayer(2);
 
     }
+    
 
     private void InitializePlayer(int charCode)
     {
@@ -305,6 +306,7 @@ public class PlayerRoot : MonoBehaviour
     private void Attack()
     {
         Debug.Log("Ataquei!!");
+        Instantiate(bulletPrefab, transform.position, transform.rotation);
         currentAmmo--;
         cooldownRemaining = cooldown;
         canAttack = false;
