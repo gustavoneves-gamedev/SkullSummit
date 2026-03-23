@@ -72,7 +72,7 @@ public class UIController : MonoBehaviour
     //MUDAR ISSO PARA ALTERAR O TIME SCALE PARA ZERO. DO CONTRÁRIO ESTAREI PARANDO APENAS O PLAYER!!
     public void PauseMenu()
     {
-        //Temporariamente a pause vai direto para o Menu principal        
+              
         pauseMenu.SetActive(!pauseMenu.activeSelf);
 
         playerRoot.canRun = !playerRoot.canRun;
@@ -80,14 +80,13 @@ public class UIController : MonoBehaviour
         //playerRoot.EndRun();
     }
 
-    //Talvez eu possa criar um comando para encerrar a corrida antes do fim no modo infinito? Verificar pertinência
-    //disso no futuro
+    
     public void StaticsMenu(float height = 0, int coins = 0, int rubies = 0, int obstaclesDestroyed = 0)
     {
         pauseMenu.SetActive(false);
         HUD.SetActive(false);
 
-        heightClimbed.text = "Altura Escalada: " + height;
+        heightClimbed.text = "Altura Escalada: " + height.ToString("F0");
         coinsCollected.text = "Moedas: " + coins;
         rubiesCollected.text = "Rubis: " + rubies;
         obstacles.text = "Obstáculos: " + obstaclesDestroyed;
