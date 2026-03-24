@@ -11,14 +11,15 @@ TagManager:
   - Checkpoint
   - UpdatePrefabMarker
   - FinishLine
+  - Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Bullet
   - 
   - 
   - 

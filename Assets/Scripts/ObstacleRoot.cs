@@ -5,6 +5,7 @@ public class ObstacleRoot : MonoBehaviour
     [SerializeField] private GameObject obstacle;
     [SerializeField] private float damage;
     private PlayerRoot player;
+    //private Collider collider;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,6 +21,22 @@ public class ObstacleRoot : MonoBehaviour
         Destroy(gameObject, 1f);
     }
 
+    public void ApplyDamage()
+    {
+        Debug.Log("Colidi com algo");
+        player.UpdateStamina(-damage);
+        player.SpeedReset();
+        Destroy(gameObject, 10f);
+        obstacle.SetActive(false);
+    }
+
+    public void WasShot()
+    {
+        Debug.Log("Colidi com a bala");
+        Destroy(gameObject, 10f);
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -27,6 +44,13 @@ public class ObstacleRoot : MonoBehaviour
             Debug.Log("Colidi com algo");
             player.UpdateStamina(-damage);
             player.SpeedReset();
+            Destroy(gameObject, 10f);
+            obstacle.SetActive(false);
+        }
+
+        if (other.CompareTag("Bullet"))
+        {
+            Debug.Log("Colidi com a bala");            
             Destroy(gameObject, 10f);
             obstacle.SetActive(false);
         }
