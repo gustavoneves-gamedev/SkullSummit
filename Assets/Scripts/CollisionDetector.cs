@@ -40,7 +40,7 @@ public class CollisionDetector : MonoBehaviour
 
             if (index == 1)
             {
-                obstacleRoot.WasShot();
+                obstacleRoot.WasShot(other.gameObject);
                 gameObject.SetActive(false);
             }
 

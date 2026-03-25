@@ -65,7 +65,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1.28, y: 0.36, z: 16.43}
   m_Center: {x: 0, y: 0, z: 0}
@@ -81,6 +81,7 @@ GameObject:
   - component: {fileID: 3291829103196435791}
   - component: {fileID: 349573660292974075}
   - component: {fileID: 1046424620483068855}
+  - component: {fileID: 5008123477198190217}
   m_Layer: 0
   m_Name: Lava
   m_TagString: Untagged
@@ -177,7 +178,20 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5008123477198190217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2663223377362006881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6e522477f34bc48bfdfa956a4551dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetector
+  index: 1

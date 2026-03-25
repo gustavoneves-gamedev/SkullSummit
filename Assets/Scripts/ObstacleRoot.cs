@@ -30,34 +30,13 @@ public class ObstacleRoot : MonoBehaviour
         obstacle.SetActive(false);
     }
 
-    public void WasShot()
+    public void WasShot(GameObject bullet)
     {
         Debug.Log("Colidi com a bala");
+        Destroy(bullet);
         Destroy(gameObject, 10f);
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Colidi com algo");
-            player.UpdateStamina(-damage);
-            player.SpeedReset();
-            Destroy(gameObject, 10f);
-            obstacle.SetActive(false);
-        }
-
-        if (other.CompareTag("Bullet"))
-        {
-            Debug.Log("Colidi com a bala");            
-            Destroy(gameObject, 10f);
-            obstacle.SetActive(false);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
+    
 }
