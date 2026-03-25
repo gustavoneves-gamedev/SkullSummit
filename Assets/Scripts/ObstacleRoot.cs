@@ -23,7 +23,7 @@ public class ObstacleRoot : MonoBehaviour
 
     public void ApplyDamage()
     {
-        Debug.Log("Colidi com algo");
+        
         player.UpdateStamina(-damage);
         player.SpeedReset();
         Destroy(gameObject, 10f);
@@ -32,7 +32,7 @@ public class ObstacleRoot : MonoBehaviour
 
     public void WasShot(GameObject bullet)
     {
-        Debug.Log("Colidi com a bala");
+        
         Destroy(bullet);
         Destroy(gameObject, 10f);
         
