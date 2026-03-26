@@ -5,12 +5,16 @@ public class GameController : MonoBehaviour
 {
     public static GameController gameController;
 
+    [Header("Menu")]
+    public int coins;
+    public int rubies;
+    
     [Header("Run")]
     public bool isRunning;
     public int runNormalCoins;
     public int runRubies;
 
-    //IMPORTANTE: DEPOIS TENHO QUE OTIMIZAR ISSO PORQUE VAI ACABAR VIRANDO UM MONSTRO CONFORME FOR ADICIONANDO FASES
+    
     [Header("Levels")]
     [SerializeField] private LevelData[] levelArray;
     public levelID currentLevelID = levelID.CowboyLevel;
@@ -31,12 +35,7 @@ public class GameController : MonoBehaviour
 
     [Header("Alpinista Level")]
     public int alpinistaLevelCheckpoint;
-    public float alpinistaLevelBestHeight;
-
-    //[Header("Infinity Level")]
-    //public bool isInfinityRun;
-    //public float bestHeight;
-    //public float bestWeekHeight;
+    public float alpinistaLevelBestHeight;    
 
     [Header("References")]
     public PlayerRoot playerRoot;
@@ -66,6 +65,9 @@ public class GameController : MonoBehaviour
     //IPC: ANOTAÇÃO IMPORTANTE LOGO ABAIXO!!!
     public void BeginRun()
     {
+        runNormalCoins = 0;
+        runRubies = 0;
+        
         //Isto servirá para o jogador escolher se quer começar do checkpoint ou do zero REVISAR!!!
         if (!isStartingOnCheckpoint)
             currentLevelCheckpoint = 0;        
@@ -104,7 +106,8 @@ public class GameController : MonoBehaviour
 
     public void UpdateRunCoins(int normalCoins = 0, int rubies = 0)
     {
-        runNormalCoins += normalCoins;
+       
+        runNormalCoins += normalCoins * playerRoot.normalCoinMultiplier;
 
         runRubies += rubies;
     }

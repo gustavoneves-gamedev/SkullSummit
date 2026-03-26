@@ -11,8 +11,8 @@ public class PlayerRoot : MonoBehaviour
     private float initialHeight;
     //public float runHeightClimbed;
     public float totalHeight; //Valor que será mostrado ao final e durante a run
-    private int coinsCollected; //Valor que será mostrado ao final e durante a run
-    private int rubiesCollected; //Valor que será mostrado ao final e durante a run
+    //private int coinsCollected; //Valor que será mostrado ao final e durante a run
+    //private int rubiesCollected; //Valor que será mostrado ao final e durante a run
     private int obstaclesDestroyed; //Valor que será mostrado ao final e durante a run
     //private bool canCountCheckpoint;
     private Vector3 move;
@@ -50,7 +50,7 @@ public class PlayerRoot : MonoBehaviour
 
     [Header("PowerUps")]
     public int normalCoinMultiplier = 1;
-    public int rubyMultiplier = 1;
+    //public int rubyMultiplier = 1;
 
 
     [Header("References")]
@@ -81,8 +81,7 @@ public class PlayerRoot : MonoBehaviour
 
     public void Initialize(characterID selectedChar)
     {
-        normalCoinMultiplier = 1;
-        rubyMultiplier = 1;
+        normalCoinMultiplier = 1;        
 
         //Serve para atualizar o script do progress manager e pegar o incremento correto
         ProgressManager.progressManager.UpdateIncrement(selectedChar);
@@ -154,9 +153,7 @@ public class PlayerRoot : MonoBehaviour
         desiredLane = 0;
         currentStamina = maxStamina;
         movementSpeed = initialSpeed;
-        acelerationCooldown = defaultAcelerationCooldown;
-        coinsCollected = 0;
-        rubiesCollected = 0;
+        acelerationCooldown = defaultAcelerationCooldown;        
         obstaclesDestroyed = 0;
         currentAmmo = maxAmmo;
         cooldownRemaining = 0;
@@ -344,8 +341,10 @@ public class PlayerRoot : MonoBehaviour
 
         GameController.gameController.UpdateBestHeight(heightClimbed);
 
+        //TEMPORÁRIO!! DEPOIS DEVO PASSAR ESSE MÉTODO TODO PARA O GAME CONTROLLER
         GameController.gameController.uiController.
-            StaticsMenu(heightClimbed, coinsCollected, rubiesCollected, obstaclesDestroyed);
+            StaticsMenu(heightClimbed, GameController.gameController.runNormalCoins, 
+            GameController.gameController.runRubies, obstaclesDestroyed);
 
         GameController.gameController.isRunning = false;
     }
@@ -355,18 +354,7 @@ public class PlayerRoot : MonoBehaviour
     //OU POSSO COLOCAR OS SONS AQUI E TOCAR QUANDO COLETAR AS MOEDAS!! - VOU FAZER ISTO
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Coin"))
-        {
-            GameController.gameController.UpdateRunCoins(normalCoinMultiplier);
-            other.gameObject.SetActive(false);
-        }
-
-        if (other.CompareTag("Ruby"))
-        {
-            GameController.gameController.UpdateRunCoins(0, rubyMultiplier);
-            other.gameObject.SetActive(false);
-        }
-
+        
         //Este trigger serve para spawnar um novo conjunto de prefabs após passar pelo checkpoint 
         if (other.CompareTag("UpdatePrefabMarker"))
         {
