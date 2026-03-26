@@ -48,7 +48,7 @@ public class ObstacleManager : MonoBehaviour
                 }
             }
         }
-    }
+    } //APENAS PARA TESTES, APAGAR DEPOIS!!!
 
     public void UpdateMatriz(ObstacleSpawn[,] matriz)
     {
@@ -87,17 +87,18 @@ public class ObstacleManager : MonoBehaviour
             row = rb.Next(0, matriz.GetLength(0));
             lane = rb.Next(0, matriz.GetLength(1));
 
-            if (matriz[row, lane].isFree)
+            if (matriz[row, lane].isFreeForStaticObstacle)
             {
                 //Debug.Log("Spawnei obstáculo fixo na [lane, row]: [" + lane + ", " + row + "]");
+                
 
                 Instantiate(staticObstacles[rb.Next(0, staticObstacles.Length)], matriz[row, lane].
                     transform.position, matriz[row, lane].transform.rotation);
                 
-                matriz[row, lane].isFree = false;
-                matriz[row, 0].isFree = false;
-                matriz[row, 1].isFree = false;
-                matriz[row, 2].isFree = false;
+                matriz[row, lane].isFreeForStaticObstacle = false;
+                matriz[row, 0].isFreeForStaticObstacle = false;
+                matriz[row, 1].isFreeForStaticObstacle = false;
+                matriz[row, 2].isFreeForStaticObstacle = false;
             }
             
         }
