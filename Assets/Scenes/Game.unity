@@ -7270,6 +7270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleManager
   staticObstacleSpawnRate: 20
+  movableObstacleSpawnRate: 30
   coinSpawnRate: 40
   staticObstacles:
   - {fileID: 1728778713127497232, guid: bb5fa3a96349e9c488c4d3bcb44bbed7, type: 3}
