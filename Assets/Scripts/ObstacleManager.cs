@@ -96,6 +96,8 @@ public class ObstacleManager : MonoBehaviour
                     transform.position, matriz[row, lane].transform.rotation);
                 
                 matriz[row, lane].isFreeForStaticObstacle = false;
+                //Bloquear moedas
+                //Bloquear Obstáculos móveis
                 matriz[row, 0].isFreeForStaticObstacle = false;
                 matriz[row, 1].isFreeForStaticObstacle = false;
                 matriz[row, 2].isFreeForStaticObstacle = false;
