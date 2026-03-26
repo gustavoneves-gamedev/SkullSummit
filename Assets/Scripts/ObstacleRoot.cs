@@ -4,6 +4,9 @@ public class ObstacleRoot : MonoBehaviour
 {
     [SerializeField] private GameObject obstacle;
     [SerializeField] private float damage;
+    [SerializeField] private float movementSpeed = 10f;
+    [SerializeField] private int obsctacleType = 0;
+
     private PlayerRoot player;
     //private Collider collider;
     
@@ -17,7 +20,9 @@ public class ObstacleRoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameController.gameController.isRunning) return;
+        if(obsctacleType == 1) transform.position += Vector3.back * movementSpeed * Time.deltaTime;
+
+        if (GameController.gameController.isRunning) return;
         Destroy(gameObject, 1f);
     }
 
