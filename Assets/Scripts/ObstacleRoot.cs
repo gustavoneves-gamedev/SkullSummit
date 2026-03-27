@@ -5,10 +5,11 @@ public class ObstacleRoot : MonoBehaviour
     [SerializeField] private GameObject obstacle;
     [SerializeField] private float damage;
     [SerializeField] private float movementSpeed = 10f;
-    [SerializeField] private int obsctacleType = 0;
+    [SerializeField] private int obsctacleType = 0;    
 
     private float rotateSpeedA;
     private float rotateSpeedB;
+    private float rotateSpeedC;
     private PlayerRoot player;
     //private Collider collider;
 
@@ -17,12 +18,13 @@ public class ObstacleRoot : MonoBehaviour
     {
         Destroy(gameObject, 30f);
         player = GameController.gameController.playerRoot;
-        rotateSpeedA = Random.Range(20f, 40f);
-        rotateSpeedB = Random.Range(15f, 25f);
+        rotateSpeedA = Random.Range(15f, 25f);
+        rotateSpeedB = Random.Range(20f, 40f);
+        rotateSpeedC = Random.Range(25f, 50f); ;
 
         if (obsctacleType == 1)
         {
-            transform.position += Vector3.up * 3f;
+            transform.position += Vector3.up * 4f;
 
         }
     }
@@ -30,12 +32,13 @@ public class ObstacleRoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (obsctacleType == 1)
+        if (obsctacleType == 1 || obsctacleType == 2)
         {
             transform.position += Vector3.back * movementSpeed * Time.deltaTime;
 
-            transform.Rotate(Vector3.right, rotateSpeedA * Time.deltaTime);
-            transform.Rotate(Vector3.up, rotateSpeedB * Time.deltaTime);
+            obstacle.transform.Rotate(Vector3.right, rotateSpeedA * Time.deltaTime);
+            obstacle.transform.Rotate(Vector3.up, rotateSpeedB * Time.deltaTime);
+            obstacle.transform.Rotate(Vector3.forward, rotateSpeedC * Time.deltaTime);
 
         }
 
