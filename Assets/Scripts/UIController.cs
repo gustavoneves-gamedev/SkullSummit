@@ -10,6 +10,10 @@ public class UIController : MonoBehaviour
     //[SerializeField] private GameObject menu;
     [SerializeField] private GameObject tapToPlayText;
 
+    [Header("TopMenu")]
+    [SerializeField] private TextMeshProUGUI coins;
+    [SerializeField] private TextMeshProUGUI rubies;
+
     [Header("CharacterMenu")]
     [SerializeField] private GameObject characterSelectionMenu;
     [SerializeField] private GameObject[] characterMenuArray;
@@ -57,6 +61,8 @@ public class UIController : MonoBehaviour
         playerRoot = GameController.gameController.playerRoot;
     }
 
+    #region General Menu
+
     public void BeginRun()
     {
         mainMenu.SetActive(false);
@@ -68,6 +74,10 @@ public class UIController : MonoBehaviour
         HUD.SetActive(true); //Colocar um efeito de fade in aqui 
     }
 
+    public void TopMenu()
+    {
+        //Criar método para atualizar script das currencies
+    }
 
     //MUDAR ISSO PARA ALTERAR O TIME SCALE PARA ZERO. DO CONTRÁRIO ESTAREI PARANDO APENAS O PLAYER!!
     public void PauseMenu()
@@ -150,6 +160,8 @@ public class UIController : MonoBehaviour
         }
     }
 
+    #endregion
+
     #region Character Selection
 
     public void CharacterSelection()
@@ -181,7 +193,6 @@ public class UIController : MonoBehaviour
 
 
     #endregion
-
 
     #region Level Selection
 

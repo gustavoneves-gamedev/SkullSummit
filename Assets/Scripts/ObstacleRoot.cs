@@ -28,7 +28,6 @@ public class ObstacleRoot : MonoBehaviour
 
     public void ApplyDamage()
     {
-        
         player.UpdateStamina(-damage);
         player.SpeedReset();
         Destroy(gameObject, 10f);
