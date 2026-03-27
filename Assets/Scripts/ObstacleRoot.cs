@@ -18,13 +18,13 @@ public class ObstacleRoot : MonoBehaviour
     {
         Destroy(gameObject, 30f);
         player = GameController.gameController.playerRoot;
-        rotateSpeedA = Random.Range(15f, 25f);
-        rotateSpeedB = Random.Range(20f, 40f);
-        rotateSpeedC = Random.Range(25f, 50f); ;
+        rotateSpeedA = Random.Range(10f, 20f);
+        rotateSpeedB = Random.Range(10f, 20f);
+        rotateSpeedC = Random.Range(25f, 50f);
 
         if (obsctacleType == 1)
         {
-            transform.position += Vector3.up * 4f;
+            transform.position += Vector3.up * 3.2f;
 
         }
     }
@@ -56,10 +56,9 @@ public class ObstacleRoot : MonoBehaviour
 
     public void WasShot(GameObject bullet)
     {
-
+        obstacle.SetActive(false);
         Destroy(bullet);
         Destroy(gameObject, 10f);
-
     }
 
 
