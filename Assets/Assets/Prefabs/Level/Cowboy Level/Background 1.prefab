@@ -156,7 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 1
 --- !u!1 &632040197802978490
 GameObject:
@@ -202,7 +204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 0
 --- !u!1 &743230421791107819
 GameObject:
@@ -248,7 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 1
 --- !u!1 &976886322157872740
 GameObject:
@@ -518,7 +524,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 2
 --- !u!1 &1174450345674729939
 GameObject:
@@ -564,7 +572,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 0
 --- !u!1 &1252624854937656911
 GameObject:
@@ -770,7 +780,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 2
 --- !u!1 &1938893119376793668
 GameObject:
@@ -1040,7 +1052,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 2
 --- !u!1 &2589851168776511336
 GameObject:
@@ -1086,7 +1100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 0
 --- !u!1 &2954179584274859780
 GameObject:
@@ -1132,7 +1148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 2
 --- !u!1 &3072455199690226156
 GameObject:
@@ -1178,7 +1196,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 0
 --- !u!1 &3224678816568463477
 GameObject:
@@ -1224,7 +1244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 1
 --- !u!1 &3302444860758727228
 GameObject:
@@ -1270,7 +1292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 0
 --- !u!1 &3451692529873293518
 GameObject:
@@ -1316,7 +1340,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 2
 --- !u!1 &3467342820891430124
 GameObject:
@@ -1586,7 +1612,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 0
 --- !u!1 &5004850888590405515
 GameObject:
@@ -1865,7 +1893,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 2
 --- !u!1 &5166745652928070828
 GameObject:
@@ -2256,7 +2286,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 1
 --- !u!1 &5956861765256738170
 GameObject:
@@ -2302,7 +2334,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 2
 --- !u!1 &6029760395852541176
 GameObject:
@@ -2491,7 +2525,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 2
 --- !u!1 &6345033724262158571
 GameObject:
@@ -2537,7 +2573,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 0
 --- !u!1 &6419714947069973196
 GameObject:
@@ -2583,7 +2621,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 1
 --- !u!1 &6492000726688618842
 GameObject:
@@ -2775,7 +2815,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 1
 --- !u!1 &6875428040176912191
 GameObject:
@@ -2821,7 +2863,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 1
 --- !u!1 &7301592479432307743
 GameObject:
@@ -3091,7 +3135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 0
 --- !u!1 &7573727619012525200
 GameObject:
@@ -3137,7 +3183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 1
 --- !u!1 &7661915103541778411
 GameObject:
@@ -3519,7 +3567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 0
 --- !u!1 &8041691201423741399
 GameObject:
@@ -3677,7 +3727,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 1
 --- !u!1 &8459244101007371843
 GameObject:
@@ -3723,7 +3775,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68924cd0acf5a141bf12d66c933cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawn
-  isFree: 1
+  isFreeForStaticObstacle: 0
+  isFreeForMovableObstacle: 0
+  isFreeForCoins: 0
   lane: 2
 --- !u!1 &9056614182983437785
 GameObject:
