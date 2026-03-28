@@ -204,10 +204,10 @@ public class PlayerRoot : MonoBehaviour
         {
             if (canAttack == true)
                 Attack();
-            else if (currentAmmo <= 0)
-                Debug.Log("Sem munição suficiente");
-            else if (cooldownRemaining >= 0)
-                Debug.Log("Ataque em cooldown ainda");
+            //else if (currentAmmo <= 0)
+            //    Debug.Log("Sem munição suficiente");
+            //else if (cooldownRemaining >= 0)
+            //    Debug.Log("Ataque em cooldown ainda");
         }
 
         //if (Input.GetKeyDown(KeyCode.Space))
@@ -243,7 +243,7 @@ public class PlayerRoot : MonoBehaviour
                     {
                         if (delta.x > 0)
                         {
-                            Debug.Log("Swipe Right");
+                            //Debug.Log("Swipe Right");
                             if (canRun && desiredLane < 1 && !isChangingLane)
                             {
                                 desiredLane = desiredLane + 1;
@@ -253,7 +253,7 @@ public class PlayerRoot : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("Swipe Left");                            
+                            //Debug.Log("Swipe Left");                            
                             if (canRun && desiredLane > -1 && !isChangingLane)
                             {
                                 desiredLane = desiredLane - 1;
@@ -266,12 +266,12 @@ public class PlayerRoot : MonoBehaviour
                     {
                         if (delta.y > 0)
                         {
-                            Debug.Log("Swipe Up");
+                            //Debug.Log("Swipe Up");
                             
                         }
                         else
                         {
-                            Debug.Log("Swipe Down");
+                            //Debug.Log("Swipe Down");
                         }
                     }
                 }
@@ -432,7 +432,7 @@ public class PlayerRoot : MonoBehaviour
 
     private void Attack()
     {
-        Debug.Log("Ataquei!!");
+        //Debug.Log("Ataquei!!");
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.bulletSpeed = movementSpeed + attackSpeed;

@@ -54,6 +54,11 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+#if UNITY_ANDROID
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 0;
+#endif
     }
 
     private void Start()
