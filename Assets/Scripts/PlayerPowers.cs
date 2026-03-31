@@ -16,8 +16,7 @@ public class PlayerPowers : MonoBehaviour
     public void Shield()
     {
         isShieldUp = !isShieldUp;
-        shield.SetActive(!shield.activeSelf);
-        return;
+        shield.SetActive(!shield.activeSelf);        
     }
     
 
@@ -26,6 +25,8 @@ public class PlayerPowers : MonoBehaviour
         if (other.CompareTag("Shield"))
         {
             Shield();
+            //Tocar som de escudo subindo
+            Destroy(other.gameObject);
         }
 
         if (other.CompareTag("CoinMultiplier"))

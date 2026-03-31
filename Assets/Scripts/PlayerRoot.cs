@@ -48,7 +48,7 @@ public class PlayerRoot : MonoBehaviour
 
     [Header("PowerUps")]
     public int normalCoinMultiplier = 1;
-    private PlayerPowers powerScript;
+    private PlayerPowers playerPowers;
     //public int rubyMultiplier = 1;
 
     [Header("Touch config")]
@@ -71,6 +71,7 @@ public class PlayerRoot : MonoBehaviour
     {
         GameController.gameController.playerRoot = this;
         audioSource = GetComponent<AudioSource>();
+        playerPowers = GetComponent<PlayerPowers>();
         Initialize(selectedCharacter);
 
     }
@@ -383,8 +384,12 @@ public class PlayerRoot : MonoBehaviour
     //Esta função serve para regenerar a stamina e reduzi-la ao colidir com obstáculos
     public void UpdateStamina(float x)
     {
-        
-        
+        if (x < 0 && playerPowers.isShieldUp)
+        {
+            playerPowers.Shield();
+            return;
+        }
+
         currentStamina += x;
 
         if (x < 0) audioSource.Play();

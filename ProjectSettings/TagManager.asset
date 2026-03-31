@@ -12,6 +12,8 @@ TagManager:
   - UpdatePrefabMarker
   - FinishLine
   - Bullet
+  - Shield
+  - CoinMultiplier
   layers:
   - Default
   - TransparentFX
