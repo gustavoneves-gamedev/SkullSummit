@@ -3479,6 +3479,18 @@ MonoBehaviour:
   pauseMenu: {fileID: 347314579}
   HUD: {fileID: 1855609971}
   staminaSlider: {fileID: 1084490909}
+  staminaBackground: {fileID: 797017983}
+  staminaFill: {fileID: 51749054}
+  green: {r: 0.21685225, g: 0.7830189, b: 0.040628344, a: 1}
+  darkGreen: {r: 0.12921156, g: 0.5566038, b: 0, a: 1}
+  greenYellow: {r: 0.6232387, g: 0.8018868, b: 0.04160734, a: 1}
+  darkGreenYellow: {r: 0.44852868, g: 0.5849056, b: 0, a: 1}
+  yellow: {r: 1, g: 1, b: 0.050980393, a: 1}
+  darkYellow: {r: 0.77254903, g: 0.7254902, b: 0, a: 1}
+  orange: {r: 0.9150943, g: 0.6300354, b: 0.07338022, a: 1}
+  darkOrange: {r: 0.8490566, g: 0.494859, b: 0.03604484, a: 1}
+  red: {r: 0.9811321, g: 0.0786757, b: 0.0786757, a: 1}
+  darkRed: {r: 0.4528302, g: 0, b: 0, a: 1}
   statsMenu: {fileID: 1817082298}
   result: {fileID: 106547168}
   heightClimbed: {fileID: 189682268}
@@ -21140,6 +21152,10 @@ PrefabInstance:
     - target: {fileID: 5405717199892293705, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7136130043247350252, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

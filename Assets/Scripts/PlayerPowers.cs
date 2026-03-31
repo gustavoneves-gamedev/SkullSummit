@@ -39,8 +39,9 @@ public class PlayerPowers : MonoBehaviour
 
         if (other.CompareTag("StaminaPotion"))
         {
-            player.UpdateStamina(10f);
-            //Tocar som de escudo subindo
+            player.UpdateStamina(10f); //Provavelmente irei permitir que este item seja upado
+                                      //Terei que atualizar esse método depois por isso
+            //Tocar som de stamina recuperando
             Destroy(other.gameObject);
         }
 

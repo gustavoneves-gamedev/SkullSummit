@@ -29,7 +29,21 @@ public class UIController : MonoBehaviour
     [Header("Run")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject HUD;
+
+    [Header("Stamina")]
     [SerializeField] private Slider staminaSlider;
+    [SerializeField] private Image staminaBackground;
+    [SerializeField] private Image staminaFill;
+    [SerializeField] private Color green;
+    [SerializeField] private Color darkGreen;
+    [SerializeField] private Color greenYellow;
+    [SerializeField] private Color darkGreenYellow;
+    [SerializeField] private Color yellow;
+    [SerializeField] private Color darkYellow;
+    [SerializeField] private Color orange;
+    [SerializeField] private Color darkOrange;
+    [SerializeField] private Color red;
+    [SerializeField] private Color darkRed;
 
     [Header("Stats Menu")]
     [SerializeField] private GameObject statsMenu;
@@ -241,6 +255,33 @@ public class UIController : MonoBehaviour
     public void UpdateHUD(float stamina)
     {
         staminaSlider.value = stamina;
+
+        if (staminaSlider.value >= 0.8f)
+        {
+            staminaFill.color = green;
+            staminaBackground.color = darkGreen;
+        }
+        else if (staminaSlider.value >= 0.6f && staminaSlider.value < 0.8f)
+        {
+            staminaFill.color = greenYellow;
+            staminaBackground.color = darkGreenYellow;
+        }
+        else if (staminaSlider.value >= 0.3f && staminaSlider.value < 0.6f)
+        {
+            staminaFill.color = yellow;
+            staminaBackground.color = darkYellow;
+        }
+        else if (staminaSlider.value >= 0.15f && staminaSlider.value < 0.3f)
+        {
+            staminaFill.color = orange;
+            staminaBackground.color = darkOrange;
+        }
+        else
+        {
+            staminaFill.color = red;
+            staminaBackground.color = darkRed;
+        }
+
     }
 
     #endregion
