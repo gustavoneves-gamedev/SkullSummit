@@ -5,15 +5,16 @@ public class PlayerPowers : MonoBehaviour
     [Header("Shield")]
     public bool isShieldUp;
     [SerializeField] private GameObject shield;
-    private int shieldCharges;
+    private int shieldCharges = 1;
+    private int defaultShieldCharges;
 
     [Header("Stamina Potion")]
     private float potionRestauration = 10f;
 
     [Header("Coin Multiplier")]
-    private bool isCoinMultiplierOn;
+    [SerializeField] private bool isCoinMultiplierOn;
     private float coinMultiplier = 2f;
-    [SerializeField] private float multiplierDuration = 10f;
+    private float multiplierDuration = 10f;
     private float defaultMultiplierDuration;
 
     private PlayerRoot player;
@@ -23,6 +24,7 @@ public class PlayerPowers : MonoBehaviour
     {
         GameController.gameController.playerPowers = this;
         player = GetComponent<PlayerRoot>();
+        InitilizePowers();
         ResetPowers();
     }
 
@@ -31,14 +33,31 @@ public class PlayerPowers : MonoBehaviour
         CoinMultiplierCountdown();
     }
 
+    private void InitilizePowers()
+    {
+        //Shield
+        //Shield Charges += Inventory...
+        defaultShieldCharges = shieldCharges;
+
+        //Potion
+        //potionRestauration += Inventory...
+
+        //Coin Multiplier
+        //multiplierDuration += Inventory...
+        //coinMultiplier += Inventory...
+        defaultMultiplierDuration = multiplierDuration;
+    }
+
     public void ResetPowers()
     {
         //Escudo
         isShieldUp = false;
         shield.SetActive(false);
+        shieldCharges = defaultShieldCharges;
 
-        //Multiplicador de moedas
-        defaultMultiplierDuration = multiplierDuration;
+        //Multiplicador de moedas        
+        multiplierDuration = defaultMultiplierDuration;
+        player.normalCoinMultiplier = 1;
     }
 
     #region Shield
@@ -82,7 +101,7 @@ public class PlayerPowers : MonoBehaviour
             {
                 isCoinMultiplierOn = false;
                 multiplierDuration = defaultMultiplierDuration;
-                player.normalCoinMultiplier -= coinMultiplier;
+                player.normalCoinMultiplier = 1;
             }
         }
     }

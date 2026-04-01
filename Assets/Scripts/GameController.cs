@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour
     [Header("References")]
     public PlayerRoot playerRoot;
     public PlayerPowers playerPowers;
+    public Inventory inventory;
     public UIController uiController;
     public LevelManager levelManager;
     public ObstacleManager obstacleManager;

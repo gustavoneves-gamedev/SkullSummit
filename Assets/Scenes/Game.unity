@@ -21378,6 +21378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6030986945443719198, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: multiplierDuration
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7136130043247350252, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
       propertyPath: m_Enabled
       value: 1
