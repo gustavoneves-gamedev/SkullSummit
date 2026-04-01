@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.LowLevel;
 
 public class GameController : MonoBehaviour
 {
@@ -8,12 +7,12 @@ public class GameController : MonoBehaviour
     [Header("Menu")]
     public int coins;
     public int rubies;
-    
+
     [Header("Run")]
     public bool isRunning;
     public int runNormalCoins;
     public int runRubies;
-    
+
     [Header("Levels")]
     [SerializeField] private LevelData[] levelArray;
     public levelID currentLevelID = levelID.CowboyLevel;
@@ -34,7 +33,7 @@ public class GameController : MonoBehaviour
 
     [Header("Alpinista Level")]
     public int alpinistaLevelCheckpoint;
-    public float alpinistaLevelBestHeight;    
+    public float alpinistaLevelBestHeight;
 
     [Header("References")]
     public PlayerRoot playerRoot;
@@ -43,8 +42,8 @@ public class GameController : MonoBehaviour
     public UIController uiController;
     public LevelManager levelManager;
     public ObstacleManager obstacleManager;
-    
-    
+
+
     void Awake()
     {
         if (gameController == null)
@@ -73,10 +72,11 @@ public class GameController : MonoBehaviour
     {
         runNormalCoins = 0;
         runRubies = 0;
-        
+        uiController.UpdateCoinHUD();
+
         //Isto servirá para o jogador escolher se quer começar do checkpoint ou do zero REVISAR!!!
         if (!isStartingOnCheckpoint)
-            currentLevelCheckpoint = 0;        
+            currentLevelCheckpoint = 0;
 
         ResetPlayerPosition();
 
@@ -95,7 +95,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     #region Main Menu
@@ -108,26 +108,27 @@ public class GameController : MonoBehaviour
 
     public void UpdateRunCoins(int normalCoins = 0, int rubies = 0)
     {
-       
         runNormalCoins += Mathf.RoundToInt(normalCoins * playerRoot.normalCoinMultiplier);
 
         runRubies += rubies;
+
+        uiController.UpdateCoinHUD(runNormalCoins);
     }
 
 
     #endregion
 
     #region Level
-        
+
     public void InitilizeLevelStatics()
     {
-        
+
         for (int i = 0; i < levelArray.Length; i++)
         {
             if (currentLevelID == levelArray[i].levelId)
             {
                 currentLevelCheckpointDistance = levelArray[i].checkpointDistance;
-                
+
             }
         }
 

@@ -174,8 +174,6 @@ public class PlayerRoot : MonoBehaviour
         canRun = true;
     }
 
-
-
     void Update()
     {
 
@@ -199,7 +197,7 @@ public class PlayerRoot : MonoBehaviour
         StaminaConsumption();
 
         //Atualiza a barra de stamina na HUD
-        GameController.gameController.uiController.UpdateHUD(currentStamina / maxStamina);
+        //GameController.gameController.uiController.UpdateHUD(currentStamina / maxStamina);
 
 
 

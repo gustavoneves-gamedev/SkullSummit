@@ -26,34 +26,33 @@ public class ObstacleManager : MonoBehaviour
         GameController.gameController.obstacleManager = this;
         levelManager = GameController.gameController.levelManager;        
     }
-
     
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            //spawnPointsMatrizA = levelManager.currentPrefab
-            for (int i = 0; i < spawnPointsMatrizA.GetLength(0); i++)
-            {
-                for (int j = 0; j < spawnPointsMatrizA.GetLength(1); j++)
-                {
-                    Debug.Log("Elemento [" + i + "," + j + "] = " + spawnPointsMatrizA[i, j]);
-                }
-            }
-        }
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.T))
+    //    {
+    //        //spawnPointsMatrizA = levelManager.currentPrefab
+    //        for (int i = 0; i < spawnPointsMatrizA.GetLength(0); i++)
+    //        {
+    //            for (int j = 0; j < spawnPointsMatrizA.GetLength(1); j++)
+    //            {
+    //                Debug.Log("Elemento [" + i + "," + j + "] = " + spawnPointsMatrizA[i, j]);
+    //            }
+    //        }
+    //    }
 
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            //spawnPointsMatrizA = levelManager.currentPrefab
-            for (int i = 0; i < spawnPointsMatrizB.GetLength(0); i++)
-            {
-                for (int j = 0; j < spawnPointsMatrizB.GetLength(1); j++)
-                {
-                    Debug.Log("Elemento [" + i + "," + j + "] = " + spawnPointsMatrizB[i, j]);
-                }
-            }
-        }
-    } //APENAS PARA TESTES, APAGAR DEPOIS!!!
+    //    if (Input.GetKeyDown(KeyCode.Y))
+    //    {
+    //        //spawnPointsMatrizA = levelManager.currentPrefab
+    //        for (int i = 0; i < spawnPointsMatrizB.GetLength(0); i++)
+    //        {
+    //            for (int j = 0; j < spawnPointsMatrizB.GetLength(1); j++)
+    //            {
+    //                Debug.Log("Elemento [" + i + "," + j + "] = " + spawnPointsMatrizB[i, j]);
+    //            }
+    //        }
+    //    }
+    //} //APENAS PARA TESTES, APAGAR DEPOIS!!!
 
     public void UpdateMatriz(ObstacleSpawn[,] matriz)
     {
@@ -125,8 +124,7 @@ public class ObstacleManager : MonoBehaviour
                 matriz[row, lane].isFreeForCoins = false;
                 if (row - 1 >= 0) matriz[row - 1, lane].isFreeForCoins = false;
                 if (row + 1 < staticObstacles.Length) matriz[row + 1, lane].isFreeForCoins = false;
-            }           
-
+            }
         }
 
         for (int i = 0; i < movableObstacleSpawnRate; i++)
