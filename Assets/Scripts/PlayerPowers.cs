@@ -13,7 +13,7 @@ public class PlayerPowers : MonoBehaviour
     [Header("Coin Multiplier")]
     private bool isCoinMultiplierOn;
     private float coinMultiplier = 2f;
-    private float multiplierDuration = 10f;
+    [SerializeField] private float multiplierDuration = 10f;
     private float defaultMultiplierDuration;
 
     private PlayerRoot player;
