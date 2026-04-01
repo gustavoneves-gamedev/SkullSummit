@@ -25,7 +25,12 @@ public class PlayerPowers : MonoBehaviour
     {
         isShieldUp = !isShieldUp;
         shield.SetActive(!shield.activeSelf);        
-    }    
+    }
+
+    private void CoinMultiplier()
+    {
+
+    }
     
 
     private void OnTriggerEnter(Collider other)
@@ -47,6 +52,7 @@ public class PlayerPowers : MonoBehaviour
 
         if (other.CompareTag("CoinMultiplier"))
         {
+            CoinMultiplier();
             //Ativar multiplicador
         }
 

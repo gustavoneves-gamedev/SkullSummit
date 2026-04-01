@@ -24,6 +24,8 @@ public class Coin : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            //Revisar isto. Está diretamente no GameController, mas talvez eu deva puxar para
+            //o Player ou para o Inventory - Ver com Professor
             if (coinID == 0) GameController.gameController.UpdateRunCoins(1, 0);
             if (coinID == 1) GameController.gameController.UpdateRunCoins(0, 1);
 
