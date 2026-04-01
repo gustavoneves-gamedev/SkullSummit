@@ -2,15 +2,23 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public int staminaPotionUpgrade;
+    public float staminaPotionUpgradeFactor = 10f;
+
+
     void Start()
     {
-        
+        InitializeItemsUpgrades();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void InitializeItemsUpgrades()
     {
         
     }
+    
+
+    #region Item Upgrades
+
+
+    #endregion
 }

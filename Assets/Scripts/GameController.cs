@@ -13,7 +13,6 @@ public class GameController : MonoBehaviour
     public bool isRunning;
     public int runNormalCoins;
     public int runRubies;
-
     
     [Header("Levels")]
     [SerializeField] private LevelData[] levelArray;
@@ -39,6 +38,7 @@ public class GameController : MonoBehaviour
 
     [Header("References")]
     public PlayerRoot playerRoot;
+    public PlayerPowers playerPowers;
     public UIController uiController;
     public LevelManager levelManager;
     public ObstacleManager obstacleManager;
@@ -108,7 +108,7 @@ public class GameController : MonoBehaviour
     public void UpdateRunCoins(int normalCoins = 0, int rubies = 0)
     {
        
-        runNormalCoins += normalCoins * playerRoot.normalCoinMultiplier;
+        runNormalCoins += Mathf.RoundToInt(normalCoins * playerRoot.normalCoinMultiplier);
 
         runRubies += rubies;
     }

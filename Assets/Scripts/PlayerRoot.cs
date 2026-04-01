@@ -47,7 +47,7 @@ public class PlayerRoot : MonoBehaviour
 
 
     [Header("PowerUps")]
-    public int normalCoinMultiplier = 1;
+    public float normalCoinMultiplier = 1;
     private PlayerPowers playerPowers;
     //public int rubyMultiplier = 1;
 
