@@ -5,6 +5,7 @@ public class PlayerPowers : MonoBehaviour
     [Header("Shield")]
     public bool isShieldUp;
     [SerializeField] private GameObject shield;
+    [SerializeField] private GameObject shieldEffect;
     private int shieldCharges = 1;
     private int defaultShieldCharges;
     private float baseShieldDuration = 20f;
@@ -99,6 +100,7 @@ public class PlayerPowers : MonoBehaviour
         {
             isShieldUp = !isShieldUp;
             shield.SetActive(!shield.activeSelf);
+            shieldEffect.SetActive(!shieldEffect.activeSelf);
             shieldDuration = defaultShieldDuration;
         }
     }
@@ -114,6 +116,7 @@ public class PlayerPowers : MonoBehaviour
                 isShieldUp = false;
                 shieldDuration = defaultShieldDuration;
                 shield.SetActive(false);
+                shieldEffect.SetActive(false);
             }
         }
     }
