@@ -6,13 +6,14 @@ public class ObstacleRoot : MonoBehaviour
     [SerializeField] private GameObject obstacle;    
     [SerializeField] private float damage;
     [SerializeField] private float movementSpeed = 10f;
-    [SerializeField] private int obsctacleType = 0;
+    [SerializeField] private int obsctacleType = 0;// 1 - Obstáculo móvel grande
+                                                   // 2 - Obstáculo móvel pequeno
 
     [Header("Items")]
     [SerializeField] private GameObject[] items;
     [SerializeField] private GameObject[] obstacleGlow;
+    private GameObject itemToSpawn;
     private float itemSpawnCode;
-
 
     private float rotateSpeedA;
     private float rotateSpeedB;
@@ -24,9 +25,7 @@ public class ObstacleRoot : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, 30f);
-        player = GameController.gameController.playerRoot;
-        
-        ItemToSpawn();
+        player = GameController.gameController.playerRoot; 
 
         rotateSpeedA = Random.Range(10f, 20f);
         rotateSpeedB = Random.Range(10f, 20f);
@@ -36,10 +35,12 @@ public class ObstacleRoot : MonoBehaviour
         if (obsctacleType == 1)
         {
             transform.position += Vector3.up * 3.2f;
+            itemToSpawn = ItemToSpawn();
         }
         if (obsctacleType == 2)
         {
             transform.position += Vector3.up * 1.2f;
+            itemToSpawn = ItemToSpawn();
         }
     }
 
@@ -86,7 +87,7 @@ public class ObstacleRoot : MonoBehaviour
     {
         obstacle.SetActive(false);
 
-        if (itemSpawnCode < 5 && ItemToSpawn() != null)
+        if (itemSpawnCode < 5 && itemToSpawn != null)
         {
             for (int i = 0; i < obstacleGlow.Length; i++)
             {
@@ -107,9 +108,9 @@ public class ObstacleRoot : MonoBehaviour
     {
         DisableGameObjects();
 
-        if (itemSpawnCode < 5 && ItemToSpawn() != null)
+        if (itemSpawnCode < 5 && itemToSpawn != null)
         {
-            Instantiate(ItemToSpawn(), transform.position, transform.rotation);
+            Instantiate(itemToSpawn, transform.position, transform.rotation);
         }
         
 
