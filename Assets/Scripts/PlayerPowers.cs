@@ -64,6 +64,7 @@ public class PlayerPowers : MonoBehaviour
         //Escudo
         isShieldUp = false;
         shield.SetActive(false);
+        shieldEffect.SetActive(false);
         shieldCharges = defaultShieldCharges;
         shieldDuration = defaultShieldDuration;
 
