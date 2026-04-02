@@ -5,7 +5,12 @@ public class ObstacleRoot : MonoBehaviour
     [SerializeField] private GameObject obstacle;
     [SerializeField] private float damage;
     [SerializeField] private float movementSpeed = 10f;
-    [SerializeField] private int obsctacleType = 0;    
+    [SerializeField] private int obsctacleType = 0;
+
+    [Header("Items")]
+    [SerializeField] private GameObject[] items;
+    private float itemSpawnCode;
+
 
     private float rotateSpeedA;
     private float rotateSpeedB;
@@ -18,9 +23,13 @@ public class ObstacleRoot : MonoBehaviour
     {
         Destroy(gameObject, 30f);
         player = GameController.gameController.playerRoot;
+        
+        ItemToSpawn();
+
         rotateSpeedA = Random.Range(10f, 20f);
         rotateSpeedB = Random.Range(10f, 20f);
         rotateSpeedC = Random.Range(25f, 50f);
+        
 
         if (obsctacleType == 1)
         {
@@ -49,6 +58,16 @@ public class ObstacleRoot : MonoBehaviour
         Destroy(gameObject, 1f);
     }
 
+    private GameObject ItemToSpawn()
+    {
+        itemSpawnCode = Random.Range(1, 11);
+
+        if (itemSpawnCode >= 1 && itemSpawnCode < 3) return items[0];
+        else if (itemSpawnCode == 3) return items[1];
+        else if (itemSpawnCode == 4) return items[2];
+        else return null;
+    }
+
     public void ApplyDamage()
     {
         player.UpdateStamina(-damage);        
@@ -59,6 +78,13 @@ public class ObstacleRoot : MonoBehaviour
     public void WasShot(GameObject bullet)
     {
         obstacle.SetActive(false);
+
+        if (itemSpawnCode < 5 && ItemToSpawn() != null)
+        {
+            Instantiate(ItemToSpawn(), transform.position, transform.rotation);
+        }
+        
+
         Destroy(bullet);
         Destroy(gameObject, 10f);
         GameController.gameController.ObstaclesDestroyedCounter();

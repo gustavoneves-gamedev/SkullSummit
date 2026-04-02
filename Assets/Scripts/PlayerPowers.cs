@@ -30,13 +30,10 @@ public class PlayerPowers : MonoBehaviour
     void Start()
     {
         GameController.gameController.playerPowers = this;
-        player = GetComponent<PlayerRoot>();
+        player = GetComponent<PlayerRoot>();        
 
-        //PERIGOSO PORQUE DEPENDE DE O INVENTÁRIO JÁ TER SE ALIMENTADO NO GAMECONTROLLER
-        inventory = GameController.gameController.inventory;
-
-        InitilizePowers();
-        ResetPowers();
+        Invoke("InitilizePowers", .2f);        
+        Invoke("ResetPowers", .2f);
     }
 
     void Update()
@@ -48,6 +45,8 @@ public class PlayerPowers : MonoBehaviour
     //IPC: Acho que vou passar esse cálculo para o invetory e puxar só os valores finais
     private void InitilizePowers()
     {
+        inventory = GameController.gameController.inventory;
+
         //Shield
         InitializeShield();
 
