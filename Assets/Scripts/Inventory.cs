@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
     [Header("Coin Multiplier")]
     public int coinDurationUpgrade = 0;
     public float coinDurationUpgradeFactor = 8f;
-    public int coinMultiplierUpgrade = 1;
+    public int coinMultiplierUpgrade = 0;
     public float coinMultiplierUpgradeFactor = 0.5f;
 
     void Start()

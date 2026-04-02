@@ -8,7 +8,7 @@ public class PlayerPowers : MonoBehaviour
     private int shieldCharges = 1;
     private int defaultShieldCharges;
     private float baseShieldDuration = 20f;
-    [SerializeField] private float shieldDuration;
+    private float shieldDuration;
     private float defaultShieldDuration;
 
     [Header("Stamina Potion")]
@@ -18,7 +18,7 @@ public class PlayerPowers : MonoBehaviour
     [Header("Coin Multiplier")]
     [SerializeField] private bool isCoinMultiplierOn;
     private float coinBaseMultiplier = 1.5f;
-    private float coinMultiplier;
+    [SerializeField] private float coinMultiplier;
     private float coinBaseMultiplierDuration = 16f;
     private float coinMultiplierDuration;
     private float defaultMultiplierDuration;
