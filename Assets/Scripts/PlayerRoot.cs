@@ -42,7 +42,7 @@ public class PlayerRoot : MonoBehaviour
 
     [Header("PowerUps")]
     public float normalCoinMultiplier = 1;
-    private PlayerPowers playerPowers;
+    public PlayerPowers playerPowers;
     //public int rubyMultiplier = 1;
 
     [Header("Touch config")]

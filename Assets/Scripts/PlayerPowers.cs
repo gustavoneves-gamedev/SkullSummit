@@ -18,7 +18,8 @@ public class PlayerPowers : MonoBehaviour
     [Header("Coin Multiplier")]
     [SerializeField] private bool isCoinMultiplierOn;
     private int coinBaseMultiplier = 2;
-    [SerializeField] private float coinMultiplier;
+    public float coinMultiplier;
+    private float boostedCoinMultiplier;   
     private float coinBaseMultiplierDuration = 16f;
     private float coinMultiplierDuration;
     private float defaultMultiplierDuration;
@@ -67,7 +68,7 @@ public class PlayerPowers : MonoBehaviour
 
         //Multiplicador de moedas        
         coinMultiplierDuration = defaultMultiplierDuration;
-        player.normalCoinMultiplier = 2;
+        //player.normalCoinMultiplier = 2;
     }
 
     #region Shield
@@ -131,7 +132,9 @@ public class PlayerPowers : MonoBehaviour
     #region Coin Multiplier
     private void InitializeCoinMultiplier()
     {
-        coinMultiplier = coinBaseMultiplier +
+        coinMultiplier = 1;
+
+        boostedCoinMultiplier = coinBaseMultiplier +
                     inventory.coinMultiplierUpgrade * inventory.coinMultiplierUpgradeFactor;
 
         coinMultiplierDuration = coinBaseMultiplierDuration +
@@ -144,12 +147,12 @@ public class PlayerPowers : MonoBehaviour
     {
         if (isCoinMultiplierOn)
         {
-            coinMultiplierDuration = defaultMultiplierDuration;
+            coinMultiplierDuration = defaultMultiplierDuration;            
         }
         else
         {
             isCoinMultiplierOn = true;
-            player.normalCoinMultiplier += coinMultiplier;
+            coinMultiplier = boostedCoinMultiplier;
         }
     }
 
@@ -163,7 +166,7 @@ public class PlayerPowers : MonoBehaviour
             {
                 isCoinMultiplierOn = false;
                 coinMultiplierDuration = defaultMultiplierDuration;
-                player.normalCoinMultiplier = 1;
+                coinMultiplier = 1;
             }
         }
     }

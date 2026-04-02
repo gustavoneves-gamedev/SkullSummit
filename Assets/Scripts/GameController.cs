@@ -115,7 +115,7 @@ public class GameController : MonoBehaviour
 
     public void UpdateRunCoins(int normalCoins = 0, int rubies = 0)
     {
-        runNormalCoins += Mathf.RoundToInt(normalCoins * playerRoot.normalCoinMultiplier);
+        runNormalCoins += Mathf.RoundToInt(normalCoins * playerRoot.playerPowers.coinMultiplier);
 
         runRubies += rubies;
 
