@@ -15,7 +15,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rubies;
 
     [Header("Leaderboard")]
-    [SerializeField] private TextMeshProUGUI Top1;
+    [SerializeField] private GameObject leaderboard;
+    [SerializeField] private TextMeshProUGUI[] playerNames;
+    [SerializeField] private TextMeshProUGUI[] playerHeights;
 
     [Header("CharacterMenu")]
     [SerializeField] private GameObject characterSelectionMenu;
@@ -71,6 +73,9 @@ public class UIController : MonoBehaviour
         characterSelectionMenu.SetActive(false);
         levelSelectionMenu.SetActive(false);
         HUD.SetActive(false);
+        leaderboard.SetActive(false);
+
+        GameController.gameController.UpdateLeaderboarUI();
 
         Invoke("Initialize", .1f);
     }
@@ -139,6 +144,7 @@ public class UIController : MonoBehaviour
         statsMenu.SetActive(false);
         pauseMenu.SetActive(false);
         HUD.SetActive(false);
+        leaderboard.SetActive(false);
         characterSelectionMenu.SetActive(false);
         levelSelectionMenu.SetActive(false);
 
@@ -190,6 +196,23 @@ public class UIController : MonoBehaviour
             characterMenuArray[charCode].SetActive(false);
             charCode--;
         }
+    }
+
+    #endregion
+
+    #region LeaderBoard
+
+    public void ShowLeaderboard()
+    {
+        leaderboard.SetActive(true);
+    }
+
+    public void UpdateLeaderboardDisplay(int index, string name = "", float height = 0)
+    {
+        if(height > 0) playerNames[index].text = name + ":";
+        else playerNames[index].text = "";
+
+        playerHeights[index].text = height.ToString("F0") + "m";
     }
 
     #endregion

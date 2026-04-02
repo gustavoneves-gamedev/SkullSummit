@@ -7,9 +7,10 @@ public class GameController : MonoBehaviour
     [Header("Menu")]
     public int coins;
     public int rubies;
+    public string playerName = "Player";
 
     [Header("Leaderboard")]
-    private float[] bestHeigths = new float[10];
+    private float[] bestHeigths = new float[5];
 
     [Header("Run")]
     public bool isRunning;
@@ -101,16 +102,43 @@ public class GameController : MonoBehaviour
     public void EndRun(float heigth)
     {
         UpdateBestHeight(heigth);
-        
+
         uiController.StaticsMenu(heigth, runNormalCoins, runRubies, obstaclesDestroyed);
 
         isRunning = false;
+
+        UpdateLeaderboard(heigth);
     }
-    
+
 
     #region Leaderboard Temp
 
+    private void UpdateLeaderboard(float heigth)
+    {
+        for (int i = 0; i < bestHeigths.Length; i++)
+        {
+            if (heigth > bestHeigths[i])
+            {
+                for (int j = (bestHeigths.Length-1); j > i; j--)
+                {
+                    bestHeigths[j] = bestHeigths[j-1];            
+                }
 
+                bestHeigths[i] = heigth;
+                i += bestHeigths.Length;
+            }
+        }
+
+        UpdateLeaderboarUI();
+    }
+
+    public void UpdateLeaderboarUI()
+    {
+        for (int i = 0; i < bestHeigths.Length; i++)
+        {
+            uiController.UpdateLeaderboardDisplay(i, playerName, bestHeigths[i]);
+        }
+    }
 
     #endregion
 
