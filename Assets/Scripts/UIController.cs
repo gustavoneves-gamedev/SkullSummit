@@ -91,6 +91,7 @@ public class UIController : MonoBehaviour
     private void Initialize()
     {
         playerRoot = GameController.gameController.playerRoot;
+        //coins.text = puxar informação do local de salvamento
     }
 
     #region General Menu
@@ -108,7 +109,7 @@ public class UIController : MonoBehaviour
 
     public void TopMenu()
     {
-        //Criar método para atualizar script das currencies
+        coins.text = GameController.gameController.coins.ToString();
     }
 
     //MUDAR ISSO PARA ALTERAR O TIME SCALE PARA ZERO. DO CONTRÁRIO ESTAREI PARANDO APENAS O PLAYER!!

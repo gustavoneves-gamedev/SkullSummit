@@ -23,7 +23,7 @@ public class ObstacleRoot : MonoBehaviour
     private PlayerRoot player;
     //private Collider collider;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         Destroy(gameObject, 30f);
@@ -46,7 +46,7 @@ public class ObstacleRoot : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (obsctacleType == 1 || obsctacleType == 2)

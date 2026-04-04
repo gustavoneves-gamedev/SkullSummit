@@ -103,6 +103,9 @@ public class GameController : MonoBehaviour
     {
         UpdateBestHeight(heigth);
 
+        coins += runNormalCoins;
+        uiController.TopMenu();
+
         uiController.StaticsMenu(heigth, runNormalCoins, runRubies, obstaclesDestroyed);
 
         isRunning = false;
@@ -128,6 +131,8 @@ public class GameController : MonoBehaviour
                 i += bestHeigths.Length;
             }
         }
+
+        
 
         UpdateLeaderboarUI();
     }
