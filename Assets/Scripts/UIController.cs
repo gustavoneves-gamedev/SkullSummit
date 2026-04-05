@@ -31,6 +31,11 @@ public class UIController : MonoBehaviour
     private int levelCode = 0;
     private bool isLevelSelecting;
 
+    [Header("StoreMenu")]
+    [SerializeField] private GameObject storeMenu;
+    [SerializeField] private GameObject purchaseMenu;
+    [SerializeField] private GameObject itemUpgradeMenu;
+
     [Header("Run")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject HUD;
@@ -283,6 +288,27 @@ public class UIController : MonoBehaviour
         GameController.gameController.InitilizeLevelStatics();
         GameController.gameController.ResetPlayerPosition();
         BackToMainMenu();
+    }
+
+    #endregion
+
+    #region Store
+
+    public void StoreMenu()
+    {
+        storeMenu.SetActive(true);
+    }
+
+    public void PurchaseMenu()
+    {
+        //purchaseMenu.SetActive(true);
+        itemUpgradeMenu.SetActive(false);
+    }
+
+    public void ItemUpgradeMenu()
+    {
+        itemUpgradeMenu.SetActive(true);
+        //purchaseMenu.SetActive(false);
     }
 
     #endregion
