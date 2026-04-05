@@ -132,10 +132,10 @@ public class UIController : MonoBehaviour
         pauseMenu.SetActive(false);
         HUD.SetActive(false);
 
-        heightClimbed.text = "Altura Escalada: " + height.ToString("F0");
-        coinsCollected.text = "Moedas: " + coins;
-        rubiesCollected.text = "Rubis: " + rubies;
-        obstacles.text = "Obstáculos: " + obstaclesDestroyed;
+        heightClimbed.text = height.ToString("F0");
+        coinsCollected.text = coins.ToString("F0"); ;
+        rubiesCollected.text = rubies.ToString("F0"); ;
+        obstacles.text = obstaclesDestroyed.ToString("F0"); ;
 
         statsMenu.SetActive(true);
     }
