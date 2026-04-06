@@ -11,21 +11,18 @@ public class PlayerPowers : MonoBehaviour
     private float shieldDuration;
     private float defaultShieldDuration;
 
-    [Header("Stamina Potion")]
-    private float basePotionRestauration = 10f;
+    [Header("Stamina Potion")]    
     private float potionRestauration;
 
     [Header("Coin Multiplier")]
     public bool isCoinMultiplierOn;
-    private int coinBaseMultiplier = 2;
     public float coinMultiplier;
-    private float boostedCoinMultiplier;   
-    private float coinBaseMultiplierDuration = 16f;
+    private float boostedCoinMultiplier;
     private float coinMultiplierDuration;
     private float defaultMultiplierDuration;
 
     private PlayerRoot player;
-    private Inventory inventory;
+    private Inventory inventory; //Está inutilizada por enquanto
 
 
     void Start()
@@ -33,7 +30,7 @@ public class PlayerPowers : MonoBehaviour
         GameController.gameController.playerPowers = this;
         player = GetComponent<PlayerRoot>();        
 
-        Invoke("InitilizePowers", .2f);        
+        //Invoke("InitilizePowers", .2f);        
         Invoke("ResetPowers", .2f);
     }
 
@@ -42,20 +39,11 @@ public class PlayerPowers : MonoBehaviour
         CoinMultiplierCountdown();
         ShieldCountdown();
     }
-
-    //IPC: Acho que vou passar esse cálculo para o invetory e puxar só os valores finais
+    
+    //Inutilizada temporariamente esta função
     private void InitilizePowers()
     {
         inventory = GameController.gameController.inventory;
-
-        //Shield
-        //InitializeShieldPower();
-
-        //Potion        
-        InitializeStaminaPotion();
-
-        //Coin Multiplier
-        InitializeCoinMultiplier();
     }
 
     public void ResetPowers()
@@ -123,24 +111,20 @@ public class PlayerPowers : MonoBehaviour
     #endregion
 
     #region Stamina Potion
-    public void InitializeStaminaPotion()
+    public void InitializeStaminaPotion(int restauration = 0)
     {
-        potionRestauration = basePotionRestauration +
-                    inventory.staminaPotionUpgrade * inventory.staminaPotionUpgradeFactor;
+        potionRestauration = restauration;
     }
 
     #endregion
 
     #region Coin Multiplier
-    private void InitializeCoinMultiplier()
+    public void InitializeCoinMultiplier(float boosted = 0, float duration = 0)
     {
         coinMultiplier = 1;
 
-        boostedCoinMultiplier = coinBaseMultiplier +
-                    inventory.coinMultiplierUpgrade * inventory.coinMultiplierUpgradeFactor;
-
-        coinMultiplierDuration = coinBaseMultiplierDuration +
-            inventory.coinDurationUpgrade * inventory.coinDurationUpgradeFactor;
+        boostedCoinMultiplier = boosted;
+        coinMultiplierDuration = duration;
 
         defaultMultiplierDuration = coinMultiplierDuration;
     }

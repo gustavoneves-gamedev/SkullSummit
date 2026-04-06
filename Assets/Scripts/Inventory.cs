@@ -11,13 +11,20 @@ public class Inventory : MonoBehaviour
     public int shieldChargeUpgrade = 1;
     
     [Header("Stamina Potion")]
-    [SerializeField] private float basePotionRestauration = 10f;
-    private float potionRestauration;
+    [SerializeField] private int basePotionRestauration = 10;
+    private int potionRestauration;
     public int staminaPotionUpgrade = 0;
     public int staminaPotionUpgradeFactor = 5;
     public int staminaPotionUpgradeCost = 1000;    
 
     [Header("Coin Multiplier")]
+    public bool isCoinMultiplierOn;
+    private int coinBaseMultiplier = 2;
+    public float coinMultiplier;
+    private float boostedCoinMultiplier;
+    private float coinBaseMultiplierDuration = 16f;
+    private float coinMultiplierDuration;
+    private float defaultMultiplierDuration;
     public int coinDurationUpgrade = 0;
     public float coinDurationUpgradeFactor = 8f;
     public int coinMultiplierUpgrade = 0;
@@ -31,13 +38,16 @@ public class Inventory : MonoBehaviour
 
     private void InitializeItemsUpgrades()
     {
-        //STAMINA POTION
-        //Inserir aqui a puxada de informações do script onde estarão as informações da poção
-        UIStaminaPotionUpdate();
-        StaminaPotionInitialization();
-
         //SHIELD
         ShieldInitialization();
+
+        //STAMINA POTION
+        //Inserir aqui a puxada de informações do script onde estarão as informações da poção
+        UiStaminaPotionUpdate();
+        StaminaPotionInitialization();
+
+        //COIN MULTIPLIER
+        CoinMultiplierInitilization();
     }
 
     #region Item Initialization
@@ -59,8 +69,24 @@ public class Inventory : MonoBehaviour
                     staminaPotionUpgrade * staminaPotionUpgradeFactor;
 
         GameController.gameController.playerPowers.
-            InitializeShieldPower(shieldDuration, shieldCharges);
+            InitializeStaminaPotion(potionRestauration);
     }
+
+    private void CoinMultiplierInitilization()
+    {
+        coinMultiplier = 1;
+
+        boostedCoinMultiplier = coinBaseMultiplier +
+                    coinMultiplierUpgrade * coinMultiplierUpgradeFactor;
+
+        coinMultiplierDuration = coinBaseMultiplierDuration +
+            coinDurationUpgrade * coinDurationUpgradeFactor;
+
+        GameController.gameController.playerPowers.
+            InitializeCoinMultiplier(boostedCoinMultiplier, coinMultiplierDuration);
+
+    }
+
 
     #endregion
 
@@ -89,11 +115,12 @@ public class Inventory : MonoBehaviour
         //staminaPotionUpgradeCost *= (1 + staminaPotionUpgrade);
         staminaPotionUpgradeCost *= (2);
 
-        UIStaminaPotionUpdate();
-        GameController.gameController.playerPowers.InitializeStaminaPotion();
+        UiStaminaPotionUpdate();
+        StaminaPotionInitialization();
+        //GameController.gameController.playerPowers.InitializeStaminaPotion();
     }
 
-    private void UIStaminaPotionUpdate()
+    private void UiStaminaPotionUpdate()
     {
         GameController.gameController.uiController.
             UpdateStaminaPostionUpgradeUI((staminaPotionUpgrade * staminaPotionUpgradeFactor),
