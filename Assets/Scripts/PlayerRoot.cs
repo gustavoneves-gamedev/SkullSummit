@@ -8,7 +8,7 @@ public class PlayerRoot : MonoBehaviour
     private bool isDead;
     public bool isGamePaused;
     public float heightClimbed;
-    private float initialHeight;    
+    private float initialHeight;
     private Vector3 move;
     private int desiredLane = 0;
     public bool isChangingLane; //IPC: Não está funcionando ainda porque vou colocar um trigger no meio das lanes para
@@ -19,6 +19,7 @@ public class PlayerRoot : MonoBehaviour
     public float maxStamina;
     [SerializeField] private float movementSpeed;
     public float initialSpeed;
+    private float defaultSpeed;
     public float maxSpeed;
     public float aceleration;
     private float acelerationCooldown;
@@ -77,7 +78,7 @@ public class PlayerRoot : MonoBehaviour
         Initialize(selectedCharacter);
 
     }
-    
+
     public void ResetPosition(Vector3 worldPos)
     {
         cc.enabled = false;
@@ -119,7 +120,8 @@ public class PlayerRoot : MonoBehaviour
 
         movementSpeed = characterDatas[charCode].baseMovementSpeed + ProgressManager.progressManager.movementSpeedIncrement;
         initialSpeed = movementSpeed * 0.6f;
-        maxSpeed = movementSpeed * 1.2f;
+        defaultSpeed = initialSpeed;
+        maxSpeed = movementSpeed * 1.1f;
 
         damage = characterDatas[charCode].baseDamage + ProgressManager.progressManager.damageIncrement;
 
@@ -163,8 +165,9 @@ public class PlayerRoot : MonoBehaviour
         isDead = false;
         desiredLane = 0;
         currentStamina = maxStamina;
+        initialSpeed = defaultSpeed;
         movementSpeed = initialSpeed;
-        acelerationCooldown = defaultAcelerationCooldown;        
+        acelerationCooldown = defaultAcelerationCooldown;
         currentAmmo = maxAmmo;
         cooldownRemaining = 0;
         reloadTimeRemaining = reloadTime;
@@ -363,7 +366,16 @@ public class PlayerRoot : MonoBehaviour
     public void SpeedReset()
     {
         acelerationCooldown = defaultAcelerationCooldown;
+        
         movementSpeed = initialSpeed;
+
+        initialSpeed = defaultSpeed;
+
+        //Serve para o jogador não ficar muito lento após colidir em alturas mais altas
+        if (heightClimbed >= 1500 && heightClimbed < 4000) initialSpeed *= 1.2f;
+        else if (heightClimbed >= 4000 && heightClimbed < 10000) initialSpeed *= 1.3f;
+        else if (heightClimbed >= 10000) initialSpeed *= 1.4f;
+
     }
 
     #endregion
@@ -447,14 +459,6 @@ public class PlayerRoot : MonoBehaviour
     }
 
     #endregion
-
-
-    //O CONTROLE DE PAUSE ESTÁ NO GAME CONTROLLER POR ENQUANTO!!!
-    private void Pause()
-    {
-        canRun = false;
-        GameController.gameController.uiController.BackToMainMenu();
-    }
 
 
     private void OnDeathEvent()
