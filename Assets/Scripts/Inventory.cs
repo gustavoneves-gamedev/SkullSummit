@@ -11,9 +11,11 @@ public class Inventory : MonoBehaviour
     public int shieldChargeUpgrade = 1;
     
     [Header("Stamina Potion")]
+    [SerializeField] private float basePotionRestauration = 10f;
+    private float potionRestauration;
     public int staminaPotionUpgrade = 0;
     public int staminaPotionUpgradeFactor = 5;
-    public int staminaPotionUpgradeCost = 1000;
+    public int staminaPotionUpgradeCost = 1000;    
 
     [Header("Coin Multiplier")]
     public int coinDurationUpgrade = 0;
@@ -32,6 +34,7 @@ public class Inventory : MonoBehaviour
         //STAMINA POTION
         //Inserir aqui a puxada de informações do script onde estarão as informações da poção
         UIStaminaPotionUpdate();
+        StaminaPotionInitialization();
 
         //SHIELD
         ShieldInitialization();
@@ -45,6 +48,15 @@ public class Inventory : MonoBehaviour
                     shieldDurationUpgrade * shieldUpgradeFactor;
 
         shieldCharges = shieldChargeUpgrade;
+
+        GameController.gameController.playerPowers.
+            InitializeShieldPower(shieldDuration, shieldCharges);
+    }
+
+    private void StaminaPotionInitialization()
+    {
+        potionRestauration = basePotionRestauration +
+                    staminaPotionUpgrade * staminaPotionUpgradeFactor;
 
         GameController.gameController.playerPowers.
             InitializeShieldPower(shieldDuration, shieldCharges);
