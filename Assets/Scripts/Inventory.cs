@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private int basePotionRestauration = 10;
     private int potionRestauration;
     public int staminaPotionUpgrade = 0;
+    private int staminaPotionMaxLevel = 10;
     public int staminaPotionUpgradeFactor = 5;
     public int staminaPotionUpgradeCost = 1000;    
 
@@ -90,7 +91,6 @@ public class Inventory : MonoBehaviour
 
     #endregion
 
-
     #region Item Upgrades
 
     #region Shield Upgrades
@@ -111,6 +111,9 @@ public class Inventory : MonoBehaviour
 
     public void PotionUpgrade()
     {
+        if (staminaPotionUpgrade >= staminaPotionMaxLevel) return;
+        //Também devo mudar o texto e a cor do botão neste caso, mas deixarei assim por enquanto
+        
         staminaPotionUpgrade++;
         //staminaPotionUpgradeCost *= (1 + staminaPotionUpgrade);
         staminaPotionUpgradeCost *= (2);
