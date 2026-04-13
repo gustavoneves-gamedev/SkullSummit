@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cdb64997047458d42a1bbc5f8e1563d2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdb64997047458d42a1bbc5f8e1563d2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdb64997047458d42a1bbc5f8e1563d2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdb64997047458d42a1bbc5f8e1563d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -233.83455
+      value: -0.779
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdb64997047458d42a1bbc5f8e1563d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.21693967
+      value: -0.48
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdb64997047458d42a1bbc5f8e1563d2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -139.56175
+      value: 6.44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdb64997047458d42a1bbc5f8e1563d2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cdb64997047458d42a1bbc5f8e1563d2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ebdaf9dd1419464489194d84e7efd7c4, type: 2}
     - target: {fileID: 919132149155446097, guid: cdb64997047458d42a1bbc5f8e1563d2, type: 3}
       propertyPath: m_Name
       value: LifeUp
