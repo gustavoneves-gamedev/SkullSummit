@@ -50,6 +50,7 @@ public class Coin : MonoBehaviour
             if (coinID == 1) GameController.gameController.UpdateRunCoins(0, 1);
 
             meshRenderer.enabled = false;
+            coinAura.SetActive(false);
             audioSource.Play();
             collectVFX.Play();
             Destroy(gameObject, 2f);

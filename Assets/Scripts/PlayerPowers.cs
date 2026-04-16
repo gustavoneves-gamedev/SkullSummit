@@ -172,7 +172,9 @@ public class PlayerPowers : MonoBehaviour
             Shield();
             //Tocar som de escudo subindo
             other.GetComponent<Items>().PlayFX();
-            Destroy(other.gameObject);
+            other.GetComponent<MeshRenderer>().enabled = false;//Passar isso para o script do item depois!! IPC!!!
+            Destroy(other.gameObject, 1f);
+            
         }
 
         if (other.CompareTag("StaminaPotion"))
@@ -181,7 +183,8 @@ public class PlayerPowers : MonoBehaviour
             //Tocar som de stamina recuperando
             //other.GetComponent<ParticleSystem>()?.Play();
             other.GetComponent<Items>().PlayFX();
-            Destroy(other.gameObject);
+            other.GetComponent<MeshRenderer>().enabled = false;
+            Destroy(other.gameObject, 1f);
         }
 
         if (other.CompareTag("CoinMultiplier"))
@@ -190,7 +193,8 @@ public class PlayerPowers : MonoBehaviour
             //Tocar som de ativar multiplicador
             //other.GetComponent<ParticleSystem>()?.Play();
             other.GetComponent<Items>().PlayFX();
-            Destroy(other.gameObject);
+            other.GetComponent<MeshRenderer>().enabled = false;
+            Destroy(other.gameObject, 1f);
         }
 
 
