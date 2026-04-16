@@ -171,6 +171,7 @@ public class PlayerPowers : MonoBehaviour
         {
             Shield();
             //Tocar som de escudo subindo
+            other.GetComponent<Items>().PlayFX();
             Destroy(other.gameObject);
         }
 
@@ -178,6 +179,8 @@ public class PlayerPowers : MonoBehaviour
         {
             player.UpdateStamina(potionRestauration);
             //Tocar som de stamina recuperando
+            //other.GetComponent<ParticleSystem>()?.Play();
+            other.GetComponent<Items>().PlayFX();
             Destroy(other.gameObject);
         }
 
@@ -185,6 +188,8 @@ public class PlayerPowers : MonoBehaviour
         {
             CoinMultiplier();
             //Tocar som de ativar multiplicador
+            //other.GetComponent<ParticleSystem>()?.Play();
+            other.GetComponent<Items>().PlayFX();
             Destroy(other.gameObject);
         }
 

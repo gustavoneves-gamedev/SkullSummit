@@ -10,6 +10,7 @@ public class Coin : MonoBehaviour
     [SerializeField] private GameObject coinAura;
     private AudioSource audioSource;
     [SerializeField] private ParticleSystem multiplierVFX;
+    [SerializeField] private ParticleSystem collectVFX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,6 +51,7 @@ public class Coin : MonoBehaviour
 
             meshRenderer.enabled = false;
             audioSource.Play();
+            collectVFX.Play();
             Destroy(gameObject, 2f);
         }
     }
