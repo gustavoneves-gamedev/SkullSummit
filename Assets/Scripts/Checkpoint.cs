@@ -16,6 +16,8 @@ public class Checkpoint : MonoBehaviour
         if (wasCrossed)
         {
             transform.localScale -= Vector3.one * 2f * Time.deltaTime;
+
+            if(transform.localScale.x <= .25f) wasCrossed = false;
         }
     }
 }
