@@ -61,6 +61,8 @@ public class PlayerRoot : MonoBehaviour
     [Header("Audios")]
     [SerializeField] private AudioSource damageTakenSFX;
     [SerializeField] private AudioSource ammoReadySFX;
+    [SerializeField] private AudioSource healSFX;
+
 
     [Header("References")]
     [SerializeField] private CharacterController cc;
@@ -409,11 +411,15 @@ public class PlayerRoot : MonoBehaviour
     //Esta função serve para regenerar a stamina e reduzi-la ao colidir com obstáculos
     public void UpdateStamina(float x)
     {
+        if (x > 0) healSFX.Play();
+
         if (x < 0 && playerPowers.isShieldUp)
         {
             playerPowers.Shield(x);
             return;
         }
+
+        if (x > 0) healSFX.Play();
 
         currentStamina += x;
 
