@@ -64,6 +64,8 @@ public class PlayerRoot : MonoBehaviour
     [SerializeField] private CharacterData[] characterDatas;
     [SerializeField] private GameObject[] characterModels;
     private AudioSource audioSource;
+    private int characterCode = 0;
+    private UIController uiController;
     
 
 
@@ -117,6 +119,8 @@ public class PlayerRoot : MonoBehaviour
 
     private void InitializePlayer(int charCode)
     {
+        characterCode = charCode;
+        
         maxStamina = characterDatas[charCode].baseMaxStamina + ProgressManager.progressManager.staminaIncrement;
 
         movementSpeed = characterDatas[charCode].baseMovementSpeed + ProgressManager.progressManager.movementSpeedIncrement;
@@ -140,11 +144,11 @@ public class PlayerRoot : MonoBehaviour
 
         currentStamina = maxStamina;
 
-        //Serve para preparar a parte de munição da HUD
-        GameController.gameController.uiController.InitializeAmmoUI(charCode, maxAmmo);
+       
 
     }
 
+     
 
     public void BeginRunAnimation()
     {
@@ -161,6 +165,9 @@ public class PlayerRoot : MonoBehaviour
     //Reseta os valores para a nova Run
     private void BeginRunEvent()
     {
+        uiController = GameController.gameController.uiController;
+
+
         scenePlane.transform.localPosition = originalPosition;
 
         isDead = false;
@@ -176,6 +183,10 @@ public class PlayerRoot : MonoBehaviour
         initialHeight = transform.position.z;
         playerPowers.ResetPowers(); //Serve para resetar os poderes do Player
                                     //PROVAVELMENTE IREI MUDAR PARA SER CHAMADO AO FIM DA RUN
+
+        //Serve para preparar a parte de munição da HUD
+        uiController.InitializeAmmoUI(characterCode, maxAmmo);
+
         canRun = true;
     }
 
@@ -422,8 +433,7 @@ public class PlayerRoot : MonoBehaviour
 
     #endregion
 
-    #region Attack
-        
+    #region Attack    
     
     private void AttackTimeCounter()
     {
@@ -435,7 +445,11 @@ public class PlayerRoot : MonoBehaviour
                 reloadTimeRemaining = reloadTime;
             }
             else
+            {
                 reloadTimeRemaining -= Time.deltaTime;
+                float n = (1 - (reloadTimeRemaining / reloadTime));
+                uiController.UpdateAmmoReload(currentAmmo, n);
+            }
         }
 
         if (cooldownRemaining <= 0 && currentAmmo >= 1)
@@ -456,7 +470,11 @@ public class PlayerRoot : MonoBehaviour
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.bulletSpeed = movementSpeed + attackSpeed;
         // bulletScript.Movement();
+
+        //Atualiza a quantidade de munição mostrada na HUD
         currentAmmo--;
+        uiController.UpdateAmmoQuantity(currentAmmo);
+
         cooldownRemaining = cooldown;
         canAttack = false;
     }

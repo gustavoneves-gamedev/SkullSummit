@@ -54,6 +54,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private Slider[] cowboyAmmo;
     [SerializeField] private Slider[] samuraiAmmo;
     [SerializeField] private Slider[] mummyAmmo;
+    private Slider[] activeSliderArray;
 
     [Header("Stamina")]
     [SerializeField] private Slider staminaSlider;
@@ -398,6 +399,7 @@ public class UIController : MonoBehaviour
         runHeightClimbed.text = playerRoot.heightClimbed.ToString("F0") + " m";
     }
 
+    #region Ammo
     public void InitializeAmmoUI(int characterCode = 0, int maxAmmo = 2)
     {
 
@@ -431,6 +433,8 @@ public class UIController : MonoBehaviour
             {
                 cowboyAmmo[i].gameObject.SetActive(true);
             }
+
+            activeSliderArray = cowboyAmmo;
         }
         else if (characterCode == 1)
         {
@@ -438,6 +442,8 @@ public class UIController : MonoBehaviour
             {
                 samuraiAmmo[i].gameObject.SetActive(true);
             }
+
+            activeSliderArray = samuraiAmmo;
         }
         else if (characterCode == 2)
         {
@@ -445,9 +451,37 @@ public class UIController : MonoBehaviour
             {
                 mummyAmmo[i].gameObject.SetActive(true);
             }
+
+            activeSliderArray = mummyAmmo;
+        }
+
+        for (int i = 0; i < activeSliderArray.Length; i++)
+        {
+            activeSliderArray[i].value = 1;
         }
 
     }
 
+    public void UpdateAmmoQuantity(int currentAmmo)
+    {
+        //activeSliderArray[currentAmmo].value = 0;
+        for (int i = activeSliderArray.Length - 1; i >= currentAmmo; i--)
+        {
+            activeSliderArray[i].value = 0;
+        }
+
+    }
+
+    public void UpdateAmmoReload(int currentAmmo, float reloadTime)
+    {
+        if (currentAmmo >= activeSliderArray.Length) return;
+
+        activeSliderArray[currentAmmo].value = reloadTime;
+    }
+
     #endregion
+
+    #endregion
+
+
 }

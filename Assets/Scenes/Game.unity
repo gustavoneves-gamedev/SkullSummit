@@ -5402,6 +5402,17 @@ MonoBehaviour:
   HUD: {fileID: 1855609971}
   runCoins: {fileID: 1180275159}
   runHeightClimbed: {fileID: 907417154}
+  ammoType:
+  - {fileID: 1419895433}
+  cowboyAmmo:
+  - {fileID: 612631932}
+  - {fileID: 803589392}
+  - {fileID: 1357525078}
+  - {fileID: 507464575}
+  - {fileID: 420849682}
+  - {fileID: 412150551}
+  samuraiAmmo: []
+  mummyAmmo: []
   staminaSlider: {fileID: 1084490909}
   staminaBackground: {fileID: 797017983}
   staminaFill: {fileID: 51749054}
