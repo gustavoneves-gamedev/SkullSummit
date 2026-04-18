@@ -58,12 +58,15 @@ public class PlayerRoot : MonoBehaviour
     [SerializeField] private GameObject scenePlane;
     private Vector3 originalPosition;
 
+    [Header("Audios")]
+    [SerializeField] private AudioSource damageTakenSFX;
+    [SerializeField] private AudioSource ammoReadySFX;
+
     [Header("References")]
     [SerializeField] private CharacterController cc;
     public characterID selectedCharacter = characterID.Cowboy;
     [SerializeField] private CharacterData[] characterDatas;
-    [SerializeField] private GameObject[] characterModels;
-    private AudioSource audioSource;
+    [SerializeField] private GameObject[] characterModels;    
     private int characterCode = 0;
     private UIController uiController;
     
@@ -71,8 +74,7 @@ public class PlayerRoot : MonoBehaviour
 
     void Start()
     {
-        GameController.gameController.playerRoot = this;
-        audioSource = GetComponent<AudioSource>();
+        GameController.gameController.playerRoot = this;        
         playerPowers = GetComponent<PlayerPowers>();
 
         originalPosition = scenePlane.transform.position;
@@ -417,7 +419,7 @@ public class PlayerRoot : MonoBehaviour
 
         if (x < 0)
         {
-            audioSource.Play();
+            damageTakenSFX.Play();
             SpeedReset();
         }
 
@@ -442,6 +444,7 @@ public class PlayerRoot : MonoBehaviour
             if (reloadTimeRemaining <= 0)
             {
                 currentAmmo++;
+                ammoReadySFX.Play();
                 reloadTimeRemaining = reloadTime;
             }
             else
