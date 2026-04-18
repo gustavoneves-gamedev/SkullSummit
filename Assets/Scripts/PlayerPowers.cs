@@ -11,12 +11,14 @@ public class PlayerPowers : MonoBehaviour
     private float shieldDuration;
     private float defaultShieldDuration;
 
-    [Header("Stamina Potion")]    
+    [Header("Stamina Potion")]
+    [SerializeField] private ParticleSystem staminaUp;
     private float potionRestauration;
 
     [Header("Coin Multiplier")]
     public bool isCoinMultiplierOn;
     public float coinMultiplier;
+    [SerializeField] private ParticleSystem coinMultiplierVFX;
     private float boostedCoinMultiplier;
     private float coinMultiplierDuration;
     private float defaultMultiplierDuration;
@@ -172,15 +174,13 @@ public class PlayerPowers : MonoBehaviour
             Shield();
             //Tocar som de escudo subindo
             other.GetComponent<Items>().PlayFX();
-            
-            
         }
 
         if (other.CompareTag("StaminaPotion"))
         {
             player.UpdateStamina(potionRestauration);
             //Tocar som de stamina recuperando
-            //other.GetComponent<ParticleSystem>()?.Play();
+            if(staminaUp != null) staminaUp.Play();
             other.GetComponent<Items>().PlayFX();
             
         }
@@ -189,7 +189,7 @@ public class PlayerPowers : MonoBehaviour
         {
             CoinMultiplier();
             //Tocar som de ativar multiplicador
-            //other.GetComponent<ParticleSystem>()?.Play();
+            if (coinMultiplierVFX != null) coinMultiplierVFX.Play();
             other.GetComponent<Items>().PlayFX();
             
         }
