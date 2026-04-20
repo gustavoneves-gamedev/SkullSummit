@@ -8264,20 +8264,20 @@ MonoBehaviour:
   - {fileID: 4903602270139135630, guid: 7b2d5c48f34b82447a774545c941c268, type: 3}
   - {fileID: 4903602270139135630, guid: 7b2d5c48f34b82447a774545c941c268, type: 3}
   cowboyLevelPrefabsB:
-  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
-  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
-  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
-  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
+  - {fileID: 4903602270139135630, guid: 7b2d5c48f34b82447a774545c941c268, type: 3}
+  - {fileID: 4903602270139135630, guid: 7b2d5c48f34b82447a774545c941c268, type: 3}
+  - {fileID: 4903602270139135630, guid: 7b2d5c48f34b82447a774545c941c268, type: 3}
+  - {fileID: 4903602270139135630, guid: 7b2d5c48f34b82447a774545c941c268, type: 3}
   cowboyLevelPrefabsC:
-  - {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
-  - {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
-  - {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
-  - {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
+  - {fileID: 4903602270139135630, guid: 7b2d5c48f34b82447a774545c941c268, type: 3}
+  - {fileID: 4903602270139135630, guid: 7b2d5c48f34b82447a774545c941c268, type: 3}
+  - {fileID: 4903602270139135630, guid: 7b2d5c48f34b82447a774545c941c268, type: 3}
+  - {fileID: 4903602270139135630, guid: 7b2d5c48f34b82447a774545c941c268, type: 3}
   cowboyLevelPrefabsD:
-  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
-  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
-  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
-  - {fileID: 1252624854937656911, guid: be050ae8ca1065c4580726d92ab21a2f, type: 3}
+  - {fileID: 4903602270139135630, guid: 7b2d5c48f34b82447a774545c941c268, type: 3}
+  - {fileID: 4903602270139135630, guid: 7b2d5c48f34b82447a774545c941c268, type: 3}
+  - {fileID: 4903602270139135630, guid: 7b2d5c48f34b82447a774545c941c268, type: 3}
+  - {fileID: 4903602270139135630, guid: 7b2d5c48f34b82447a774545c941c268, type: 3}
   samuraiLevelPrefabs:
   - {fileID: 1252624854937656911, guid: 44d4151ee1968f8449d7c5c4f3ff33e8, type: 3}
   alpinistaLevelPrefabs:
@@ -34156,9 +34156,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4482905870026278907, guid: c58402716cd21d140b1d469019e17774, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: bd03577dfa13131479ee76d2a553e735, type: 3}
+  m_Resource: {fileID: 8300000, guid: 434d786a7a4db499d9f171858a0cd935, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.655
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0

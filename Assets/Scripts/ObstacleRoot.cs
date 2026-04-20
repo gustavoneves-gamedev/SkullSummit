@@ -3,7 +3,7 @@ using UnityEngine;
 public class ObstacleRoot : MonoBehaviour
 {
     [Header("Main")]
-    [SerializeField] private GameObject obstacle;
+    [SerializeField] private GameObject[] obstacles;
     [SerializeField] private float damage;
     [SerializeField] private float movementSpeed = 10f;
     [SerializeField] private int obsctacleType = 0;// 1 - Obstáculo móvel grande
@@ -73,11 +73,13 @@ public class ObstacleRoot : MonoBehaviour
     {
         if (obsctacleType == 1 || obsctacleType == 2)
         {
+            if (obstacles.Length < 1) return;
+            
             transform.position += Vector3.back * movementSpeed * Time.deltaTime;
 
-            obstacle.transform.Rotate(Vector3.right, rotateSpeedA * Time.deltaTime);
-            obstacle.transform.Rotate(Vector3.up, rotateSpeedB * Time.deltaTime);
-            obstacle.transform.Rotate(Vector3.forward, rotateSpeedC * Time.deltaTime);
+            obstacles[0].transform.Rotate(Vector3.right, rotateSpeedA * Time.deltaTime);
+            obstacles[0].transform.Rotate(Vector3.up, rotateSpeedB * Time.deltaTime);
+            obstacles[0].transform.Rotate(Vector3.forward, rotateSpeedC * Time.deltaTime);
 
         }
 
@@ -109,7 +111,12 @@ public class ObstacleRoot : MonoBehaviour
 
     private void DisableGameObjects()
     {
-        obstacle.SetActive(false);
+        
+        for (int i = 0; i < obstacles.Length; i++)
+        {
+            obstacles[i].SetActive(false);
+        }
+
 
         if (itemToSpawn != null)
         {

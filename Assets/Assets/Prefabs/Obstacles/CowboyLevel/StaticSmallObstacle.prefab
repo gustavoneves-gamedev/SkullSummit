@@ -49,7 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701859b0256d0754c93f5c3dbde46ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleRoot
-  obstacle: {fileID: 7894425178854185552}
+  obstacles:
+  - {fileID: 7386744502504958339}
+  - {fileID: 1488189396492892069}
   damage: 10
   movementSpeed: 10
   obsctacleType: 0
@@ -408,6 +410,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d056b6a635339d94ab95b8a60db777fb, type: 3}
+--- !u!1 &1488189396492892069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3757052980247356267, guid: d056b6a635339d94ab95b8a60db777fb, type: 3}
+  m_PrefabInstance: {fileID: 2343181980394411214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2300438856056859935 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4569019930267564497, guid: d056b6a635339d94ab95b8a60db777fb, type: 3}

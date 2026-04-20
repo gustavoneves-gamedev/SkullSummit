@@ -273,7 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701859b0256d0754c93f5c3dbde46ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleRoot
-  obstacle: {fileID: 2816106379096307003}
+  obstacles:
+  - {fileID: 2816106379096307003}
   damage: 10
   movementSpeed: 12
   obsctacleType: 1
