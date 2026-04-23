@@ -16,6 +16,7 @@ public class UIController : MonoBehaviour
 
 
     [Header("TopMenu")]
+    [SerializeField] private GameObject topMenu;
     [SerializeField] private TextMeshProUGUI coins;
     [SerializeField] private TextMeshProUGUI rubies;
 
@@ -92,7 +93,8 @@ public class UIController : MonoBehaviour
     {
         GameController.gameController.uiController = this;
         mainMenu.SetActive(true);
-        pauseMenu.SetActive(false);
+        topMenu.SetActive(true);
+        pauseMenu.SetActive(false);        
         characterSelectionMenu.SetActive(false);
         levelSelectionMenu.SetActive(false);
         HUD.SetActive(false);
@@ -125,6 +127,7 @@ public class UIController : MonoBehaviour
     {
         mainMenu.SetActive(false);
         statsMenu.SetActive(false);
+        topMenu.SetActive(false);
 
         GameController.gameController.InitilizeLevelStatics();
         GameController.gameController.BeginRun();
@@ -194,6 +197,7 @@ public class UIController : MonoBehaviour
         levelSelectionMenu.SetActive(false);
         shopMenu.SetActive(false);
         optionsMenu.SetActive(false);
+        topMenu.SetActive(true);
 
         //playerRoot.EndRun();
         GameController.gameController.isRunning = false;
