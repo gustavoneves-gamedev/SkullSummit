@@ -6,7 +6,7 @@ public class ObstacleRoot : MonoBehaviour
     [SerializeField] private GameObject[] obstacles;
     [SerializeField] private float damage;
     [SerializeField] private float movementSpeed = 10f;
-    [SerializeField] private int obsctacleType = 0;// 1 - Obstáculo móvel grande
+    public int obsctacleType = 0;// 1 - Obstáculo móvel grande
                                                    // 2 - Obstáculo móvel pequeno
 
     [Header("Items")]

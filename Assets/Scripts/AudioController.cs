@@ -24,17 +24,22 @@ public class AudioController : MonoBehaviour
     private float currentMusicVolume = 0.5f;
     private float currentSFXVolume = 0.5f;
 
+    [SerializeField] private float timeToChangeMusic;
+    private bool isPlayingRunMusic;
+
     private void Awake()
     {
-        if (audioController == null)
-        {
-            audioController = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
+
+        //ISTO NÃO ESTÁ FUNCIONANDO!!
+        //if (audioController == null)
+        //{
+        //    audioController = this;
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
+        //DontDestroyOnLoad(gameObject);
 
     }
 
@@ -42,6 +47,7 @@ public class AudioController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audioController = this;
         mySoundBox = GetComponent<AudioSource>();
         masterVolume.value = currentMasterVolume;
         musicVolume.value = currentMusicVolume;
@@ -51,11 +57,15 @@ public class AudioController : MonoBehaviour
 
     private void Update()
     {
-        if (isRunning && !mySoundBox.isPlaying)
+        if (isPlayingRunMusic) timeToChangeMusic -= Time.deltaTime;
+
+        if (isPlayingRunMusic && timeToChangeMusic <= 0)
         {
-            mySoundBox.clip = musics[1];
-            mySoundBox.loop = true;
+            mySoundBox.clip = musics[2];
+            mySoundBox.pitch = 1.1f;
             mySoundBox.Play();
+            mySoundBox.loop = true;
+            isPlayingRunMusic = false;
         }
     }
 
@@ -105,12 +115,15 @@ public class AudioController : MonoBehaviour
         if (music == 0)
         {
             mySoundBox.clip = musics[0];
+            isPlayingRunMusic = false;
             mySoundBox.loop = true;
             mySoundBox.Play();
         }
         if (music == 1)
         {
             mySoundBox.clip = musics[1];
+            timeToChangeMusic = mySoundBox.clip.length;
+            isPlayingRunMusic = true;
             mySoundBox.loop = false;
             mySoundBox.Play();
         }

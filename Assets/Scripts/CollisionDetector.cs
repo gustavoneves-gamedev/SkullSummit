@@ -7,8 +7,8 @@ public class CollisionDetector : MonoBehaviour
     //2 = Moeda
     //3 = Itens
     private ObstacleRoot obstacleRoot;
-    
-    
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,14 +22,14 @@ public class CollisionDetector : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-           // Debug.Log("Colidi com algo");
+            // Debug.Log("Colidi com algo");
 
             if (index == 1)
             {
                 obstacleRoot.ApplyDamage();
                 gameObject.SetActive(false);
             }
-            
+
         }
 
         if (other.CompareTag("Bullet"))
@@ -38,8 +38,15 @@ public class CollisionDetector : MonoBehaviour
 
             if (index == 1)
             {
-                obstacleRoot.WasShot(other.gameObject);
-                gameObject.SetActive(false);
+                if (obstacleRoot.obsctacleType == 0)
+                {
+                    Destroy(other.gameObject);
+                }
+                else
+                {
+                    obstacleRoot.WasShot(other.gameObject);
+                    gameObject.SetActive(false);
+                }
             }
         }
 
