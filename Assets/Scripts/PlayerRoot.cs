@@ -18,8 +18,9 @@ public class PlayerRoot : MonoBehaviour
     public float currentStamina;
     public float maxStamina;
     [SerializeField] private float movementSpeed;
+    private float defaultMovementSpeed;
     public float initialSpeed;
-    private float defaultSpeed;
+    private float defaultInitialSpeed;
     public float maxSpeed;
     public float aceleration;
     private float acelerationCooldown;
@@ -128,8 +129,9 @@ public class PlayerRoot : MonoBehaviour
         maxStamina = characterDatas[charCode].baseMaxStamina + ProgressManager.progressManager.staminaIncrement;
 
         movementSpeed = characterDatas[charCode].baseMovementSpeed + ProgressManager.progressManager.movementSpeedIncrement;
+        defaultMovementSpeed = movementSpeed;
         initialSpeed = movementSpeed * 0.6f;
-        defaultSpeed = initialSpeed;
+        defaultInitialSpeed = initialSpeed;
         maxSpeed = movementSpeed * 1.1f;
 
         damage = characterDatas[charCode].baseDamage + ProgressManager.progressManager.damageIncrement;
@@ -176,7 +178,7 @@ public class PlayerRoot : MonoBehaviour
         isDead = false;
         desiredLane = 0;
         currentStamina = maxStamina;
-        initialSpeed = defaultSpeed;
+        initialSpeed = defaultInitialSpeed;
         movementSpeed = initialSpeed;
         acelerationCooldown = defaultAcelerationCooldown;
         currentAmmo = maxAmmo;
@@ -380,16 +382,29 @@ public class PlayerRoot : MonoBehaviour
     //para dentro do stamina update e chamar caso o valor passado seja negativo
     public void SpeedReset()
     {
-        acelerationCooldown = defaultAcelerationCooldown;
-        
+                
         movementSpeed = initialSpeed;
 
-        initialSpeed = defaultSpeed;
+        initialSpeed = defaultInitialSpeed;
 
         //Serve para o jogador não ficar muito lento após colidir em alturas mais altas
-        if (heightClimbed >= 1500 && heightClimbed < 4000) initialSpeed *= 1.2f;
-        else if (heightClimbed >= 4000 && heightClimbed < 10000) initialSpeed *= 1.3f;
-        else if (heightClimbed >= 10000) initialSpeed *= 1.4f;
+        if (heightClimbed >= 1000 && heightClimbed < 2000)
+        {
+            initialSpeed *= 1.5f;
+            defaultAcelerationCooldown = 5f;
+        }
+        else if (heightClimbed >= 2000 && heightClimbed < 4000)
+        {
+            initialSpeed *= 1.75f;
+            defaultAcelerationCooldown = 2.5f;
+        }
+        else if (heightClimbed >= 4000)
+        {
+            initialSpeed = defaultMovementSpeed;
+            defaultAcelerationCooldown = .5f;
+        }
+
+        acelerationCooldown = defaultAcelerationCooldown;
 
     }
 
