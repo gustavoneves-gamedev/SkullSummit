@@ -426,7 +426,7 @@ public class UIController : MonoBehaviour
 
     private void UpdateHeightClimbed()
     {
-        runHeightClimbed.text = playerRoot.heightClimbed.ToString("F0") + " m";
+        runHeightClimbed.text = playerRoot.heightClimbed.ToString("F0") + "m";
     }
 
     #region Ammo
