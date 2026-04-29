@@ -59,7 +59,7 @@ public class AudioController : MonoBehaviour
     {
         if (isPlayingRunMusic) timeToChangeMusic -= Time.deltaTime;
 
-        if (isPlayingRunMusic && timeToChangeMusic <= 4f)
+        if (isPlayingRunMusic && timeToChangeMusic <= 7f)
         {
             mySoundBox.clip = musics[2];
             mySoundBox.pitch = 1.1f;

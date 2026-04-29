@@ -49,6 +49,13 @@ public class UIController : MonoBehaviour
     [SerializeField] private Slider staminaPotionVisualUpgrade;
     [SerializeField] private TextMeshProUGUI staminaPotionUpgradeCost;
 
+    [Header("ShopMenu - Shield")]
+    [SerializeField] private TextMeshProUGUI shieldName;
+    [SerializeField] private TextMeshProUGUI shieldLevel;
+    [SerializeField] private TextMeshProUGUI shieldChargeUpgradedIndicator;
+    [SerializeField] private Slider shieldChargeVisualUpgrade;
+    [SerializeField] private TextMeshProUGUI shieldChargeUpgradeCost;
+
     [Header("Run")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject HUD;
@@ -379,6 +386,24 @@ public class UIController : MonoBehaviour
         staminaPotionUpgradedIndicator.text = "Stamina Recover (10+" + (level * 5) + ")";
         staminaPotionVisualUpgrade.value = level;
         staminaPotionUpgradeCost.text = cost.ToString();
+    }
+
+    #endregion
+
+    #region Shield Updgrade
+
+    public void ShieldChargeUpgrade()
+    {
+        GameController.gameController.inventory.UpgradeShieldCharges();
+    }
+
+    public void UpdateShieldChargeUpgradeUI(int upgradeBonus = 0, int level = 0, int cost = 1000)
+    {
+        shieldName.text = "Shield (" + (1 + upgradeBonus) + ")";
+        shieldLevel.text = "Lv. " + (level);
+        shieldChargeUpgradedIndicator.text = "Shield Recover (10+" + (level * 5) + ")";
+        shieldChargeVisualUpgrade.value = level;
+        shieldChargeUpgradeCost.text = cost.ToString();
     }
 
     #endregion

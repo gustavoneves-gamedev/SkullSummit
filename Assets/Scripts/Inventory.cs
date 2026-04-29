@@ -8,13 +8,15 @@ public class Inventory : MonoBehaviour
     private float shieldDuration;    
     public int shieldDurationUpgrade = 0;
     public float shieldUpgradeFactor = 10f;
-    public int shieldChargeUpgrade = 1;
-    
+    public int shieldChargeUpgrade = 0;
+    private int shieldChargeMaxLevel = 2;
+    public int shieldChargeUpgradeCost = 20000;
+
     [Header("Stamina Potion")]
     [SerializeField] private int basePotionRestauration = 10;
     private int potionRestauration;
     public int staminaPotionUpgrade = 0;
-    private int staminaPotionMaxLevel = 10;
+    private int staminaPotionMaxLevel = 5;
     public int staminaPotionUpgradeFactor = 5;
     public int staminaPotionUpgradeCost = 1000;    
 
@@ -40,6 +42,7 @@ public class Inventory : MonoBehaviour
     {
         //SHIELD
         ShieldInitialization();
+        UIShieldChargeUpgrade();
 
         //STAMINA POTION
         //Inserir aqui a puxada de informações do script onde estarão as informações da poção
@@ -57,7 +60,7 @@ public class Inventory : MonoBehaviour
         shieldDuration = baseShieldDuration +
                     shieldDurationUpgrade * shieldUpgradeFactor;
 
-        shieldCharges = shieldChargeUpgrade;
+        shieldCharges = shieldChargeUpgrade + 1;
 
         GameController.gameController.playerPowers.
             InitializeShieldPower(shieldDuration, shieldCharges);
@@ -93,16 +96,30 @@ public class Inventory : MonoBehaviour
     #region Item Upgrades
 
     #region Shield Upgrades
+    public void UpgradeShieldCharges()
+    {
+        if (shieldChargeUpgrade >= shieldChargeMaxLevel) return;
+
+        shieldChargeUpgrade++;
+
+        shieldChargeUpgradeCost *= 5;
+
+        UIShieldChargeUpgrade();
+        ShieldInitialization();
+    }
+
+    private void UIShieldChargeUpgrade()
+    {
+        GameController.gameController.uiController.
+            UpdateShieldChargeUpgradeUI((shieldChargeUpgrade),
+            shieldChargeUpgrade, shieldChargeUpgradeCost);
+    }
 
     public void UpgradeShieldDuration()
     {
         shieldDurationUpgrade++;        
     }
 
-    public void UpgradeShieldCharges()
-    {
-        shieldChargeUpgrade++;
-    }
 
     #endregion
 
