@@ -7183,6 +7183,9 @@ MonoBehaviour:
   shieldChargeUpgradedIndicator: {fileID: 177777883}
   shieldChargeVisualUpgrade: {fileID: 196212275}
   shieldChargeUpgradeCost: {fileID: 726218691}
+  shieldDurationUpgradedIndicator: {fileID: 0}
+  shieldDurationVisualUpgrade: {fileID: 0}
+  shieldDurationUpgradeCost: {fileID: 0}
   pauseMenu: {fileID: 347314579}
   HUD: {fileID: 1855609971}
   runCoins: {fileID: 1180275159}
@@ -17530,7 +17533,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &836447349
@@ -21936,7 +21939,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

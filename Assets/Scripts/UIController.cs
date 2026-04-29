@@ -55,6 +55,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI shieldChargeUpgradedIndicator;
     [SerializeField] private Slider shieldChargeVisualUpgrade;
     [SerializeField] private TextMeshProUGUI shieldChargeUpgradeCost;
+    [SerializeField] private TextMeshProUGUI shieldDurationUpgradedIndicator;
+    [SerializeField] private Slider shieldDurationVisualUpgrade;
+    [SerializeField] private TextMeshProUGUI shieldDurationUpgradeCost;
 
     [Header("Run")]
     [SerializeField] private GameObject pauseMenu;
@@ -404,6 +407,15 @@ public class UIController : MonoBehaviour
         shieldChargeUpgradedIndicator.text = "Shield Recover (10+" + (level * 5) + ")";
         shieldChargeVisualUpgrade.value = level;
         shieldChargeUpgradeCost.text = cost.ToString();
+    }
+
+    public void UpdateShieldDurationUpgradeUI(int upgradeBonus = 0, int level = 0, int cost = 1000)
+    {
+        //shieldName.text = "Shield (" + (1 + upgradeBonus) + ")";
+        shieldLevel.text = "Lv. " + (level);
+        shieldDurationUpgradedIndicator.text = "Shield Recover (10+" + (level * 5) + ")";
+        shieldDurationVisualUpgrade.value = level;
+        shieldDurationUpgradeCost.text = cost.ToString();
     }
 
     #endregion
