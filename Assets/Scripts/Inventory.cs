@@ -3,17 +3,19 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [Header("Shield")]
+    public ItemID ItemID = ItemID.Shield;
+    [SerializeField] private ItemData shieldData;
     [SerializeField] private float baseShieldDuration = 20f;
-    private int shieldCharges = 1;    
-    private float shieldDuration;
+    private int shieldCharges = 1; //Igualar a shildData.baseEffectCharges
+    private float shieldDuration; //Igualar a shildData.baseDuration
     private int shieldUpgradeLevel = 0;
-    public int shieldDurationUpgrade = 0;
-    public int shieldDurationUpgradeFactor = 10;
-    public int shieldDurationUpgradeCost = 1000;
-    private int shieldDurationMaxLevel = 8;
+    public int shieldDurationUpgradeLevel = 0; 
+    public int shieldDurationUpgradeFactor = 10; //substituir por shildData.durationFactorUpgrade
+    public int shieldDurationUpgradeCost = 1000; //substituir por shildData.coinDurationUpgradeCost[shieldDurationUpgradeLevel]
+    private int shieldDurationMaxLevel = 8;  //substituir por shildData.durationMaxLevel
     public int shieldChargeUpgrade = 0;
-    private int shieldChargeMaxLevel = 2;
-    public int shieldChargeUpgradeCost = 20000;
+    private int shieldChargeMaxLevel = 2; //substituir por shildData.baseEffectMaxLevel
+    public int shieldChargeUpgradeCost = 20000; //substituir por shildData.coinChargeUpgradeCost[shieldChargeUpgrade]
 
     [Header("Stamina Potion")]
     [SerializeField] private int basePotionRestauration = 10;
@@ -62,7 +64,7 @@ public class Inventory : MonoBehaviour
     private void ShieldInitialization()
     {
         shieldDuration = baseShieldDuration +
-                    shieldDurationUpgrade * shieldDurationUpgradeFactor;
+                    shieldDurationUpgradeLevel * shieldDurationUpgradeFactor;
 
         shieldCharges = shieldChargeUpgrade + 1;
 
@@ -122,9 +124,9 @@ public class Inventory : MonoBehaviour
 
     public void UpgradeShieldDuration()
     {
-        if (shieldDurationUpgrade >= shieldDurationMaxLevel) return;
+        if (shieldDurationUpgradeLevel >= shieldDurationMaxLevel) return;
 
-        shieldDurationUpgrade++;
+        shieldDurationUpgradeLevel++;
         shieldUpgradeLevel++;
 
         shieldDurationUpgradeCost *= 2;
@@ -136,8 +138,8 @@ public class Inventory : MonoBehaviour
     private void UIShieldDurationUpgrade()
     {
         GameController.gameController.uiController.
-            UpdateShieldDurationUpgradeUI((shieldDurationUpgrade * shieldDurationUpgradeFactor),
-            shieldDurationUpgrade, shieldDurationUpgradeCost, shieldUpgradeLevel);
+            UpdateShieldDurationUpgradeUI((shieldDurationUpgradeLevel * shieldDurationUpgradeFactor),
+            shieldDurationUpgradeLevel, shieldDurationUpgradeCost, shieldUpgradeLevel);
     }
 
 
