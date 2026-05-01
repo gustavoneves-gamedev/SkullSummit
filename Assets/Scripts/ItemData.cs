@@ -8,19 +8,10 @@ public class ItemData : ScriptableObject
     public ItemID characterID;
 
     [Header("Charges")]
-    public int baseEffectCharges;
-    public int baseEffectUpgradeLevel;
-    public float baseChargeFactorUpgrade;
-    public int baseEffectMaxLevel;
+    public int baseEffectCharges;    
+    public float levelFactorUpgrade;
+    public int maxLevel;
     public int[] coinChargeUpgradeCost;
-    public int[] rubyChargeUpgradeCost;
-
-    [Header("Duration")]
-    public float baseDuration;
-    public int durationUpgradeLevel;
-    public float durationFactorUpgrade;
-    public int durationMaxLevel;
-    public int[] coinDurationUpgradeCost;
-    public int[] rubyDurationUpgradeCost;
+    public int[] rubyChargeUpgradeCost;   
 
 }

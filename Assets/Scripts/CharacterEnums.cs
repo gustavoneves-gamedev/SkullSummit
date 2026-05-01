@@ -31,8 +31,10 @@ public enum levelID
 public enum ItemID
 {
     StaminaPotion,
-    Shield,
-    CoinMultiplier,
+    ShieldCharges,
+    ShieldDuration,
+    CoinMultiplierCharges,
+    CoinMultiplierDuration,
     Checkpoint,
     O2Tank,
     Recharger,

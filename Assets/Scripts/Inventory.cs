@@ -3,11 +3,13 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [Header("Shield")]
-    public ItemID ItemID = ItemID.Shield;
-    [SerializeField] private ItemData shieldData;
-    [SerializeField] private float baseShieldDuration = 20f;
+    private ItemID shildChargeID = ItemID.ShieldCharges;
+    [SerializeField] private ItemData shieldChargeData;
+    private ItemID shildDurationID = ItemID.ShieldDuration;
+    [SerializeField] private ItemData shieldDurationData;
+    [SerializeField] private float baseShieldDuration = 20f; //substituir por shildData.baseDuration
     private int shieldCharges = 1; //Igualar a shildData.baseEffectCharges
-    private float shieldDuration; //Igualar a shildData.baseDuration
+    private float shieldDuration;
     private int shieldUpgradeLevel = 0;
     public int shieldDurationUpgradeLevel = 0; 
     public int shieldDurationUpgradeFactor = 10; //substituir por shildData.durationFactorUpgrade
