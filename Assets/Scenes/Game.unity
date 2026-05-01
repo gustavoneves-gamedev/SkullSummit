@@ -36765,9 +36765,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   shieldChargeData: {fileID: 11400000, guid: 98eab079f5f5fe94b939475b3f0a23f6, type: 2}
   shieldDurationData: {fileID: 11400000, guid: 4d81f7fa9c16333409caa117c9481283, type: 2}
-  shieldDurationUpgradeLevel: 0
-  basePotionRestauration: 10
-  staminaPotionUpgrade: 0
+  staminaData: {fileID: 11400000, guid: 6c973bf98d38df34695b029e9b5ecd2d, type: 2}
+  staminaPotionUpgradeLevel: 0
   staminaPotionUpgradeFactor: 5
   staminaPotionUpgradeCost: 1000
   isCoinMultiplierOn: 0

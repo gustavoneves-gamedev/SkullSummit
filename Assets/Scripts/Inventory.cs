@@ -3,29 +3,31 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [Header("Shield Charges")]
-    //private ItemID shildChargeID = ItemID.ShieldCharges;
     [SerializeField] private ItemData shieldChargeData;
-    //private ItemID shildDurationID = ItemID.ShieldDuration;
-    [SerializeField] private ItemData shieldDurationData;    
+    //private ItemID shildChargeID = ItemID.ShieldCharges;
     private int shieldCharges;
-    private float shieldDuration;
     private int shieldUpgradeLevel = 0;
-
-    [Header("Shield Duration")]
-    private int shieldDurationUpgradeLevel = 0;    
-    private int shieldDurationUpgradeCoinCost; //substituir por shildData.coinDurationUpgradeCost[shieldDurationUpgradeLevel]
-    private int shieldDurationUpgradeRubyCost;    
-    private int shieldChargeUpgradeLevel = 0;    
+    private int shieldChargeUpgradeLevel = 0;
     private int shieldChargeUpgradeCoinCost; //substituir por shildData.coinChargeUpgradeCost[shieldChargeUpgrade]
     private int shieldChargeUpgradeRubyCost; //Passar para a HUD!!
 
+    [Header("Shield Duration")]
+    [SerializeField] private ItemData shieldDurationData;
+    //private ItemID shildDurationID = ItemID.ShieldDuration;      
+    private float shieldDuration;
+    private int shieldDurationUpgradeLevel = 0;
+    private int shieldDurationUpgradeCoinCost;
+    private int shieldDurationUpgradeRubyCost;
+
     [Header("Stamina Potion")]
-    [SerializeField] private int basePotionRestauration = 10;
+    [SerializeField] private ItemData staminaData;
+    //private ItemID staminaPotionID = ItemID.StaminaPotion;
+    private int basePotionRestauration = 10;
     private int potionRestauration;
-    public int staminaPotionUpgrade = 0;
+    public int staminaPotionUpgradeLevel = 0;
     private int staminaPotionMaxLevel = 5;
     public int staminaPotionUpgradeFactor = 5;
-    public int staminaPotionUpgradeCost = 1000;    
+    public int staminaPotionUpgradeCost = 1000;
 
     [Header("Coin Multiplier")]
     public bool isCoinMultiplierOn;
@@ -33,7 +35,7 @@ public class Inventory : MonoBehaviour
     public float coinMultiplier;
     private float boostedCoinMultiplier;
     private float coinBaseMultiplierDuration = 16f;
-    private float coinMultiplierDuration;   
+    private float coinMultiplierDuration;
     public int coinDurationUpgrade = 0;
     public float coinDurationUpgradeFactor = 8f;
     public int coinMultiplierUpgrade = 0;
@@ -54,6 +56,7 @@ public class Inventory : MonoBehaviour
 
         //STAMINA POTION
         //Inserir aqui a puxada de informações do script onde estarão as informações da poção
+        staminaPotionUpgradeCost = staminaData.coinChargeUpgradeCost[staminaPotionUpgradeLevel];
         UiStaminaPotionUpdate();
         StaminaPotionInitialization();
 
@@ -65,9 +68,9 @@ public class Inventory : MonoBehaviour
 
     private void ShieldInitialization()
     {
-        shieldCharges = shieldChargeData.baseEffectCharges + 
+        shieldCharges = shieldChargeData.baseEffectCharges +
                     shieldChargeUpgradeLevel * shieldChargeData.levelFactorUpgrade;
-        
+
         shieldDuration = shieldDurationData.baseEffectCharges +
                     shieldDurationUpgradeLevel * shieldDurationData.levelFactorUpgrade;
 
@@ -77,8 +80,8 @@ public class Inventory : MonoBehaviour
 
     private void StaminaPotionInitialization()
     {
-        potionRestauration = basePotionRestauration +
-                    staminaPotionUpgrade * staminaPotionUpgradeFactor;
+        potionRestauration = staminaData.baseEffectCharges +
+                    staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade;
 
         GameController.gameController.playerPowers.
             InitializeStaminaPotion(potionRestauration);
@@ -154,14 +157,23 @@ public class Inventory : MonoBehaviour
 
     public void PotionUpgrade()
     {
-        if (staminaPotionUpgrade >= staminaPotionMaxLevel) return;
+        if (staminaPotionUpgradeLevel >= staminaData.maxLevel) return;
         //Também devo mudar o texto e a cor do botão neste caso, mas deixarei assim por enquanto
-        
-        staminaPotionUpgrade++;
-        //staminaPotionUpgradeCost *= (1 + staminaPotionUpgrade);
-        staminaPotionUpgradeCost *= (2);
 
-        UiStaminaPotionUpdate();
+        staminaPotionUpgradeLevel++;
+
+        if (staminaPotionUpgradeLevel < staminaData.coinChargeUpgradeCost.Length)
+        {
+            staminaPotionUpgradeCost = staminaData.coinChargeUpgradeCost[staminaPotionUpgradeLevel];
+        }
+        else
+        {
+            staminaPotionUpgradeCost = -1;
+        }
+
+            //staminaPotionUpgradeCost *= (1 + staminaPotionUpgrade);
+
+            UiStaminaPotionUpdate();
         StaminaPotionInitialization();
         //GameController.gameController.playerPowers.InitializeStaminaPotion();
     }
@@ -169,8 +181,8 @@ public class Inventory : MonoBehaviour
     private void UiStaminaPotionUpdate()
     {
         GameController.gameController.uiController.
-            UpdateStaminaPostionUpgradeUI((staminaPotionUpgrade * staminaPotionUpgradeFactor),
-            staminaPotionUpgrade, staminaPotionUpgradeCost);
+            UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaPotionUpgradeFactor),
+            staminaPotionUpgradeLevel, staminaPotionUpgradeCost);
     }
 
     #endregion
