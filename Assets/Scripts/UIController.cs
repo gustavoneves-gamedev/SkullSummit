@@ -349,13 +349,7 @@ public class UIController : MonoBehaviour
     #endregion
 
     #region Store
-
-    //Não usarei este método por enquanto, deixarei no script de inventário
-    private void InitializeStore()
-    {
-        UpdateStaminaPostionUpgradeUI();
-    }
-
+        
     #region Store Navigation
     public void ShopMenu()
     {
@@ -375,53 +369,75 @@ public class UIController : MonoBehaviour
     }
     #endregion
 
-    #region Stamina Potion Upgrade
-
-    public void StaminaPotionUpgrade()
+    #region Upgrades
+    //DISCLAIMER!!!!
+    //Na hora de atualizar a HUD, estou hard colocando os valores dos upgrades, mas isso dificulta manutenção
+    //e atualização do código. Ao mesmo tempo, colcoar as variáveis diretamente do ItemData irá aumentar muito
+    //o tamanho dos métodos, então manterei desta forma por enquanto
+    public void UpgradeItem(int itemCode = 0)
     {
-        GameController.gameController.inventory.PotionUpgrade();
+        GameController.gameController.inventory.ItemUpgrade(itemCode);
     }
 
-    public void UpdateStaminaPostionUpgradeUI(int upgradeBonus = 0, int level = 0, int cost = 1000)
+    #region Stamina Potion Upgrade
+
+    public void UpdateStaminaPostionUpgradeUI(int upgradeBonus = 0, int level = 0, int coinCost = 1000, int rubyCost = 0)
     {
         staminaPotionName.text = "Stamina Potion (" + (10 + upgradeBonus) + ")";
         staminaPotionLevel.text = "Lv. " + (level);
         staminaPotionUpgradedIndicator.text = "Stamina Recover (10+" + (level * 5) + ")";
         staminaPotionVisualUpgrade.value = level;
-        staminaPotionUpgradeCost.text = cost.ToString();
+        staminaPotionUpgradeCost.text = coinCost.ToString();
     }
 
     #endregion
 
     #region Shield Updgrade
-
-    public void ShieldChargeUpgrade()
-    {
-        GameController.gameController.inventory.UpgradeShieldCharges();
-    }
-
-    public void UpdateShieldChargeUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0, int cost = 1000, int level = 0)
+     
+    public void UpdateShieldChargeUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0, 
+                                                int coinCost = 1000, int rubyCost = 0, int level = 0)
     {
         shieldName.text = "Shield (" + (1 + upgradeBonus) + ")";
         shieldLevel.text = "Lv. " + (level);
         shieldChargeUpgradedIndicator.text = "Shield Recover (1+" + (chargeLevel) + ")";
         shieldChargeVisualUpgrade.value = chargeLevel;
-        shieldChargeUpgradeCost.text = cost.ToString();
+        shieldChargeUpgradeCost.text = coinCost.ToString();
     }
 
-    public void ShieldDurationUpgrade()
+    public void UpdateShieldDurationUpgradeUI(int upgradeBonus = 0, int durationLevel = 0, 
+                                                int coinCost = 1000, int rubyCost = 0, int level = 0)
     {
-        GameController.gameController.inventory.UpgradeShieldDuration();
-    }
-
-    public void UpdateShieldDurationUpgradeUI(int upgradeBonus = 0, int durationLevel = 0, int cost = 1000, int level = 0)
-    {
-        //shieldName.text = "Shield (" + (1 + upgradeBonus) + ")";
+        
         shieldLevel.text = "Lv. " + (level);
         shieldDurationUpgradedIndicator.text = "Shield Recover (20+" + (durationLevel * 3) + ")";
         shieldDurationVisualUpgrade.value = durationLevel;
-        shieldDurationUpgradeCost.text = cost.ToString();
+        shieldDurationUpgradeCost.text = coinCost.ToString();
     }
+
+    #endregion
+
+    #region CoinMultiplier Upgrade
+
+    public void UpdateCoinMultiplierUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int level = 0)
+    {
+        shieldName.text = "Coin Multiplier (" + (1 + upgradeBonus) + ")";
+        shieldLevel.text = "Lv. " + (level);
+        shieldChargeUpgradedIndicator.text = "Multiplier (1+" + (chargeLevel) + ")";
+        shieldChargeVisualUpgrade.value = chargeLevel;
+        shieldChargeUpgradeCost.text = coinCost.ToString();
+    }
+
+    public void UpdateCoinMultiplierDurationUpgradeUI(int upgradeBonus = 0, int durationLevel = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int level = 0)
+    {
+        shieldLevel.text = "Lv. " + (level);
+        shieldDurationUpgradedIndicator.text = "Multiplier Duration (16+" + (durationLevel * 4) + ")";
+        shieldDurationVisualUpgrade.value = durationLevel;
+        shieldDurationUpgradeCost.text = coinCost.ToString();
+    }
+
+    #endregion
 
     #endregion
 

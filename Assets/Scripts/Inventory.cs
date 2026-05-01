@@ -52,21 +52,33 @@ public class Inventory : MonoBehaviour
 
     private void InitializeItemsUpgrades()
     {
-        //SHIELD
-        ShieldInitialization();
-        UIShieldChargeUpgrade();
-        UIShieldDurationUpgrade();
-
         //STAMINA POTION
         //Inserir aqui a puxada de informações do script onde estarão as informações da poção        
         UiStaminaPotionUpdate();
         StaminaPotionInitialization();
+
+        //SHIELD
+        ShieldInitialization();
+        UIShieldChargeUpgrade();
+        UIShieldDurationUpgrade();
 
         //COIN MULTIPLIER
         CoinMultiplierInitialization();
     }
 
     #region Item Initialization
+
+    private void StaminaPotionInitialization()
+    {
+        staminaPotionUpgradeCoinCost = staminaData.coinChargeUpgradeCost[staminaPotionUpgradeLevel];
+        staminaPotionUpgradeRubyCost = staminaData.rubyChargeUpgradeCost[staminaPotionUpgradeLevel];
+
+        potionRestauration = staminaData.baseEffectCharges +
+                    staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade;
+
+        GameController.gameController.playerPowers.
+            InitializeStaminaPotion(potionRestauration);
+    }
 
     private void ShieldInitialization()
     {
@@ -85,18 +97,6 @@ public class Inventory : MonoBehaviour
 
         GameController.gameController.playerPowers.
             InitializeShieldPower(shieldDuration, shieldCharges);
-    }
-
-    private void StaminaPotionInitialization()
-    {
-        staminaPotionUpgradeCoinCost = staminaData.coinChargeUpgradeCost[staminaPotionUpgradeLevel];
-        staminaPotionUpgradeRubyCost = staminaData.rubyChargeUpgradeCost[staminaPotionUpgradeLevel];
-
-        potionRestauration = staminaData.baseEffectCharges +
-                    staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade;
-
-        GameController.gameController.playerPowers.
-            InitializeStaminaPotion(potionRestauration);
     }
 
     private void CoinMultiplierInitialization()
@@ -124,8 +124,43 @@ public class Inventory : MonoBehaviour
 
     #region Item Upgrades
 
+    public void ItemUpgrade(int itemCode = 0)
+    {
+        if (itemCode == 1) PotionUpgrade();
+        else if (itemCode == 2) UpgradeShieldCharges();
+        else if (itemCode == 3) UpgradeShieldDuration();
+        else if (itemCode == 4) UpgradeCoinMultiplier();
+        else if (itemCode == 5) UpgradeCoinMultiplierDuration();
+    }
+
+    #region Potion Upgrade
+
+    private void PotionUpgrade()
+    {
+        if (staminaPotionUpgradeLevel >= staminaData.maxLevel) return;
+        //Também devo mudar o texto e a cor do botão neste caso, mas deixarei assim por enquanto
+
+        staminaPotionUpgradeLevel++;
+
+        staminaPotionUpgradeCoinCost = staminaData.coinChargeUpgradeCost[staminaPotionUpgradeLevel];
+        staminaPotionUpgradeRubyCost = staminaData.rubyChargeUpgradeCost[staminaPotionUpgradeLevel];
+        
+
+        StaminaPotionInitialization();
+        UiStaminaPotionUpdate();        
+    }
+
+    private void UiStaminaPotionUpdate()
+    {
+        GameController.gameController.uiController.
+            UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade),
+            staminaPotionUpgradeLevel, staminaPotionUpgradeCoinCost, staminaPotionUpgradeRubyCost);
+    }
+
+    #endregion
+    
     #region Shield Upgrades
-    public void UpgradeShieldCharges()
+    private void UpgradeShieldCharges()
     {
         if (shieldChargeUpgradeLevel >= shieldChargeData.maxLevel) return;
 
@@ -143,10 +178,10 @@ public class Inventory : MonoBehaviour
     {
         GameController.gameController.uiController.
             UpdateShieldChargeUpgradeUI((shieldChargeUpgradeLevel * shieldChargeData.levelFactorUpgrade),
-            shieldChargeUpgradeLevel, shieldChargeUpgradeCoinCost, shieldUpgradeLevel);
+            shieldChargeUpgradeLevel, shieldChargeUpgradeCoinCost, shieldChargeUpgradeRubyCost, shieldUpgradeLevel);
     }
 
-    public void UpgradeShieldDuration()
+    private void UpgradeShieldDuration()
     {
         if (shieldDurationUpgradeLevel >= shieldDurationData.maxLevel) return;
 
@@ -164,42 +199,15 @@ public class Inventory : MonoBehaviour
     {
         GameController.gameController.uiController.
             UpdateShieldDurationUpgradeUI((shieldDurationUpgradeLevel * shieldDurationData.levelFactorUpgrade),
-            shieldDurationUpgradeLevel, shieldDurationUpgradeCoinCost, shieldUpgradeLevel);
+            shieldDurationUpgradeLevel, shieldDurationUpgradeCoinCost, shieldDurationUpgradeRubyCost, shieldUpgradeLevel);
     }
 
-
-    #endregion
-
-    #region Potion Upgrade
-
-    public void PotionUpgrade()
-    {
-        if (staminaPotionUpgradeLevel >= staminaData.maxLevel) return;
-        //Também devo mudar o texto e a cor do botão neste caso, mas deixarei assim por enquanto
-
-        staminaPotionUpgradeLevel++;
-
-        staminaPotionUpgradeCoinCost = staminaData.coinChargeUpgradeCost[staminaPotionUpgradeLevel];
-        staminaPotionUpgradeRubyCost = staminaData.rubyChargeUpgradeCost[staminaPotionUpgradeLevel];
-        
-
-        UiStaminaPotionUpdate();
-        StaminaPotionInitialization();
-        //GameController.gameController.playerPowers.InitializeStaminaPotion();
-    }
-
-    private void UiStaminaPotionUpdate()
-    {
-        GameController.gameController.uiController.
-            UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade),
-            staminaPotionUpgradeLevel, staminaPotionUpgradeCoinCost);
-    }
 
     #endregion
 
     #region Coin Multiplier
 
-    public void UpgradeCoinMultiplier()
+    private void UpgradeCoinMultiplier()
     {
         if (coinMultiplierUpgradeLevel >= coinMultiplierData.maxLevel) return;
 
@@ -209,12 +217,19 @@ public class Inventory : MonoBehaviour
         coinMultiplierUpgradeCoinCost = coinMultiplierData.coinChargeUpgradeCost[coinMultiplierUpgradeLevel];
         coinMultiplierUpgradeRubyCost = coinMultiplierData.rubyChargeUpgradeCost[coinMultiplierUpgradeLevel];
 
-        //UIShieldChargeUpgrade(); - Criar função para atualizar a HUD posteriormente       
+        UICoinMultiplierChargeUpgrade();      
         CoinMultiplierInitialization();
 
     }
 
-    public void UpgradeCoinDuration()
+    private void UICoinMultiplierChargeUpgrade()
+    {
+        GameController.gameController.uiController.
+            UpdateShieldChargeUpgradeUI((shieldChargeUpgradeLevel * shieldChargeData.levelFactorUpgrade),
+            shieldChargeUpgradeLevel, shieldChargeUpgradeCoinCost, shieldChargeUpgradeRubyCost, shieldUpgradeLevel);
+    }
+
+    private void UpgradeCoinMultiplierDuration()
     {
         
         if (coinMultiplierDurationUpgradeLevel >= coinMultiplierDurationData.maxLevel) return;
