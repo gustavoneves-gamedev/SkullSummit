@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour
     private int shieldCharges;
     private int shieldUpgradeLevel = 0;
     private int shieldChargeUpgradeLevel = 0;
-    private int shieldChargeUpgradeCoinCost; //substituir por shildData.coinChargeUpgradeCost[shieldChargeUpgrade]
+    private int shieldChargeUpgradeCoinCost;
     private int shieldChargeUpgradeRubyCost; //Passar para a HUD!!
 
     [Header("Shield Duration")]
@@ -17,17 +17,15 @@ public class Inventory : MonoBehaviour
     private float shieldDuration;
     private int shieldDurationUpgradeLevel = 0;
     private int shieldDurationUpgradeCoinCost;
-    private int shieldDurationUpgradeRubyCost;
+    private int shieldDurationUpgradeRubyCost; //Passar para a HUD!!
 
     [Header("Stamina Potion")]
     [SerializeField] private ItemData staminaData;
-    //private ItemID staminaPotionID = ItemID.StaminaPotion;
-    private int basePotionRestauration = 10;
+    //private ItemID staminaPotionID = ItemID.StaminaPotion;    
     private int potionRestauration;
-    public int staminaPotionUpgradeLevel = 0;
-    private int staminaPotionMaxLevel = 5;
-    public int staminaPotionUpgradeFactor = 5;
-    public int staminaPotionUpgradeCost = 1000;
+    private int staminaPotionUpgradeLevel = 0;
+    private int staminaPotionUpgradeCoinCost;
+    private int staminaPotionUpgradeRubyCost; //Passar para a HUD!!
 
     [Header("Coin Multiplier")]
     public bool isCoinMultiplierOn;
@@ -55,8 +53,7 @@ public class Inventory : MonoBehaviour
         UIShieldDurationUpgrade();
 
         //STAMINA POTION
-        //Inserir aqui a puxada de informações do script onde estarão as informações da poção
-        staminaPotionUpgradeCost = staminaData.coinChargeUpgradeCost[staminaPotionUpgradeLevel];
+        //Inserir aqui a puxada de informações do script onde estarão as informações da poção        
         UiStaminaPotionUpdate();
         StaminaPotionInitialization();
 
@@ -68,8 +65,15 @@ public class Inventory : MonoBehaviour
 
     private void ShieldInitialization()
     {
+        //Essas duas linhas servem para pegar o valor atual do upgrade antes de fazer compras
+        shieldChargeUpgradeCoinCost = shieldChargeData.coinChargeUpgradeCost[shieldChargeUpgradeLevel];
+        shieldChargeUpgradeRubyCost = shieldChargeData.rubyChargeUpgradeCost[shieldChargeUpgradeLevel];
+
         shieldCharges = shieldChargeData.baseEffectCharges +
                     shieldChargeUpgradeLevel * shieldChargeData.levelFactorUpgrade;
+
+        shieldDurationUpgradeCoinCost = shieldDurationData.coinChargeUpgradeCost[shieldDurationUpgradeLevel];
+        shieldChargeUpgradeRubyCost = shieldDurationData.rubyChargeUpgradeCost[shieldDurationUpgradeLevel];
 
         shieldDuration = shieldDurationData.baseEffectCharges +
                     shieldDurationUpgradeLevel * shieldDurationData.levelFactorUpgrade;
@@ -80,6 +84,9 @@ public class Inventory : MonoBehaviour
 
     private void StaminaPotionInitialization()
     {
+        staminaPotionUpgradeCoinCost = staminaData.coinChargeUpgradeCost[staminaPotionUpgradeLevel];
+        staminaPotionUpgradeRubyCost = staminaData.rubyChargeUpgradeCost[staminaPotionUpgradeLevel];
+
         potionRestauration = staminaData.baseEffectCharges +
                     staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade;
 
@@ -112,11 +119,11 @@ public class Inventory : MonoBehaviour
     {
         if (shieldChargeUpgradeLevel >= shieldChargeData.maxLevel) return;
 
-        shieldChargeUpgradeCoinCost = shieldChargeData.coinChargeUpgradeCost[shieldChargeUpgradeLevel];
-        shieldChargeUpgradeRubyCost = shieldChargeData.rubyChargeUpgradeCost[shieldChargeUpgradeLevel];
-
         shieldChargeUpgradeLevel++;
         shieldUpgradeLevel++;
+
+        shieldChargeUpgradeCoinCost = shieldChargeData.coinChargeUpgradeCost[shieldChargeUpgradeLevel];
+        shieldChargeUpgradeRubyCost = shieldChargeData.rubyChargeUpgradeCost[shieldChargeUpgradeLevel];
 
         UIShieldChargeUpgrade();
         ShieldInitialization();
@@ -133,11 +140,11 @@ public class Inventory : MonoBehaviour
     {
         if (shieldDurationUpgradeLevel >= shieldDurationData.maxLevel) return;
 
-        shieldDurationUpgradeCoinCost = shieldDurationData.coinChargeUpgradeCost[shieldDurationUpgradeLevel];
-        shieldDurationUpgradeRubyCost = shieldDurationData.rubyChargeUpgradeCost[shieldDurationUpgradeLevel];
-
         shieldDurationUpgradeLevel++;
         shieldUpgradeLevel++;
+
+        shieldDurationUpgradeCoinCost = shieldDurationData.coinChargeUpgradeCost[shieldDurationUpgradeLevel];
+        shieldDurationUpgradeRubyCost = shieldDurationData.rubyChargeUpgradeCost[shieldDurationUpgradeLevel];
 
         UIShieldDurationUpgrade();
         ShieldInitialization();
@@ -162,18 +169,11 @@ public class Inventory : MonoBehaviour
 
         staminaPotionUpgradeLevel++;
 
-        if (staminaPotionUpgradeLevel < staminaData.coinChargeUpgradeCost.Length)
-        {
-            staminaPotionUpgradeCost = staminaData.coinChargeUpgradeCost[staminaPotionUpgradeLevel];
-        }
-        else
-        {
-            staminaPotionUpgradeCost = -1;
-        }
+        staminaPotionUpgradeCoinCost = staminaData.coinChargeUpgradeCost[staminaPotionUpgradeLevel];
+        staminaPotionUpgradeRubyCost = staminaData.rubyChargeUpgradeCost[staminaPotionUpgradeLevel];
+        
 
-            //staminaPotionUpgradeCost *= (1 + staminaPotionUpgrade);
-
-            UiStaminaPotionUpdate();
+        UiStaminaPotionUpdate();
         StaminaPotionInitialization();
         //GameController.gameController.playerPowers.InitializeStaminaPotion();
     }
@@ -181,8 +181,8 @@ public class Inventory : MonoBehaviour
     private void UiStaminaPotionUpdate()
     {
         GameController.gameController.uiController.
-            UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaPotionUpgradeFactor),
-            staminaPotionUpgradeLevel, staminaPotionUpgradeCost);
+            UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade),
+            staminaPotionUpgradeLevel, staminaPotionUpgradeCoinCost);
     }
 
     #endregion
