@@ -5,8 +5,8 @@ public class Inventory : MonoBehaviour
     [Header("Shield Charges")]
     [SerializeField] private ItemData shieldChargeData;
     //private ItemID shildChargeID = ItemID.ShieldCharges;
+    private int shieldUpgradeLevel = 0; //Mede o Level geral do escudo: Charge + Duration
     private int shieldCharges;
-    private int shieldUpgradeLevel = 0;
     private int shieldChargeUpgradeLevel = 0;
     private int shieldChargeUpgradeCoinCost;
     private int shieldChargeUpgradeRubyCost; //Passar para a HUD!!
@@ -28,16 +28,21 @@ public class Inventory : MonoBehaviour
     private int staminaPotionUpgradeRubyCost; //Passar para a HUD!!
 
     [Header("Coin Multiplier")]
-    public bool isCoinMultiplierOn;
-    private int coinBaseMultiplier = 2;
-    public float coinMultiplier;
+    [SerializeField] private ItemData coinMultiplierData;
+    private int coinMultiplierLevel = 0;    
     private float boostedCoinMultiplier;
-    private float coinBaseMultiplierDuration = 16f;
+    private int coinMultiplierUpgradeLevel = 0;
+    private int coinMultiplierUpgradeCoinCost;
+    private int coinMultiplierUpgradeRubyCost;
+
+
+    [Header("Coin Multiplier Duration")]
+    [SerializeField] private ItemData coinMultiplierDurationData;
+    public bool isCoinMultiplierOn;    
     private float coinMultiplierDuration;
-    public int coinDurationUpgrade = 0;
-    public float coinDurationUpgradeFactor = 8f;
-    public int coinMultiplierUpgrade = 0;
-    public float coinMultiplierUpgradeFactor = 1f;
+    private int coinMultiplierDurationUpgradeLevel = 0;    
+    private int coinMultiplierDurationUpgradeCoinCost;
+    private int coinMultiplierDurationUpgradeRubyCost;
 
     void Start()
     {
@@ -58,7 +63,7 @@ public class Inventory : MonoBehaviour
         StaminaPotionInitialization();
 
         //COIN MULTIPLIER
-        CoinMultiplierInitilization();
+        CoinMultiplierInitialization();
     }
 
     #region Item Initialization
@@ -94,15 +99,20 @@ public class Inventory : MonoBehaviour
             InitializeStaminaPotion(potionRestauration);
     }
 
-    private void CoinMultiplierInitilization()
+    private void CoinMultiplierInitialization()
     {
-        coinMultiplier = 1;
+        
+        coinMultiplierUpgradeCoinCost = coinMultiplierData.coinChargeUpgradeCost[coinMultiplierUpgradeLevel];
+        coinMultiplierUpgradeRubyCost = coinMultiplierData.rubyChargeUpgradeCost[coinMultiplierUpgradeLevel];
 
-        boostedCoinMultiplier = coinBaseMultiplier +
-                    coinMultiplierUpgrade * coinMultiplierUpgradeFactor;
+        boostedCoinMultiplier = coinMultiplierData.baseEffectCharges +
+                    coinMultiplierUpgradeLevel * coinMultiplierData.levelFactorUpgrade;
 
-        coinMultiplierDuration = coinBaseMultiplierDuration +
-            coinDurationUpgrade * coinDurationUpgradeFactor;
+        coinMultiplierDurationUpgradeCoinCost = coinMultiplierDurationData.coinChargeUpgradeCost[coinMultiplierDurationUpgradeLevel];
+        coinMultiplierDurationUpgradeRubyCost = coinMultiplierDurationData.rubyChargeUpgradeCost[coinMultiplierDurationUpgradeLevel];
+
+        coinMultiplierDuration = coinMultiplierDurationData.baseEffectCharges +
+            coinMultiplierDurationUpgradeLevel * coinMultiplierDurationData.levelFactorUpgrade;
 
         GameController.gameController.playerPowers.
             InitializeCoinMultiplier(boostedCoinMultiplier, coinMultiplierDuration);
@@ -189,15 +199,37 @@ public class Inventory : MonoBehaviour
 
     #region Coin Multiplier
 
-    public void UpgradeCoinDuration()
-    {
-        coinDurationUpgrade++;
-    }
-
     public void UpgradeCoinMultiplier()
     {
-        coinMultiplierUpgrade++;
+        if (coinMultiplierUpgradeLevel >= coinMultiplierData.maxLevel) return;
+
+        coinMultiplierUpgradeLevel++;
+        coinMultiplierLevel++;
+
+        coinMultiplierUpgradeCoinCost = coinMultiplierData.coinChargeUpgradeCost[coinMultiplierUpgradeLevel];
+        coinMultiplierUpgradeRubyCost = coinMultiplierData.rubyChargeUpgradeCost[coinMultiplierUpgradeLevel];
+
+        //UIShieldChargeUpgrade(); - Criar função para atualizar a HUD posteriormente       
+        CoinMultiplierInitialization();
+
     }
+
+    public void UpgradeCoinDuration()
+    {
+        
+        if (coinMultiplierDurationUpgradeLevel >= coinMultiplierDurationData.maxLevel) return;
+
+        coinMultiplierDurationUpgradeLevel++;
+        coinMultiplierLevel++;
+
+        coinMultiplierDurationUpgradeCoinCost = coinMultiplierDurationData.coinChargeUpgradeCost[coinMultiplierDurationUpgradeLevel];
+        coinMultiplierDurationUpgradeRubyCost = coinMultiplierDurationData.rubyChargeUpgradeCost[coinMultiplierDurationUpgradeLevel];
+
+        //UIShieldChargeUpgrade(); - Criar função para atualizar a HUD posteriormente       
+        CoinMultiplierInitialization();
+    }
+
+    
 
     #endregion
 
