@@ -64,6 +64,8 @@ public class Inventory : MonoBehaviour
 
         //COIN MULTIPLIER
         CoinMultiplierInitialization();
+        UICoinMultiplierChargeUpgrade();
+        UICoinMultiplierDurationUpgrade();
     }
 
     #region Item Initialization
@@ -225,8 +227,8 @@ public class Inventory : MonoBehaviour
     private void UICoinMultiplierChargeUpgrade()
     {
         GameController.gameController.uiController.
-            UpdateShieldChargeUpgradeUI((shieldChargeUpgradeLevel * shieldChargeData.levelFactorUpgrade),
-            shieldChargeUpgradeLevel, shieldChargeUpgradeCoinCost, shieldChargeUpgradeRubyCost, shieldUpgradeLevel);
+            UpdateCoinMultiplierUpgradeUI((coinMultiplierUpgradeLevel * coinMultiplierData.levelFactorUpgrade),
+            coinMultiplierUpgradeLevel, coinMultiplierUpgradeCoinCost, coinMultiplierUpgradeRubyCost, coinMultiplierLevel);
     }
 
     private void UpgradeCoinMultiplierDuration()
@@ -240,11 +242,18 @@ public class Inventory : MonoBehaviour
         coinMultiplierDurationUpgradeCoinCost = coinMultiplierDurationData.coinChargeUpgradeCost[coinMultiplierDurationUpgradeLevel];
         coinMultiplierDurationUpgradeRubyCost = coinMultiplierDurationData.rubyChargeUpgradeCost[coinMultiplierDurationUpgradeLevel];
 
-        //UIShieldChargeUpgrade(); - Criar função para atualizar a HUD posteriormente       
+        UICoinMultiplierDurationUpgrade();      
         CoinMultiplierInitialization();
     }
 
-    
+    private void UICoinMultiplierDurationUpgrade()
+    {
+        GameController.gameController.uiController.
+            UpdateCoinMultiplierDurationUpgradeUI((coinMultiplierDurationUpgradeLevel * 
+                coinMultiplierDurationData.levelFactorUpgrade), coinMultiplierDurationUpgradeLevel,
+                    coinMultiplierDurationUpgradeCoinCost, coinMultiplierDurationUpgradeRubyCost, coinMultiplierLevel);
+    }
+
 
     #endregion
 
