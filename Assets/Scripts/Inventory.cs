@@ -54,8 +54,8 @@ public class Inventory : MonoBehaviour
     {
         //STAMINA POTION
         //Inserir aqui a puxada de informações do script onde estarão as informações da poção        
-        UiStaminaPotionUpdate();
         StaminaPotionInitialization();
+        UiStaminaPotionUpdate();
 
         //SHIELD
         ShieldInitialization();
@@ -135,8 +135,8 @@ public class Inventory : MonoBehaviour
         else if (itemCode == 5) UpgradeCoinMultiplierDuration();
     }
 
-    #region Potion Upgrade
 
+    #region Potion Upgrade
     private void PotionUpgrade()
     {
         if (staminaPotionUpgradeLevel >= staminaData.maxLevel) return;

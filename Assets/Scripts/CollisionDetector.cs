@@ -54,8 +54,7 @@ public class CollisionDetector : MonoBehaviour
 
         if (other.CompareTag("MovableObstacle") && transform.position.z - playerRoot.transform.position.z <= 50f)
         {
-             Debug.Log("Colidi com um obstáculo");
-
+             
             if (index == 1)
             {
                 obstacleRoot.WasHit(other.gameObject);
