@@ -44,6 +44,31 @@ public class Inventory : MonoBehaviour
     private int coinMultiplierDurationUpgradeCoinCost;
     private int coinMultiplierDurationUpgradeRubyCost;
 
+    [Header("Resurrection Amulet")]
+    [SerializeField] private ItemData resurrectionAmuletData;
+    //private ItemID staminaPotionID = ItemID.StaminaPotion;    
+    private int resurrectionAmuletStaminaRestauration;
+    private int resurrectionAmuletUpgradeLevel = 0;
+    private int resurrectionAmuletUpgradeCoinCost;
+    private int resurrectionAmuletUpgradeRubyCost; //Passar para a HUD!!
+
+    [Header("Special Boost")]
+    [SerializeField] private ItemData specialBoostData;
+    //private ItemID staminaPotionID = ItemID.StaminaPotion;    
+    private int specialBoostRestauration;
+    private int specialBoostUpgradeLevel = 0;
+    private int specialBoostUpgradeCoinCost;
+    private int specialBoostUpgradeRubyCost; //Passar para a HUD!!
+
+    [Header("Adrenaline")]
+    [SerializeField] private ItemData adrenalineData;
+    //private ItemID staminaPotionID = ItemID.StaminaPotion;    
+    private int adrenalineRestauration;
+    private int adrenalineUpgradeLevel = 0;
+    private int adrenalineUpgradeCoinCost;
+    private int adrenalineUpgradeRubyCost; //Passar para a HUD!!
+    
+
     void Start()
     {
         GameController.gameController.inventory = this;
@@ -121,6 +146,18 @@ public class Inventory : MonoBehaviour
 
     }
 
+    private void ResurrectionAmuletInitialization()
+    {
+        resurrectionAmuletUpgradeCoinCost = resurrectionAmuletData.coinChargeUpgradeCost[resurrectionAmuletUpgradeLevel];
+        resurrectionAmuletUpgradeRubyCost = resurrectionAmuletData.rubyChargeUpgradeCost[resurrectionAmuletUpgradeLevel];
+
+        resurrectionAmuletStaminaRestauration = resurrectionAmuletData.baseEffectCharges +
+                    resurrectionAmuletUpgradeLevel * resurrectionAmuletData.levelFactorUpgrade;
+
+       // GameController.gameController.playerPowers.
+            //InitializeStaminaPotion(potionRestauration);
+    }
+
 
     #endregion
 
@@ -133,10 +170,12 @@ public class Inventory : MonoBehaviour
         else if (itemCode == 3) UpgradeShieldDuration();
         else if (itemCode == 4) UpgradeCoinMultiplier();
         else if (itemCode == 5) UpgradeCoinMultiplierDuration();
+        else if (itemCode == 6) ResurrectionAmuletUpgrade();
     }
 
 
     #region Potion Upgrade
+    
     private void PotionUpgrade()
     {
         if (staminaPotionUpgradeLevel >= staminaData.maxLevel) return;
@@ -254,6 +293,31 @@ public class Inventory : MonoBehaviour
                     coinMultiplierDurationUpgradeCoinCost, coinMultiplierDurationUpgradeRubyCost, coinMultiplierLevel);
     }
 
+
+    #endregion
+
+    #region Resurrection Amulet
+    private void ResurrectionAmuletUpgrade()
+    {
+        if (resurrectionAmuletUpgradeLevel >= resurrectionAmuletData.maxLevel) return;
+        //Também devo mudar o texto e a cor do botão neste caso, mas deixarei assim por enquanto
+
+        resurrectionAmuletUpgradeLevel++;
+
+        resurrectionAmuletUpgradeCoinCost = resurrectionAmuletData.coinChargeUpgradeCost[resurrectionAmuletUpgradeLevel];
+        resurrectionAmuletUpgradeRubyCost = resurrectionAmuletData.rubyChargeUpgradeCost[resurrectionAmuletUpgradeLevel];
+
+
+        ResurrectionAmuletInitialization();
+        UiResurrectionAmuletUpdate();
+    }
+
+    private void UiResurrectionAmuletUpdate()
+    {
+        GameController.gameController.uiController.
+            UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade),
+            staminaPotionUpgradeLevel, staminaPotionUpgradeCoinCost, staminaPotionUpgradeRubyCost);
+    }
 
     #endregion
 

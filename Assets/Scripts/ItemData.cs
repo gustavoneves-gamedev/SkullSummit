@@ -7,6 +7,9 @@ public class ItemData : ScriptableObject
     [Header("ID")]
     public ItemID characterID;
 
+    [Header("ID")]
+    public int baseCoinCost;
+
     [Header("Charges")]
     public int baseEffectCharges;    
     public int levelFactorUpgrade;
