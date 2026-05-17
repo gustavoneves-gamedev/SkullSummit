@@ -9507,15 +9507,18 @@ MonoBehaviour:
   staminaPotionLevel: {fileID: 874059451}
   staminaPotionUpgradedIndicator: {fileID: 1897393289}
   staminaPotionVisualUpgrade: {fileID: 1859774642}
-  staminaPotionUpgradeCost: {fileID: 243117122}
+  staminaPotionUpgradeCoinCost: {fileID: 243117122}
+  staminaPotionUpgradeRubyCost: {fileID: 0}
   shieldName: {fileID: 472500450}
   shieldLevel: {fileID: 1773623041}
   shieldChargeUpgradedIndicator: {fileID: 863493983}
   shieldChargeVisualUpgrade: {fileID: 196212275}
-  shieldChargeUpgradeCost: {fileID: 726218691}
+  shieldChargeUpgradeCoinCost: {fileID: 726218691}
+  shieldChargeUpgradeRubyCost: {fileID: 0}
   shieldDurationUpgradedIndicator: {fileID: 835304408}
   shieldDurationVisualUpgrade: {fileID: 1774526524}
-  shieldDurationUpgradeCost: {fileID: 1049413828}
+  shieldDurationUpgradeCoinCost: {fileID: 1049413828}
+  shieldDurationUpgradeRubyCost: {fileID: 0}
   coinMultiplierName: {fileID: 1653807149}
   coinMultiplierLevel: {fileID: 75542948}
   coinMultiplierChargeUpgradedIndicator: {fileID: 733065619}
@@ -9523,7 +9526,26 @@ MonoBehaviour:
   coinMultiplierChargeUpgradeCost: {fileID: 598252536}
   coinMultiplierDurationUpgradedIndicator: {fileID: 1221838703}
   coinMultiplierDurationVisualUpgrade: {fileID: 1644179203}
-  coinMultiplierDurationUpgradeCost: {fileID: 2085598368}
+  coinMultiplierDurationUpgradeCoinCost: {fileID: 2085598368}
+  coinMultiplierDurationUpgradeRubyCost: {fileID: 0}
+  resurrectionAmuletName: {fileID: 0}
+  resurrectionAmuletLevel: {fileID: 0}
+  resurrectionAmuletUpgradedIndicator: {fileID: 0}
+  resurrectionAmuletVisualUpgrade: {fileID: 0}
+  resurrectionAmuletUpgradeCoinCost: {fileID: 0}
+  resurrectionAmuletUpgradeRubyCost: {fileID: 0}
+  specialBoostName: {fileID: 0}
+  specialBoostLevel: {fileID: 0}
+  specialBoostUpgradedIndicator: {fileID: 0}
+  specialBoostVisualUpgrade: {fileID: 0}
+  specialBoostUpgradeCoinCost: {fileID: 0}
+  specialBoostUpgradeRubyCost: {fileID: 0}
+  adrenalineName: {fileID: 0}
+  adrenalineLevel: {fileID: 0}
+  adrenalineUpgradedIndicator: {fileID: 0}
+  adrenalineVisualUpgrade: {fileID: 0}
+  adrenalineUpgradeCoinCost: {fileID: 0}
+  adrenalineUpgradeRubyCost: {fileID: 0}
   pauseMenu: {fileID: 347314579}
   HUD: {fileID: 1855609971}
   runCoins: {fileID: 1180275159}

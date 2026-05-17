@@ -98,7 +98,7 @@ public class Inventory : MonoBehaviour
 
         //ADRENALINE
         SpecialBoostInitialization();
-        //UIResurrectionAmulet
+        UIAdrenalineUpdate();
     }
 
     #region Item Initialization
@@ -208,8 +208,8 @@ public class Inventory : MonoBehaviour
     }
 
 
-    #region Potion Upgrade
-    
+    #region Stamina Potion Upgrade
+
     private void PotionUpgrade()
     {
         if (staminaPotionUpgradeLevel >= staminaData.maxLevel) return;
@@ -233,7 +233,7 @@ public class Inventory : MonoBehaviour
     }
 
     #endregion
-    
+
     #region Shield Upgrades
     private void UpgradeShieldCharges()
     {
@@ -401,8 +401,8 @@ public class Inventory : MonoBehaviour
     private void UIAdrenalineUpdate() //PRECISA ATUALIZAR
     {
         GameController.gameController.uiController.
-            UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade),
-            staminaPotionUpgradeLevel, staminaPotionUpgradeCoinCost, staminaPotionUpgradeRubyCost);
+            UpdateAdrenalineUpgradeUI((adrenalineUpgradeLevel * adrenalineData.levelFactorUpgrade),
+            adrenalineUpgradeLevel, adrenalineUpgradeCoinCost, adrenalineUpgradeRubyCost);
     }
     #endregion
 
