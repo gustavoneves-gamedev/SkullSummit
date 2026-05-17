@@ -346,11 +346,12 @@ public class Inventory : MonoBehaviour
         UIResurrectionAmuletUpdate();
     }
 
-    private void UIResurrectionAmuletUpdate() //PRECISA ATUALIZAR
+    private void UIResurrectionAmuletUpdate()
     {
         GameController.gameController.uiController.
-            UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade),
-            staminaPotionUpgradeLevel, staminaPotionUpgradeCoinCost, staminaPotionUpgradeRubyCost);
+            UpdateResurrectionAmuletUpgradeUI((resurrectionAmuletUpgradeLevel * 
+            resurrectionAmuletData.levelFactorUpgrade),resurrectionAmuletUpgradeLevel, 
+            resurrectionAmuletUpgradeCoinCost, resurrectionAmuletUpgradeRubyCost);
     }
 
     #endregion
@@ -375,8 +376,8 @@ public class Inventory : MonoBehaviour
     private void UISpecialBoostUpdate() //PRECISA ATUALIZAR
     {
         GameController.gameController.uiController.
-            UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade),
-            staminaPotionUpgradeLevel, staminaPotionUpgradeCoinCost, staminaPotionUpgradeRubyCost);
+           UpdateSpecialBoostUpgradeUI((specialBoostUpgradeLevel * specialBoostData.levelFactorUpgrade),
+            specialBoostUpgradeLevel, specialBoostUpgradeCoinCost, specialBoostUpgradeRubyCost);
     }
 
     #endregion

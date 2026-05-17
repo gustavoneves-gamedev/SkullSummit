@@ -49,17 +49,20 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI staminaPotionLevel;
     [SerializeField] private TextMeshProUGUI staminaPotionUpgradedIndicator;
     [SerializeField] private Slider staminaPotionVisualUpgrade;
-    [SerializeField] private TextMeshProUGUI staminaPotionUpgradeCost;
+    [SerializeField] private TextMeshProUGUI staminaPotionUpgradeCoinCost;
+    [SerializeField] private TextMeshProUGUI staminaPotionUpgradeRubyCost;
 
     [Header("ShopMenu - Shield")]
     [SerializeField] private TextMeshProUGUI shieldName;
     [SerializeField] private TextMeshProUGUI shieldLevel;
     [SerializeField] private TextMeshProUGUI shieldChargeUpgradedIndicator;
     [SerializeField] private Slider shieldChargeVisualUpgrade;
-    [SerializeField] private TextMeshProUGUI shieldChargeUpgradeCost;
+    [SerializeField] private TextMeshProUGUI shieldChargeUpgradeCoinCost;
+    [SerializeField] private TextMeshProUGUI shieldChargeUpgradeRubyCost;
     [SerializeField] private TextMeshProUGUI shieldDurationUpgradedIndicator;
     [SerializeField] private Slider shieldDurationVisualUpgrade;
-    [SerializeField] private TextMeshProUGUI shieldDurationUpgradeCost;
+    [SerializeField] private TextMeshProUGUI shieldDurationUpgradeCoinCost;
+    [SerializeField] private TextMeshProUGUI shieldDurationUpgradeRubyCost;
 
     [Header("ShopMenu - Coin Multiplier")]
     [SerializeField] private TextMeshProUGUI coinMultiplierName;
@@ -69,7 +72,32 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coinMultiplierChargeUpgradeCost;
     [SerializeField] private TextMeshProUGUI coinMultiplierDurationUpgradedIndicator;
     [SerializeField] private Slider coinMultiplierDurationVisualUpgrade;
-    [SerializeField] private TextMeshProUGUI coinMultiplierDurationUpgradeCost;
+    [SerializeField] private TextMeshProUGUI coinMultiplierDurationUpgradeCoinCost;
+    [SerializeField] private TextMeshProUGUI coinMultiplierDurationUpgradeRubyCost;
+
+    [Header("ShopMenu - Resurrection Amulet")]
+    [SerializeField] private TextMeshProUGUI resurrectionAmuletName;
+    [SerializeField] private TextMeshProUGUI resurrectionAmuletLevel;
+    [SerializeField] private TextMeshProUGUI resurrectionAmuletUpgradedIndicator;
+    [SerializeField] private Slider resurrectionAmuletVisualUpgrade;
+    [SerializeField] private TextMeshProUGUI resurrectionAmuletUpgradeCoinCost;
+    [SerializeField] private TextMeshProUGUI resurrectionAmuletUpgradeRubyCost;
+
+    [Header("ShopMenu - Special Boost")]
+    [SerializeField] private TextMeshProUGUI specialBoostName;
+    [SerializeField] private TextMeshProUGUI specialBoostLevel;
+    [SerializeField] private TextMeshProUGUI specialBoostUpgradedIndicator;
+    [SerializeField] private Slider specialBoostVisualUpgrade;
+    [SerializeField] private TextMeshProUGUI specialBoostUpgradeCoinCost;
+    [SerializeField] private TextMeshProUGUI specialBoostUpgradeRubyCost;
+
+    [Header("ShopMenu - Adrenaline")]
+    [SerializeField] private TextMeshProUGUI adrenalineName;
+    [SerializeField] private TextMeshProUGUI adrenalineLevel;
+    [SerializeField] private TextMeshProUGUI adrenalineUpgradedIndicator;
+    [SerializeField] private Slider adrenalineVisualUpgrade;
+    [SerializeField] private TextMeshProUGUI adrenalineUpgradeCoinCost;
+    [SerializeField] private TextMeshProUGUI adrenalineUpgradeRubyCost;
 
     #endregion
 
@@ -400,7 +428,7 @@ public class UIController : MonoBehaviour
     #region Upgrades
     //DISCLAIMER!!!!
     //Na hora de atualizar a HUD, estou hard colocando os valores dos upgrades, mas isso dificulta manutenção
-    //e atualização do código. Ao mesmo tempo, colcoar as variáveis diretamente do ItemData irá aumentar muito
+    //e atualização do código. Ao mesmo tempo, colocar as variáveis diretamente do ItemData irá aumentar muito
     //o tamanho dos métodos, então manterei desta forma por enquanto
     public void UpgradeItem(int itemCode = 0)
     {
@@ -415,7 +443,7 @@ public class UIController : MonoBehaviour
         staminaPotionLevel.text = "Lv. " + (level);
         staminaPotionUpgradedIndicator.text = "Stamina Recover (10+" + (level * 5) + ")";
         staminaPotionVisualUpgrade.value = level;
-        staminaPotionUpgradeCost.text = coinCost.ToString();
+        staminaPotionUpgradeCoinCost.text = coinCost.ToString();
     }
 
     #endregion
@@ -429,7 +457,7 @@ public class UIController : MonoBehaviour
         shieldLevel.text = "Lv. " + (level);
         shieldChargeUpgradedIndicator.text = "Shield Recover (1+" + (chargeLevel) + ")";
         shieldChargeVisualUpgrade.value = chargeLevel;
-        shieldChargeUpgradeCost.text = coinCost.ToString();
+        shieldChargeUpgradeCoinCost.text = coinCost.ToString();
     }
 
     public void UpdateShieldDurationUpgradeUI(int upgradeBonus = 0, int durationLevel = 0, 
@@ -439,7 +467,7 @@ public class UIController : MonoBehaviour
         shieldLevel.text = "Lv. " + (level);
         shieldDurationUpgradedIndicator.text = "Shield Recover (20+" + (durationLevel * 3) + ")";
         shieldDurationVisualUpgrade.value = durationLevel;
-        shieldDurationUpgradeCost.text = coinCost.ToString();
+        shieldDurationUpgradeCoinCost.text = coinCost.ToString();
     }
 
     #endregion
@@ -462,7 +490,41 @@ public class UIController : MonoBehaviour
         coinMultiplierLevel.text = "Lv. " + (level);
         coinMultiplierDurationUpgradedIndicator.text = "Multiplier Duration (16+" + (durationLevel * 4) + ")";
         coinMultiplierDurationVisualUpgrade.value = durationLevel;
-        coinMultiplierDurationUpgradeCost.text = coinCost.ToString();
+        coinMultiplierDurationUpgradeCoinCost.text = coinCost.ToString();
+    }
+
+    #endregion
+
+    #region Resurrection Amulet
+
+    public void UpdateResurrectionAmuletUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int level = 0)
+    {
+        if(resurrectionAmuletName == null) return;
+        
+        resurrectionAmuletName.text = "Resurrection Amulet (" + (10 + upgradeBonus) + ")";
+        resurrectionAmuletLevel.text = "Lv. " + (level);
+        resurrectionAmuletUpgradedIndicator.text = "Stamina Restored (10+" + (chargeLevel) + ")";
+        resurrectionAmuletVisualUpgrade.value = chargeLevel;
+        resurrectionAmuletUpgradeCoinCost.text = coinCost.ToString();
+    }
+
+
+    #endregion
+
+    #region Special Boost
+
+    public void UpdateSpecialBoostUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int level = 0)
+    {
+        
+        if (specialBoostName == null) return;
+
+        specialBoostName.text = "Special Boost (" + (10 + upgradeBonus) + ")";
+        specialBoostLevel.text = "Lv. " + (level);
+        specialBoostUpgradedIndicator.text = "Special Bar Restored (10+" + (chargeLevel) + ")";
+        specialBoostVisualUpgrade.value = chargeLevel;
+        specialBoostUpgradeCoinCost.text = coinCost.ToString();
     }
 
     #endregion
