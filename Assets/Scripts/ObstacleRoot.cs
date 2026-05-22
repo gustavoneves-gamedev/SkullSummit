@@ -157,7 +157,9 @@ public class ObstacleRoot : MonoBehaviour
         ObstacleRoot root = hit.GetComponentInParent<ObstacleRoot>();
         if (root != null) Destroy(root.gameObject);
 
-        Destroy(hit);
+        //Destruirá o objeto apenas se for a bala
+        if(hit.CompareTag("Bullet")) Destroy(hit);
+
         movementSpeed = 0;
         Destroy(gameObject, 10f);
         GameController.gameController.ObstaclesDestroyedCounter();

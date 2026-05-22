@@ -22,18 +22,6 @@ public class CollisionDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            // Debug.Log("Colidi com algo");
-
-            if (index == 1)
-            {
-                obstacleRoot.ApplyDamage();
-                gameObject.SetActive(false);
-            }
-
-        }
-
         if (other.CompareTag("Bullet"))
         {
             //Debug.Log("Colidi com a bala");
@@ -51,10 +39,51 @@ public class CollisionDetector : MonoBehaviour
                 }
             }
         }
+        else if (other.CompareTag("Player") && playerRoot.playerPowers.isSpecialOn)
+        {
+            if (index == 1)
+            {
+                obstacleRoot.WasHit(other.gameObject);
+                gameObject.SetActive(false);
+
+            }
+
+        }
+        else if (other.CompareTag("Player"))
+        {
+
+
+            if (index == 1)
+            {
+                obstacleRoot.ApplyDamage();
+                gameObject.SetActive(false);
+            }
+
+        }
+
+        //if (other.CompareTag("Bullet"))
+        //{
+        //    //Debug.Log("Colidi com a bala");
+
+        //    if (index == 1)
+        //    {
+        //        if (obstacleRoot.obsctacleType == 0)
+        //        {
+        //            Destroy(other.gameObject);
+        //        }
+        //        else
+        //        {
+        //            obstacleRoot.WasHit(other.gameObject);
+        //            gameObject.SetActive(false);
+        //        }
+        //    }
+        //}
+
+        //if (!gameObject.activeSelf) return;
 
         if (other.CompareTag("MovableObstacle") && transform.position.z - playerRoot.transform.position.z <= 50f)
         {
-             
+
             if (index == 1)
             {
                 obstacleRoot.WasHit(other.gameObject);
@@ -71,7 +100,7 @@ public class CollisionDetector : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MovableObstacle"))
         {
-           // Debug.Log("Colidi com um obstáculo");
+            // Debug.Log("Colidi com um obstáculo");
 
             if (index == 1)
             {

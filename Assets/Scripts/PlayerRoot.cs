@@ -226,9 +226,9 @@ public class PlayerRoot : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.C) && playerPowers.canUseSpecial)
-        { 
+        {
             playerPowers.ActivateSpecial();
-            
+
         }
 
     }
@@ -492,7 +492,8 @@ public class PlayerRoot : MonoBehaviour
     #region Stamina Management
     private void StaminaConsumption()
     {
-        currentStamina -= ((2 - resistance / 10f) * Time.deltaTime);
+        if (playerPowers.isSpecialOn) currentStamina += (1 * Time.deltaTime);
+        else currentStamina -= ((2 - resistance / 10f) * Time.deltaTime);
 
         if (currentStamina <= 0 && !isDead)
         {
@@ -504,6 +505,8 @@ public class PlayerRoot : MonoBehaviour
     //Esta função serve para regenerar a stamina e reduzi-la ao colidir com obstáculos
     public void UpdateStamina(float x)
     {
+        if (playerPowers.isSpecialOn && x < 0) return;
+
         if (x > 0) healSFX.Play();
 
         if (x < 0 && playerPowers.isShieldUp)

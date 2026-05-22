@@ -21,6 +21,8 @@ public class CameraFollow : MonoBehaviour
     {
         if (Time.timeScale == 0) return;
         
+        if(transform == null) return;
+
         float x = Mathf.Lerp(transform.position.x,targetToFollow.position.x + positionOffset.x, cameraSpeed * Time.deltaTime);
         
         transform.position = new Vector3(x, transform.position.y, targetToFollow.position.z + positionOffset.z);
