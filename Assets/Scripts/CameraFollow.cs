@@ -31,6 +31,11 @@ public class CameraFollow : MonoBehaviour
         transform.position = new Vector3(x, transform.position.y, targetToFollow.position.z + positionOffset.z);
     }
 
+    private void SpecialCameraTransition()
+    {
+
+    }
+
     public void ChangeCamera()
     {
         if (!hasCameraChanged)
