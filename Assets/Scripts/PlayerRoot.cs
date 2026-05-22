@@ -1,6 +1,4 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class PlayerRoot : MonoBehaviour
 {
@@ -194,7 +192,7 @@ public class PlayerRoot : MonoBehaviour
 
     void Update()
     {
-        
+
         //Pause
         if (Input.GetKeyDown(KeyCode.Escape) && GameController.gameController.isRunning)
         {
@@ -212,7 +210,7 @@ public class PlayerRoot : MonoBehaviour
         PlayerMovement();
         SpeedScale();
         AttackTimeCounter();
-        StaminaConsumption();        
+        StaminaConsumption();
 
         scenePlane.transform.localPosition += Vector3.back * 0.4f * Time.deltaTime;
 
@@ -225,6 +223,11 @@ public class PlayerRoot : MonoBehaviour
                 Debug.Log("Sem munição suficiente");
             else if (cooldownRemaining >= 0)
                 Debug.Log("Ataque em cooldown ainda");
+        }
+
+        if (Input.GetKeyDown(KeyCode.C) && playerPowers.canUseSpecial)
+        { 
+            playerPowers.ActivateSpecial();
         }
 
     }
@@ -249,7 +252,7 @@ public class PlayerRoot : MonoBehaviour
 
                 if (delta.magnitude > swipeDistance)
                 {
-                    
+
                     if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
                     {
                         if (delta.x > 0)
@@ -580,7 +583,7 @@ public class PlayerRoot : MonoBehaviour
         {
             OnDeathEvent();
         }
-    }    
+    }
 
     private void OnDeathEvent()
     {

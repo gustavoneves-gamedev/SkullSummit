@@ -78,6 +78,8 @@ public class PlayerPowers : MonoBehaviour
 
         if (isSpecialOn)
         {
+            canUseSpecial = false;
+
             //Rever esse 2 aí com base em cada personagem
             currentSpecial -= 2 * Time.deltaTime;
             if (currentSpecial <= 0) isSpecialOn = false;
@@ -86,9 +88,9 @@ public class PlayerPowers : MonoBehaviour
         {
             currentSpecial += 1 * Time.deltaTime;
 
-            //if (currentSpecial >= maxSpecial) canUseSpecial = true;
+            if (currentSpecial >= maxSpecial) canUseSpecial = true;
 
-            if (currentSpecial >= maxSpecial) ActivateSpecial();
+            //if (currentSpecial >= maxSpecial) ActivateSpecial();
         }
 
     }
