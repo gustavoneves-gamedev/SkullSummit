@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class PlayerPowers : MonoBehaviour
@@ -43,7 +42,7 @@ public class PlayerPowers : MonoBehaviour
     [Header("Adrenaline")]
     private int adrenalineQuantity;
     private int alocatedAdrenalineQuantity;
-    private int adrenalineRestauration;    
+    private int adrenalineRestauration;
 
 
     private PlayerRoot player;
@@ -66,11 +65,11 @@ public class PlayerPowers : MonoBehaviour
         CoinMultiplierCountdown();
         ShieldCountdown();
 
-        
+
         //Debug.Log("Stamina: " + player.currentStamina + "/" + (player.maxStamina / 10));
 
         if (player.currentStamina < (player.maxStamina / 5) && alocatedAdrenalineQuantity > 0)
-        {            
+        {
             ActivateAdrenaline();
         }
 
@@ -82,7 +81,11 @@ public class PlayerPowers : MonoBehaviour
 
             //Rever esse 2 aí com base em cada personagem
             currentSpecial -= 2 * Time.deltaTime;
-            if (currentSpecial <= 0) isSpecialOn = false;
+            if (currentSpecial <= 0)
+            {
+                isSpecialOn = false;
+                player.SpecialSpeed(isSpecialOn);
+            }
         }
         else
         {
@@ -221,6 +224,7 @@ public class PlayerPowers : MonoBehaviour
     public void ActivateSpecial()
     {
         isSpecialOn = true;
+        player.SpecialSpeed(isSpecialOn);
         //Activate new Collision
         //StartCoroutine(SpecialActivationControl());
     }
@@ -311,7 +315,7 @@ public class PlayerPowers : MonoBehaviour
 
     public void ActivateAdrenaline()
     {
-        
+
         player.UpdateStamina(adrenalineRestauration);
         alocatedAdrenalineQuantity--;
     }

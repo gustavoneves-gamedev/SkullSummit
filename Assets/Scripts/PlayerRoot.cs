@@ -228,6 +228,7 @@ public class PlayerRoot : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C) && playerPowers.canUseSpecial)
         { 
             playerPowers.ActivateSpecial();
+            
         }
 
     }
@@ -445,6 +446,7 @@ public class PlayerRoot : MonoBehaviour
     //para dentro do stamina update e chamar caso o valor passado seja negativo
     public void SpeedReset()
     {
+        if (playerPowers.isSpecialOn) return;
 
         movementSpeed = initialSpeed;
 
@@ -469,6 +471,20 @@ public class PlayerRoot : MonoBehaviour
 
         acelerationCooldown = defaultAcelerationCooldown;
 
+    }
+
+    public void SpecialSpeed(bool isSpecialOn)
+    {
+        if (isSpecialOn)
+        {
+            maxSpeed *= 1.5f;
+            movementSpeed = maxSpeed;
+        }
+        else
+        {
+            maxSpeed /= 1.5f;
+            movementSpeed = maxSpeed;
+        }
     }
 
     #endregion
