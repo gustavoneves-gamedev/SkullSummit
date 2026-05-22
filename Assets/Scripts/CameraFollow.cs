@@ -4,15 +4,18 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Vector3 positionOffset;
-    [SerializeField] private Transform targetToFollow;
+    private Transform targetToFollow;
     [SerializeField] private float cameraSpeed = 10f;
     private Quaternion defaultRotation;
     private bool hasCameraChanged;
+    private PlayerRoot player;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //Debug.Log("Quaternion: " + transform.rotation);
+        player = GameController.gameController.playerRoot;
+        targetToFollow = player.transform;
         defaultRotation = transform.rotation;
     }
 
@@ -21,7 +24,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (Time.timeScale == 0) return;
         
-        if(transform == null) return;
+        //if(transform == null) return;
 
         float x = Mathf.Lerp(transform.position.x,targetToFollow.position.x + positionOffset.x, cameraSpeed * Time.deltaTime);
         
