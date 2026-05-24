@@ -78,15 +78,26 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject shieldDurationMaxLevelImage;
 
     [Header("ShopMenu - Coin Multiplier")]
-    [SerializeField] private TextMeshProUGUI coinMultiplierName;
-    [SerializeField] private TextMeshProUGUI coinMultiplierLevel;
+    [SerializeField] private TextMeshProUGUI coinMultiplierChargeName;
+    [SerializeField] private TextMeshProUGUI coinMultiplierChargeLevel;
     [SerializeField] private TextMeshProUGUI coinMultiplierChargeUpgradedIndicator;
     [SerializeField] private Slider coinMultiplierChargeVisualUpgrade;
-    [SerializeField] private TextMeshProUGUI coinMultiplierChargeUpgradeCost;
+    [SerializeField] private GameObject coinMultiplierChargeCost;
+    [SerializeField] private TextMeshProUGUI coinMultiplierChargeUpgradeCoinCost;
+    [SerializeField] private GameObject coinMultiplierChargeRubyCost;
+    [SerializeField] private TextMeshProUGUI coinMultiplierChargeUpgradeRubyCost;
+    [SerializeField] private GameObject coinMultiplierChargeMaxLevelImage;
+
+    [Header("ShopMenu - Coin Multiplier Duration")]
+    [SerializeField] private TextMeshProUGUI coinMultiplierDurationName;
+    [SerializeField] private TextMeshProUGUI coinMultiplierDurationLevel;
     [SerializeField] private TextMeshProUGUI coinMultiplierDurationUpgradedIndicator;
     [SerializeField] private Slider coinMultiplierDurationVisualUpgrade;
+    [SerializeField] private GameObject coinMultiplierDurationCost;
     [SerializeField] private TextMeshProUGUI coinMultiplierDurationUpgradeCoinCost;
+    [SerializeField] private GameObject coinMultiplierDurationRubyCost;
     [SerializeField] private TextMeshProUGUI coinMultiplierDurationUpgradeRubyCost;
+    [SerializeField] private GameObject coinMultiplierDurationMaxLevelImage;
 
     [Header("ShopMenu - Resurrection Amulet")]
     [SerializeField] private TextMeshProUGUI resurrectionAmuletName;
@@ -607,20 +618,47 @@ public class UIController : MonoBehaviour
 
     #region CoinMultiplier Upgrade
 
-    public void UpdateCoinMultiplierUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0,
-                                                int coinCost = 1000, int rubyCost = 0, int level = 0)
+    public void UpdateCoinMultiplierUpgradeUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        coinMultiplierName.text = "Coin Multiplier (" + (1 + upgradeBonus) + ")";
-        coinMultiplierLevel.text = "Lv. " + (level);
-        coinMultiplierChargeUpgradedIndicator.text = "Multiplier (1+" + (chargeLevel) + ")";
-        coinMultiplierChargeVisualUpgrade.value = chargeLevel;
-        coinMultiplierChargeUpgradeCost.text = coinCost.ToString();
+        coinMultiplierChargeName.text = "Coin Multiplier (" + (1 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            coinMultiplierChargeCost.SetActive(false);
+            coinMultiplierChargeMaxLevelImage.SetActive(true);
+            coinMultiplierChargeLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            coinMultiplierChargeLevel.text = "Lv. " + (level);
+        }
+
+        coinMultiplierChargeUpgradedIndicator.text = "Multiplier (1+" + (level) + ")";
+        coinMultiplierChargeVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            coinMultiplierChargeUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            coinMultiplierChargeUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+
+        if (rubyCost > 0)
+        {
+            coinMultiplierChargeRubyCost.SetActive(true);
+            coinMultiplierChargeUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
     }
 
     public void UpdateCoinMultiplierDurationUpgradeUI(int upgradeBonus = 0, int durationLevel = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int level = 0)
     {
-        coinMultiplierLevel.text = "Lv. " + (level);
+        coinMultiplierChargeLevel.text = "Lv. " + (level);
         coinMultiplierDurationUpgradedIndicator.text = "Multiplier Duration (16+" + (durationLevel * 4) + ")";
         coinMultiplierDurationVisualUpgrade.value = durationLevel;
         coinMultiplierDurationUpgradeCoinCost.text = coinCost.ToString();
