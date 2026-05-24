@@ -478,11 +478,7 @@ public class UIController : MonoBehaviour
     }
     #endregion
 
-    #region Upgrades
-    //DISCLAIMER!!!!
-    //Na hora de atualizar a HUD, estou hard colocando os valores dos upgrades, mas isso dificulta manutenção
-    //e atualização do código. Ao mesmo tempo, colocar as variáveis diretamente do ItemData irá aumentar muito
-    //o tamanho dos métodos, então manterei desta forma por enquanto
+    #region Upgrades    
     public void UpgradeItem(int itemCode = 0)
     {
         GameController.gameController.inventory.ItemUpgrade(itemCode);

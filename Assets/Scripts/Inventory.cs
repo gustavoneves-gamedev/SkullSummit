@@ -2,10 +2,17 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    [Header("Stamina Potion")]
+    [SerializeField] private ItemData staminaData;
+    //private ItemID staminaPotionID = ItemID.StaminaPotion;    
+    private int potionRestauration;
+    private int staminaPotionUpgradeLevel = 0;
+    private int staminaPotionUpgradeCoinCost;
+    private int staminaPotionUpgradeRubyCost; //Passar para a HUD!!
+
     [Header("Shield Charges")]
     [SerializeField] private ItemData shieldChargeData;
-    //private ItemID shildChargeID = ItemID.ShieldCharges;
-    private int shieldUpgradeLevel = 0; //Mede o Level geral do escudo: Charge + Duration
+    //private ItemID shildChargeID = ItemID.ShieldCharges;    
     private int shieldCharges;
     private int shieldChargeUpgradeLevel = 0;
     private int shieldChargeUpgradeCoinCost;
@@ -17,15 +24,7 @@ public class Inventory : MonoBehaviour
     private float shieldDuration;
     private int shieldDurationUpgradeLevel = 0;
     private int shieldDurationUpgradeCoinCost;
-    private int shieldDurationUpgradeRubyCost; //Passar para a HUD!!
-
-    [Header("Stamina Potion")]
-    [SerializeField] private ItemData staminaData;
-    //private ItemID staminaPotionID = ItemID.StaminaPotion;    
-    private int potionRestauration;
-    private int staminaPotionUpgradeLevel = 0;
-    private int staminaPotionUpgradeCoinCost;
-    private int staminaPotionUpgradeRubyCost; //Passar para a HUD!!
+    private int shieldDurationUpgradeRubyCost; //Passar para a HUD!!    
 
     [Header("Coin Multiplier")]
     [SerializeField] private ItemData coinMultiplierData;
