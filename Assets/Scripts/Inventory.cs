@@ -52,7 +52,8 @@ public class Inventory : MonoBehaviour
     private int resurrectionAmuletUpgradeRubyCost; //Passar para a HUD!!
 
     [Header("Special Boost")]
-    [SerializeField] private ItemData specialBoostData;      
+    [SerializeField] private ItemData specialBoostData;
+    private int specialBoostQuantity;
     private int specialBoostRestauration;
     private int specialBoostUpgradeLevel = 0;
     private int specialBoostUpgradeCoinCost;
@@ -176,8 +177,8 @@ public class Inventory : MonoBehaviour
         specialBoostRestauration = specialBoostData.baseEffectCharges +
                      specialBoostUpgradeLevel * specialBoostData.levelFactorUpgrade;
 
-        // GameController.gameController.playerPowers.
-        //InitializeStaminaPotion(potionRestauration);
+        GameController.gameController.playerPowers.
+         InitializeSpecialBoost(specialBoostQuantity, specialBoostRestauration);
     }
 
     private void AdrenalineInitialization()
@@ -207,6 +208,21 @@ public class Inventory : MonoBehaviour
     public void ConsumeResurrectionAmulet(int quantity)
     {
         resurrectionAmuletQuantity = quantity;
+        //Inserir aqui a atualização no salvamento
+    }
+
+    #endregion
+
+    #region Special Boost
+
+    public void BuySpecialBoost()
+    {
+
+    }
+
+    public void ConsumeSpecialBoost(int quantity)
+    {
+       specialBoostQuantity = quantity;
         //Inserir aqui a atualização no salvamento
     }
 
@@ -265,7 +281,8 @@ public class Inventory : MonoBehaviour
     {
         GameController.gameController.uiController.
             UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade),
-            staminaPotionUpgradeLevel, staminaPotionUpgradeCoinCost, staminaPotionUpgradeRubyCost);
+            staminaPotionUpgradeLevel, staminaPotionUpgradeCoinCost, staminaPotionUpgradeRubyCost,
+            staminaData.maxLevel);
     }
 
     #endregion

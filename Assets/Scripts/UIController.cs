@@ -49,20 +49,33 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI staminaPotionLevel;
     [SerializeField] private TextMeshProUGUI staminaPotionUpgradedIndicator;
     [SerializeField] private Slider staminaPotionVisualUpgrade;
+    [SerializeField] private GameObject staminaPotionCost;
     [SerializeField] private TextMeshProUGUI staminaPotionUpgradeCoinCost;
+    [SerializeField] private GameObject staminaPotionRubyCost;
     [SerializeField] private TextMeshProUGUI staminaPotionUpgradeRubyCost;
+    [SerializeField] private GameObject staminaPotionMaxLevelImage;
 
-    [Header("ShopMenu - Shield")]
-    [SerializeField] private TextMeshProUGUI shieldName;
-    [SerializeField] private TextMeshProUGUI shieldLevel;
+    [Header("ShopMenu - Shield Charges")]
+    [SerializeField] private TextMeshProUGUI shieldChargeName;
+    [SerializeField] private TextMeshProUGUI shieldChargeLevel;
     [SerializeField] private TextMeshProUGUI shieldChargeUpgradedIndicator;
     [SerializeField] private Slider shieldChargeVisualUpgrade;
+    [SerializeField] private GameObject shieldChargeCost;
     [SerializeField] private TextMeshProUGUI shieldChargeUpgradeCoinCost;
+    [SerializeField] private GameObject shieldChargeRubyCost;
     [SerializeField] private TextMeshProUGUI shieldChargeUpgradeRubyCost;
+    [SerializeField] private GameObject shieldChargeMaxLevelImage;
+
+    [Header("ShopMenu - Shield Duration")]
+    [SerializeField] private TextMeshProUGUI shieldDurationName;
+    [SerializeField] private TextMeshProUGUI shieldDurationLevel;
     [SerializeField] private TextMeshProUGUI shieldDurationUpgradedIndicator;
     [SerializeField] private Slider shieldDurationVisualUpgrade;
+    [SerializeField] private GameObject shieldDurationCost;
     [SerializeField] private TextMeshProUGUI shieldDurationUpgradeCoinCost;
+    [SerializeField] private GameObject shieldDurationRubyCost;
     [SerializeField] private TextMeshProUGUI shieldDurationUpgradeRubyCost;
+    [SerializeField] private GameObject shieldDurationMaxLevelImage;
 
     [Header("ShopMenu - Coin Multiplier")]
     [SerializeField] private TextMeshProUGUI coinMultiplierName;
@@ -102,7 +115,7 @@ public class UIController : MonoBehaviour
     #endregion
 
     [Header("Run")]
-    [SerializeField] private GameObject pauseMenu;    
+    [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject HUD;
     [SerializeField] private TextMeshProUGUI runCoins;
     [SerializeField] private TextMeshProUGUI runHeightClimbed;
@@ -138,7 +151,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private Slider specialSlider;
     [SerializeField] private Image specialBackground;
     [SerializeField] private Image specialFill;
-    
+
 
     [Header("Stats Menu")]
     [SerializeField] private GameObject statsMenu;
@@ -237,7 +250,7 @@ public class UIController : MonoBehaviour
 
         playerRoot.canRun = false;
         playerRoot.isGamePaused = true;
-        
+
         Time.timeScale = 0;
     }
 
@@ -306,7 +319,7 @@ public class UIController : MonoBehaviour
 
         //playerRoot.EndRun();
         GameController.gameController.isRunning = false;
-        if(AudioController.audioController.currentMusicCode != 0) AudioController.audioController.SwitchMusic(0);
+        if (AudioController.audioController.currentMusicCode != 0) AudioController.audioController.SwitchMusic(0);
 
         //playerRoot.isGamePaused = false;        
         Time.timeScale = 1;
@@ -445,7 +458,7 @@ public class UIController : MonoBehaviour
     #endregion
 
     #region Store
-        
+
     #region Store Navigation
     public void ShopMenu()
     {
@@ -477,34 +490,61 @@ public class UIController : MonoBehaviour
 
     #region Stamina Potion Upgrade
 
-    public void UpdateStaminaPostionUpgradeUI(int upgradeBonus = 0, int level = 0, int coinCost = 1000, int rubyCost = 0)
+    public void UpdateStaminaPostionUpgradeUI(int upgradeBonus = 0, int level = 0, int coinCost = 1000, int rubyCost = 0, int maxLevel = 10)
     {
         staminaPotionName.text = "Stamina Potion (" + (10 + upgradeBonus) + ")";
-        staminaPotionLevel.text = "Lv. " + (level);
+
+        if (level >= maxLevel)
+        {
+            staminaPotionCost.SetActive(false);
+            staminaPotionMaxLevelImage.SetActive(true);
+            staminaPotionLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            staminaPotionLevel.text = "Lv. " + (level);
+        }
+            
         staminaPotionUpgradedIndicator.text = "Stamina Recover (10+" + (level * 5) + ")";
         staminaPotionVisualUpgrade.value = level;
-        staminaPotionUpgradeCoinCost.text = coinCost.ToString();
+
+        if (coinCost >= 10000)
+        {
+            staminaPotionUpgradeCoinCost.text = coinCost/1000 + "k";
+        }
+        else
+        {
+            staminaPotionUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+
+        if (rubyCost > 0)
+        {
+            staminaPotionRubyCost.SetActive(true);
+            staminaPotionUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
     }
 
     #endregion
 
     #region Shield Updgrade
-     
-    public void UpdateShieldChargeUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0, 
+
+    public void UpdateShieldChargeUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int level = 0)
     {
-        shieldName.text = "Shield (" + (1 + upgradeBonus) + ")";
-        shieldLevel.text = "Lv. " + (level);
+        shieldChargeName.text = "Shield (" + (1 + upgradeBonus) + ")";
+        shieldChargeLevel.text = "Lv. " + (level);
         shieldChargeUpgradedIndicator.text = "Shield Recover (1+" + (chargeLevel) + ")";
         shieldChargeVisualUpgrade.value = chargeLevel;
         shieldChargeUpgradeCoinCost.text = coinCost.ToString();
     }
 
-    public void UpdateShieldDurationUpgradeUI(int upgradeBonus = 0, int durationLevel = 0, 
+    public void UpdateShieldDurationUpgradeUI(int upgradeBonus = 0, int durationLevel = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int level = 0)
     {
-        
-        shieldLevel.text = "Lv. " + (level);
+
+        shieldDurationLevel.text = "Lv. " + (level);
         shieldDurationUpgradedIndicator.text = "Shield Recover (20+" + (durationLevel * 3) + ")";
         shieldDurationVisualUpgrade.value = durationLevel;
         shieldDurationUpgradeCoinCost.text = coinCost.ToString();
@@ -540,8 +580,8 @@ public class UIController : MonoBehaviour
     public void UpdateResurrectionAmuletUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int level = 0)
     {
-        if(resurrectionAmuletName == null) return;
-        
+        if (resurrectionAmuletName == null) return;
+
         resurrectionAmuletName.text = "Resurrection Amulet (" + (10 + upgradeBonus) + ")";
         resurrectionAmuletLevel.text = "Lv. " + (level);
         resurrectionAmuletUpgradedIndicator.text = "Stamina Restored (10+" + (chargeLevel) + ")";
@@ -557,7 +597,7 @@ public class UIController : MonoBehaviour
     public void UpdateSpecialBoostUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int level = 0)
     {
-        
+
         if (specialBoostName == null) return;
 
         specialBoostName.text = "Special Boost (" + (10 + upgradeBonus) + ")";

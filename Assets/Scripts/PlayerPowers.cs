@@ -65,15 +65,10 @@ public class PlayerPowers : MonoBehaviour
         CoinMultiplierCountdown();
         ShieldCountdown();
 
-
-        //Debug.Log("Stamina: " + player.currentStamina + "/" + (player.maxStamina / 10));
-
         if (player.currentStamina < (player.maxStamina / 5) && alocatedAdrenalineQuantity > 0)
         {
             ActivateAdrenaline();
         }
-
-        //return; //CORRIGIR BUG 
 
         if (isSpecialOn)
         {
@@ -98,7 +93,7 @@ public class PlayerPowers : MonoBehaviour
 
     }
 
-    //Inutilizada temporariamente esta função
+    
     private void InitilizeReferences()
     {
         inventory = GameController.gameController.inventory;
@@ -107,16 +102,14 @@ public class PlayerPowers : MonoBehaviour
 
     public void ResetPowers()
     {
-        //Escudo
+        //Shield
         isShieldUp = false;
         shield.SetActive(false);
         shieldEffect.SetActive(false);
         shieldCharges = defaultShieldCharges;
         shieldDuration = defaultShieldDuration;
-
-        //Multiplicador de moedas        
-        coinMultiplierDuration = defaultMultiplierDuration;
-        //player.normalCoinMultiplier = 2;
+                       
+        coinMultiplierDuration = defaultMultiplierDuration;        
     }
 
     #region Shield
@@ -225,8 +218,7 @@ public class PlayerPowers : MonoBehaviour
     {
         isSpecialOn = true;
         player.SpecialSpeed(isSpecialOn);
-        //Activate new Collision
-        //StartCoroutine(SpecialActivationControl());
+        
     }
 
     public void AddToSpecial(int x)
@@ -238,13 +230,11 @@ public class PlayerPowers : MonoBehaviour
             currentSpecial = maxSpecial;
             canUseSpecial = true;
         }
-        //Activate new Collision
-        //StartCoroutine(SpecialActivationControl());
+       
     }
 
     #endregion
-
-    //Não implementado!
+        
     #region Special Boost
 
     public void InitializeSpecialBoost(int quantity = 0, int restauration = 0)
@@ -260,7 +250,7 @@ public class PlayerPowers : MonoBehaviour
 
         alocatedspecialBoostQuantity++;
         specialBoostQuantity--;
-        inventory.ConsumeAdrenaline(specialBoostQuantity);
+        inventory.ConsumeSpecialBoost(specialBoostQuantity);
     }
 
     public void ActivateSpecialBoost()
