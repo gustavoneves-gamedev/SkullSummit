@@ -530,24 +530,81 @@ public class UIController : MonoBehaviour
 
     #region Shield Updgrade
 
-    public void UpdateShieldChargeUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0,
-                                                int coinCost = 1000, int rubyCost = 0, int level = 0)
+    public void UpdateShieldChargeUpgradeUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 10)
     {
-        shieldChargeName.text = "Shield (" + (1 + upgradeBonus) + ")";
-        shieldChargeLevel.text = "Lv. " + (level);
-        shieldChargeUpgradedIndicator.text = "Shield Recover (1+" + (chargeLevel) + ")";
-        shieldChargeVisualUpgrade.value = chargeLevel;
-        shieldChargeUpgradeCoinCost.text = coinCost.ToString();
+        shieldChargeName.text = "Shield Charges (" + (1 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            shieldChargeCost.SetActive(false);
+            shieldChargeMaxLevelImage.SetActive(true);
+            shieldChargeLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            shieldChargeLevel.text = "Lv. " + (level);
+        }
+                
+        shieldChargeUpgradedIndicator.text = "Shield Recover (1+" + (level) + ")";
+        shieldChargeVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            shieldChargeUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            shieldChargeUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+
+        if (rubyCost > 0)
+        {
+            shieldChargeRubyCost.SetActive(true);
+            shieldChargeUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
+        
     }
 
-    public void UpdateShieldDurationUpgradeUI(int upgradeBonus = 0, int durationLevel = 0,
-                                                int coinCost = 1000, int rubyCost = 0, int level = 0)
+    public void UpdateShieldDurationUpgradeUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0,  int maxLevel = 10)
     {
+        shieldDurationName.text = "Shield Duration (" + (20 + upgradeBonus) + ")";
 
-        shieldDurationLevel.text = "Lv. " + (level);
-        shieldDurationUpgradedIndicator.text = "Shield Recover (20+" + (durationLevel * 3) + ")";
-        shieldDurationVisualUpgrade.value = durationLevel;
-        shieldDurationUpgradeCoinCost.text = coinCost.ToString();
+        if (level >= maxLevel)
+        {
+            shieldDurationCost.SetActive(false);
+            shieldDurationMaxLevelImage.SetActive(true);
+            shieldDurationLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            shieldDurationLevel.text = "Lv. " + (level);
+        }
+        //shieldDurationLevel.text = "Lv. " + (level);
+
+        shieldDurationUpgradedIndicator.text = "Shield Recover (20+" + (level * 3) + ")";
+        shieldDurationVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            shieldDurationUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            shieldDurationUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+
+        if (rubyCost > 0)
+        {
+            shieldDurationRubyCost.SetActive(true);
+            shieldDurationUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
+        //shieldDurationUpgradeCoinCost.text = coinCost.ToString();
     }
 
     #endregion

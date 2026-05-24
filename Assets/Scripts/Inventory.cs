@@ -293,7 +293,7 @@ public class Inventory : MonoBehaviour
         if (shieldChargeUpgradeLevel >= shieldChargeData.maxLevel) return;
 
         shieldChargeUpgradeLevel++;
-        shieldUpgradeLevel++;
+        //shieldUpgradeLevel++;
 
         shieldChargeUpgradeCoinCost = shieldChargeData.coinChargeUpgradeCost[shieldChargeUpgradeLevel];
         shieldChargeUpgradeRubyCost = shieldChargeData.rubyChargeUpgradeCost[shieldChargeUpgradeLevel];
@@ -306,7 +306,8 @@ public class Inventory : MonoBehaviour
     {
         GameController.gameController.uiController.
             UpdateShieldChargeUpgradeUI((shieldChargeUpgradeLevel * shieldChargeData.levelFactorUpgrade),
-            shieldChargeUpgradeLevel, shieldChargeUpgradeCoinCost, shieldChargeUpgradeRubyCost, shieldUpgradeLevel);
+            shieldChargeUpgradeLevel, shieldChargeUpgradeCoinCost, 
+            shieldChargeUpgradeRubyCost, shieldChargeData.maxLevel);
     }
 
     private void UpgradeShieldDuration()
