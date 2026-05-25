@@ -51,6 +51,22 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI resurrectionAmuletPurchaseRubyCostValue;
     [SerializeField] private GameObject resurrectionAmuletMaxQuantityImage;
 
+    [Header("ShopMenu - Special Boost")]
+    [SerializeField] private TextMeshProUGUI specialBoostPurchaseDescription;
+    [SerializeField] private GameObject specialBoostPurchaseCost;
+    [SerializeField] private TextMeshProUGUI specialBoostPurchaseCoinCost;
+    [SerializeField] private GameObject specialBoostPurchaseRubyCost;
+    [SerializeField] private TextMeshProUGUI specialBoostPurchaseRubyCostValue;
+    [SerializeField] private GameObject specialBoostMaxQuantityImage;
+
+    [Header("ShopMenu - Adrenaline")]
+    [SerializeField] private TextMeshProUGUI adrenalinePurchaseDescription;
+    [SerializeField] private GameObject adrenalinePurchaseCost;
+    [SerializeField] private TextMeshProUGUI adrenalinePurchaseCoinCost;
+    [SerializeField] private GameObject adrenalinePurchaseRubyCost;
+    [SerializeField] private TextMeshProUGUI adrenalinePurchaseRubyCostValue;
+    [SerializeField] private GameObject adrenalineMaxQuantityImage;
+
 
     [Header("Items Upgrade")]
     #region Items Upgrade
@@ -539,6 +555,64 @@ public class UIController : MonoBehaviour
         {
             resurrectionAmuletPurchaseRubyCost.SetActive(true);
             resurrectionAmuletPurchaseRubyCostValue.text = rubyCost.ToString();
+
+        }
+    }
+    #endregion
+
+    #region Special Boost
+    public void UpdateSpecialBoostPurchaseUI(int quantity = 0, int coinCost = 1000, int rubyCost = 0)
+    {
+
+        specialBoostPurchaseDescription.text = "In Inventory: " + quantity;
+
+        if (coinCost >= 10000000)
+        {
+            specialBoostPurchaseCoinCost.text = coinCost / 1000000 + "M";
+        }
+        else if (coinCost >= 10000)
+        {
+            specialBoostPurchaseCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            specialBoostPurchaseCoinCost.text = coinCost.ToString();
+        }
+
+
+        if (rubyCost > 0)
+        {
+            specialBoostPurchaseRubyCost.SetActive(true);
+            specialBoostPurchaseRubyCostValue.text = rubyCost.ToString();
+
+        }
+    }
+    #endregion
+
+    #region Adrenaline
+    public void UpdateAdrenalinePurchaseUI(int quantity = 0, int coinCost = 1000, int rubyCost = 0)
+    {
+
+        adrenalinePurchaseDescription.text = "In Inventory: " + quantity;
+
+        if (coinCost >= 10000000)
+        {
+            adrenalinePurchaseCoinCost.text = coinCost / 1000000 + "M";
+        }
+        else if (coinCost >= 10000)
+        {
+            adrenalinePurchaseCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            adrenalinePurchaseCoinCost.text = coinCost.ToString();
+        }
+
+
+        if (rubyCost > 0)
+        {
+            adrenalinePurchaseRubyCost.SetActive(true);
+            adrenalinePurchaseRubyCostValue.text = rubyCost.ToString();
 
         }
     }

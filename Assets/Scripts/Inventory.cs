@@ -263,8 +263,6 @@ public class Inventory : MonoBehaviour
         else if (itemCode == 3) AdrenalineUpgrade();
     }
 
-    
-
     #region Resurrection Amulet 
 
     private void ResurrectionAmuletPurchase()
@@ -299,7 +297,7 @@ public class Inventory : MonoBehaviour
             specialBoostData.baseCoinCost * (specialBoostQuantity + 1);
 
 
-        uiController.UpdateResurrectionAmuletPurchaseUI(specialBoostQuantity,
+        uiController.UpdateSpecialBoostPurchaseUI(specialBoostQuantity,
             specialBoostPurchaseCoinCost);
     }
 
@@ -319,7 +317,7 @@ public class Inventory : MonoBehaviour
             adrenalineData.baseCoinCost * (adrenalineQuantity + 1);
 
 
-        uiController.UpdateResurrectionAmuletPurchaseUI(adrenalineQuantity,
+        uiController.UpdateAdrenalinePurchaseUI(adrenalineQuantity,
             adrenalinePurchaseCoinCost);
     }
 

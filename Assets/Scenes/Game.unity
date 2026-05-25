@@ -13052,12 +13052,24 @@ MonoBehaviour:
   shopMenu: {fileID: 1267297610}
   purchaseMenu: {fileID: 125923637}
   itemUpgradeMenu: {fileID: 2090228210}
-  resurrectionAmuletPurchaseName: {fileID: 0}
-  resurrectionAmuletPurchaseCost: {fileID: 0}
-  resurrectionAmuletPurchaseCoinCost: {fileID: 0}
-  resurrectionAmuletPurchaseRubyCost: {fileID: 0}
-  resurrectionAmuletPurchaseRubyCostValue: {fileID: 0}
-  resurrectionAmuletMaxQuantityImage: {fileID: 0}
+  resurrectionAmuletPurchaseDescription: {fileID: 1697066500}
+  resurrectionAmuletPurchaseCost: {fileID: 707097371}
+  resurrectionAmuletPurchaseCoinCost: {fileID: 272531011}
+  resurrectionAmuletPurchaseRubyCost: {fileID: 1465167147}
+  resurrectionAmuletPurchaseRubyCostValue: {fileID: 966668384}
+  resurrectionAmuletMaxQuantityImage: {fileID: 1213006304}
+  specialBoostPurchaseDescription: {fileID: 1274294238}
+  specialBoostPurchaseCost: {fileID: 116560632}
+  specialBoostPurchaseCoinCost: {fileID: 286049}
+  specialBoostPurchaseRubyCost: {fileID: 1747340580}
+  specialBoostPurchaseRubyCostValue: {fileID: 1278345661}
+  specialBoostMaxQuantityImage: {fileID: 578078033}
+  adrenalinePurchaseDescription: {fileID: 808196805}
+  adrenalinePurchaseCost: {fileID: 1040443625}
+  adrenalinePurchaseCoinCost: {fileID: 1456051615}
+  adrenalinePurchaseRubyCost: {fileID: 1362028071}
+  adrenalinePurchaseRubyCostValue: {fileID: 280744141}
+  adrenalineMaxQuantityImage: {fileID: 397738121}
   staminaPotionName: {fileID: 1261029147}
   staminaPotionLevel: {fileID: 874059451}
   staminaPotionUpgradedIndicator: {fileID: 1897393289}
