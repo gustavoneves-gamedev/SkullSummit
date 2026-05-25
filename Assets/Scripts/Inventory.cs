@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class Inventory : MonoBehaviour
 {
@@ -44,6 +45,7 @@ public class Inventory : MonoBehaviour
     [Header("Resurrection Amulet")]
     [SerializeField] private ItemData resurrectionAmuletData;
     private int resurrectionAmuletQuantity = 1;
+    private int resurrectionAmuletPurchaseCoinCost = 5000;    
     private int resurrectionAmuletStaminaRestauration;
     private int resurrectionAmuletUpgradeLevel = 0;
     private int resurrectionAmuletUpgradeCoinCost;
@@ -52,6 +54,7 @@ public class Inventory : MonoBehaviour
     [Header("Special Boost")]
     [SerializeField] private ItemData specialBoostData;
     private int specialBoostQuantity;
+    private int specialBoostPurchaseCoinCost = 5000;
     private int specialBoostRestauration;
     private int specialBoostUpgradeLevel = 0;
     private int specialBoostUpgradeCoinCost;
@@ -60,20 +63,25 @@ public class Inventory : MonoBehaviour
     [Header("Adrenaline")]
     [SerializeField] private ItemData adrenalineData;
     private int adrenalineQuantity = 1;
+    private int adrenalinePurchaseCoinCost = 5000;
     private int adrenalineRestauration;
     private int adrenalineUpgradeLevel = 0;
     private int adrenalineUpgradeCoinCost;
     private int adrenalineUpgradeRubyCost; //Passar para a HUD!!
+
+    private UIController uiController;
     
 
     void Start()
     {
         GameController.gameController.inventory = this;
-        Invoke("InitializeItemsUpgrades", .2f);
+        Invoke("InitializeItemsUpgrades", .25f);
     }
 
     private void InitializeItemsUpgrades()
     {
+        uiController = GameController.gameController.uiController;
+
         //STAMINA POTION
         //Inserir aqui a puxada de informações do script onde estarão as informações da poção        
         StaminaPotionInitialization();
@@ -92,14 +100,17 @@ public class Inventory : MonoBehaviour
         //RESURRECTION AMULET
         ResurrectionAmuletInitialization();
         UIResurrectionAmuletUpdate();
+        UpdateResurrectionPurchaseUI();
 
         //SPECIAL BOOST
         SpecialBoostInitialization();        
         UISpecialBoostUpdate();
+        UpdateSpecialBoostPurchaseUI();
 
         //ADRENALINE
         AdrenalineInitialization();
         UIAdrenalineUpdate();
+        AdrenalinePurchase();
     }
 
     #region Item Initialization
@@ -248,21 +259,73 @@ public class Inventory : MonoBehaviour
     public void ItemPurchase(int itemCode = 0)
     {
         if (itemCode == 1) ResurrectionAmuletPurchase();
-        else if (itemCode == 2) SpecialBoostUpgrade();
+        else if (itemCode == 2) SpecialBoostPurchase();
         else if (itemCode == 3) AdrenalineUpgrade();
     }
 
-    #endregion
+    
 
     #region Resurrection Amulet 
 
     private void ResurrectionAmuletPurchase()
     {
         resurrectionAmuletQuantity++;
+        UpdateResurrectionPurchaseUI();
+    }
+
+    private void UpdateResurrectionPurchaseUI()
+    {
+        resurrectionAmuletPurchaseCoinCost = 
+            resurrectionAmuletData.baseCoinCost * (resurrectionAmuletQuantity + 1);
+
+
+        uiController.UpdateResurrectionAmuletPurchaseUI(resurrectionAmuletQuantity, 
+            resurrectionAmuletPurchaseCoinCost);
     }
 
     #endregion
 
+    #region Special Boost Purchase
+
+    private void SpecialBoostPurchase()
+    {
+        specialBoostQuantity++;
+        UpdateSpecialBoostPurchaseUI();
+    }
+
+    private void UpdateSpecialBoostPurchaseUI()
+    {
+        specialBoostPurchaseCoinCost =
+            specialBoostData.baseCoinCost * (specialBoostQuantity + 1);
+
+
+        uiController.UpdateResurrectionAmuletPurchaseUI(specialBoostQuantity,
+            specialBoostPurchaseCoinCost);
+    }
+
+    #endregion
+
+    #region Adrenaline Purchase
+
+    private void AdrenalinePurchase()
+    {
+        adrenalineQuantity++;
+        UpdateAdrenalinePurchaseUI();
+    }
+
+    private void UpdateAdrenalinePurchaseUI()
+    {
+        adrenalinePurchaseCoinCost =
+            adrenalineData.baseCoinCost * (adrenalineQuantity + 1);
+
+
+        uiController.UpdateResurrectionAmuletPurchaseUI(adrenalineQuantity,
+            adrenalinePurchaseCoinCost);
+    }
+
+    #endregion
+
+    #endregion
 
     #region Item Upgrades
 

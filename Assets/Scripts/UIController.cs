@@ -44,7 +44,7 @@ public class UIController : MonoBehaviour
 
     [Header("Items Purchases")]
     [Header("ShopMenu - Resurrection Amulet")]
-    [SerializeField] private TextMeshProUGUI resurrectionAmuletPurchaseName;
+    [SerializeField] private TextMeshProUGUI resurrectionAmuletPurchaseDescription;
     [SerializeField] private GameObject resurrectionAmuletPurchaseCost;
     [SerializeField] private TextMeshProUGUI resurrectionAmuletPurchaseCoinCost;
     [SerializeField] private GameObject resurrectionAmuletPurchaseRubyCost;
@@ -515,38 +515,34 @@ public class UIController : MonoBehaviour
         GameController.gameController.inventory.ItemPurchase(itemCode);
     }
 
-    public void UpdateResurrectionAmuletPurchaseUI(int quantity = 0, int coinCost = 1000, int rubyCost = 0, int maxQuantity = 10)
+    #region Resurrection Amulet
+    public void UpdateResurrectionAmuletPurchaseUI(int quantity = 0, int coinCost = 1000, int rubyCost = 0)
     {
-        resurrectionAmuletPurchaseName.text = "Resurrection Amulet";
 
-        if (quantity >= maxQuantity)
+        resurrectionAmuletPurchaseDescription.text = "In Inventory: " + quantity;
+
+        if (coinCost >= 10000000)
         {
-            staminaPotionCost.SetActive(false);
-            staminaPotionMaxLevelImage.SetActive(true);
-            staminaPotionLevel.text = "Lv. MAX";
+            resurrectionAmuletPurchaseCoinCost.text = coinCost / 1000000 + "M";
+        }
+        else if (coinCost >= 10000)
+        {
+            resurrectionAmuletPurchaseCoinCost.text = coinCost / 1000 + "k";
         }
         else
         {
-            //staminaPotionLevel.text = "Lv. " + (level);
-        }        
-
-        if (coinCost >= 10000)
-        {
-            staminaPotionUpgradeCoinCost.text = coinCost / 1000 + "k";
-        }
-        else
-        {
-            staminaPotionUpgradeCoinCost.text = coinCost.ToString();
+            resurrectionAmuletPurchaseCoinCost.text = coinCost.ToString();
         }
 
 
         if (rubyCost > 0)
         {
-            staminaPotionRubyCost.SetActive(true);
-            staminaPotionUpgradeRubyCost.text = rubyCost.ToString();
+            resurrectionAmuletPurchaseRubyCost.SetActive(true);
+            resurrectionAmuletPurchaseRubyCostValue.text = rubyCost.ToString();
 
         }
     }
+    #endregion
 
     #endregion
 
