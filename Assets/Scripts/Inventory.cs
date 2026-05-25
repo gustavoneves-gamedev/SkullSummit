@@ -28,7 +28,6 @@ public class Inventory : MonoBehaviour
 
     [Header("Coin Multiplier")]
     [SerializeField] private ItemData coinMultiplierData;
-    private int coinMultiplierLevel = 0;    
     private float boostedCoinMultiplier;
     private int coinMultiplierUpgradeLevel = 0;
     private int coinMultiplierUpgradeCoinCost;
@@ -341,7 +340,7 @@ public class Inventory : MonoBehaviour
         if (coinMultiplierUpgradeLevel >= coinMultiplierData.maxLevel) return;
 
         coinMultiplierUpgradeLevel++;
-        coinMultiplierLevel++;
+        //coinMultiplierLevel++;
 
         coinMultiplierUpgradeCoinCost = coinMultiplierData.coinChargeUpgradeCost[coinMultiplierUpgradeLevel];
         coinMultiplierUpgradeRubyCost = coinMultiplierData.rubyChargeUpgradeCost[coinMultiplierUpgradeLevel];
@@ -355,7 +354,8 @@ public class Inventory : MonoBehaviour
     {
         GameController.gameController.uiController.
             UpdateCoinMultiplierUpgradeUI((coinMultiplierUpgradeLevel * coinMultiplierData.levelFactorUpgrade),
-            coinMultiplierUpgradeLevel, coinMultiplierUpgradeCoinCost, coinMultiplierUpgradeRubyCost, coinMultiplierLevel);
+            coinMultiplierUpgradeLevel, coinMultiplierUpgradeCoinCost, coinMultiplierUpgradeRubyCost, 
+            coinMultiplierData.maxLevel);
     }
 
     private void UpgradeCoinMultiplierDuration()
@@ -364,7 +364,7 @@ public class Inventory : MonoBehaviour
         if (coinMultiplierDurationUpgradeLevel >= coinMultiplierDurationData.maxLevel) return;
 
         coinMultiplierDurationUpgradeLevel++;
-        coinMultiplierLevel++;
+        //coinMultiplierLevel++;
 
         coinMultiplierDurationUpgradeCoinCost = coinMultiplierDurationData.coinChargeUpgradeCost[coinMultiplierDurationUpgradeLevel];
         coinMultiplierDurationUpgradeRubyCost = coinMultiplierDurationData.rubyChargeUpgradeCost[coinMultiplierDurationUpgradeLevel];
@@ -378,7 +378,8 @@ public class Inventory : MonoBehaviour
         GameController.gameController.uiController.
             UpdateCoinMultiplierDurationUpgradeUI((coinMultiplierDurationUpgradeLevel * 
                 coinMultiplierDurationData.levelFactorUpgrade), coinMultiplierDurationUpgradeLevel,
-                    coinMultiplierDurationUpgradeCoinCost, coinMultiplierDurationUpgradeRubyCost, coinMultiplierLevel);
+                    coinMultiplierDurationUpgradeCoinCost, coinMultiplierDurationUpgradeRubyCost, 
+                    coinMultiplierDurationData.maxLevel);
     }
 
 

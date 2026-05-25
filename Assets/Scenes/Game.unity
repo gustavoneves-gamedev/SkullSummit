@@ -11009,7 +11009,7 @@ MonoBehaviour:
   shieldChargeUpgradedIndicator: {fileID: 803307688}
   shieldChargeVisualUpgrade: {fileID: 373037120}
   shieldChargeCost: {fileID: 769090870}
-  shieldChargeUpgradeCoinCost: {fileID: 0}
+  shieldChargeUpgradeCoinCost: {fileID: 1444049837}
   shieldChargeRubyCost: {fileID: 1113314873}
   shieldChargeUpgradeRubyCost: {fileID: 2086273066}
   shieldChargeMaxLevelImage: {fileID: 1600500523}
@@ -11022,15 +11022,24 @@ MonoBehaviour:
   shieldDurationRubyCost: {fileID: 1914943516}
   shieldDurationUpgradeRubyCost: {fileID: 563924670}
   shieldDurationMaxLevelImage: {fileID: 1804522931}
-  coinMultiplierName: {fileID: 1653807149}
-  coinMultiplierLevel: {fileID: 75542948}
-  coinMultiplierChargeUpgradedIndicator: {fileID: 733065619}
-  coinMultiplierChargeVisualUpgrade: {fileID: 1245080431}
-  coinMultiplierChargeUpgradeCost: {fileID: 598252536}
-  coinMultiplierDurationUpgradedIndicator: {fileID: 1221838703}
-  coinMultiplierDurationVisualUpgrade: {fileID: 1644179203}
-  coinMultiplierDurationUpgradeCoinCost: {fileID: 2085598368}
-  coinMultiplierDurationUpgradeRubyCost: {fileID: 0}
+  coinMultiplierChargeName: {fileID: 2024231913}
+  coinMultiplierChargeLevel: {fileID: 2034872592}
+  coinMultiplierChargeUpgradedIndicator: {fileID: 1034886709}
+  coinMultiplierChargeVisualUpgrade: {fileID: 1245186327}
+  coinMultiplierChargeCost: {fileID: 397611325}
+  coinMultiplierChargeUpgradeCoinCost: {fileID: 1453072236}
+  coinMultiplierChargeRubyCost: {fileID: 1903027557}
+  coinMultiplierChargeUpgradeRubyCost: {fileID: 937238201}
+  coinMultiplierChargeMaxLevelImage: {fileID: 717996366}
+  coinMultiplierDurationName: {fileID: 315201463}
+  coinMultiplierDurationLevel: {fileID: 331661016}
+  coinMultiplierDurationUpgradedIndicator: {fileID: 1378668260}
+  coinMultiplierDurationVisualUpgrade: {fileID: 616684537}
+  coinMultiplierDurationCost: {fileID: 440463589}
+  coinMultiplierDurationUpgradeCoinCost: {fileID: 408543758}
+  coinMultiplierDurationRubyCost: {fileID: 1580248228}
+  coinMultiplierDurationUpgradeRubyCost: {fileID: 377091839}
+  coinMultiplierDurationMaxLevelImage: {fileID: 1213875892}
   resurrectionAmuletName: {fileID: 0}
   resurrectionAmuletLevel: {fileID: 0}
   resurrectionAmuletUpgradedIndicator: {fileID: 0}
@@ -50415,9 +50424,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf9c65a00d3759439e2c3d59b9f0b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  staminaData: {fileID: 11400000, guid: 6c973bf98d38df34695b029e9b5ecd2d, type: 2}
   shieldChargeData: {fileID: 11400000, guid: 98eab079f5f5fe94b939475b3f0a23f6, type: 2}
   shieldDurationData: {fileID: 11400000, guid: 4d81f7fa9c16333409caa117c9481283, type: 2}
-  staminaData: {fileID: 11400000, guid: 6c973bf98d38df34695b029e9b5ecd2d, type: 2}
   coinMultiplierData: {fileID: 11400000, guid: 0cadb173db48fd446bb43191bc104129, type: 2}
   coinMultiplierDurationData: {fileID: 11400000, guid: 670a5a4252be5834fb01b1a72c4bb0c9, type: 2}
   isCoinMultiplierOn: 0
