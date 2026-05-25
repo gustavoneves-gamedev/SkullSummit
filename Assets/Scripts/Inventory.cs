@@ -406,7 +406,8 @@ public class Inventory : MonoBehaviour
         GameController.gameController.uiController.
             UpdateResurrectionAmuletUpgradeUI((resurrectionAmuletUpgradeLevel * 
             resurrectionAmuletData.levelFactorUpgrade),resurrectionAmuletUpgradeLevel, 
-            resurrectionAmuletUpgradeCoinCost, resurrectionAmuletUpgradeRubyCost);
+            resurrectionAmuletUpgradeCoinCost, resurrectionAmuletUpgradeRubyCost,
+            resurrectionAmuletData.maxLevel);
     }
 
     #endregion
