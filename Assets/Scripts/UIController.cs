@@ -792,8 +792,7 @@ public class UIController : MonoBehaviour
     public void UpdateAdrenalineUpgradeUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        if (adrenalineName == null) return;
-
+        
         adrenalineName.text = "Adrenaline (" + (10 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
@@ -807,7 +806,7 @@ public class UIController : MonoBehaviour
             adrenalineLevel.text = "Lv. " + (level);
         }
         
-        adrenalineUpgradedIndicator.text = "Stamina Restored (10+" + (level) + ")";
+        adrenalineUpgradedIndicator.text = "Stamina Restored (10+" + (level*5) + ")";
         adrenalineVisualUpgrade.value = level;
 
         if (coinCost >= 10000)
