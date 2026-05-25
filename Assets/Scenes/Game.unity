@@ -11645,15 +11645,15 @@ MonoBehaviour:
   specialBoostRubyCost: {fileID: 1318979590}
   specialBoostUpgradeRubyCost: {fileID: 1665947120}
   specialBoostMaxLevelImage: {fileID: 1807494542}
-  adrenalineName: {fileID: 0}
-  adrenalineLevel: {fileID: 0}
-  adrenalineUpgradedIndicator: {fileID: 0}
-  adrenalineVisualUpgrade: {fileID: 0}
-  adrenalineCost: {fileID: 0}
-  adrenalineUpgradeCoinCost: {fileID: 0}
-  adrenalineRubyCost: {fileID: 0}
-  adrenalineUpgradeRubyCost: {fileID: 0}
-  adrenalineMaxLevelImage: {fileID: 0}
+  adrenalineName: {fileID: 364147641}
+  adrenalineLevel: {fileID: 1417953075}
+  adrenalineUpgradedIndicator: {fileID: 862596848}
+  adrenalineVisualUpgrade: {fileID: 582997354}
+  adrenalineCost: {fileID: 278027408}
+  adrenalineUpgradeCoinCost: {fileID: 227774929}
+  adrenalineRubyCost: {fileID: 1058312129}
+  adrenalineUpgradeRubyCost: {fileID: 335695491}
+  adrenalineMaxLevelImage: {fileID: 661675884}
   pauseMenu: {fileID: 347314579}
   HUD: {fileID: 1855609971}
   runCoins: {fileID: 1180275159}
@@ -18969,7 +18969,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
