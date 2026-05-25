@@ -42,6 +42,16 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject purchaseMenu;
     [SerializeField] private GameObject itemUpgradeMenu;
 
+    [Header("Items Purchases")]
+    [Header("ShopMenu - Resurrection Amulet")]
+    [SerializeField] private TextMeshProUGUI resurrectionAmuletPurchaseName;
+    [SerializeField] private GameObject resurrectionAmuletPurchaseCost;
+    [SerializeField] private TextMeshProUGUI resurrectionAmuletPurchaseCoinCost;
+    [SerializeField] private GameObject resurrectionAmuletPurchaseRubyCost;
+    [SerializeField] private TextMeshProUGUI resurrectionAmuletPurchaseRubyCostValue;
+    [SerializeField] private GameObject resurrectionAmuletMaxQuantityImage;
+
+
     [Header("Items Upgrade")]
     #region Items Upgrade
     [Header("ShopMenu - Stamina Potion")]
@@ -496,6 +506,48 @@ public class UIController : MonoBehaviour
         itemUpgradeMenu.SetActive(true);
         //purchaseMenu.SetActive(false);
     }
+    #endregion
+
+    #region Purchase
+
+    public void PurchaseItem(int itemCode = 0)
+    {
+        GameController.gameController.inventory.ItemPurchase(itemCode);
+    }
+
+    public void UpdateResurrectionAmuletPurchaseUI(int quantity = 0, int coinCost = 1000, int rubyCost = 0, int maxQuantity = 10)
+    {
+        resurrectionAmuletPurchaseName.text = "Resurrection Amulet";
+
+        if (quantity >= maxQuantity)
+        {
+            staminaPotionCost.SetActive(false);
+            staminaPotionMaxLevelImage.SetActive(true);
+            staminaPotionLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            //staminaPotionLevel.text = "Lv. " + (level);
+        }        
+
+        if (coinCost >= 10000)
+        {
+            staminaPotionUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            staminaPotionUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+
+        if (rubyCost > 0)
+        {
+            staminaPotionRubyCost.SetActive(true);
+            staminaPotionUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
+    }
+
     #endregion
 
     #region Upgrades    

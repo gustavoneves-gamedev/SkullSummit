@@ -243,6 +243,27 @@ public class Inventory : MonoBehaviour
 
     #endregion
 
+    #region Item Purchases
+
+    public void ItemPurchase(int itemCode = 0)
+    {
+        if (itemCode == 1) ResurrectionAmuletPurchase();
+        else if (itemCode == 2) SpecialBoostUpgrade();
+        else if (itemCode == 3) AdrenalineUpgrade();
+    }
+
+    #endregion
+
+    #region Resurrection Amulet 
+
+    private void ResurrectionAmuletPurchase()
+    {
+        resurrectionAmuletQuantity++;
+    }
+
+    #endregion
+
+
     #region Item Upgrades
 
     public void ItemUpgrade(int itemCode = 0)
