@@ -429,11 +429,12 @@ public class Inventory : MonoBehaviour
         UISpecialBoostUpdate();
     }
 
-    private void UISpecialBoostUpdate() //PRECISA ATUALIZAR
+    private void UISpecialBoostUpdate()
     {
         GameController.gameController.uiController.
            UpdateSpecialBoostUpgradeUI((specialBoostUpgradeLevel * specialBoostData.levelFactorUpgrade),
-            specialBoostUpgradeLevel, specialBoostUpgradeCoinCost, specialBoostUpgradeRubyCost);
+            specialBoostUpgradeLevel, specialBoostUpgradeCoinCost, specialBoostUpgradeRubyCost,
+            specialBoostData.maxLevel);
     }
 
     #endregion
@@ -454,11 +455,12 @@ public class Inventory : MonoBehaviour
         UIAdrenalineUpdate();
     }
 
-    private void UIAdrenalineUpdate() //PRECISA ATUALIZAR
+    private void UIAdrenalineUpdate()
     {
         GameController.gameController.uiController.
             UpdateAdrenalineUpgradeUI((adrenalineUpgradeLevel * adrenalineData.levelFactorUpgrade),
-            adrenalineUpgradeLevel, adrenalineUpgradeCoinCost, adrenalineUpgradeRubyCost);
+            adrenalineUpgradeLevel, adrenalineUpgradeCoinCost, adrenalineUpgradeRubyCost,
+            adrenalineData.maxLevel);
     }
     #endregion
 

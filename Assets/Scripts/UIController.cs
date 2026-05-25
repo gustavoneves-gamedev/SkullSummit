@@ -797,19 +797,33 @@ public class UIController : MonoBehaviour
 
         if (level >= maxLevel)
         {
-            specialBoostCost.SetActive(false);
-            specialBoostMaxLevelImage.SetActive(true);
-            specialBoostLevel.text = "Lv. MAX";
+            adrenalineCost.SetActive(false);
+            adrenalineMaxLevelImage.SetActive(true);
+            adrenalineLevel.text = "Lv. MAX";
         }
         else
         {
             adrenalineLevel.text = "Lv. " + (level);
         }
-
         
         adrenalineUpgradedIndicator.text = "Stamina Restored (10+" + (level) + ")";
         adrenalineVisualUpgrade.value = level;
-        
+
+        if (coinCost >= 10000)
+        {
+            adrenalineUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            adrenalineUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            adrenalineRubyCost.SetActive(true);
+            adrenalineUpgradeRubyCost.text = rubyCost.ToString();
+        }
+
     }
 
     #endregion
