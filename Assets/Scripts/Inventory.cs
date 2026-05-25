@@ -260,13 +260,15 @@ public class Inventory : MonoBehaviour
     {
         if (itemCode == 1) ResurrectionAmuletPurchase();
         else if (itemCode == 2) SpecialBoostPurchase();
-        else if (itemCode == 3) AdrenalineUpgrade();
+        else if (itemCode == 3) AdrenalinePurchase();
     }
 
     #region Resurrection Amulet 
 
     private void ResurrectionAmuletPurchase()
     {
+        if (resurrectionAmuletQuantity >= 99) return;
+
         resurrectionAmuletQuantity++;
         UpdateResurrectionPurchaseUI();
     }
@@ -287,6 +289,8 @@ public class Inventory : MonoBehaviour
 
     private void SpecialBoostPurchase()
     {
+        if (specialBoostQuantity >= 99) return;
+
         specialBoostQuantity++;
         UpdateSpecialBoostPurchaseUI();
     }
@@ -307,6 +311,7 @@ public class Inventory : MonoBehaviour
 
     private void AdrenalinePurchase()
     {
+        if (adrenalineQuantity >= 99) return;
         adrenalineQuantity++;
         UpdateAdrenalinePurchaseUI();
     }

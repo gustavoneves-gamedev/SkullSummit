@@ -534,10 +534,10 @@ public class UIController : MonoBehaviour
     #region Resurrection Amulet
     public void UpdateResurrectionAmuletPurchaseUI(int quantity = 0, int coinCost = 1000, int rubyCost = 0)
     {
-
+        
         resurrectionAmuletPurchaseDescription.text = "In Inventory: " + quantity;
 
-        if (coinCost >= 10000000)
+        if (coinCost >= 1000000)
         {
             resurrectionAmuletPurchaseCoinCost.text = coinCost / 1000000 + "M";
         }
@@ -566,7 +566,7 @@ public class UIController : MonoBehaviour
 
         specialBoostPurchaseDescription.text = "In Inventory: " + quantity;
 
-        if (coinCost >= 10000000)
+        if (coinCost >= 1000000)
         {
             specialBoostPurchaseCoinCost.text = coinCost / 1000000 + "M";
         }
@@ -595,7 +595,7 @@ public class UIController : MonoBehaviour
 
         adrenalinePurchaseDescription.text = "In Inventory: " + quantity;
 
-        if (coinCost >= 10000000)
+        if (coinCost >= 1000000)
         {
             adrenalinePurchaseCoinCost.text = coinCost / 1000000 + "M";
         }

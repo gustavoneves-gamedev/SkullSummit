@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ResurrectionAmulet_Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   characterID: 6
-  baseCoinCost: 10000
+  baseCoinCost: 5000
   baseEffectCharges: 20
   levelFactorUpgrade: 20
   maxLevel: 3

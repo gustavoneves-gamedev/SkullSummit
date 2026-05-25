@@ -291,7 +291,7 @@ public class PlayerPowers : MonoBehaviour
     {
         adrenalineQuantity = quantity;
         adrenalineRestauration = restauration;
-        alocatedAdrenalineQuantity = 2;
+        //alocatedAdrenalineQuantity = 2;
     }
 
     public void AlocateAdrenalineQuantity()
