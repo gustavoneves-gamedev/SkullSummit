@@ -10490,15 +10490,15 @@ MonoBehaviour:
   coinMultiplierDurationRubyCost: {fileID: 1580248228}
   coinMultiplierDurationUpgradeRubyCost: {fileID: 377091839}
   coinMultiplierDurationMaxLevelImage: {fileID: 1213875892}
-  resurrectionAmuletName: {fileID: 0}
-  resurrectionAmuletLevel: {fileID: 0}
-  resurrectionAmuletUpgradedIndicator: {fileID: 0}
-  resurrectionAmuletVisualUpgrade: {fileID: 0}
-  resurrectionAmuletCost: {fileID: 0}
-  resurrectionAmuletUpgradeCoinCost: {fileID: 0}
-  resurrectionAmuletRubyCost: {fileID: 0}
-  resurrectionAmuletUpgradeRubyCost: {fileID: 0}
-  resurrectionAmuletMaxLevelImage: {fileID: 0}
+  resurrectionAmuletName: {fileID: 1604004873}
+  resurrectionAmuletLevel: {fileID: 623507915}
+  resurrectionAmuletUpgradedIndicator: {fileID: 878711683}
+  resurrectionAmuletVisualUpgrade: {fileID: 507994052}
+  resurrectionAmuletCost: {fileID: 2140503947}
+  resurrectionAmuletUpgradeCoinCost: {fileID: 292697621}
+  resurrectionAmuletRubyCost: {fileID: 807992943}
+  resurrectionAmuletUpgradeRubyCost: {fileID: 1816051087}
+  resurrectionAmuletMaxLevelImage: {fileID: 597875881}
   specialBoostName: {fileID: 0}
   specialBoostLevel: {fileID: 0}
   specialBoostUpgradedIndicator: {fileID: 0}
@@ -26224,7 +26224,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

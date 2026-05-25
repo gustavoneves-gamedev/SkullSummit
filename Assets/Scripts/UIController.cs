@@ -115,8 +115,11 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI specialBoostLevel;
     [SerializeField] private TextMeshProUGUI specialBoostUpgradedIndicator;
     [SerializeField] private Slider specialBoostVisualUpgrade;
+    [SerializeField] private GameObject specialBoostCost;
     [SerializeField] private TextMeshProUGUI specialBoostUpgradeCoinCost;
+    [SerializeField] private GameObject specialBoostRubyCost;
     [SerializeField] private TextMeshProUGUI specialBoostUpgradeRubyCost;
+    [SerializeField] private GameObject specialBoostMaxLevelImage;
 
     [Header("ShopMenu - Adrenaline")]
     [SerializeField] private TextMeshProUGUI adrenalineName;
@@ -704,8 +707,6 @@ public class UIController : MonoBehaviour
     public void UpdateResurrectionAmuletUpgradeUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        if (resurrectionAmuletName == null) return;
-
         resurrectionAmuletName.text = "Resurrection Amulet (" + (20 + upgradeBonus) + ")";        
 
         if (level >= maxLevel)
@@ -719,7 +720,7 @@ public class UIController : MonoBehaviour
             resurrectionAmuletLevel.text = "Lv. " + (level);
         }
 
-        resurrectionAmuletUpgradedIndicator.text = "Stamina Restored (20+" + (level) + ")";
+        resurrectionAmuletUpgradedIndicator.text = "Stamina Restored (20+" + (level*20) + ")";
         resurrectionAmuletVisualUpgrade.value = level;
 
         if (coinCost >= 10000)
