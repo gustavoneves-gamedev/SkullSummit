@@ -748,34 +748,68 @@ public class UIController : MonoBehaviour
 
     #region Special Boost
 
-    public void UpdateSpecialBoostUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0,
-                                                int coinCost = 1000, int rubyCost = 0, int level = 0)
+    public void UpdateSpecialBoostUpgradeUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
 
-        if (specialBoostName == null) return;
-
         specialBoostName.text = "Special Boost (" + (10 + upgradeBonus) + ")";
-        specialBoostLevel.text = "Lv. " + (level);
-        specialBoostUpgradedIndicator.text = "Special Bar Restored (10+" + (chargeLevel) + ")";
-        specialBoostVisualUpgrade.value = chargeLevel;
-        specialBoostUpgradeCoinCost.text = coinCost.ToString();
+
+        if (level >= maxLevel)
+        {
+            specialBoostCost.SetActive(false);
+            specialBoostMaxLevelImage.SetActive(true);
+            specialBoostLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            specialBoostLevel.text = "Lv. " + (level);
+        }
+                
+        specialBoostUpgradedIndicator.text = "Special Bar Restored (10+" + (level) + ")";
+        specialBoostVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            specialBoostUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            specialBoostUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            specialBoostRubyCost.SetActive(true);
+            specialBoostUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
     }
 
     #endregion
 
     #region Adrenaline
 
-    public void UpdateAdrenalineUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0,
-                                                int coinCost = 1000, int rubyCost = 0, int level = 0)
+    public void UpdateAdrenalineUpgradeUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-
-        if (adrenalineName == null) return;
-
+        
         adrenalineName.text = "Adrenaline (" + (10 + upgradeBonus) + ")";
-        adrenalineLevel.text = "Lv. " + (level);
-        adrenalineUpgradedIndicator.text = "Stamina Restored (10+" + (chargeLevel) + ")";
-        adrenalineVisualUpgrade.value = chargeLevel;
-        adrenalineUpgradeCoinCost.text = coinCost.ToString();
+
+        if (level >= maxLevel)
+        {
+            specialBoostCost.SetActive(false);
+            specialBoostMaxLevelImage.SetActive(true);
+            specialBoostLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            adrenalineLevel.text = "Lv. " + (level);
+        }
+
+        
+        adrenalineUpgradedIndicator.text = "Stamina Restored (10+" + (level) + ")";
+        adrenalineVisualUpgrade.value = level;
+        
     }
 
     #endregion
