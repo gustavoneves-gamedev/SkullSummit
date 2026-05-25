@@ -765,7 +765,7 @@ public class UIController : MonoBehaviour
             specialBoostLevel.text = "Lv. " + (level);
         }
                 
-        specialBoostUpgradedIndicator.text = "Special Bar Restored (10+" + (level) + ")";
+        specialBoostUpgradedIndicator.text = "Special Restored (10+" + (level*5) + ")";
         specialBoostVisualUpgrade.value = level;
 
         if (coinCost >= 10000)
@@ -792,7 +792,8 @@ public class UIController : MonoBehaviour
     public void UpdateAdrenalineUpgradeUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        
+        if (adrenalineName == null) return;
+
         adrenalineName.text = "Adrenaline (" + (10 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
