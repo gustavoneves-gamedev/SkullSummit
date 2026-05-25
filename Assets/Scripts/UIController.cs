@@ -100,12 +100,15 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject coinMultiplierDurationMaxLevelImage;
 
     [Header("ShopMenu - Resurrection Amulet")]
-    [SerializeField] private TextMeshProUGUI resurrectionAmuletName;
+    [SerializeField] private TextMeshProUGUI resurrectionAmuletName;    
     [SerializeField] private TextMeshProUGUI resurrectionAmuletLevel;
     [SerializeField] private TextMeshProUGUI resurrectionAmuletUpgradedIndicator;
     [SerializeField] private Slider resurrectionAmuletVisualUpgrade;
+    [SerializeField] private GameObject resurrectionAmuletCost;
     [SerializeField] private TextMeshProUGUI resurrectionAmuletUpgradeCoinCost;
+    [SerializeField] private GameObject resurrectionAmuletRubyCost;
     [SerializeField] private TextMeshProUGUI resurrectionAmuletUpgradeRubyCost;
+    [SerializeField] private GameObject resurrectionAmuletMaxLevelImage;
 
     [Header("ShopMenu - Special Boost")]
     [SerializeField] private TextMeshProUGUI specialBoostName;
@@ -660,7 +663,7 @@ public class UIController : MonoBehaviour
     {
         
         
-        coinMultiplierDurationName.text = "Coin Multiplier (" + (16 + upgradeBonus) + ")";
+        coinMultiplierDurationName.text = "Coin Multiplier Duration (" + (16 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
@@ -698,16 +701,42 @@ public class UIController : MonoBehaviour
 
     #region Resurrection Amulet
 
-    public void UpdateResurrectionAmuletUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0,
-                                                int coinCost = 1000, int rubyCost = 0, int level = 0)
+    public void UpdateResurrectionAmuletUpgradeUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
         if (resurrectionAmuletName == null) return;
 
-        resurrectionAmuletName.text = "Resurrection Amulet (" + (10 + upgradeBonus) + ")";
-        resurrectionAmuletLevel.text = "Lv. " + (level);
-        resurrectionAmuletUpgradedIndicator.text = "Stamina Restored (10+" + (chargeLevel) + ")";
-        resurrectionAmuletVisualUpgrade.value = chargeLevel;
-        resurrectionAmuletUpgradeCoinCost.text = coinCost.ToString();
+        resurrectionAmuletName.text = "Resurrection Amulet (" + (20 + upgradeBonus) + ")";        
+
+        if (level >= maxLevel)
+        {
+            resurrectionAmuletCost.SetActive(false);
+            resurrectionAmuletMaxLevelImage.SetActive(true);
+            resurrectionAmuletLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            resurrectionAmuletLevel.text = "Lv. " + (level);
+        }
+
+        resurrectionAmuletUpgradedIndicator.text = "Stamina Restored (20+" + (level) + ")";
+        resurrectionAmuletVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            resurrectionAmuletUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            resurrectionAmuletUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            resurrectionAmuletRubyCost.SetActive(true);
+            resurrectionAmuletUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
     }
 
 
