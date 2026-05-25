@@ -655,13 +655,43 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void UpdateCoinMultiplierDurationUpgradeUI(int upgradeBonus = 0, int durationLevel = 0,
-                                                int coinCost = 1000, int rubyCost = 0, int level = 0)
+    public void UpdateCoinMultiplierDurationUpgradeUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        coinMultiplierChargeLevel.text = "Lv. " + (level);
-        coinMultiplierDurationUpgradedIndicator.text = "Multiplier Duration (16+" + (durationLevel * 4) + ")";
-        coinMultiplierDurationVisualUpgrade.value = durationLevel;
-        coinMultiplierDurationUpgradeCoinCost.text = coinCost.ToString();
+        
+        
+        coinMultiplierDurationName.text = "Coin Multiplier (" + (16 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            coinMultiplierDurationCost.SetActive(false);
+            coinMultiplierDurationMaxLevelImage.SetActive(true);
+            coinMultiplierDurationLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            coinMultiplierDurationLevel.text = "Lv. " + (level);
+        }
+
+        coinMultiplierDurationUpgradedIndicator.text = "Multiplier Duration (16+" + (level * 4) + ")";
+        coinMultiplierDurationVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            coinMultiplierDurationUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            coinMultiplierDurationUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+
+        if (rubyCost > 0)
+        {
+            coinMultiplierDurationRubyCost.SetActive(true);
+            coinMultiplierDurationUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
     }
 
     #endregion
