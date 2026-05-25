@@ -126,8 +126,11 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI adrenalineLevel;
     [SerializeField] private TextMeshProUGUI adrenalineUpgradedIndicator;
     [SerializeField] private Slider adrenalineVisualUpgrade;
+    [SerializeField] private GameObject adrenalineCost;
     [SerializeField] private TextMeshProUGUI adrenalineUpgradeCoinCost;
+    [SerializeField] private GameObject adrenalineRubyCost;
     [SerializeField] private TextMeshProUGUI adrenalineUpgradeRubyCost;
+    [SerializeField] private GameObject adrenalineMaxLevelImage;
 
     #endregion
 
