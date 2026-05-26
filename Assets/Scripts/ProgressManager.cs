@@ -17,8 +17,9 @@ public class ProgressManager : MonoBehaviour
 
     //Depois irei tornar provate os Factor para limpar o Inspector
     [Header("Cowboy Stat Upgrades")]
-    public float cowboyStaminaUpgradeFactor = 5f;
+    public float cowboyStaminaUpgradeFactor = 10f;
     public int cowboyStaminaUpgrades;
+    public int cowboyMaxStaminaUpgrades = 5;
     public float cowboyMovementSpeedUpgradeFactor = 1f;
     public int cowboyMovementSpeedUpgrades;
     public float cowboyDamageUpgradeFactor = 1f;
@@ -79,6 +80,14 @@ public class ProgressManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
+
+    #region Upgrade Buttons
+    public void UpgradeStamina(int charCode)
+    {
+        if (charCode == 1) UpgradeCharacter(characterID.Cowboy, statType.Stamina);
+    }
+
+    #endregion
 
     public void UpgradeCharacter(characterID character, statType stat)
     {
