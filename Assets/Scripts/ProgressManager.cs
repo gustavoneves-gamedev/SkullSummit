@@ -85,6 +85,8 @@ public class ProgressManager : MonoBehaviour
     public void UpgradeStamina(int charCode)
     {
         if (charCode == 1) UpgradeCharacter(characterID.Cowboy, statType.Stamina);
+        else if (charCode == 2) UpgradeCharacter(characterID.Samurai, statType.Stamina);
+        else if (charCode == 3) UpgradeCharacter(characterID.Alpinista, statType.Stamina);
     }
 
     #endregion
@@ -146,6 +148,9 @@ public class ProgressManager : MonoBehaviour
 
     }
 
+    //EU DEVERIA TER CRIADO STATUS DIFERENTES PARA CADA PERSONAGEM! SE SOBRAR TEMPO, OTIMIZAR!!!
+    #region Run Initialization
+
     public void UpdateIncrement(characterID character)
     {
         if (character == characterID.Cowboy)
@@ -184,5 +189,7 @@ public class ProgressManager : MonoBehaviour
             resistanceIncrement = alpinistaResistanceUpgrades * alpinistaResistanceUpgradeFactor;
         }
     }
+
+    #endregion
 
 }

@@ -436,6 +436,7 @@ public class UIController : MonoBehaviour
 
     #region Character Selection
 
+    #region Selection
     public void CharacterSelection()
     {
         characterSelectionMenu.SetActive(true);
@@ -462,7 +463,16 @@ public class UIController : MonoBehaviour
         GameController.gameController.playerRoot.Initialize(characterID.Alpinista);
         BackToMainMenu();
     }
+    #endregion
 
+    #region Character Upgrades
+
+    public void UpdateCowboyUI()
+    {
+
+    }
+
+    #endregion
 
     #endregion
 
