@@ -15,9 +15,17 @@ public class ProgressManager : MonoBehaviour
     public float defenseIncrement;
     public float resistanceIncrement;
 
-    //Depois irei tornar provate os Factor para limpar o Inspector
+    [Header("Stat Upgrades Data")]
+    [SerializeField] private ItemData[] staminaData;
+    [SerializeField] private ItemData[] defenseData;
+    [SerializeField] private ItemData[] resistenceData;
+    [SerializeField] private ItemData[] attackData;
+    //[SerializeField] private ItemData[] staminaData;
+
+    //Depois irei tornar private os Factor para limpar o Inspector
+    //MELHOR! DEPOIS IREI PUXAR DIRETO DO DATA EM VEZ DESTAS VARIÁVEIS
     [Header("Cowboy Stat Upgrades")]
-    public float cowboyStaminaUpgradeFactor = 10f;
+    public int cowboyStaminaUpgradeFactor = 10;
     public int cowboyStaminaUpgrades;
     public int cowboyMaxStaminaUpgrades = 5;
     public float cowboyMovementSpeedUpgradeFactor = 1f;
@@ -81,6 +89,18 @@ public class ProgressManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    private void Start()
+    {
+        Invoke("Initialize", .5f);
+    }
+
+    private void Initialize()
+    {
+        UpdateCowboyStaminaUI();
+    }
+
+
+
     #region Upgrade Buttons
     public void UpgradeStamina(int charCode)
     {
@@ -105,7 +125,13 @@ public class ProgressManager : MonoBehaviour
 
     private void UpgradeCowboy(statType stat)
     {
-        if (stat == statType.Stamina) cowboyStaminaUpgrades++;
+        if (stat == statType.Stamina)
+        {
+            cowboyStaminaUpgrades++;
+            UpdateCowboyStaminaUI();
+        }
+        
+
         if (stat == statType.MovementSpeed) cowboyMovementSpeedUpgrades++;
         if (stat == statType.Damage) cowboyDamageUpgrades++;
         if (stat == statType.Cooldown) cowboyCooldownUpgrades++;
@@ -147,6 +173,16 @@ public class ProgressManager : MonoBehaviour
         //INSERIR AQUI EVENTUAL ESCALA DE MELHORIAS. EX: Upgrade 1 melhora speed em 1, upgrade 2 melhora em 2...)
 
     }
+
+    private void UpdateCowboyStaminaUI()
+    {
+        GameController.gameController.uiController.UpdateCowboyStaminaUI(
+                cowboyStaminaUpgrades * cowboyStaminaUpgradeFactor,
+                staminaData[0].coinChargeUpgradeCost[cowboyStaminaUpgrades],
+                staminaData[0].rubyChargeUpgradeCost[cowboyStaminaUpgrades],
+                staminaData[0].maxLevel);
+    }
+
 
     //EU DEVERIA TER CRIADO STATUS DIFERENTES PARA CADA PERSONAGEM! SE SOBRAR TEMPO, OTIMIZAR!!!
     #region Run Initialization

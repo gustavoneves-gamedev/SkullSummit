@@ -31,6 +31,17 @@ public class UIController : MonoBehaviour
     private int charCode = 0;
     private bool isCharSelecting;
 
+    [Header("CharacterUpgradeMenu")]
+    [Header("Cowboy")]
+    [SerializeField] private TextMeshProUGUI cowboyStaminaIndicator;
+    [SerializeField] private TextMeshProUGUI cowboyStaminaLevel;    
+    [SerializeField] private Slider cowboyStaminaVisualUpgrade;
+    [SerializeField] private GameObject cowboyStaminaCost;
+    [SerializeField] private TextMeshProUGUI cowboyStaminaUpgradeCoinCost;
+    [SerializeField] private GameObject cowboyStaminaRubyCost;
+    [SerializeField] private TextMeshProUGUI cowboyStaminaUpgradeRubyCost;
+    [SerializeField] private GameObject cowboyStaminaMaxLevelImage;
+
     [Header("LevelMenu")]
     [SerializeField] private GameObject levelSelectionMenu;
     [SerializeField] private GameObject[] levelMenuArray;
@@ -43,6 +54,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject itemUpgradeMenu;
 
     [Header("Items Purchases")]
+    #region Items Purchases
     [Header("ShopMenu - Resurrection Amulet")]
     [SerializeField] private TextMeshProUGUI resurrectionAmuletPurchaseDescription;
     [SerializeField] private GameObject resurrectionAmuletPurchaseCost;
@@ -66,7 +78,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject adrenalinePurchaseRubyCost;
     [SerializeField] private TextMeshProUGUI adrenalinePurchaseRubyCostValue;
     [SerializeField] private GameObject adrenalineMaxQuantityImage;
-
+    #endregion
 
     [Header("Items Upgrade")]
     #region Items Upgrade
@@ -434,9 +446,9 @@ public class UIController : MonoBehaviour
 
     #endregion
 
-    #region Character Selection
+    #region Character Info
 
-    #region Selection
+    #region Character Selection
     public void CharacterSelection()
     {
         characterSelectionMenu.SetActive(true);
@@ -467,9 +479,48 @@ public class UIController : MonoBehaviour
 
     #region Character Upgrades
 
-    public void UpdateCowboyUI()
+    #region Character Upgrades Buttons
+    public void UpgradeCharacterStamina(int charCode)
     {
+        ProgressManager.progressManager.UpgradeStamina(charCode);
+    }
 
+    #endregion
+
+    public void UpdateCowboyStaminaUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
+    {
+        cowboyStaminaIndicator.text = "Stamina (" + (100 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            cowboyStaminaCost.SetActive(false);
+            cowboyStaminaMaxLevelImage.SetActive(true);
+            cowboyStaminaLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            cowboyStaminaLevel.text = "Lv. " + (level);
+        }
+
+        //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
+        cowboyStaminaVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            cowboyStaminaUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            cowboyStaminaUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            cowboyStaminaRubyCost.SetActive(true);
+            cowboyStaminaUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
     }
 
     #endregion
