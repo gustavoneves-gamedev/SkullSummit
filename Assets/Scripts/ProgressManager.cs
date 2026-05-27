@@ -127,6 +127,8 @@ public class ProgressManager : MonoBehaviour
     {
         if (stat == statType.Stamina)
         {
+            if (cowboyStaminaUpgrades >= staminaData[0].maxLevel) return;
+            
             cowboyStaminaUpgrades++;
             UpdateCowboyStaminaUI();
         }
@@ -178,6 +180,7 @@ public class ProgressManager : MonoBehaviour
     {
         GameController.gameController.uiController.UpdateCowboyStaminaUI(
                 cowboyStaminaUpgrades * cowboyStaminaUpgradeFactor,
+                cowboyStaminaUpgrades,
                 staminaData[0].coinChargeUpgradeCost[cowboyStaminaUpgrades],
                 staminaData[0].rubyChargeUpgradeCost[cowboyStaminaUpgrades],
                 staminaData[0].maxLevel);

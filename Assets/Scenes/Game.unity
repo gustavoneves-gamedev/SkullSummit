@@ -2277,52 +2277,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56640042}
   m_CullTransparentMesh: 1
---- !u!1 &58640165
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 58640166}
-  - component: {fileID: 58640167}
-  m_Layer: 5
-  m_Name: ItemUpperStats
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &58640166
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 58640165}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1118781515}
-  - {fileID: 765172203}
-  m_Father: {fileID: 2021810915}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 106}
-  m_SizeDelta: {x: -0.0000071525574, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &58640167
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 58640165}
-  m_CullTransparentMesh: 1
 --- !u!1 &60451487
 GameObject:
   m_ObjectHideFlags: 0
@@ -14140,14 +14094,14 @@ MonoBehaviour:
   - {fileID: 197408516}
   - {fileID: 11434152}
   - {fileID: 198335875}
-  cowboyStaminaIndicator: {fileID: 0}
-  cowboyStaminaLevel: {fileID: 0}
-  cowboyStaminaVisualUpgrade: {fileID: 0}
-  cowboyStaminaCost: {fileID: 0}
-  cowboyStaminaUpgradeCoinCost: {fileID: 0}
-  cowboyStaminaRubyCost: {fileID: 0}
-  cowboyStaminaUpgradeRubyCost: {fileID: 0}
-  cowboyStaminaMaxLevelImage: {fileID: 0}
+  cowboyStaminaIndicator: {fileID: 1118781516}
+  cowboyStaminaLevel: {fileID: 765172204}
+  cowboyStaminaVisualUpgrade: {fileID: 597643510}
+  cowboyStaminaCost: {fileID: 1191424759}
+  cowboyStaminaUpgradeCoinCost: {fileID: 623992189}
+  cowboyStaminaRubyCost: {fileID: 1730383923}
+  cowboyStaminaUpgradeRubyCost: {fileID: 1774906309}
+  cowboyStaminaMaxLevelImage: {fileID: 958540993}
   levelSelectionMenu: {fileID: 287675247}
   levelMenuArray:
   - {fileID: 1074221788}
@@ -27674,7 +27628,7 @@ GameObject:
   - component: {fileID: 765172205}
   - component: {fileID: 765172204}
   m_Layer: 5
-  m_Name: 'ItemLevelText (TMP) '
+  m_Name: 'StatusLevelText (TMP) '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27692,11 +27646,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 58640166}
+  m_Father: {fileID: 2021810915}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -334.41595, y: -130.7}
+  m_AnchoredPosition: {x: -334.41595, y: -24.700005}
   m_SizeDelta: {x: 59.284, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &765172204
@@ -40455,7 +40409,7 @@ GameObject:
   - component: {fileID: 1118781517}
   - component: {fileID: 1118781516}
   m_Layer: 5
-  m_Name: ItemNameText (TMP)
+  m_Name: StatusIndicator (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40470,14 +40424,14 @@ RectTransform:
   m_GameObject: {fileID: 1118781514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 2, z: 1}
+  m_LocalScale: {x: 1.1999999, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 58640166}
+  m_Father: {fileID: 2021810915}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 74.9, y: -68.1}
+  m_AnchoredPosition: {x: 74.9, y: 37.899994}
   m_SizeDelta: {x: 202.33, y: 25.6481}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1118781516
@@ -73078,7 +73032,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 153612006}
-  - {fileID: 58640166}
+  - {fileID: 1118781515}
+  - {fileID: 765172203}
   - {fileID: 4280918}
   - {fileID: 674047926}
   - {fileID: 8233742}
@@ -73400,11 +73355,12 @@ MonoBehaviour:
   reloadIncrement: 0
   defenseIncrement: 0
   resistanceIncrement: 0
-  staminaData: []
+  staminaData:
+  - {fileID: 11400000, guid: e3f0a5659f6e3bc4182295d5a98f63ab, type: 2}
   defenseData: []
   resistenceData: []
   attackData: []
-  cowboyStaminaUpgradeFactor: 5
+  cowboyStaminaUpgradeFactor: 10
   cowboyStaminaUpgrades: 0
   cowboyMaxStaminaUpgrades: 5
   cowboyMovementSpeedUpgradeFactor: 1
