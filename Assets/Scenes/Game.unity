@@ -21464,6 +21464,38 @@ MonoBehaviour:
   cowboyAttackRubyCost: {fileID: 797770881}
   cowboyAttackUpgradeRubyCost: {fileID: 1384756158}
   cowboyAttackMaxLevelImage: {fileID: 811710077}
+  samuraiStaminaIndicator: {fileID: 0}
+  samuraiStaminaLevel: {fileID: 0}
+  samuraiStaminaVisualUpgrade: {fileID: 0}
+  samuraiStaminaCost: {fileID: 0}
+  samuraiStaminaUpgradeCoinCost: {fileID: 0}
+  samuraiStaminaRubyCost: {fileID: 0}
+  samuraiStaminaUpgradeRubyCost: {fileID: 0}
+  samuraiStaminaMaxLevelImage: {fileID: 0}
+  samuraiDefenseIndicator: {fileID: 0}
+  samuraiDefenseLevel: {fileID: 0}
+  samuraiDefenseVisualUpgrade: {fileID: 0}
+  samuraiDefenseCost: {fileID: 0}
+  samuraiDefenseUpgradeCoinCost: {fileID: 0}
+  samuraiDefenseRubyCost: {fileID: 0}
+  samuraiDefenseUpgradeRubyCost: {fileID: 0}
+  samuraiDefenseMaxLevelImage: {fileID: 0}
+  samuraiResistanceIndicator: {fileID: 0}
+  samuraiResistanceLevel: {fileID: 0}
+  samuraiResistanceVisualUpgrade: {fileID: 0}
+  samuraiResistanceCost: {fileID: 0}
+  samuraiResistanceUpgradeCoinCost: {fileID: 0}
+  samuraiResistanceRubyCost: {fileID: 0}
+  samuraiResistanceUpgradeRubyCost: {fileID: 0}
+  samuraiResistanceMaxLevelImage: {fileID: 0}
+  samuraiAttackIndicator: {fileID: 0}
+  samuraiAttackLevel: {fileID: 0}
+  samuraiAttackVisualUpgrade: {fileID: 0}
+  samuraiAttackCost: {fileID: 0}
+  samuraiAttackUpgradeCoinCost: {fileID: 0}
+  samuraiAttackRubyCost: {fileID: 0}
+  samuraiAttackUpgradeRubyCost: {fileID: 0}
+  samuraiAttackMaxLevelImage: {fileID: 0}
   levelSelectionMenu: {fileID: 287675247}
   levelMenuArray:
   - {fileID: 1074221788}
@@ -38414,7 +38446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &698478796
 RectTransform:
   m_ObjectHideFlags: 0
@@ -60869,7 +60901,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Samurai Esqueleto
+  m_text: Ronin Caveira
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -60913,7 +60945,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -68674,7 +68706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1256934852
 RectTransform:
   m_ObjectHideFlags: 0
