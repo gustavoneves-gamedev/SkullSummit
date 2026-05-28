@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a9dbf7f0359f6e4ea63cc485192318d, type: 3}
-  m_Name: Resistance
+  m_Name: ResistanceData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   characterID: 0
   baseCoinCost: 0
   baseEffectCharges: 0
-  levelFactorUpgrade: 10
-  maxLevel: 5
-  coinChargeUpgradeCost: e8030000a00f000010270000204e000050c30000ffffffff
-  rubyChargeUpgradeCost: 0000000000000000050000000a00000019000000ffffffff
+  levelFactorUpgrade: 2
+  maxLevel: 4
+  coinChargeUpgradeCost: e803000010270000a861000060ea0000ffffffff
+  rubyChargeUpgradeCost: 0000000000000000050000000f000000ffffffff

@@ -27,7 +27,7 @@ public class ProgressManager : MonoBehaviour
     public int cowboyStaminaUpgradeFactor = 10;
     public int cowboyStaminaUpgrades;
     public int cowboyMaxStaminaUpgrades = 5;
-    public int cowboyDefenseUpgradeFactor = 5;
+    public int cowboyDefenseUpgradeFactor = 3;
     public int cowboyDefenseUpgrades;
     public int cowboyResistanceUpgradeFactor = 2;
     public int cowboyResistanceUpgrades;
