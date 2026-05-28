@@ -179,7 +179,7 @@ public class ProgressManager : MonoBehaviour
         {
             if (cowboyAttackUpgrades >= attackData[0].maxLevel) return;
 
-            cowboyDamageUpgrades++;
+            cowboyAttackUpgrades++;
 
             if (cowboyAttackUpgrades % 2 == 0) cowboyAmmoUpgrades++;
 
@@ -263,11 +263,11 @@ public class ProgressManager : MonoBehaviour
     private void UpdateCowboyAttackUI()
     {
         GameController.gameController.uiController.UpdateCowboyAttackUI(
-                cowboyStaminaUpgrades * cowboyStaminaUpgradeFactor,
-                cowboyStaminaUpgrades,
-                staminaData[0].coinChargeUpgradeCost[cowboyStaminaUpgrades],
-                staminaData[0].rubyChargeUpgradeCost[cowboyStaminaUpgrades],
-                staminaData[0].maxLevel);
+                cowboyAmmoUpgrades + cowboyReloadUpgrades,
+                cowboyAttackUpgrades,
+                attackData[0].coinChargeUpgradeCost[cowboyAttackUpgrades],
+                attackData[0].rubyChargeUpgradeCost[cowboyAttackUpgrades],
+                attackData[0].maxLevel);
     }
 
     #endregion
