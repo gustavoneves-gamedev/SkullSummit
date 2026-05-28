@@ -21464,38 +21464,38 @@ MonoBehaviour:
   cowboyAttackRubyCost: {fileID: 797770881}
   cowboyAttackUpgradeRubyCost: {fileID: 1384756158}
   cowboyAttackMaxLevelImage: {fileID: 811710077}
-  samuraiStaminaIndicator: {fileID: 0}
-  samuraiStaminaLevel: {fileID: 0}
-  samuraiStaminaVisualUpgrade: {fileID: 0}
-  samuraiStaminaCost: {fileID: 0}
-  samuraiStaminaUpgradeCoinCost: {fileID: 0}
-  samuraiStaminaRubyCost: {fileID: 0}
-  samuraiStaminaUpgradeRubyCost: {fileID: 0}
-  samuraiStaminaMaxLevelImage: {fileID: 0}
-  samuraiDefenseIndicator: {fileID: 0}
-  samuraiDefenseLevel: {fileID: 0}
-  samuraiDefenseVisualUpgrade: {fileID: 0}
-  samuraiDefenseCost: {fileID: 0}
-  samuraiDefenseUpgradeCoinCost: {fileID: 0}
-  samuraiDefenseRubyCost: {fileID: 0}
-  samuraiDefenseUpgradeRubyCost: {fileID: 0}
-  samuraiDefenseMaxLevelImage: {fileID: 0}
-  samuraiResistanceIndicator: {fileID: 0}
-  samuraiResistanceLevel: {fileID: 0}
-  samuraiResistanceVisualUpgrade: {fileID: 0}
-  samuraiResistanceCost: {fileID: 0}
-  samuraiResistanceUpgradeCoinCost: {fileID: 0}
-  samuraiResistanceRubyCost: {fileID: 0}
-  samuraiResistanceUpgradeRubyCost: {fileID: 0}
-  samuraiResistanceMaxLevelImage: {fileID: 0}
-  samuraiAttackIndicator: {fileID: 0}
-  samuraiAttackLevel: {fileID: 0}
-  samuraiAttackVisualUpgrade: {fileID: 0}
-  samuraiAttackCost: {fileID: 0}
-  samuraiAttackUpgradeCoinCost: {fileID: 0}
-  samuraiAttackRubyCost: {fileID: 0}
-  samuraiAttackUpgradeRubyCost: {fileID: 0}
-  samuraiAttackMaxLevelImage: {fileID: 0}
+  samuraiStaminaIndicator: {fileID: 30203649}
+  samuraiStaminaLevel: {fileID: 1086148693}
+  samuraiStaminaVisualUpgrade: {fileID: 1535911581}
+  samuraiStaminaCost: {fileID: 494301807}
+  samuraiStaminaUpgradeCoinCost: {fileID: 2086019328}
+  samuraiStaminaRubyCost: {fileID: 1199827646}
+  samuraiStaminaUpgradeRubyCost: {fileID: 585334432}
+  samuraiStaminaMaxLevelImage: {fileID: 169286498}
+  samuraiDefenseIndicator: {fileID: 101292295}
+  samuraiDefenseLevel: {fileID: 1135108364}
+  samuraiDefenseVisualUpgrade: {fileID: 722766430}
+  samuraiDefenseCost: {fileID: 1180572059}
+  samuraiDefenseUpgradeCoinCost: {fileID: 1942259970}
+  samuraiDefenseRubyCost: {fileID: 1948755536}
+  samuraiDefenseUpgradeRubyCost: {fileID: 340594421}
+  samuraiDefenseMaxLevelImage: {fileID: 861463250}
+  samuraiResistanceIndicator: {fileID: 339793369}
+  samuraiResistanceLevel: {fileID: 1717255205}
+  samuraiResistanceVisualUpgrade: {fileID: 621717612}
+  samuraiResistanceCost: {fileID: 1877714300}
+  samuraiResistanceUpgradeCoinCost: {fileID: 824606102}
+  samuraiResistanceRubyCost: {fileID: 1686844414}
+  samuraiResistanceUpgradeRubyCost: {fileID: 1952640191}
+  samuraiResistanceMaxLevelImage: {fileID: 1430725002}
+  samuraiAttackIndicator: {fileID: 766326421}
+  samuraiAttackLevel: {fileID: 2056688945}
+  samuraiAttackVisualUpgrade: {fileID: 387441055}
+  samuraiAttackCost: {fileID: 1319292709}
+  samuraiAttackUpgradeCoinCost: {fileID: 2044207776}
+  samuraiAttackRubyCost: {fileID: 106724447}
+  samuraiAttackUpgradeRubyCost: {fileID: 1300491804}
+  samuraiAttackMaxLevelImage: {fileID: 1719675909}
   levelSelectionMenu: {fileID: 287675247}
   levelMenuArray:
   - {fileID: 1074221788}
@@ -34118,7 +34118,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -71201,7 +71201,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -91614,7 +91614,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -97075,7 +97075,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -110187,12 +110187,16 @@ MonoBehaviour:
   resistanceIncrement: 0
   staminaData:
   - {fileID: 11400000, guid: e3f0a5659f6e3bc4182295d5a98f63ab, type: 2}
+  - {fileID: 11400000, guid: 707471098a74682438bf21c6c06d32fe, type: 2}
   defenseData:
   - {fileID: 11400000, guid: 6da13582298f1b3428c57218318986a2, type: 2}
+  - {fileID: 11400000, guid: 522ecd2388dbf44448094b190be14cc3, type: 2}
   resistanceData:
   - {fileID: 11400000, guid: 4daa5ca8bd164014fbcdd6687dc82986, type: 2}
+  - {fileID: 11400000, guid: bc3246c38429ea14988862df49c57672, type: 2}
   attackData:
   - {fileID: 11400000, guid: 75f9426a5dbee9742bb8708b56d7475a, type: 2}
+  - {fileID: 11400000, guid: b1b32caa76f3f3d43a60a56a0f3ae3f9, type: 2}
   cowboyStaminaUpgradeFactor: 10
   cowboyStaminaUpgrades: 0
   cowboyMaxStaminaUpgrades: 5

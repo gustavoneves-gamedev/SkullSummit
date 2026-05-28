@@ -86,7 +86,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI samuraiStaminaUpgradeRubyCost;
     [SerializeField] private GameObject samuraiStaminaMaxLevelImage;
 
-    [Header("Cowboy Defense")]
+    [Header("Samurai Defense")]
     [SerializeField] private TextMeshProUGUI samuraiDefenseIndicator;
     [SerializeField] private TextMeshProUGUI samuraiDefenseLevel;
     [SerializeField] private Slider samuraiDefenseVisualUpgrade;
@@ -96,7 +96,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI samuraiDefenseUpgradeRubyCost;
     [SerializeField] private GameObject samuraiDefenseMaxLevelImage;
 
-    [Header("Cowboy Resistance")]
+    [Header("Samurai Resistance")]
     [SerializeField] private TextMeshProUGUI samuraiResistanceIndicator;
     [SerializeField] private TextMeshProUGUI samuraiResistanceLevel;
     [SerializeField] private Slider samuraiResistanceVisualUpgrade;
@@ -106,7 +106,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI samuraiResistanceUpgradeRubyCost;
     [SerializeField] private GameObject samuraiResistanceMaxLevelImage;
 
-    [Header("Cowboy Attack")]
+    [Header("Samurai Attack")]
     [SerializeField] private TextMeshProUGUI samuraiAttackIndicator;
     [SerializeField] private TextMeshProUGUI samuraiAttackLevel;
     [SerializeField] private Slider samuraiAttackVisualUpgrade;

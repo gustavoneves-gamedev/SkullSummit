@@ -319,29 +319,29 @@ public class ProgressManager : MonoBehaviour
         GameController.gameController.uiController.UpdateSamuraiDefenseUI(
                 samuraiDefenseUpgrades * samuraiDefenseUpgradeFactor,
                 samuraiDefenseUpgrades,
-                defenseData[0].coinChargeUpgradeCost[samuraiDefenseUpgrades],
-                defenseData[0].rubyChargeUpgradeCost[samuraiDefenseUpgrades],
-                defenseData[0].maxLevel);
+                defenseData[1].coinChargeUpgradeCost[samuraiDefenseUpgrades],
+                defenseData[1].rubyChargeUpgradeCost[samuraiDefenseUpgrades],
+                defenseData[1].maxLevel);
     }
 
     private void UpdateSamuraiResistanceUI()
     {
-        GameController.gameController.uiController.UpdateCowboyResistanceUI(
-                cowboyResistanceUpgrades * cowboyResistanceUpgradeFactor,
-                cowboyResistanceUpgrades,
-                resistanceData[0].coinChargeUpgradeCost[cowboyResistanceUpgrades],
-                resistanceData[0].rubyChargeUpgradeCost[cowboyResistanceUpgrades],
-                resistanceData[0].maxLevel);
+        GameController.gameController.uiController.UpdateSamuraiResistanceUI(
+                samuraiResistanceUpgrades * samuraiResistanceUpgradeFactor,
+                samuraiResistanceUpgrades,
+                resistanceData[1].coinChargeUpgradeCost[samuraiResistanceUpgrades],
+                resistanceData[1].rubyChargeUpgradeCost[samuraiResistanceUpgrades],
+                resistanceData[1].maxLevel);
     }
 
     private void UpdateSamuraiAttackUI()
     {
-        GameController.gameController.uiController.UpdateCowboyAttackUI(
-                cowboyAmmoUpgrades + cowboyReloadUpgrades,
-                cowboyAttackUpgrades,
-                attackData[0].coinChargeUpgradeCost[cowboyAttackUpgrades],
-                attackData[0].rubyChargeUpgradeCost[cowboyAttackUpgrades],
-                attackData[0].maxLevel);
+        GameController.gameController.uiController.UpdateSamuraiAttackUI(
+                samuraiAmmoUpgrades + samuraiReloadUpgrades,
+                samuraiAttackUpgrades,
+                attackData[1].coinChargeUpgradeCost[samuraiAttackUpgrades],
+                attackData[1].rubyChargeUpgradeCost[samuraiAttackUpgrades],
+                attackData[1].maxLevel);
     }
 
     #endregion
