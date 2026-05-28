@@ -27,6 +27,10 @@ public class ProgressManager : MonoBehaviour
     public int cowboyStaminaUpgradeFactor = 10;
     public int cowboyStaminaUpgrades;
     public int cowboyMaxStaminaUpgrades = 5;
+    public int cowboyDefenseUpgradeFactor = 5;
+    public int cowboyDefenseUpgrades;
+    public int cowboyResistanceUpgradeFactor = 2;
+    public int cowboyResistanceUpgrades;
     public float cowboyMovementSpeedUpgradeFactor = 1f;
     public int cowboyMovementSpeedUpgrades;
     public int cowboyAttackUpgrades;
@@ -37,11 +41,8 @@ public class ProgressManager : MonoBehaviour
     public int cowboyAmmoUpgradeFactor = 1;
     public int cowboyAmmoUpgrades;
     public float cowboyReloadUpgradeFactor = 0.25f;
-    public int cowboyReloadUpgrades;
-    public float cowboyDefenseUpgradeFactor = 5f;
-    public int cowboyDefenseUpgrades;
-    public float cowboyResistanceUpgradeFactor = 2f;
-    public int cowboyResistanceUpgrades;
+    public int cowboyReloadUpgrades;    
+    
 
     [Header("Samurai Stat Upgrades")]
     public float samuraiStaminaUpgradeFactor = 5f;
@@ -97,6 +98,9 @@ public class ProgressManager : MonoBehaviour
     private void Initialize()
     {
         UpdateCowboyStaminaUI();
+       // UpdateCowboyDefenseUI();
+       // UpdateCowboyResistanceUI();
+       // UpdateCowboyAttackUI();
     }
 
 
@@ -125,9 +129,9 @@ public class ProgressManager : MonoBehaviour
 
     public void UpgradeAttack(int charCode)
     {
-        if (charCode == 1) UpgradeCharacter(characterID.Cowboy, statType.Resistance);
-        else if (charCode == 2) UpgradeCharacter(characterID.Samurai, statType.Resistance);
-        else if (charCode == 3) UpgradeCharacter(characterID.Alpinista, statType.Resistance);
+        if (charCode == 1) UpgradeCharacter(characterID.Cowboy, statType.Damage);
+        else if (charCode == 2) UpgradeCharacter(characterID.Samurai, statType.Damage);
+        else if (charCode == 3) UpgradeCharacter(characterID.Alpinista, statType.Damage);
     }
 
     #endregion
@@ -159,18 +163,19 @@ public class ProgressManager : MonoBehaviour
             if (cowboyDefenseUpgrades >= defenseData[0].maxLevel) return;
 
             cowboyDefenseUpgrades++;
-            //UpdateCowboyStaminaUI();
+            UpdateCowboyDefenseUI();
         }
 
         if (stat == statType.Resistance)
         {
             if (cowboyResistanceUpgrades >= resistanceData[0].maxLevel) return;
 
-            cowboyResistanceUpgrades++;            
-            //UpdateCowboyStaminaUI();
+            cowboyResistanceUpgrades++;
+            UpdateCowboyResistanceUI();
         }
 
-        if (stat == statType.Resistance)
+        //O nome está incorreto uma vez que o ataque melhora vários aspectos
+        if (stat == statType.Damage)
         {
             if (cowboyAttackUpgrades >= attackData[0].maxLevel) return;
 
@@ -178,7 +183,7 @@ public class ProgressManager : MonoBehaviour
             cowboyCooldownUpgrades++;
             cowboyAmmoUpgrades++;
             cowboyReloadUpgrades++;
-            //UpdateCowboyStaminaUI();
+            UpdateCowboyAttackUI();
         }
 
         //if (stat == statType.MovementSpeed) cowboyMovementSpeedUpgrades++;
@@ -221,6 +226,9 @@ public class ProgressManager : MonoBehaviour
 
     }
 
+    #region UI Update
+
+    #region Cowboy Upgrade UI
     private void UpdateCowboyStaminaUI()
     {
         GameController.gameController.uiController.UpdateCowboyStaminaUI(
@@ -230,6 +238,40 @@ public class ProgressManager : MonoBehaviour
                 staminaData[0].rubyChargeUpgradeCost[cowboyStaminaUpgrades],
                 staminaData[0].maxLevel);
     }
+
+    private void UpdateCowboyDefenseUI()
+    {
+        GameController.gameController.uiController.UpdateCowboyDefenseUI(
+                cowboyDefenseUpgrades * cowboyDefenseUpgradeFactor,
+                cowboyDefenseUpgrades,
+                defenseData[0].coinChargeUpgradeCost[cowboyDefenseUpgrades],
+                defenseData[0].rubyChargeUpgradeCost[cowboyDefenseUpgrades],
+                defenseData[0].maxLevel);
+    }
+
+    private void UpdateCowboyResistanceUI()
+    {
+        GameController.gameController.uiController.UpdateCowboyResistanceUI(
+                cowboyResistanceUpgrades * cowboyResistanceUpgradeFactor,
+                cowboyResistanceUpgrades,
+                resistanceData[0].coinChargeUpgradeCost[cowboyResistanceUpgrades],
+                resistanceData[0].rubyChargeUpgradeCost[cowboyResistanceUpgrades],
+                resistanceData[0].maxLevel);
+    }
+
+    private void UpdateCowboyAttackUI()
+    {
+        GameController.gameController.uiController.UpdateCowboyAttackUI(
+                cowboyStaminaUpgrades * cowboyStaminaUpgradeFactor,
+                cowboyStaminaUpgrades,
+                staminaData[0].coinChargeUpgradeCost[cowboyStaminaUpgrades],
+                staminaData[0].rubyChargeUpgradeCost[cowboyStaminaUpgrades],
+                staminaData[0].maxLevel);
+    }
+
+    #endregion
+
+    #endregion
 
 
     //EU DEVERIA TER CRIADO STATUS DIFERENTES PARA CADA PERSONAGEM! SE SOBRAR TEMPO, OTIMIZAR!!!
