@@ -49,6 +49,7 @@ public class ProgressManager : MonoBehaviour
     public int samuraiStaminaUpgrades;
     public float samuraiMovementSpeedUpgradeFactor = 1f;
     public int samuraiMovementSpeedUpgrades;
+    private int samuraiAttackUpgrades;
     public float samuraiDamageUpgradeFactor = 1f;
     public int samuraiDamageUpgrades;
     public float samuraiCooldownUpgradeFactor = 0.2f;
@@ -187,26 +188,56 @@ public class ProgressManager : MonoBehaviour
             UpdateCowboyAttackUI();
         }
 
-        //if (stat == statType.MovementSpeed) cowboyMovementSpeedUpgrades++;
-        //if (stat == statType.Damage) cowboyDamageUpgrades++;
-        //if (stat == statType.Cooldown) cowboyCooldownUpgrades++;
-        //if (stat == statType.Ammo) cowboyAmmoUpgrades++;
-        //if (stat == statType.ReloadTime) cowboyReloadUpgrades++;
-
-        //INSERIR AQUI EVENTUAL ESCALA DE MELHORIAS. EX: Upgrade 1 melhora speed em 1, upgrade 2 melhora em 2...)
-
+        
     }
 
     private void UpgradeSamurai(statType stat)
     {
-        if (stat == statType.Stamina) samuraiStaminaUpgrades++;
-        if (stat == statType.MovementSpeed) samuraiMovementSpeedUpgrades++;
-        if (stat == statType.Damage) samuraiDamageUpgrades++;
-        if (stat == statType.Cooldown) samuraiCooldownUpgrades++;
-        if (stat == statType.Ammo) samuraiAmmoUpgrades++;
-        if (stat == statType.ReloadTime) samuraiReloadUpgrades++;
-        if (stat == statType.Defense) samuraiDefenseUpgrades++;
-        if (stat == statType.Resistance) samuraiResistanceUpgrades++;
+        //if (stat == statType.Stamina) samuraiStaminaUpgrades++;
+        //if (stat == statType.MovementSpeed) samuraiMovementSpeedUpgrades++;
+        //if (stat == statType.Damage) samuraiDamageUpgrades++;
+        //if (stat == statType.Cooldown) samuraiCooldownUpgrades++;
+        //if (stat == statType.Ammo) samuraiAmmoUpgrades++;
+        //if (stat == statType.ReloadTime) samuraiReloadUpgrades++;
+        //if (stat == statType.Defense) samuraiDefenseUpgrades++;
+        //if (stat == statType.Resistance) samuraiResistanceUpgrades++;
+
+        if (stat == statType.Stamina)
+        {
+            if (samuraiStaminaUpgrades >= staminaData[1].maxLevel) return;
+
+            samuraiStaminaUpgrades++;
+            UpdateCowboyStaminaUI();
+        }
+
+        if (stat == statType.Defense)
+        {
+            if (samuraiDefenseUpgrades >= defenseData[1].maxLevel) return;
+
+            samuraiDefenseUpgrades++;
+            UpdateCowboyDefenseUI();
+        }
+
+        if (stat == statType.Resistance)
+        {
+            if (samuraiResistanceUpgrades >= resistanceData[1].maxLevel) return;
+
+            samuraiResistanceUpgrades++;
+            UpdateCowboyResistanceUI();
+        }
+
+        //O nome está incorreto uma vez que o ataque melhora vários aspectos
+        if (stat == statType.Damage)
+        {
+            if (samuraiAttackUpgrades >= attackData[1].maxLevel) return;
+
+            samuraiAttackUpgrades++;
+
+            if (samuraiAttackUpgrades % 2 == 0) samuraiAmmoUpgrades++;
+
+            samuraiReloadUpgrades++;
+            UpdateCowboyAttackUI();
+        }
 
         //INSERIR AQUI EVENTUAL ESCALA DE MELHORIAS. EX: Upgrade 1 melhora speed em 1, upgrade 2 melhora em 2...)
 
