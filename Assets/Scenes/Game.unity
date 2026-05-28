@@ -16421,6 +16421,10 @@ MonoBehaviour:
   - {fileID: 507464575}
   - {fileID: 420849682}
   - {fileID: 412150551}
+  - {fileID: 1335474155}
+  - {fileID: 219699153}
+  - {fileID: 750365966}
+  - {fileID: 801463057}
   samuraiAmmo:
   - {fileID: 612631932}
   - {fileID: 803589392}
@@ -85434,7 +85438,7 @@ MonoBehaviour:
   cowboyCooldownUpgrades: 0
   cowboyAmmoUpgradeFactor: 1
   cowboyAmmoUpgrades: 0
-  cowboyReloadUpgradeFactor: 0.25
+  cowboyReloadUpgradeFactor: -0.25
   cowboyReloadUpgrades: 0
   samuraiStaminaUpgradeFactor: 5
   samuraiStaminaUpgrades: 0
