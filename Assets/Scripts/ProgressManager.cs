@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public class ProgressManager : MonoBehaviour
 {
@@ -18,7 +17,7 @@ public class ProgressManager : MonoBehaviour
     [Header("Stat Upgrades Data")]
     [SerializeField] private ItemData[] staminaData;
     [SerializeField] private ItemData[] defenseData;
-    [SerializeField] private ItemData[] resistenceData;
+    [SerializeField] private ItemData[] resistanceData;
     [SerializeField] private ItemData[] attackData;
     //[SerializeField] private ItemData[] staminaData;
 
@@ -30,6 +29,7 @@ public class ProgressManager : MonoBehaviour
     public int cowboyMaxStaminaUpgrades = 5;
     public float cowboyMovementSpeedUpgradeFactor = 1f;
     public int cowboyMovementSpeedUpgrades;
+    public int cowboyAttackUpgrades;
     public float cowboyDamageUpgradeFactor = 1f;
     public int cowboyDamageUpgrades;
     public float cowboyCooldownUpgradeFactor = 0.2f;
@@ -109,13 +109,34 @@ public class ProgressManager : MonoBehaviour
         else if (charCode == 3) UpgradeCharacter(characterID.Alpinista, statType.Stamina);
     }
 
+    public void UpgradeDefense(int charCode)
+    {
+        if (charCode == 1) UpgradeCharacter(characterID.Cowboy, statType.Defense);
+        else if (charCode == 2) UpgradeCharacter(characterID.Samurai, statType.Defense);
+        else if (charCode == 3) UpgradeCharacter(characterID.Alpinista, statType.Defense);
+    }
+
+    public void UpgradeResistance(int charCode)
+    {
+        if (charCode == 1) UpgradeCharacter(characterID.Cowboy, statType.Resistance);
+        else if (charCode == 2) UpgradeCharacter(characterID.Samurai, statType.Resistance);
+        else if (charCode == 3) UpgradeCharacter(characterID.Alpinista, statType.Resistance);
+    }
+
+    public void UpgradeAttack(int charCode)
+    {
+        if (charCode == 1) UpgradeCharacter(characterID.Cowboy, statType.Resistance);
+        else if (charCode == 2) UpgradeCharacter(characterID.Samurai, statType.Resistance);
+        else if (charCode == 3) UpgradeCharacter(characterID.Alpinista, statType.Resistance);
+    }
+
     #endregion
 
     public void UpgradeCharacter(characterID character, statType stat)
     {
         if (character == characterID.Cowboy)
             UpgradeCowboy(stat);
-        
+
         if (character == characterID.Samurai)
             UpgradeSamurai(stat);
 
@@ -128,19 +149,43 @@ public class ProgressManager : MonoBehaviour
         if (stat == statType.Stamina)
         {
             if (cowboyStaminaUpgrades >= staminaData[0].maxLevel) return;
-            
+
             cowboyStaminaUpgrades++;
             UpdateCowboyStaminaUI();
         }
-        
 
-        if (stat == statType.MovementSpeed) cowboyMovementSpeedUpgrades++;
-        if (stat == statType.Damage) cowboyDamageUpgrades++;
-        if (stat == statType.Cooldown) cowboyCooldownUpgrades++;
-        if (stat == statType.Ammo) cowboyAmmoUpgrades++;
-        if (stat == statType.ReloadTime) cowboyReloadUpgrades++;
-        if (stat == statType.Defense) cowboyDefenseUpgrades++;
-        if (stat == statType.Resistance) cowboyResistanceUpgrades++;
+        if (stat == statType.Defense)
+        {
+            if (cowboyDefenseUpgrades >= defenseData[0].maxLevel) return;
+
+            cowboyDefenseUpgrades++;
+            //UpdateCowboyStaminaUI();
+        }
+
+        if (stat == statType.Resistance)
+        {
+            if (cowboyResistanceUpgrades >= resistanceData[0].maxLevel) return;
+
+            cowboyResistanceUpgrades++;            
+            //UpdateCowboyStaminaUI();
+        }
+
+        if (stat == statType.Resistance)
+        {
+            if (cowboyAttackUpgrades >= attackData[0].maxLevel) return;
+
+            cowboyDamageUpgrades++;
+            cowboyCooldownUpgrades++;
+            cowboyAmmoUpgrades++;
+            cowboyReloadUpgrades++;
+            //UpdateCowboyStaminaUI();
+        }
+
+        //if (stat == statType.MovementSpeed) cowboyMovementSpeedUpgrades++;
+        //if (stat == statType.Damage) cowboyDamageUpgrades++;
+        //if (stat == statType.Cooldown) cowboyCooldownUpgrades++;
+        //if (stat == statType.Ammo) cowboyAmmoUpgrades++;
+        //if (stat == statType.ReloadTime) cowboyReloadUpgrades++;
 
         //INSERIR AQUI EVENTUAL ESCALA DE MELHORIAS. EX: Upgrade 1 melhora speed em 1, upgrade 2 melhora em 2...)
 

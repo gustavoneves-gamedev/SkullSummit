@@ -32,7 +32,9 @@ public class UIController : MonoBehaviour
     private bool isCharSelecting;
 
     [Header("CharacterUpgradeMenu")]
-    [Header("Cowboy")]
+    #region Character Upgrades
+    #region Cowboy Upgrades
+    [Header("Cowboy Stamina")]
     [SerializeField] private TextMeshProUGUI cowboyStaminaIndicator;
     [SerializeField] private TextMeshProUGUI cowboyStaminaLevel;    
     [SerializeField] private Slider cowboyStaminaVisualUpgrade;
@@ -41,6 +43,39 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject cowboyStaminaRubyCost;
     [SerializeField] private TextMeshProUGUI cowboyStaminaUpgradeRubyCost;
     [SerializeField] private GameObject cowboyStaminaMaxLevelImage;
+
+    [Header("Cowboy Defense")]
+    [SerializeField] private TextMeshProUGUI cowboyDefenseIndicator;
+    [SerializeField] private TextMeshProUGUI cowboyDefenseLevel;
+    [SerializeField] private Slider cowboyDefenseVisualUpgrade;
+    [SerializeField] private GameObject cowboyDefenseCost;
+    [SerializeField] private TextMeshProUGUI cowboyDefenseUpgradeCoinCost;
+    [SerializeField] private GameObject cowboyDefenseRubyCost;
+    [SerializeField] private TextMeshProUGUI cowboyDefenseUpgradeRubyCost;
+    [SerializeField] private GameObject cowboyDefenseMaxLevelImage;
+
+    [Header("Cowboy Resistance")]
+    [SerializeField] private TextMeshProUGUI cowboyResistanceIndicator;
+    [SerializeField] private TextMeshProUGUI cowboyResistanceLevel;
+    [SerializeField] private Slider cowboyResistanceVisualUpgrade;
+    [SerializeField] private GameObject cowboyResistanceCost;
+    [SerializeField] private TextMeshProUGUI cowboyResistanceUpgradeCoinCost;
+    [SerializeField] private GameObject cowboyResistanceRubyCost;
+    [SerializeField] private TextMeshProUGUI cowboyResistanceUpgradeRubyCost;
+    [SerializeField] private GameObject cowboyResistanceMaxLevelImage;
+
+    [Header("Cowboy Attack")]
+    [SerializeField] private TextMeshProUGUI cowboyAttackIndicator;
+    [SerializeField] private TextMeshProUGUI cowboyAttackLevel;
+    [SerializeField] private Slider cowboyAttackVisualUpgrade;
+    [SerializeField] private GameObject cowboyAttackCost;
+    [SerializeField] private TextMeshProUGUI cowboyAttackUpgradeCoinCost;
+    [SerializeField] private GameObject cowboyAttackRubyCost;
+    [SerializeField] private TextMeshProUGUI cowboyAttackUpgradeRubyCost;
+    [SerializeField] private GameObject cowboyAttackMaxLevelImage;
+    #endregion
+    #endregion
+
 
     [Header("LevelMenu")]
     [SerializeField] private GameObject levelSelectionMenu;
@@ -487,6 +522,7 @@ public class UIController : MonoBehaviour
 
     #endregion
 
+    #region Cowboy Upgrade UI
     public void UpdateCowboyStaminaUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
@@ -522,6 +558,116 @@ public class UIController : MonoBehaviour
 
         }
     }
+
+    public void UpdateCowboyDefenseUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
+    {
+        cowboyDefenseIndicator.text = "Defense (" + (5 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            cowboyDefenseCost.SetActive(false);
+            cowboyDefenseMaxLevelImage.SetActive(true);
+            cowboyDefenseLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            cowboyDefenseLevel.text = "Lv. " + (level);
+        }
+
+        //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
+        cowboyDefenseVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            cowboyDefenseUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            cowboyDefenseUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            cowboyDefenseRubyCost.SetActive(true);
+            cowboyDefenseUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
+    }
+
+    public void UpdateCowboyResistanceUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
+    {
+        cowboyResistanceIndicator.text = "Resistance (" + (1 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            cowboyResistanceCost.SetActive(false);
+            cowboyResistanceMaxLevelImage.SetActive(true);
+            cowboyResistanceLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            cowboyResistanceLevel.text = "Lv. " + (level);
+        }
+
+        //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
+        cowboyResistanceVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            cowboyResistanceUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            cowboyResistanceUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            cowboyResistanceRubyCost.SetActive(true);
+            cowboyResistanceUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
+    }
+
+    public void UpdateCowboyAttackUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
+    {
+        cowboyAttackIndicator.text = "Attack (" + (5 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            cowboyAttackCost.SetActive(false);
+            cowboyAttackMaxLevelImage.SetActive(true);
+            cowboyAttackLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            cowboyAttackLevel.text = "Lv. " + (level);
+        }
+
+        //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
+        cowboyAttackVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            cowboyAttackUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            cowboyAttackUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            cowboyAttackRubyCost.SetActive(true);
+            cowboyAttackUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
+    }
+
+    #endregion
 
     #endregion
 
