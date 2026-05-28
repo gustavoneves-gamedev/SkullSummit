@@ -41,8 +41,8 @@ public class ProgressManager : MonoBehaviour
     public int cowboyAmmoUpgradeFactor = 1;
     public int cowboyAmmoUpgrades;
     public float cowboyReloadUpgradeFactor = 0.25f;
-    public int cowboyReloadUpgrades;    
-    
+    public int cowboyReloadUpgrades;
+
 
     [Header("Samurai Stat Upgrades")]
     public float samuraiStaminaUpgradeFactor = 5f;
@@ -98,9 +98,9 @@ public class ProgressManager : MonoBehaviour
     private void Initialize()
     {
         UpdateCowboyStaminaUI();
-       // UpdateCowboyDefenseUI();
-       // UpdateCowboyResistanceUI();
-       // UpdateCowboyAttackUI();
+        UpdateCowboyDefenseUI();
+        UpdateCowboyResistanceUI();
+        UpdateCowboyAttackUI();
     }
 
 
@@ -180,8 +180,9 @@ public class ProgressManager : MonoBehaviour
             if (cowboyAttackUpgrades >= attackData[0].maxLevel) return;
 
             cowboyDamageUpgrades++;
-            cowboyCooldownUpgrades++;
-            cowboyAmmoUpgrades++;
+
+            if (cowboyAttackUpgrades % 2 == 0) cowboyAmmoUpgrades++;
+
             cowboyReloadUpgrades++;
             UpdateCowboyAttackUI();
         }
