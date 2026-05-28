@@ -731,35 +731,35 @@ public class UIController : MonoBehaviour
     public void UpdateSamuraiStaminaUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        cowboyStaminaIndicator.text = "Stamina (" + (100 + upgradeBonus) + ")";
+        samuraiStaminaIndicator.text = "Stamina (" + (100 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
-            cowboyStaminaCost.SetActive(false);
-            cowboyStaminaMaxLevelImage.SetActive(true);
-            cowboyStaminaLevel.text = "Lv. MAX";
+            samuraiStaminaCost.SetActive(false);
+            samuraiStaminaMaxLevelImage.SetActive(true);
+            samuraiStaminaLevel.text = "Lv. MAX";
         }
         else
         {
-            cowboyStaminaLevel.text = "Lv. " + (level);
+            samuraiStaminaLevel.text = "Lv. " + (level);
         }
 
         //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
-        cowboyStaminaVisualUpgrade.value = level;
+        samuraiStaminaVisualUpgrade.value = level;
 
         if (coinCost >= 10000)
         {
-            cowboyStaminaUpgradeCoinCost.text = coinCost / 1000 + "k";
+            samuraiStaminaUpgradeCoinCost.text = coinCost / 1000 + "k";
         }
         else
         {
-            cowboyStaminaUpgradeCoinCost.text = coinCost.ToString();
+            samuraiStaminaUpgradeCoinCost.text = coinCost.ToString();
         }
 
         if (rubyCost > 0)
         {
-            cowboyStaminaRubyCost.SetActive(true);
-            cowboyStaminaUpgradeRubyCost.text = rubyCost.ToString();
+            samuraiStaminaRubyCost.SetActive(true);
+            samuraiStaminaUpgradeRubyCost.text = rubyCost.ToString();
 
         }
     }
@@ -767,35 +767,35 @@ public class UIController : MonoBehaviour
     public void UpdateSamuraiDefenseUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        cowboyDefenseIndicator.text = "Defense (" + (5 + upgradeBonus) + ")";
+        samuraiDefenseIndicator.text = "Defense (" + (5 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
-            cowboyDefenseCost.SetActive(false);
-            cowboyDefenseMaxLevelImage.SetActive(true);
-            cowboyDefenseLevel.text = "Lv. MAX";
+            samuraiDefenseCost.SetActive(false);
+            samuraiDefenseMaxLevelImage.SetActive(true);
+            samuraiDefenseLevel.text = "Lv. MAX";
         }
         else
         {
-            cowboyDefenseLevel.text = "Lv. " + (level);
+            samuraiDefenseLevel.text = "Lv. " + (level);
         }
 
         //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
-        cowboyDefenseVisualUpgrade.value = level;
+        samuraiDefenseVisualUpgrade.value = level;
 
         if (coinCost >= 10000)
         {
-            cowboyDefenseUpgradeCoinCost.text = coinCost / 1000 + "k";
+            samuraiDefenseUpgradeCoinCost.text = coinCost / 1000 + "k";
         }
         else
         {
-            cowboyDefenseUpgradeCoinCost.text = coinCost.ToString();
+            samuraiDefenseUpgradeCoinCost.text = coinCost.ToString();
         }
 
         if (rubyCost > 0)
         {
-            cowboyDefenseRubyCost.SetActive(true);
-            cowboyDefenseUpgradeRubyCost.text = rubyCost.ToString();
+            samuraiDefenseRubyCost.SetActive(true);
+            samuraiDefenseUpgradeRubyCost.text = rubyCost.ToString();
 
         }
     }
@@ -803,35 +803,35 @@ public class UIController : MonoBehaviour
     public void UpdateSamuraiResistanceUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        cowboyResistanceIndicator.text = "Resistance (" + (1 + upgradeBonus) + ")";
+        samuraiResistanceIndicator.text = "Resistance (" + (1 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
-            cowboyResistanceCost.SetActive(false);
-            cowboyResistanceMaxLevelImage.SetActive(true);
-            cowboyResistanceLevel.text = "Lv. MAX";
+            samuraiResistanceCost.SetActive(false);
+            samuraiResistanceMaxLevelImage.SetActive(true);
+            samuraiResistanceLevel.text = "Lv. MAX";
         }
         else
         {
-            cowboyResistanceLevel.text = "Lv. " + (level);
+            samuraiResistanceLevel.text = "Lv. " + (level);
         }
 
         //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
-        cowboyResistanceVisualUpgrade.value = level;
+        samuraiResistanceVisualUpgrade.value = level;
 
         if (coinCost >= 10000)
         {
-            cowboyResistanceUpgradeCoinCost.text = coinCost / 1000 + "k";
+            samuraiResistanceUpgradeCoinCost.text = coinCost / 1000 + "k";
         }
         else
         {
-            cowboyResistanceUpgradeCoinCost.text = coinCost.ToString();
+            samuraiResistanceUpgradeCoinCost.text = coinCost.ToString();
         }
 
         if (rubyCost > 0)
         {
-            cowboyResistanceRubyCost.SetActive(true);
-            cowboyResistanceUpgradeRubyCost.text = rubyCost.ToString();
+            samuraiResistanceRubyCost.SetActive(true);
+            samuraiResistanceUpgradeRubyCost.text = rubyCost.ToString();
 
         }
     }
@@ -839,35 +839,35 @@ public class UIController : MonoBehaviour
     public void UpdateSamuraiAttackUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        cowboyAttackIndicator.text = "Attack (" + (5 + upgradeBonus) + ")";
+        samuraiAttackIndicator.text = "Attack (" + (5 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
-            cowboyAttackCost.SetActive(false);
-            cowboyAttackMaxLevelImage.SetActive(true);
-            cowboyAttackLevel.text = "Lv. MAX";
+            samuraiAttackCost.SetActive(false);
+            samuraiAttackMaxLevelImage.SetActive(true);
+            samuraiAttackLevel.text = "Lv. MAX";
         }
         else
         {
-            cowboyAttackLevel.text = "Lv. " + (level);
+            samuraiAttackLevel.text = "Lv. " + (level);
         }
 
         //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
-        cowboyAttackVisualUpgrade.value = level;
+        samuraiAttackVisualUpgrade.value = level;
 
         if (coinCost >= 10000)
         {
-            cowboyAttackUpgradeCoinCost.text = coinCost / 1000 + "k";
+            samuraiAttackUpgradeCoinCost.text = coinCost / 1000 + "k";
         }
         else
         {
-            cowboyAttackUpgradeCoinCost.text = coinCost.ToString();
+            samuraiAttackUpgradeCoinCost.text = coinCost.ToString();
         }
 
         if (rubyCost > 0)
         {
-            cowboyAttackRubyCost.SetActive(true);
-            cowboyAttackUpgradeRubyCost.text = rubyCost.ToString();
+            samuraiAttackRubyCost.SetActive(true);
+            samuraiAttackUpgradeRubyCost.text = rubyCost.ToString();
 
         }
     }
