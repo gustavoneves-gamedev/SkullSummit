@@ -45,7 +45,7 @@ public class ProgressManager : MonoBehaviour
 
 
     [Header("Samurai Stat Upgrades")]
-    public float samuraiStaminaUpgradeFactor = 5f;
+    public int samuraiStaminaUpgradeFactor = 5;
     public int samuraiStaminaUpgrades;
     public float samuraiMovementSpeedUpgradeFactor = 1f;
     public int samuraiMovementSpeedUpgrades;
@@ -58,13 +58,13 @@ public class ProgressManager : MonoBehaviour
     public int samuraiAmmoUpgrades;
     public float samuraiReloadUpgradeFactor = 0.25f;
     public int samuraiReloadUpgrades;
-    public float samuraiDefenseUpgradeFactor = 5f;
+    public int samuraiDefenseUpgradeFactor = 5;
     public int samuraiDefenseUpgrades;
-    public float samuraiResistanceUpgradeFactor = 2f;
+    public int samuraiResistanceUpgradeFactor = 2;
     public int samuraiResistanceUpgrades;
 
     [Header("Alpinista Stat Upgrades")]
-    public float alpinistaStaminaUpgradeFactor = 5f;
+    public int alpinistaStaminaUpgradeFactor = 5;
     public int alpinistaStaminaUpgrades;
     public float alpinistaMovementSpeedUpgradeFactor = 1f;
     public int alpinistaMovementSpeedUpgrades;
@@ -76,9 +76,9 @@ public class ProgressManager : MonoBehaviour
     public int alpinistaAmmoUpgrades;
     public float alpinistaReloadUpgradeFactor = 0.25f;
     public int alpinistaReloadUpgrades;
-    public float alpinistaDefenseUpgradeFactor = 5f;
+    public int alpinistaDefenseUpgradeFactor = 5;
     public int alpinistaDefenseUpgrades;
-    public float alpinistaResistanceUpgradeFactor = 2f;
+    public int alpinistaResistanceUpgradeFactor = 2;
     public int alpinistaResistanceUpgrades;
 
 
@@ -207,7 +207,7 @@ public class ProgressManager : MonoBehaviour
             if (samuraiStaminaUpgrades >= staminaData[1].maxLevel) return;
 
             samuraiStaminaUpgrades++;
-            UpdateCowboyStaminaUI();
+            UpdateSamuraiStaminaUI();
         }
 
         if (stat == statType.Defense)
@@ -215,7 +215,7 @@ public class ProgressManager : MonoBehaviour
             if (samuraiDefenseUpgrades >= defenseData[1].maxLevel) return;
 
             samuraiDefenseUpgrades++;
-            UpdateCowboyDefenseUI();
+            UpdateSamuraiDefenseUI();
         }
 
         if (stat == statType.Resistance)
@@ -223,7 +223,7 @@ public class ProgressManager : MonoBehaviour
             if (samuraiResistanceUpgrades >= resistanceData[1].maxLevel) return;
 
             samuraiResistanceUpgrades++;
-            UpdateCowboyResistanceUI();
+            UpdateSamuraiResistanceUI();
         }
 
         //O nome está incorreto uma vez que o ataque melhora vários aspectos
@@ -233,10 +233,10 @@ public class ProgressManager : MonoBehaviour
 
             samuraiAttackUpgrades++;
 
-            if (samuraiAttackUpgrades % 2 == 0) samuraiAmmoUpgrades++;
+            if (samuraiAttackUpgrades % 2 == 0) samuraiAmmoUpgrades++;            
 
             samuraiReloadUpgrades++;
-            UpdateCowboyAttackUI();
+            UpdateSamuraiAttackUI();
         }
 
         //INSERIR AQUI EVENTUAL ESCALA DE MELHORIAS. EX: Upgrade 1 melhora speed em 1, upgrade 2 melhora em 2...)
@@ -292,6 +292,49 @@ public class ProgressManager : MonoBehaviour
     }
 
     private void UpdateCowboyAttackUI()
+    {
+        GameController.gameController.uiController.UpdateCowboyAttackUI(
+                cowboyAmmoUpgrades + cowboyReloadUpgrades,
+                cowboyAttackUpgrades,
+                attackData[0].coinChargeUpgradeCost[cowboyAttackUpgrades],
+                attackData[0].rubyChargeUpgradeCost[cowboyAttackUpgrades],
+                attackData[0].maxLevel);
+    }
+
+    #endregion
+
+    #region Samurai Upgrade UI
+    private void UpdateSamuraiStaminaUI()
+    {
+        GameController.gameController.uiController.UpdateSamuraiStaminaUI(
+                samuraiStaminaUpgrades * samuraiStaminaUpgradeFactor,
+                samuraiStaminaUpgrades,
+                staminaData[1].coinChargeUpgradeCost[samuraiStaminaUpgrades],
+                staminaData[1].rubyChargeUpgradeCost[samuraiStaminaUpgrades],
+                staminaData[1].maxLevel);
+    }
+
+    private void UpdateSamuraiDefenseUI()
+    {
+        GameController.gameController.uiController.UpdateSamuraiDefenseUI(
+                samuraiDefenseUpgrades * samuraiDefenseUpgradeFactor,
+                samuraiDefenseUpgrades,
+                defenseData[0].coinChargeUpgradeCost[samuraiDefenseUpgrades],
+                defenseData[0].rubyChargeUpgradeCost[samuraiDefenseUpgrades],
+                defenseData[0].maxLevel);
+    }
+
+    private void UpdateSamuraiResistanceUI()
+    {
+        GameController.gameController.uiController.UpdateCowboyResistanceUI(
+                cowboyResistanceUpgrades * cowboyResistanceUpgradeFactor,
+                cowboyResistanceUpgrades,
+                resistanceData[0].coinChargeUpgradeCost[cowboyResistanceUpgrades],
+                resistanceData[0].rubyChargeUpgradeCost[cowboyResistanceUpgrades],
+                resistanceData[0].maxLevel);
+    }
+
+    private void UpdateSamuraiAttackUI()
     {
         GameController.gameController.uiController.UpdateCowboyAttackUI(
                 cowboyAmmoUpgrades + cowboyReloadUpgrades,
