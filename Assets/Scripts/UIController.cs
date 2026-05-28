@@ -520,6 +520,21 @@ public class UIController : MonoBehaviour
         ProgressManager.progressManager.UpgradeStamina(charCode);
     }
 
+    public void UpgradeCharacterDefense(int charCode)
+    {
+        ProgressManager.progressManager.UpgradeDefense(charCode);
+    }
+
+    public void UpgradeCharacterResistance(int charCode)
+    {
+        ProgressManager.progressManager.UpgradeResistance(charCode);
+    }
+
+    public void UpgradeCharacterAttack(int charCode)
+    {
+        ProgressManager.progressManager.UpgradeAttack(charCode);
+    }
+
     #endregion
 
     #region Cowboy Upgrade UI
