@@ -74,6 +74,49 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI cowboyAttackUpgradeRubyCost;
     [SerializeField] private GameObject cowboyAttackMaxLevelImage;
     #endregion
+
+    #region Samurai Upgrades
+    [Header("Samurai Stamina")]
+    [SerializeField] private TextMeshProUGUI samuraiStaminaIndicator;
+    [SerializeField] private TextMeshProUGUI samuraiStaminaLevel;
+    [SerializeField] private Slider samuraiStaminaVisualUpgrade;
+    [SerializeField] private GameObject samuraiStaminaCost;
+    [SerializeField] private TextMeshProUGUI samuraiStaminaUpgradeCoinCost;
+    [SerializeField] private GameObject samuraiStaminaRubyCost;
+    [SerializeField] private TextMeshProUGUI samuraiStaminaUpgradeRubyCost;
+    [SerializeField] private GameObject samuraiStaminaMaxLevelImage;
+
+    [Header("Cowboy Defense")]
+    [SerializeField] private TextMeshProUGUI samuraiDefenseIndicator;
+    [SerializeField] private TextMeshProUGUI samuraiDefenseLevel;
+    [SerializeField] private Slider samuraiDefenseVisualUpgrade;
+    [SerializeField] private GameObject samuraiDefenseCost;
+    [SerializeField] private TextMeshProUGUI samuraiDefenseUpgradeCoinCost;
+    [SerializeField] private GameObject samuraiDefenseRubyCost;
+    [SerializeField] private TextMeshProUGUI samuraiDefenseUpgradeRubyCost;
+    [SerializeField] private GameObject samuraiDefenseMaxLevelImage;
+
+    [Header("Cowboy Resistance")]
+    [SerializeField] private TextMeshProUGUI samuraiResistanceIndicator;
+    [SerializeField] private TextMeshProUGUI samuraiResistanceLevel;
+    [SerializeField] private Slider samuraiResistanceVisualUpgrade;
+    [SerializeField] private GameObject samuraiResistanceCost;
+    [SerializeField] private TextMeshProUGUI samuraiResistanceUpgradeCoinCost;
+    [SerializeField] private GameObject samuraiResistanceRubyCost;
+    [SerializeField] private TextMeshProUGUI samuraiResistanceUpgradeRubyCost;
+    [SerializeField] private GameObject samuraiResistanceMaxLevelImage;
+
+    [Header("Cowboy Attack")]
+    [SerializeField] private TextMeshProUGUI samuraiAttackIndicator;
+    [SerializeField] private TextMeshProUGUI samuraiAttackLevel;
+    [SerializeField] private Slider samuraiAttackVisualUpgrade;
+    [SerializeField] private GameObject samuraiAttackCost;
+    [SerializeField] private TextMeshProUGUI samuraiAttackUpgradeCoinCost;
+    [SerializeField] private GameObject samuraiAttackRubyCost;
+    [SerializeField] private TextMeshProUGUI samuraiAttackUpgradeRubyCost;
+    [SerializeField] private GameObject samuraiAttackMaxLevelImage;
+    #endregion
+
     #endregion
 
 
@@ -647,6 +690,153 @@ public class UIController : MonoBehaviour
     }
 
     public void UpdateCowboyAttackUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
+    {
+        cowboyAttackIndicator.text = "Attack (" + (5 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            cowboyAttackCost.SetActive(false);
+            cowboyAttackMaxLevelImage.SetActive(true);
+            cowboyAttackLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            cowboyAttackLevel.text = "Lv. " + (level);
+        }
+
+        //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
+        cowboyAttackVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            cowboyAttackUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            cowboyAttackUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            cowboyAttackRubyCost.SetActive(true);
+            cowboyAttackUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
+    }
+
+    #endregion
+
+    #region Samurai Upgrade UI
+    public void UpdateSamuraiStaminaUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
+    {
+        cowboyStaminaIndicator.text = "Stamina (" + (100 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            cowboyStaminaCost.SetActive(false);
+            cowboyStaminaMaxLevelImage.SetActive(true);
+            cowboyStaminaLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            cowboyStaminaLevel.text = "Lv. " + (level);
+        }
+
+        //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
+        cowboyStaminaVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            cowboyStaminaUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            cowboyStaminaUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            cowboyStaminaRubyCost.SetActive(true);
+            cowboyStaminaUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
+    }
+
+    public void UpdateSamuraiDefenseUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
+    {
+        cowboyDefenseIndicator.text = "Defense (" + (5 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            cowboyDefenseCost.SetActive(false);
+            cowboyDefenseMaxLevelImage.SetActive(true);
+            cowboyDefenseLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            cowboyDefenseLevel.text = "Lv. " + (level);
+        }
+
+        //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
+        cowboyDefenseVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            cowboyDefenseUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            cowboyDefenseUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            cowboyDefenseRubyCost.SetActive(true);
+            cowboyDefenseUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
+    }
+
+    public void UpdateSamuraiResistanceUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
+    {
+        cowboyResistanceIndicator.text = "Resistance (" + (1 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            cowboyResistanceCost.SetActive(false);
+            cowboyResistanceMaxLevelImage.SetActive(true);
+            cowboyResistanceLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            cowboyResistanceLevel.text = "Lv. " + (level);
+        }
+
+        //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
+        cowboyResistanceVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            cowboyResistanceUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            cowboyResistanceUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            cowboyResistanceRubyCost.SetActive(true);
+            cowboyResistanceUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
+    }
+
+    public void UpdateSamuraiAttackUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
         cowboyAttackIndicator.text = "Attack (" + (5 + upgradeBonus) + ")";
