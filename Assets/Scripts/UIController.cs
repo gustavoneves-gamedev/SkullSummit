@@ -117,6 +117,48 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject samuraiAttackMaxLevelImage;
     #endregion
 
+    #region Dullahan Upgrades
+    [Header("Dullahan Stamina")]
+    [SerializeField] private TextMeshProUGUI dullahanStaminaIndicator;
+    [SerializeField] private TextMeshProUGUI dullahanStaminaLevel;
+    [SerializeField] private Slider dullahanStaminaVisualUpgrade;
+    [SerializeField] private GameObject dullahanStaminaCost;
+    [SerializeField] private TextMeshProUGUI dullahanStaminaUpgradeCoinCost;
+    [SerializeField] private GameObject dullahanStaminaRubyCost;
+    [SerializeField] private TextMeshProUGUI dullahanStaminaUpgradeRubyCost;
+    [SerializeField] private GameObject dullahanStaminaMaxLevelImage;
+
+    [Header("Dullahan Defense")]
+    [SerializeField] private TextMeshProUGUI dullahanDefenseIndicator;
+    [SerializeField] private TextMeshProUGUI dullahanDefenseLevel;
+    [SerializeField] private Slider dullahanDefenseVisualUpgrade;
+    [SerializeField] private GameObject dullahanDefenseCost;
+    [SerializeField] private TextMeshProUGUI dullahanDefenseUpgradeCoinCost;
+    [SerializeField] private GameObject dullahanDefenseRubyCost;
+    [SerializeField] private TextMeshProUGUI dullahanDefenseUpgradeRubyCost;
+    [SerializeField] private GameObject dullahanDefenseMaxLevelImage;
+
+    [Header("Dullahan Resistance")]
+    [SerializeField] private TextMeshProUGUI dullahanResistanceIndicator;
+    [SerializeField] private TextMeshProUGUI dullahanResistanceLevel;
+    [SerializeField] private Slider dullahanResistanceVisualUpgrade;
+    [SerializeField] private GameObject dullahanResistanceCost;
+    [SerializeField] private TextMeshProUGUI dullahanResistanceUpgradeCoinCost;
+    [SerializeField] private GameObject dullahanResistanceRubyCost;
+    [SerializeField] private TextMeshProUGUI dullahanResistanceUpgradeRubyCost;
+    [SerializeField] private GameObject dullahanResistanceMaxLevelImage;
+
+    [Header("Dullahan Attack")]
+    [SerializeField] private TextMeshProUGUI dullahanAttackIndicator;
+    [SerializeField] private TextMeshProUGUI dullahanAttackLevel;
+    [SerializeField] private Slider dullahanAttackVisualUpgrade;
+    [SerializeField] private GameObject dullahanAttackCost;
+    [SerializeField] private TextMeshProUGUI dullahanAttackUpgradeCoinCost;
+    [SerializeField] private GameObject dullahanAttackRubyCost;
+    [SerializeField] private TextMeshProUGUI dullahanAttackUpgradeRubyCost;
+    [SerializeField] private GameObject dullahanAttackMaxLevelImage;
+    #endregion
+
     #endregion
 
 
@@ -725,7 +767,7 @@ public class UIController : MonoBehaviour
     public void UpdateSamuraiStaminaUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        samuraiStaminaIndicator.text = "Stamina (" + (100 + upgradeBonus) + ")";
+        samuraiStaminaIndicator.text = "Stamina (" + (120 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {

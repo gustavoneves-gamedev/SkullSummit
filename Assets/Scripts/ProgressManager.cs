@@ -47,6 +47,10 @@ public class ProgressManager : MonoBehaviour
     [Header("Samurai Stat Upgrades")]
     public int samuraiStaminaUpgradeFactor = 5;
     public int samuraiStaminaUpgrades;
+    public int samuraiDefenseUpgradeFactor = 5;
+    public int samuraiDefenseUpgrades;
+    public int samuraiResistanceUpgradeFactor = 2;
+    public int samuraiResistanceUpgrades;
     public float samuraiMovementSpeedUpgradeFactor = 1f;
     public int samuraiMovementSpeedUpgrades;
     private int samuraiAttackUpgrades;
@@ -58,29 +62,25 @@ public class ProgressManager : MonoBehaviour
     public int samuraiAmmoUpgrades;
     public float samuraiReloadUpgradeFactor = 0.25f;
     public int samuraiReloadUpgrades;
-    public int samuraiDefenseUpgradeFactor = 5;
-    public int samuraiDefenseUpgrades;
-    public int samuraiResistanceUpgradeFactor = 2;
-    public int samuraiResistanceUpgrades;
+    
 
-    [Header("Alpinista Stat Upgrades")]
-    public int alpinistaStaminaUpgradeFactor = 5;
-    public int alpinistaStaminaUpgrades;
-    public float alpinistaMovementSpeedUpgradeFactor = 1f;
-    public int alpinistaMovementSpeedUpgrades;
-    public float alpinistaDamageUpgradeFactor = 1f;
-    public int alpinistaDamageUpgrades;
-    public float alpinistaCooldownUpgradeFactor = 0.2f;
-    public int alpinistaCooldownUpgrades;
-    public int alpinistaAmmoUpgradeFactor = 1;
-    public int alpinistaAmmoUpgrades;
-    public float alpinistaReloadUpgradeFactor = 0.25f;
-    public int alpinistaReloadUpgrades;
-    public int alpinistaDefenseUpgradeFactor = 5;
-    public int alpinistaDefenseUpgrades;
-    public int alpinistaResistanceUpgradeFactor = 2;
-    public int alpinistaResistanceUpgrades;
-
+    [Header("Dullahan Stat Upgrades")]
+    public int dullahanStaminaUpgradeFactor = 5;
+    public int dullahanStaminaUpgrades;
+    public int dullahanDefenseUpgradeFactor = 5;
+    public int dullahanDefenseUpgrades;
+    public int dullahanResistanceUpgradeFactor = 2;
+    public int dullahanResistanceUpgrades;
+    public float dullahanMovementSpeedUpgradeFactor = 1f;
+    public int dullahanMovementSpeedUpgrades;
+    public float dullahanDamageUpgradeFactor = 1f;
+    public int dullahanDamageUpgrades;
+    public float dullahanCooldownUpgradeFactor = 0.2f;
+    public int dullahanCooldownUpgrades;
+    public int dullahanAmmoUpgradeFactor = 1;
+    public int dullahanAmmoUpgrades;
+    public float dullahanReloadUpgradeFactor = 0.25f;
+    public int dullahanReloadUpgrades;
 
 
     private void Awake()
@@ -245,14 +245,14 @@ public class ProgressManager : MonoBehaviour
 
     private void UpgradeAlpinista(statType stat)
     {
-        if (stat == statType.Stamina) alpinistaStaminaUpgrades++;
-        if (stat == statType.MovementSpeed) alpinistaMovementSpeedUpgrades++;
-        if (stat == statType.Damage) alpinistaDamageUpgrades++;
-        if (stat == statType.Cooldown) alpinistaCooldownUpgrades++;
-        if (stat == statType.Ammo) alpinistaAmmoUpgrades++;
-        if (stat == statType.ReloadTime) alpinistaReloadUpgrades++;
-        if (stat == statType.Defense) alpinistaDefenseUpgrades++;
-        if (stat == statType.Resistance) alpinistaResistanceUpgrades++;
+        if (stat == statType.Stamina) dullahanStaminaUpgrades++;
+        if (stat == statType.MovementSpeed) dullahanMovementSpeedUpgrades++;
+        if (stat == statType.Damage) dullahanDamageUpgrades++;
+        if (stat == statType.Cooldown) dullahanCooldownUpgrades++;
+        if (stat == statType.Ammo) dullahanAmmoUpgrades++;
+        if (stat == statType.ReloadTime) dullahanReloadUpgrades++;
+        if (stat == statType.Defense) dullahanDefenseUpgrades++;
+        if (stat == statType.Resistance) dullahanResistanceUpgrades++;
 
         //INSERIR AQUI EVENTUAL ESCALA DE MELHORIAS. EX: Upgrade 1 melhora speed em 1, upgrade 2 melhora em 2...)
 
@@ -380,14 +380,14 @@ public class ProgressManager : MonoBehaviour
 
         if (character == characterID.Alpinista)
         {
-            staminaIncrement = alpinistaStaminaUpgrades * alpinistaStaminaUpgradeFactor;
-            movementSpeedIncrement = alpinistaMovementSpeedUpgrades * alpinistaMovementSpeedUpgradeFactor;
-            damageIncrement = alpinistaDamageUpgrades * alpinistaDamageUpgradeFactor;
-            cooldownIncrement = alpinistaCooldownUpgrades * alpinistaCooldownUpgradeFactor;
-            ammoIncrement = alpinistaAmmoUpgrades * alpinistaAmmoUpgradeFactor;
-            reloadIncrement = alpinistaReloadUpgrades * alpinistaReloadUpgradeFactor;
-            defenseIncrement = alpinistaDefenseUpgrades * alpinistaDefenseUpgradeFactor;
-            resistanceIncrement = alpinistaResistanceUpgrades * alpinistaResistanceUpgradeFactor;
+            staminaIncrement = dullahanStaminaUpgrades * dullahanStaminaUpgradeFactor;
+            movementSpeedIncrement = dullahanMovementSpeedUpgrades * dullahanMovementSpeedUpgradeFactor;
+            damageIncrement = dullahanDamageUpgrades * dullahanDamageUpgradeFactor;
+            cooldownIncrement = dullahanCooldownUpgrades * dullahanCooldownUpgradeFactor;
+            ammoIncrement = dullahanAmmoUpgrades * dullahanAmmoUpgradeFactor;
+            reloadIncrement = dullahanReloadUpgrades * dullahanReloadUpgradeFactor;
+            defenseIncrement = dullahanDefenseUpgrades * dullahanDefenseUpgradeFactor;
+            resistanceIncrement = dullahanResistanceUpgrades * dullahanResistanceUpgradeFactor;
         }
     }
 
