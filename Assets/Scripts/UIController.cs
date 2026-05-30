@@ -471,40 +471,6 @@ public class UIController : MonoBehaviour
         mainMenu.SetActive(true);
     }
 
-    public void NextLevel()
-    {
-
-        if (isLevelSelecting && levelCode + 1 < levelMenuArray.Length)
-        {
-            levelMenuArray[levelCode + 1].SetActive(true);
-            levelMenuArray[levelCode].SetActive(false);
-            levelCode++;
-        }
-        else if (isCharSelecting && charCode + 1 < characterMenuArray.Length)
-        {
-            characterMenuArray[charCode + 1].SetActive(true);
-            characterMenuArray[charCode].SetActive(false);
-            charCode++;
-        }
-    }
-
-    public void PreviousLevel()
-    {
-
-        if (isLevelSelecting && levelCode - 1 >= 0)
-        {
-            levelMenuArray[levelCode - 1].SetActive(true);
-            levelMenuArray[levelCode].SetActive(false);
-            levelCode--;
-        }
-        else if (isCharSelecting && charCode - 1 >= 0)
-        {
-            characterMenuArray[charCode - 1].SetActive(true);
-            characterMenuArray[charCode].SetActive(false);
-            charCode--;
-        }
-    }
-
     #endregion
 
     #region LeaderBoard
@@ -530,13 +496,39 @@ public class UIController : MonoBehaviour
     public void CharacterSelection()
     {
         characterSelectionMenu.SetActive(true);
+        
+        characterMenuArray[charCode].SetActive(true);
+
         isCharSelecting = true;
+    }
+
+    public void NextCharacter()
+    {
+
+        if (isCharSelecting && charCode + 1 < characterMenuArray.Length)
+        {
+            characterMenuArray[charCode + 1].SetActive(true);
+            characterMenuArray[charCode].SetActive(false);
+            charCode++;
+        }
+    }
+
+    public void PreviousCharacter()
+    {
+
+        if (isCharSelecting && charCode - 1 >= 0)
+        {
+            characterMenuArray[charCode - 1].SetActive(true);
+            characterMenuArray[charCode].SetActive(false);
+            charCode--;
+        }
     }
 
     public void SelectCowboy()
     {
         GameController.gameController.playerRoot.selectedCharacter = characterID.Cowboy;
         GameController.gameController.playerRoot.Initialize(characterID.Cowboy);
+        charCode = 0;
         BackToMainMenu();
     }
 
@@ -544,6 +536,7 @@ public class UIController : MonoBehaviour
     {
         GameController.gameController.playerRoot.selectedCharacter = characterID.Samurai;
         GameController.gameController.playerRoot.Initialize(characterID.Samurai);
+        charCode = 1;
         BackToMainMenu();
     }
 
@@ -551,6 +544,7 @@ public class UIController : MonoBehaviour
     {
         GameController.gameController.playerRoot.selectedCharacter = characterID.Alpinista;
         GameController.gameController.playerRoot.Initialize(characterID.Alpinista);
+        charCode = 2;
         BackToMainMenu();
     }
     #endregion
@@ -884,6 +878,40 @@ public class UIController : MonoBehaviour
     {
         levelSelectionMenu.SetActive(true);
         isLevelSelecting = true;
+    }
+
+    public void NextLevel()
+    {
+
+        if (isLevelSelecting && levelCode + 1 < levelMenuArray.Length)
+        {
+            levelMenuArray[levelCode + 1].SetActive(true);
+            levelMenuArray[levelCode].SetActive(false);
+            levelCode++;
+        }
+        else if (isCharSelecting && charCode + 1 < characterMenuArray.Length)
+        {
+            characterMenuArray[charCode + 1].SetActive(true);
+            characterMenuArray[charCode].SetActive(false);
+            charCode++;
+        }
+    }
+
+    public void PreviousLevel()
+    {
+
+        if (isLevelSelecting && levelCode - 1 >= 0)
+        {
+            levelMenuArray[levelCode - 1].SetActive(true);
+            levelMenuArray[levelCode].SetActive(false);
+            levelCode--;
+        }
+        else if (isCharSelecting && charCode - 1 >= 0)
+        {
+            characterMenuArray[charCode - 1].SetActive(true);
+            characterMenuArray[charCode].SetActive(false);
+            charCode--;
+        }
     }
 
     public void SelectCowboyLevel()
