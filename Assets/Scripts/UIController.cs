@@ -910,6 +910,153 @@ public class UIController : MonoBehaviour
 
     #endregion
 
+    #region Dullahan Upgrade UI
+    public void UpdateDullahanStaminaUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
+    {
+        dullahanStaminaIndicator.text = "Stamina (" + (80 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            dullahanStaminaCost.SetActive(false);
+            dullahanStaminaMaxLevelImage.SetActive(true);
+            dullahanStaminaLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            dullahanStaminaLevel.text = "Lv. " + (level);
+        }
+
+        //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
+        dullahanStaminaVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            dullahanStaminaUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            dullahanStaminaUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            dullahanStaminaRubyCost.SetActive(true);
+            dullahanStaminaUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
+    }
+
+    public void UpdateDullahanDefenseUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
+    {
+        dullahanDefenseIndicator.text = "Defense (" + (5 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            dullahanDefenseCost.SetActive(false);
+            dullahanDefenseMaxLevelImage.SetActive(true);
+            dullahanDefenseLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            dullahanDefenseLevel.text = "Lv. " + (level);
+        }
+
+        //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
+        dullahanDefenseVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            dullahanDefenseUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            dullahanDefenseUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            dullahanDefenseRubyCost.SetActive(true);
+            dullahanDefenseUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
+    }
+
+    public void UpdateDullahanResistanceUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
+    {
+        dullahanResistanceIndicator.text = "Resistance (" + (1 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            dullahanResistanceCost.SetActive(false);
+            dullahanResistanceMaxLevelImage.SetActive(true);
+            dullahanResistanceLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            dullahanResistanceLevel.text = "Lv. " + (level);
+        }
+
+        //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
+        dullahanResistanceVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            dullahanResistanceUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            dullahanResistanceUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            dullahanResistanceRubyCost.SetActive(true);
+            dullahanResistanceUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
+    }
+
+    public void UpdateDullahanAttackUI(int upgradeBonus = 0, int level = 0,
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
+    {
+        dullahanAttackIndicator.text = "Attack (" + (5 + upgradeBonus) + ")";
+
+        if (level >= maxLevel)
+        {
+            dullahanAttackCost.SetActive(false);
+            dullahanAttackMaxLevelImage.SetActive(true);
+            dullahanAttackLevel.text = "Lv. MAX";
+        }
+        else
+        {
+            dullahanAttackLevel.text = "Lv. " + (level);
+        }
+
+        //cowboyStaminaUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
+        dullahanAttackVisualUpgrade.value = level;
+
+        if (coinCost >= 10000)
+        {
+            dullahanAttackUpgradeCoinCost.text = coinCost / 1000 + "k";
+        }
+        else
+        {
+            dullahanAttackUpgradeCoinCost.text = coinCost.ToString();
+        }
+
+        if (rubyCost > 0)
+        {
+            dullahanAttackRubyCost.SetActive(true);
+            dullahanAttackUpgradeRubyCost.text = rubyCost.ToString();
+
+        }
+    }
+
+    #endregion
+
     #endregion
 
     #endregion

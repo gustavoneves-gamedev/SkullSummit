@@ -73,6 +73,7 @@ public class ProgressManager : MonoBehaviour
     public int dullahanResistanceUpgrades;
     public float dullahanMovementSpeedUpgradeFactor = 1f;
     public int dullahanMovementSpeedUpgrades;
+    private int dullahanAttackUpgrades;
     public float dullahanDamageUpgradeFactor = 1f;
     public int dullahanDamageUpgrades;
     public float dullahanCooldownUpgradeFactor = 0.2f;
@@ -193,15 +194,7 @@ public class ProgressManager : MonoBehaviour
 
     private void UpgradeSamurai(statType stat)
     {
-        //if (stat == statType.Stamina) samuraiStaminaUpgrades++;
-        //if (stat == statType.MovementSpeed) samuraiMovementSpeedUpgrades++;
-        //if (stat == statType.Damage) samuraiDamageUpgrades++;
-        //if (stat == statType.Cooldown) samuraiCooldownUpgrades++;
-        //if (stat == statType.Ammo) samuraiAmmoUpgrades++;
-        //if (stat == statType.ReloadTime) samuraiReloadUpgrades++;
-        //if (stat == statType.Defense) samuraiDefenseUpgrades++;
-        //if (stat == statType.Resistance) samuraiResistanceUpgrades++;
-
+        
         if (stat == statType.Stamina)
         {
             if (samuraiStaminaUpgrades >= staminaData[1].maxLevel) return;
@@ -245,14 +238,51 @@ public class ProgressManager : MonoBehaviour
 
     private void UpgradeAlpinista(statType stat)
     {
-        if (stat == statType.Stamina) dullahanStaminaUpgrades++;
-        if (stat == statType.MovementSpeed) dullahanMovementSpeedUpgrades++;
-        if (stat == statType.Damage) dullahanDamageUpgrades++;
-        if (stat == statType.Cooldown) dullahanCooldownUpgrades++;
-        if (stat == statType.Ammo) dullahanAmmoUpgrades++;
-        if (stat == statType.ReloadTime) dullahanReloadUpgrades++;
-        if (stat == statType.Defense) dullahanDefenseUpgrades++;
-        if (stat == statType.Resistance) dullahanResistanceUpgrades++;
+        //if (stat == statType.Stamina) dullahanStaminaUpgrades++;
+        //if (stat == statType.MovementSpeed) dullahanMovementSpeedUpgrades++;
+        //if (stat == statType.Damage) dullahanDamageUpgrades++;
+        //if (stat == statType.Cooldown) dullahanCooldownUpgrades++;
+        //if (stat == statType.Ammo) dullahanAmmoUpgrades++;
+        //if (stat == statType.ReloadTime) dullahanReloadUpgrades++;
+        //if (stat == statType.Defense) dullahanDefenseUpgrades++;
+        //if (stat == statType.Resistance) dullahanResistanceUpgrades++;
+
+        if (stat == statType.Stamina)
+        {
+            if (dullahanStaminaUpgrades >= staminaData[2].maxLevel) return;
+
+            dullahanStaminaUpgrades++;
+            UpdateSamuraiStaminaUI();
+        }
+
+        if (stat == statType.Defense)
+        {
+            if (dullahanDefenseUpgrades >= defenseData[2].maxLevel) return;
+
+            dullahanDefenseUpgrades++;
+            UpdateSamuraiDefenseUI();
+        }
+
+        if (stat == statType.Resistance)
+        {
+            if (dullahanResistanceUpgrades >= resistanceData[2].maxLevel) return;
+
+            dullahanResistanceUpgrades++;
+            UpdateSamuraiResistanceUI();
+        }
+
+        //O nome está incorreto uma vez que o ataque melhora vários aspectos
+        if (stat == statType.Damage)
+        {
+            if (dullahanAttackUpgrades >= attackData[2].maxLevel) return;
+
+            dullahanAttackUpgrades++;
+
+            if (dullahanAttackUpgrades % 2 == 0) dullahanAmmoUpgrades++;
+
+            dullahanReloadUpgrades++;
+            UpdateSamuraiAttackUI();
+        }
 
         //INSERIR AQUI EVENTUAL ESCALA DE MELHORIAS. EX: Upgrade 1 melhora speed em 1, upgrade 2 melhora em 2...)
 
