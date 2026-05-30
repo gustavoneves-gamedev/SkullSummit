@@ -103,6 +103,16 @@ public class ProgressManager : MonoBehaviour
         UpdateCowboyDefenseUI();
         UpdateCowboyResistanceUI();
         UpdateCowboyAttackUI();
+
+        UpdateSamuraiStaminaUI();
+        UpdateSamuraiDefenseUI();
+        UpdateSamuraiResistanceUI();
+        UpdateSamuraiAttackUI();
+
+        UpdateDullahanStaminaUI();
+        UpdateDullahanDefenseUI();
+        UpdateDullahanResistanceUI();
+        UpdateDullahanAttackUI();
     }
 
 
@@ -238,21 +248,13 @@ public class ProgressManager : MonoBehaviour
 
     private void UpgradeAlpinista(statType stat)
     {
-        //if (stat == statType.Stamina) dullahanStaminaUpgrades++;
-        //if (stat == statType.MovementSpeed) dullahanMovementSpeedUpgrades++;
-        //if (stat == statType.Damage) dullahanDamageUpgrades++;
-        //if (stat == statType.Cooldown) dullahanCooldownUpgrades++;
-        //if (stat == statType.Ammo) dullahanAmmoUpgrades++;
-        //if (stat == statType.ReloadTime) dullahanReloadUpgrades++;
-        //if (stat == statType.Defense) dullahanDefenseUpgrades++;
-        //if (stat == statType.Resistance) dullahanResistanceUpgrades++;
-
+        
         if (stat == statType.Stamina)
         {
             if (dullahanStaminaUpgrades >= staminaData[2].maxLevel) return;
 
             dullahanStaminaUpgrades++;
-            UpdateSamuraiStaminaUI();
+            UpdateDullahanStaminaUI();
         }
 
         if (stat == statType.Defense)
@@ -260,7 +262,7 @@ public class ProgressManager : MonoBehaviour
             if (dullahanDefenseUpgrades >= defenseData[2].maxLevel) return;
 
             dullahanDefenseUpgrades++;
-            UpdateSamuraiDefenseUI();
+            UpdateDullahanDefenseUI();
         }
 
         if (stat == statType.Resistance)
@@ -268,7 +270,7 @@ public class ProgressManager : MonoBehaviour
             if (dullahanResistanceUpgrades >= resistanceData[2].maxLevel) return;
 
             dullahanResistanceUpgrades++;
-            UpdateSamuraiResistanceUI();
+            UpdateDullahanResistanceUI();
         }
 
         //O nome está incorreto uma vez que o ataque melhora vários aspectos
@@ -281,7 +283,7 @@ public class ProgressManager : MonoBehaviour
             if (dullahanAttackUpgrades % 2 == 0) dullahanAmmoUpgrades++;
 
             dullahanReloadUpgrades++;
-            UpdateSamuraiAttackUI();
+            UpdateDullahanAttackUI();
         }
 
         //INSERIR AQUI EVENTUAL ESCALA DE MELHORIAS. EX: Upgrade 1 melhora speed em 1, upgrade 2 melhora em 2...)
@@ -372,6 +374,49 @@ public class ProgressManager : MonoBehaviour
                 attackData[1].coinChargeUpgradeCost[samuraiAttackUpgrades],
                 attackData[1].rubyChargeUpgradeCost[samuraiAttackUpgrades],
                 attackData[1].maxLevel);
+    }
+
+    #endregion
+
+    #region Dullahan Upgrade UI
+    private void UpdateDullahanStaminaUI()
+    {
+        GameController.gameController.uiController.UpdateDullahanStaminaUI(
+                dullahanStaminaUpgrades * dullahanStaminaUpgradeFactor,
+                dullahanStaminaUpgrades,
+                staminaData[2].coinChargeUpgradeCost[dullahanStaminaUpgrades],
+                staminaData[2].rubyChargeUpgradeCost[dullahanStaminaUpgrades],
+                staminaData[2].maxLevel);
+    }
+
+    private void UpdateDullahanDefenseUI()
+    {
+        GameController.gameController.uiController.UpdateDullahanDefenseUI(
+                dullahanDefenseUpgrades * dullahanDefenseUpgradeFactor,
+                dullahanDefenseUpgrades,
+                defenseData[2].coinChargeUpgradeCost[dullahanDefenseUpgrades],
+                defenseData[2].rubyChargeUpgradeCost[dullahanDefenseUpgrades],
+                defenseData[2].maxLevel);
+    }
+
+    private void UpdateDullahanResistanceUI()
+    {
+        GameController.gameController.uiController.UpdateDullahanResistanceUI(
+                dullahanResistanceUpgrades * dullahanResistanceUpgradeFactor,
+                dullahanResistanceUpgrades,
+                resistanceData[2].coinChargeUpgradeCost[dullahanResistanceUpgrades],
+                resistanceData[2].rubyChargeUpgradeCost[dullahanResistanceUpgrades],
+                resistanceData[2].maxLevel);
+    }
+
+    private void UpdateDullahanAttackUI()
+    {
+        GameController.gameController.uiController.UpdateDullahanAttackUI(
+                dullahanAmmoUpgrades + dullahanReloadUpgrades,
+                dullahanAttackUpgrades,
+                attackData[2].coinChargeUpgradeCost[dullahanAttackUpgrades],
+                attackData[2].rubyChargeUpgradeCost[dullahanAttackUpgrades],
+                attackData[2].maxLevel);
     }
 
     #endregion
