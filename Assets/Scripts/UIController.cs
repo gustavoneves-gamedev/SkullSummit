@@ -914,8 +914,7 @@ public class UIController : MonoBehaviour
     public void UpdateDullahanStaminaUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        return;
-        
+                
         dullahanStaminaIndicator.text = "Stamina (" + (80 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
@@ -952,9 +951,8 @@ public class UIController : MonoBehaviour
     public void UpdateDullahanDefenseUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        return;
-        
-        dullahanDefenseIndicator.text = "Defense (" + (5 + upgradeBonus) + ")";
+                
+        dullahanDefenseIndicator.text = "Defense (" + (12 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
@@ -990,9 +988,9 @@ public class UIController : MonoBehaviour
     public void UpdateDullahanResistanceUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        return;
+       
 
-        dullahanResistanceIndicator.text = "Resistance (" + (1 + upgradeBonus) + ")";
+        dullahanResistanceIndicator.text = "Resistance (" + (5 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
@@ -1028,9 +1026,8 @@ public class UIController : MonoBehaviour
     public void UpdateDullahanAttackUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        return;
-
-        dullahanAttackIndicator.text = "Attack (" + (5 + upgradeBonus) + ")";
+        
+        dullahanAttackIndicator.text = "Attack (" + (2 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {

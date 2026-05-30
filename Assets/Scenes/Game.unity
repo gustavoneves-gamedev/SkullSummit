@@ -2823,7 +2823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &42966892
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2838,9 +2838,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2030951427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 236.526, y: -26.8525}
   m_SizeDelta: {x: 5.378, y: 39.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &42966893
@@ -14735,7 +14735,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Defense (5)
+  m_text: Defense (12)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -19998,7 +19998,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +5 Armor per level
+  m_text: +6 Armor per level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20314,7 +20314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '-0.6 Reload Time per Level
+  m_text: '-0.3 Reload Time per Level
 
     +1 Ammo per two levels'
   m_isRightToLeft: 0
@@ -22655,7 +22655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Alpinista M\xFAmia"
+  m_text: Dullahan
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -25208,7 +25208,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1100202887}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 8
+  m_MaxValue: 5
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -30725,7 +30725,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stamina (120)
+  m_text: Stamina (80)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -35407,7 +35407,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1162642959}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 2
+  m_MaxValue: 6
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -50343,7 +50343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &785398471
 RectTransform:
   m_ObjectHideFlags: 0
@@ -50358,9 +50358,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2003658991}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 156.57, y: -26.8525}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 5.378, y: 39.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &785398472
@@ -52035,7 +52035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &811326801
 RectTransform:
   m_ObjectHideFlags: 0
@@ -52050,9 +52050,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2003658991}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 234.92801, y: -26.8525}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 5.378, y: 39.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &811326802
@@ -58468,7 +58468,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +2 Constitution per level
+  m_text: +3 Constitution per level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -70556,7 +70556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1109772968
 RectTransform:
   m_ObjectHideFlags: 0
@@ -70571,9 +70571,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2030951427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 276.504, y: -26.8525}
   m_SizeDelta: {x: 5.378, y: 39.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1109772969
@@ -75628,7 +75628,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +12 Stamina per level
+  m_text: +8 Stamina per level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -92583,7 +92583,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Resistance (1)
+  m_text: Resistance (5)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -100036,7 +100036,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1562391111
 RectTransform:
   m_ObjectHideFlags: 0
@@ -100051,9 +100051,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2030951427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 196.548, y: -26.8525}
   m_SizeDelta: {x: 5.378, y: 39.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562391112
@@ -120007,7 +120007,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Attack (4)
+  m_text: Attack (2)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -124507,7 +124507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1996859913
 RectTransform:
   m_ObjectHideFlags: 0
@@ -124522,9 +124522,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2003658991}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 220, y: -24.255}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 5.378, y: 39.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1996859914
@@ -124951,7 +124951,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 72.98
+  m_Spacing: 47.4
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -126574,7 +126574,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 34.6
+  m_Spacing: 57.78
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -126746,9 +126746,9 @@ MonoBehaviour:
   samuraiReloadUpgrades: 0
   dullahanStaminaUpgradeFactor: 5
   dullahanStaminaUpgrades: 0
-  dullahanDefenseUpgradeFactor: 5
+  dullahanDefenseUpgradeFactor: 6
   dullahanDefenseUpgrades: 0
-  dullahanResistanceUpgradeFactor: 2
+  dullahanResistanceUpgradeFactor: 3
   dullahanResistanceUpgrades: 0
   dullahanMovementSpeedUpgradeFactor: 1
   dullahanMovementSpeedUpgrades: 0
@@ -126758,7 +126758,7 @@ MonoBehaviour:
   dullahanCooldownUpgrades: 0
   dullahanAmmoUpgradeFactor: 1
   dullahanAmmoUpgrades: 0
-  dullahanReloadUpgradeFactor: 0.25
+  dullahanReloadUpgradeFactor: -0.3
   dullahanReloadUpgrades: 0
 --- !u!4 &2032830022
 Transform:
@@ -131364,7 +131364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2123343837
 RectTransform:
   m_ObjectHideFlags: 0
@@ -131379,9 +131379,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2003658991}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250.587, y: -26.8525}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 5.378, y: 39.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2123343838
