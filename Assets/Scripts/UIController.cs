@@ -692,7 +692,7 @@ public class UIController : MonoBehaviour
     public void UpdateCowboyResistanceUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        cowboyResistanceIndicator.text = "Resistance (" + (1 + upgradeBonus) + ")";
+        cowboyResistanceIndicator.text = "Resistance (" + (2 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
@@ -728,7 +728,7 @@ public class UIController : MonoBehaviour
     public void UpdateCowboyAttackUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        cowboyAttackIndicator.text = "Attack (" + (5 + upgradeBonus) + ")";
+        cowboyAttackIndicator.text = "Attack (" + (4 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
@@ -803,7 +803,7 @@ public class UIController : MonoBehaviour
     public void UpdateSamuraiDefenseUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        samuraiDefenseIndicator.text = "Defense (" + (5 + upgradeBonus) + ")";
+        samuraiDefenseIndicator.text = "Defense (" + (10 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
@@ -839,7 +839,7 @@ public class UIController : MonoBehaviour
     public void UpdateSamuraiResistanceUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        samuraiResistanceIndicator.text = "Resistance (" + (1 + upgradeBonus) + ")";
+        samuraiResistanceIndicator.text = "Resistance (" + (3 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
@@ -875,7 +875,7 @@ public class UIController : MonoBehaviour
     public void UpdateSamuraiAttackUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        samuraiAttackIndicator.text = "Attack (" + (5 + upgradeBonus) + ")";
+        samuraiAttackIndicator.text = "Attack (" + (3 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
@@ -914,6 +914,8 @@ public class UIController : MonoBehaviour
     public void UpdateDullahanStaminaUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
+        return;
+        
         dullahanStaminaIndicator.text = "Stamina (" + (80 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
@@ -950,6 +952,8 @@ public class UIController : MonoBehaviour
     public void UpdateDullahanDefenseUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
+        return;
+        
         dullahanDefenseIndicator.text = "Defense (" + (5 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
@@ -986,6 +990,8 @@ public class UIController : MonoBehaviour
     public void UpdateDullahanResistanceUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
+        return;
+
         dullahanResistanceIndicator.text = "Resistance (" + (1 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
@@ -1022,6 +1028,8 @@ public class UIController : MonoBehaviour
     public void UpdateDullahanAttackUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
+        return;
+
         dullahanAttackIndicator.text = "Attack (" + (5 + upgradeBonus) + ")";
 
         if (level >= maxLevel)

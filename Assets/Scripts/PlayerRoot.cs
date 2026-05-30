@@ -17,6 +17,7 @@ public class PlayerRoot : MonoBehaviour
     [Header("Status")]
     public float currentStamina;
     public float maxStamina;
+    private float staminaConsumptionRate = 1;
     [SerializeField] private float movementSpeed;
     private float defaultMovementSpeed;
     public float initialSpeed;
@@ -168,6 +169,7 @@ public class PlayerRoot : MonoBehaviour
 
         scenePlane.transform.localPosition = originalPosition;
 
+        staminaConsumptionRate = 1;
         isDead = false;
         isGamePaused = false;
         desiredLane = 0;
@@ -492,8 +494,8 @@ public class PlayerRoot : MonoBehaviour
     #region Stamina Management
     private void StaminaConsumption()
     {
-        if (playerPowers.isSpecialOn) currentStamina += (1 * Time.deltaTime);
-        else currentStamina -= ((2 - resistance / 10f) * Time.deltaTime);
+        if (playerPowers.isSpecialOn) currentStamina += ((1 / staminaConsumptionRate) * Time.deltaTime);
+        else currentStamina -= ((2 - (resistance / 10f)) * staminaConsumptionRate * Time.deltaTime);
 
         if (currentStamina <= 0 && !isDead)
         {
@@ -507,23 +509,27 @@ public class PlayerRoot : MonoBehaviour
     {
         if (playerPowers.isSpecialOn && x < 0) return;
 
-        if (x > 0) healSFX.Play();
-
-        if (x < 0 && playerPowers.isShieldUp)
+        if (x > 0)
+        {
+            healSFX.Play();
+            currentStamina += x;
+        }
+        else if (x < 0 && playerPowers.isShieldUp)
         {
             playerPowers.Shield(x);
             return;
         }
-
-        if (x > 0) healSFX.Play();
-
-        currentStamina += x;
-
-        if (x < 0)
+        else if (x < 0)
         {
             damageTakenSFX.Play();
             SpeedReset();
+
+            if (defense >= -x) currentStamina += -1;
+            else currentStamina += x + defense;
+
         }
+
+
 
         if (currentStamina > maxStamina)
             currentStamina = maxStamina;
@@ -533,6 +539,17 @@ public class PlayerRoot : MonoBehaviour
             currentStamina = 0;
             OnStaminaEnd();
         }
+    }
+
+    //Chamada ao passar pelo Checkpoint para atualizar o consumo de stamina
+    private void UpdateStaminaConsumption()
+    {
+        if (heightClimbed > 20000) staminaConsumptionRate = 3;
+        else if (heightClimbed > 10000) staminaConsumptionRate = 2;
+        else if (heightClimbed > 8000) staminaConsumptionRate = 1.8f;
+        else if (heightClimbed > 6000) staminaConsumptionRate = 1.6f;
+        else if (heightClimbed > 4000) staminaConsumptionRate = 1.4f;
+        else if (heightClimbed > 2000) staminaConsumptionRate = 1.2f;
     }
 
     #endregion
@@ -631,6 +648,8 @@ public class PlayerRoot : MonoBehaviour
 
             Checkpoint checkpoint = other.GetComponent<Checkpoint>();
             if (checkpoint != null) checkpoint.wasCrossed = true;
+
+            UpdateStaminaConsumption();
 
             UpdateStamina(maxStamina * 0.1f);
         }

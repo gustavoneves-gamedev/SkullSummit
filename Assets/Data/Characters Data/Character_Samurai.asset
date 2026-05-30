@@ -16,8 +16,8 @@ MonoBehaviour:
   baseMaxStamina: 120
   baseMovementSpeed: 16
   baseDamage: 3
-  baseCooldown: 2
-  baseAmmo: 2
-  reloadTime: 10
+  baseCooldown: 0.25
+  baseAmmo: 3
+  reloadTime: 5
   baseDefense: 10
-  baseResistance: 2
+  baseResistance: 3
