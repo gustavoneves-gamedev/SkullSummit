@@ -26264,7 +26264,10 @@ MonoBehaviour:
   specialBackground: {fileID: 0}
   specialFill: {fileID: 0}
   statsMenu: {fileID: 1817082298}
-  result: {fileID: 106547168}
+  levelNames:
+  - {fileID: 281600049}
+  - {fileID: 722002421}
+  - {fileID: 1872041861}
   heightClimbed: {fileID: 189682268}
   coinsCollected: {fileID: 1714285917}
   rubiesCollected: {fileID: 0}

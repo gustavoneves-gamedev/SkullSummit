@@ -14,7 +14,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject volumeMenu;
 
-
     [Header("TopMenu")]
     [SerializeField] private GameObject topMenu;
     [SerializeField] private TextMeshProUGUI coins;
@@ -333,7 +332,7 @@ public class UIController : MonoBehaviour
 
     [Header("Stats Menu")]
     [SerializeField] private GameObject statsMenu;
-    [SerializeField] private TextMeshProUGUI result;
+    [SerializeField] private TextMeshProUGUI[] levelNames;
     [SerializeField] private TextMeshProUGUI heightClimbed;
     [SerializeField] private TextMeshProUGUI coinsCollected;
     [SerializeField] private TextMeshProUGUI rubiesCollected;
