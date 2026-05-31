@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   characterID: 0
   baseCoinCost: 0
-  baseEffectCharges: 0
+  baseEffectCharges: 10
   levelFactorUpgrade: 2
   maxLevel: 8
   coinChargeUpgradeCost: e8030000c40900008813000010270000204e0000409c000080380100c0d40100ffffffff

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterID: 2
   baseMaxStamina: 80
-  baseMovementSpeed: 20
+  baseMovementSpeed: 25
   baseDamage: 2
   baseCooldown: 0.75
-  baseAmmo: 4
-  reloadTime: 7
-  baseDefense: 15
-  baseResistance: 5
+  baseAmmo: 2
+  reloadTime: 6
+  baseDefense: 12
+  baseResistance: 4

@@ -952,7 +952,7 @@ public class UIController : MonoBehaviour
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
                 
-        dullahanDefenseIndicator.text = "Defense (" + (12 + upgradeBonus) + ")";
+        dullahanDefenseIndicator.text = "Defense (" + (7 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
@@ -990,7 +990,7 @@ public class UIController : MonoBehaviour
     {
        
 
-        dullahanResistanceIndicator.text = "Resistance (" + (5 + upgradeBonus) + ")";
+        dullahanResistanceIndicator.text = "Resistance (" + (4 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
