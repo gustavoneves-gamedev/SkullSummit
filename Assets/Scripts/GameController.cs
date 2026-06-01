@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -6,18 +5,29 @@ public class GameController : MonoBehaviour
     public static GameController gameController;
 
     [Header("Menu")]
-    public int coins;
-    public int rubies;
+    public float coins;
+    public float rubies;
     public string playerName = "Player";
 
     [Header("Leaderboard")]
     private float[] bestHeigths = new float[5];
 
-    [Header("Run")]
+    [Header("Run Results")]
     public bool isRunning;
-    public int runNormalCoins;
-    public int runRubies;
-    public int obstaclesDestroyed;
+    private float x = 0; //Serve para ser somado no menu de estatísticas
+    private bool canProccedFirst;
+    private bool canProccedSecond;
+    private bool canProccedThird;
+    private bool canProccedFourth;
+    private float height;
+    private bool hasBeganCalculating;
+    private bool isCalculatingStatistics;
+    private bool isCalculatingCoinRewards;
+    private bool isCalculatingRubyRewards;
+    public float runNormalCoins;
+    public float runRubies;
+    public float obstaclesDestroyed;
+
 
     [Header("Levels")]
     [SerializeField] private LevelData[] levelArray;
@@ -47,7 +57,7 @@ public class GameController : MonoBehaviour
     public Inventory inventory;
     public UIController uiController;
     public LevelManager levelManager;
-    public ObstacleManager obstacleManager;   
+    public ObstacleManager obstacleManager;
 
 
     void Awake()
@@ -72,7 +82,32 @@ public class GameController : MonoBehaviour
         //currentLevelID = lastLevel;
         InitilizeLevelStatics();
     }
-    
+
+    private void Update()
+    {
+
+        if (!hasBeganCalculating) return;
+
+        
+        if (isCalculatingStatistics)
+        {
+            
+
+            CalculateHeight();
+            CalculateCoinsCollected();
+            CalculateObstaclesDestroyed();
+        }
+        else if (isCalculatingCoinRewards)
+        {
+
+        }
+        else if (isCalculatingRubyRewards)
+        {
+
+        }
+
+    }
+
 
     //IPC: ANOTAÇÃO IMPORTANTE LOGO ABAIXO!!!
     public void BeginRun()
@@ -101,18 +136,78 @@ public class GameController : MonoBehaviour
         playerRoot.ResetPosition(worldPos);
     }
 
-    public void EndRun(float heigth)
+    public void EndRun(float height)
     {
-        UpdateBestHeight(heigth);
-
-        coins += runNormalCoins;
-        uiController.TopMainMenuUpdate();
-
-        uiController.StaticsMenu(heigth, runNormalCoins, runRubies, obstaclesDestroyed);
-
         isRunning = false;
 
-        UpdateLeaderboard(heigth);
+        this.height = height;
+
+        hasBeganCalculating = true;
+        isCalculatingStatistics = true;
+
+        uiController.StaticsMenu(0, 0, 0, 0, true);
+
+        coins += runNormalCoins;
+
+        uiController.TopMainMenuUpdate();
+
+        //uiController.StaticsMenu(height, runNormalCoins, runRubies, obstaclesDestroyed);
+
+
+
+        UpdateBestHeight(height);
+        UpdateLeaderboard(height);
+    }
+
+    private void CalculateHeight()
+    {
+        if (canProccedFirst) return;
+
+
+        if (x < height) x += (height / 3f) * Time.deltaTime;
+        else x = height;
+
+        uiController.StaticsMenu(x);
+
+        if (x >= height)
+        {
+            x = 0;
+            canProccedFirst = true;
+        }
+    }
+
+    private void CalculateCoinsCollected()
+    {
+        if (!canProccedFirst) return;
+
+        if (x < runNormalCoins) x += (runNormalCoins / 2f) * Time.deltaTime;
+        else x = runNormalCoins;
+
+        uiController.StaticsMenu(height, x);
+
+        if (x >= runNormalCoins)
+        {
+            x = 0;
+            canProccedFirst = false;
+            canProccedSecond = true;
+        }
+    }
+
+    private void CalculateObstaclesDestroyed()
+    {
+        if (!canProccedSecond) return;
+
+        if (x < obstaclesDestroyed) x += (obstaclesDestroyed / 2f) * Time.deltaTime;
+        else x = obstaclesDestroyed;
+
+        uiController.StaticsMenu(height, runNormalCoins, 0, x);
+
+        if (x >= obstaclesDestroyed)
+        {
+            x = 0;
+            canProccedSecond = false;
+            hasBeganCalculating = false;
+        }
     }
 
 
@@ -124,9 +219,9 @@ public class GameController : MonoBehaviour
         {
             if (heigth > bestHeigths[i])
             {
-                for (int j = (bestHeigths.Length-1); j > i; j--)
+                for (int j = (bestHeigths.Length - 1); j > i; j--)
                 {
-                    bestHeigths[j] = bestHeigths[j-1];            
+                    bestHeigths[j] = bestHeigths[j - 1];
                 }
 
                 bestHeigths[i] = heigth;
@@ -134,7 +229,7 @@ public class GameController : MonoBehaviour
             }
         }
 
-        
+
 
         UpdateLeaderboarUI();
     }

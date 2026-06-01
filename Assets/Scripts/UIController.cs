@@ -330,13 +330,24 @@ public class UIController : MonoBehaviour
     [SerializeField] private Image specialFill;
 
 
-    [Header("Stats Menu")]
+    [Header("Stats Menu")]    
     [SerializeField] private GameObject statsMenu;
     [SerializeField] private TextMeshProUGUI[] levelNames;
     [SerializeField] private TextMeshProUGUI heightClimbed;
     [SerializeField] private TextMeshProUGUI coinsCollected;
     [SerializeField] private TextMeshProUGUI rubiesCollected;
     [SerializeField] private TextMeshProUGUI obstacles;
+
+    [Header("Coin Reward")]
+    [SerializeField] private TextMeshProUGUI baseCoins;
+    [SerializeField] private TextMeshProUGUI heightMultiplier;
+    [SerializeField] private TextMeshProUGUI obstaclesBonus;
+    [SerializeField] private TextMeshProUGUI totalCoins;
+
+    [Header("Ruby Reward")]    
+    [SerializeField] private TextMeshProUGUI heightAdd;
+    [SerializeField] private TextMeshProUGUI obstaclesAdd;
+    [SerializeField] private TextMeshProUGUI totalRubies;
 
 
     [Header("Reference")]
@@ -468,17 +479,23 @@ public class UIController : MonoBehaviour
     }
     #endregion
 
-    public void StaticsMenu(float height = 0, int coins = 0, int rubies = 0, int obstaclesDestroyed = 0)
+    public void StaticsMenu(float height = 0, float coins = 0, float rubies = 0, 
+        float obstaclesDestroyed = 0, bool runJustEnded = false)
     {
-        pauseMenu.SetActive(false);
-        HUD.SetActive(false);
+        if (runJustEnded)
+        {
+            pauseMenu.SetActive(false);
+            HUD.SetActive(false);
+            statsMenu.SetActive(true);
+        }
+        
 
         heightClimbed.text = height.ToString("F0");
         coinsCollected.text = coins.ToString("F0");
         //rubiesCollected.text = rubies.ToString("F0");
         obstacles.text = obstaclesDestroyed.ToString("F0");
 
-        statsMenu.SetActive(true);
+        
     }
 
     public void BackToMainMenu()
@@ -1621,7 +1638,7 @@ public class UIController : MonoBehaviour
 
     }
 
-    public void UpdateCoinHUD(int normalCoins = 0, int rubies = 0)
+    public void UpdateCoinHUD(float normalCoins = 0, int rubies = 0)
     {
         runCoins.text = "x " + normalCoins;
     }

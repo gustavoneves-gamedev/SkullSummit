@@ -618,6 +618,7 @@ public class PlayerRoot : MonoBehaviour
         else
         {
             OnDeathEvent();
+            Time.timeScale = 1;
         }
     }
 
