@@ -164,7 +164,7 @@ public class GameController : MonoBehaviour
         if (canProccedFirst) return;
 
 
-        if (x < height) x += (height / 3f) * Time.deltaTime;
+        if (x < height) x += (height / 2f) * Time.deltaTime;
         else x = height;
 
         uiController.StaticsMenu(x);

@@ -26272,6 +26272,13 @@ MonoBehaviour:
   coinsCollected: {fileID: 1714285917}
   rubiesCollected: {fileID: 0}
   obstacles: {fileID: 1843163203}
+  baseCoins: {fileID: 0}
+  heightMultiplier: {fileID: 0}
+  obstaclesBonus: {fileID: 0}
+  totalCoins: {fileID: 0}
+  heightAdd: {fileID: 0}
+  obstaclesAdd: {fileID: 0}
+  totalRubies: {fileID: 0}
   playerRoot: {fileID: 0}
 --- !u!4 &393168559
 Transform:
@@ -38432,7 +38439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -55.02539}
+  m_AnchoredPosition: {x: 0, y: -55.02533}
   m_SizeDelta: {x: 0, y: -110.05009}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &575059952
@@ -117236,7 +117243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1817082299
 RectTransform:
   m_ObjectHideFlags: 0
