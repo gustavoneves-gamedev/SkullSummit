@@ -368,7 +368,7 @@ public class UIController : MonoBehaviour
 
         GameController.gameController.UpdateLeaderboarUI();
 
-        Invoke("Initialize", .1f);
+        Invoke("Initialize", .4f);
     }
 
     void Update()
@@ -382,7 +382,8 @@ public class UIController : MonoBehaviour
 
     private void Initialize()//COMENTÁRIOS IMPORTANTES AQUI
     {
-        playerRoot = GameController.gameController.playerRoot;        
+        playerRoot = GameController.gameController.playerRoot;
+        AudioController.audioController.SwitchMusic(1);
         //coins.text = puxar informação do local de salvamento
         //InitializeStore(); //puxar informações do local de salvamento
         TopMainMenuUpdate();
@@ -400,7 +401,7 @@ public class UIController : MonoBehaviour
         GameController.gameController.BeginRun();
 
         HUD.SetActive(true); //Colocar um efeito de fade in aqui 
-        AudioController.audioController.SwitchMusic(1);
+        
     }
 
     public void TopMainMenuUpdate()
@@ -558,6 +559,7 @@ public class UIController : MonoBehaviour
         characterMenuArray[charCode].SetActive(true);
 
         isCharSelecting = true;
+        AudioController.audioController.SwitchMusicPlay(1, charCode);
     }
 
     public void NextCharacter()
@@ -568,6 +570,7 @@ public class UIController : MonoBehaviour
             characterMenuArray[charCode + 1].SetActive(true);
             characterMenuArray[charCode].SetActive(false);
             charCode++;
+            AudioController.audioController.SwitchMusicPlay(1, charCode);
         }
     }
 
@@ -579,6 +582,7 @@ public class UIController : MonoBehaviour
             characterMenuArray[charCode - 1].SetActive(true);
             characterMenuArray[charCode].SetActive(false);
             charCode--;
+            AudioController.audioController.SwitchMusicPlay(1, charCode);
         }
     }
 
@@ -1106,7 +1110,7 @@ public class UIController : MonoBehaviour
         {
             characterMenuArray[charCode + 1].SetActive(true);
             characterMenuArray[charCode].SetActive(false);
-            charCode++;
+            charCode++;            
         }
     }
 

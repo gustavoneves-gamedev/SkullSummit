@@ -30,21 +30,21 @@ public class AudioController : MonoBehaviour
     private float timeToChangeMusic;
     private bool isPlayingRunMusic;
 
-    private void Awake()
-    {
+    //private void Awake()
+    //{
 
-        //ISTO NÃO ESTÁ FUNCIONANDO!!
-        //if (audioController == null)
-        //{
-        //    audioController = this;
-        //}
-        //else
-        //{
-        //    Destroy(gameObject);
-        //}
-        //DontDestroyOnLoad(gameObject);
+    //    //ISTO NÃO ESTÁ FUNCIONANDO!!
+    //    if (audioController == null)
+    //    {
+    //        audioController = this;
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //    DontDestroyOnLoad(gameObject);
 
-    }
+    //}
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -122,7 +122,7 @@ public class AudioController : MonoBehaviour
 
         if (musicGroup == 1)
         {
-            mySoundBox.clip = levelSelectionMusics[music];
+            mySoundBox.clip = characterSelectionMusics[music];
             isPlayingRunMusic = false;
             mySoundBox.loop = true;
             mySoundBox.Play();
