@@ -2,24 +2,44 @@ using UnityEngine;
 
 public class UIAnimation : MonoBehaviour
 {
-    [Header("Personagem")]
-    [SerializeField] private RectTransform characterImage;
-    [SerializeField] private CanvasGroup characterCanvasGroup;
+    [Header("Cowboy")]
+    [SerializeField] private RectTransform cowboyImage;
+    [SerializeField] private CanvasGroup cowboyCanvasGroup;
 
-    [Header("Cards de Upgrade")]
-    [SerializeField] private RectTransform[] upgradeCards;
-    [SerializeField] private CanvasGroup[] upgradeCanvasGroups;
+    [Header("Cowboy Upgrade")]
+    [SerializeField] private RectTransform[] upgradeCowboyCards;
+    [SerializeField] private CanvasGroup[] upgradeCowboyCanvasGroups;
 
-    [Header("Botão Inferior - Opcional")]
-    [SerializeField] private RectTransform selectButton;
-    [SerializeField] private CanvasGroup selectButtonCanvasGroup;
+    [Header("Samurai")]
+    [SerializeField] private RectTransform samuraiImage;
+    [SerializeField] private CanvasGroup samuraiCanvasGroup;
 
-    [Header("Offsets de Entrada")]
+    [Header("Samurai Upgrade")]
+    [SerializeField] private RectTransform[] upgradeSamuraiCards;
+    [SerializeField] private CanvasGroup[] upgradeSamuraiCanvasGroups;
+
+    [Header("Dullahan")]
+    [SerializeField] private RectTransform dullahanImage;
+    [SerializeField] private CanvasGroup dullahanCanvasGroup;
+
+    [Header("Dullahan Upgrade")]
+    [SerializeField] private RectTransform[] upgradeDullahanCards;
+    [SerializeField] private CanvasGroup[] upgradeDullahanCanvasGroups;
+
+    [Header("Select Button")]
+    [SerializeField] private RectTransform selectCowboyButton;
+    [SerializeField] private CanvasGroup selectCowboyButtonCanvasGroup;
+    [SerializeField] private RectTransform selectSamuraiButton;
+    [SerializeField] private CanvasGroup selectSamuraiButtonCanvasGroup;
+    [SerializeField] private RectTransform selectDullahanButton;
+    [SerializeField] private CanvasGroup selectDullahanButtonCanvasGroup;
+
+    [Header("Offsets")]
     [SerializeField] private Vector2 characterStartOffset = new Vector2(-900f, 0f);
     [SerializeField] private Vector2 upgradeStartOffset = new Vector2(900f, 0f);
     [SerializeField] private Vector2 buttonStartOffset = new Vector2(0f, -250f);
 
-    [Header("Duração")]
+    [Header("Duration")]
     [SerializeField] private float characterDuration = 0.45f;
     [SerializeField] private float upgradeDuration = 0.35f;
     [SerializeField] private float buttonDuration = 0.30f;
@@ -29,7 +49,7 @@ public class UIAnimation : MonoBehaviour
     [SerializeField] private float upgradeStaggerDelay = 0.10f;
     [SerializeField] private float buttonDelay = 0.45f;
 
-    [Header("Configurações")]
+    [Header("Configs")]
     [SerializeField] private bool playOnEnable = true;
     [SerializeField] private bool ignoreTimeScale = true;
 
@@ -87,27 +107,27 @@ public class UIAnimation : MonoBehaviour
     {
         Canvas.ForceUpdateCanvases();
 
-        if (characterImage != null)
+        if (cowboyImage != null)
         {
-            characterFinalPosition = characterImage.anchoredPosition;
+            characterFinalPosition = cowboyImage.anchoredPosition;
         }
 
-        if (upgradeCards != null)
+        if (upgradeCowboyCards != null)
         {
-            upgradeFinalPositions = new Vector2[upgradeCards.Length];
+            upgradeFinalPositions = new Vector2[upgradeCowboyCards.Length];
 
-            for (int i = 0; i < upgradeCards.Length; i++)
+            for (int i = 0; i < upgradeCowboyCards.Length; i++)
             {
-                if (upgradeCards[i] != null)
+                if (upgradeCowboyCards[i] != null)
                 {
-                    upgradeFinalPositions[i] = upgradeCards[i].anchoredPosition;
+                    upgradeFinalPositions[i] = upgradeCowboyCards[i].anchoredPosition;
                 }
             }
         }
 
-        if (selectButton != null)
+        if (selectCowboyButton != null)
         {
-            buttonFinalPosition = selectButton.anchoredPosition;
+            buttonFinalPosition = selectCowboyButton.anchoredPosition;
         }
 
         cachedPositions = true;
@@ -115,74 +135,74 @@ public class UIAnimation : MonoBehaviour
 
     private void SetStartState()
     {
-        if (characterImage != null)
+        if (cowboyImage != null)
         {
-            characterImage.anchoredPosition = characterFinalPosition + characterStartOffset;
+            cowboyImage.anchoredPosition = characterFinalPosition + characterStartOffset;
         }
 
-        SetCanvasGroupAlpha(characterCanvasGroup, 0f);
+        SetCanvasGroupAlpha(cowboyCanvasGroup, 0f);
 
-        if (upgradeCards != null)
+        if (upgradeCowboyCards != null)
         {
-            for (int i = 0; i < upgradeCards.Length; i++)
+            for (int i = 0; i < upgradeCowboyCards.Length; i++)
             {
-                if (upgradeCards[i] == null)
+                if (upgradeCowboyCards[i] == null)
                     continue;
 
-                upgradeCards[i].anchoredPosition = upgradeFinalPositions[i] + upgradeStartOffset;
+                upgradeCowboyCards[i].anchoredPosition = upgradeFinalPositions[i] + upgradeStartOffset;
                 SetCanvasGroupAlpha(GetUpgradeCanvasGroup(i), 0f);
             }
         }
 
-        if (selectButton != null)
+        if (selectCowboyButton != null)
         {
-            selectButton.anchoredPosition = buttonFinalPosition + buttonStartOffset;
+            selectCowboyButton.anchoredPosition = buttonFinalPosition + buttonStartOffset;
         }
 
-        SetCanvasGroupAlpha(selectButtonCanvasGroup, 0f);
+        SetCanvasGroupAlpha(selectCowboyButtonCanvasGroup, 0f);
     }
 
     private void SetFinalState()
     {
-        if (characterImage != null)
+        if (cowboyImage != null)
         {
-            characterImage.anchoredPosition = characterFinalPosition;
+            cowboyImage.anchoredPosition = characterFinalPosition;
         }
 
-        SetCanvasGroupAlpha(characterCanvasGroup, 1f);
+        SetCanvasGroupAlpha(cowboyCanvasGroup, 1f);
 
-        if (upgradeCards != null)
+        if (upgradeCowboyCards != null)
         {
-            for (int i = 0; i < upgradeCards.Length; i++)
+            for (int i = 0; i < upgradeCowboyCards.Length; i++)
             {
-                if (upgradeCards[i] == null)
+                if (upgradeCowboyCards[i] == null)
                     continue;
 
-                upgradeCards[i].anchoredPosition = upgradeFinalPositions[i];
+                upgradeCowboyCards[i].anchoredPosition = upgradeFinalPositions[i];
                 SetCanvasGroupAlpha(GetUpgradeCanvasGroup(i), 1f);
             }
         }
 
-        if (selectButton != null)
+        if (selectCowboyButton != null)
         {
-            selectButton.anchoredPosition = buttonFinalPosition;
+            selectCowboyButton.anchoredPosition = buttonFinalPosition;
         }
 
-        SetCanvasGroupAlpha(selectButtonCanvasGroup, 1f);
+        SetCanvasGroupAlpha(selectCowboyButtonCanvasGroup, 1f);
     }
 
     private void AnimateCharacter()
     {
-        if (characterImage == null)
+        if (cowboyImage == null)
             return;
 
-        LeanTween.move(characterImage, ToVector3(characterFinalPosition), characterDuration)
+        LeanTween.move(cowboyImage, ToVector3(characterFinalPosition), characterDuration)
             .setEase(LeanTweenType.easeOutCubic)
             .setIgnoreTimeScale(ignoreTimeScale);
 
-        if (characterCanvasGroup != null)
+        if (cowboyCanvasGroup != null)
         {
-            LeanTween.alphaCanvas(characterCanvasGroup, 1f, characterDuration)
+            LeanTween.alphaCanvas(cowboyCanvasGroup, 1f, characterDuration)
                 .setEase(LeanTweenType.easeOutCubic)
                 .setIgnoreTimeScale(ignoreTimeScale);
         }
@@ -190,17 +210,17 @@ public class UIAnimation : MonoBehaviour
 
     private void AnimateUpgradeCards()
     {
-        if (upgradeCards == null)
+        if (upgradeCowboyCards == null)
             return;
 
-        for (int i = 0; i < upgradeCards.Length; i++)
+        for (int i = 0; i < upgradeCowboyCards.Length; i++)
         {
-            if (upgradeCards[i] == null)
+            if (upgradeCowboyCards[i] == null)
                 continue;
 
             float delay = firstUpgradeDelay + i * upgradeStaggerDelay;
 
-            LeanTween.move(upgradeCards[i], ToVector3(upgradeFinalPositions[i]), upgradeDuration)
+            LeanTween.move(upgradeCowboyCards[i], ToVector3(upgradeFinalPositions[i]), upgradeDuration)
                 .setDelay(delay)
                 .setEase(LeanTweenType.easeOutCubic)
                 .setIgnoreTimeScale(ignoreTimeScale);
@@ -219,17 +239,17 @@ public class UIAnimation : MonoBehaviour
 
     private void AnimateSelectButton()
     {
-        if (selectButton == null)
+        if (selectCowboyButton == null)
             return;
 
-        LeanTween.move(selectButton, ToVector3(buttonFinalPosition), buttonDuration)
+        LeanTween.move(selectCowboyButton, ToVector3(buttonFinalPosition), buttonDuration)
             .setDelay(buttonDelay)
             .setEase(LeanTweenType.easeOutBack)
             .setIgnoreTimeScale(ignoreTimeScale);
 
-        if (selectButtonCanvasGroup != null)
+        if (selectCowboyButtonCanvasGroup != null)
         {
-            LeanTween.alphaCanvas(selectButtonCanvasGroup, 1f, buttonDuration)
+            LeanTween.alphaCanvas(selectCowboyButtonCanvasGroup, 1f, buttonDuration)
                 .setDelay(buttonDelay)
                 .setEase(LeanTweenType.easeOutCubic)
                 .setIgnoreTimeScale(ignoreTimeScale);
@@ -238,23 +258,23 @@ public class UIAnimation : MonoBehaviour
 
     private void CancelTweens()
     {
-        if (characterImage != null)
+        if (cowboyImage != null)
         {
-            LeanTween.cancel(characterImage.gameObject);
+            LeanTween.cancel(cowboyImage.gameObject);
         }
 
-        if (characterCanvasGroup != null)
+        if (cowboyCanvasGroup != null)
         {
-            LeanTween.cancel(characterCanvasGroup.gameObject);
+            LeanTween.cancel(cowboyCanvasGroup.gameObject);
         }
 
-        if (upgradeCards != null)
+        if (upgradeCowboyCards != null)
         {
-            for (int i = 0; i < upgradeCards.Length; i++)
+            for (int i = 0; i < upgradeCowboyCards.Length; i++)
             {
-                if (upgradeCards[i] != null)
+                if (upgradeCowboyCards[i] != null)
                 {
-                    LeanTween.cancel(upgradeCards[i].gameObject);
+                    LeanTween.cancel(upgradeCowboyCards[i].gameObject);
                 }
 
                 CanvasGroup cardCanvasGroup = GetUpgradeCanvasGroup(i);
@@ -266,26 +286,26 @@ public class UIAnimation : MonoBehaviour
             }
         }
 
-        if (selectButton != null)
+        if (selectCowboyButton != null)
         {
-            LeanTween.cancel(selectButton.gameObject);
+            LeanTween.cancel(selectCowboyButton.gameObject);
         }
 
-        if (selectButtonCanvasGroup != null)
+        if (selectCowboyButtonCanvasGroup != null)
         {
-            LeanTween.cancel(selectButtonCanvasGroup.gameObject);
+            LeanTween.cancel(selectCowboyButtonCanvasGroup.gameObject);
         }
     }
 
     private CanvasGroup GetUpgradeCanvasGroup(int index)
     {
-        if (upgradeCanvasGroups == null)
+        if (upgradeCowboyCanvasGroups == null)
             return null;
 
-        if (index < 0 || index >= upgradeCanvasGroups.Length)
+        if (index < 0 || index >= upgradeCowboyCanvasGroups.Length)
             return null;
 
-        return upgradeCanvasGroups[index];
+        return upgradeCowboyCanvasGroups[index];
     }
 
     private void SetCanvasGroupAlpha(CanvasGroup canvasGroup, float alpha)
