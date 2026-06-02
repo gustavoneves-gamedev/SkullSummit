@@ -11,6 +11,8 @@ public class AudioController : MonoBehaviour
     public AudioSource mySoundBox;
     public AudioMixer myMixer;
     public AudioClip[] musics;
+    public AudioClip[] characterSelectionMusics;
+    public AudioClip[] levelSelectionMusics;
     //0 - MenuCowboy
     //1 - Cowboy Level part 1
     //2 - Cowboy Level part 2
@@ -77,6 +79,8 @@ public class AudioController : MonoBehaviour
         ChangeSFXVolume(currentSFXVolume);
     }
 
+    #region Volume Control
+
     private float LinearToDb(float linear)
     {
         // Evita -Infinity quando linear = 0
@@ -109,6 +113,31 @@ public class AudioController : MonoBehaviour
         currentSFXVolume = value;
         myMixer.SetFloat("SFXVolume", LinearToDb(value));
     }
+
+    #endregion
+
+    public void SwitchMusicPlay(int musicGroup = 0, int music = 0)
+    {
+        //currentMusicCode = music;
+
+        if (musicGroup == 1)
+        {
+            mySoundBox.clip = levelSelectionMusics[music];
+            isPlayingRunMusic = false;
+            mySoundBox.loop = true;
+            mySoundBox.Play();
+        }
+        else if (musicGroup == 2)
+        {
+            mySoundBox.clip = levelSelectionMusics[music];
+            isPlayingRunMusic = false;
+            mySoundBox.loop = true;
+            mySoundBox.Play();
+        }
+
+        
+    }
+
 
     public void SwitchMusic(int music)
     {

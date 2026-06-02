@@ -351,7 +351,7 @@ public class UIController : MonoBehaviour
 
 
     [Header("Reference")]
-    public PlayerRoot playerRoot;
+    public PlayerRoot playerRoot;    
 
     void Start()
     {
@@ -382,7 +382,7 @@ public class UIController : MonoBehaviour
 
     private void Initialize()//COMENTÁRIOS IMPORTANTES AQUI
     {
-        playerRoot = GameController.gameController.playerRoot;
+        playerRoot = GameController.gameController.playerRoot;        
         //coins.text = puxar informação do local de salvamento
         //InitializeStore(); //puxar informações do local de salvamento
         TopMainMenuUpdate();
@@ -1088,6 +1088,7 @@ public class UIController : MonoBehaviour
     {
         levelSelectionMenu.SetActive(true);
         topMenu.SetActive(false);
+        AudioController.audioController.SwitchMusicPlay(2, levelCode);
         isLevelSelecting = true;
     }
 
@@ -1099,6 +1100,7 @@ public class UIController : MonoBehaviour
             levelMenuArray[levelCode + 1].SetActive(true);
             levelMenuArray[levelCode].SetActive(false);
             levelCode++;
+            AudioController.audioController.SwitchMusicPlay(2, levelCode);
         }
         else if (isCharSelecting && charCode + 1 < characterMenuArray.Length)
         {
@@ -1116,6 +1118,7 @@ public class UIController : MonoBehaviour
             levelMenuArray[levelCode - 1].SetActive(true);
             levelMenuArray[levelCode].SetActive(false);
             levelCode--;
+            AudioController.audioController.SwitchMusicPlay(2, levelCode);
         }
         else if (isCharSelecting && charCode - 1 >= 0)
         {
