@@ -1087,6 +1087,7 @@ public class UIController : MonoBehaviour
     public void LevelSelection()
     {
         levelSelectionMenu.SetActive(true);
+        topMenu.SetActive(false);
         isLevelSelecting = true;
     }
 
