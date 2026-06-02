@@ -351,7 +351,8 @@ public class UIController : MonoBehaviour
 
 
     [Header("Reference")]
-    public PlayerRoot playerRoot;    
+    public PlayerRoot playerRoot;
+    private UIAnimation uiAnimation;
 
     void Start()
     {
@@ -383,7 +384,10 @@ public class UIController : MonoBehaviour
     private void Initialize()//COMENTÁRIOS IMPORTANTES AQUI
     {
         playerRoot = GameController.gameController.playerRoot;
+        uiAnimation = gameObject.GetComponent<UIAnimation>();
+
         AudioController.audioController.SwitchMusic(1);
+
         //coins.text = puxar informação do local de salvamento
         //InitializeStore(); //puxar informações do local de salvamento
         TopMainMenuUpdate();
@@ -560,6 +564,8 @@ public class UIController : MonoBehaviour
 
         isCharSelecting = true;
         AudioController.audioController.SwitchMusicPlay(1, charCode);
+        uiAnimation.PlayEntranceAnimation();
+
     }
 
     public void NextCharacter()
