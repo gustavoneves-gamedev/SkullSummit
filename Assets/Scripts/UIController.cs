@@ -296,6 +296,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject HUD;
     [SerializeField] private TextMeshProUGUI runCoins;
     [SerializeField] private TextMeshProUGUI runHeightClimbed;
+    [SerializeField] private ParticleSystem specialIndicator;
 
     [Header("Death Menu")]
     [SerializeField] private GameObject resurrectionMenu;
@@ -1650,6 +1651,12 @@ public class UIController : MonoBehaviour
             staminaBackground.color = darkRed;
         }
 
+    }
+
+    public void SpecialReady(bool canUseSpecial)
+    {
+        if(canUseSpecial) specialIndicator.Play();
+        else specialIndicator.Stop();
     }
 
     public void UpdateCoinHUD(float normalCoins = 0, int rubies = 0)

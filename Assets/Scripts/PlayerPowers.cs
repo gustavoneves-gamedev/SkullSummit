@@ -60,7 +60,8 @@ public class PlayerPowers : MonoBehaviour
 
     void Update()
     {
-        if (player.canRun == false || player.isGamePaused) return;
+        if (player.canRun == false || player.isGamePaused || 
+            !GameController.gameController.isRunning) return;
 
         CoinMultiplierCountdown();
         ShieldCountdown();
@@ -76,17 +77,25 @@ public class PlayerPowers : MonoBehaviour
 
             //Rever esse 2 aí com base em cada personagem
             currentSpecial -= 2 * Time.deltaTime;
+
             if (currentSpecial <= 0)
             {
                 isSpecialOn = false;
+                uiController.SpecialReady(canUseSpecial);
                 player.SpecialSpeed(isSpecialOn);
             }
         }
-        else
+        else if (!canUseSpecial)
         {
             currentSpecial += 1 * Time.deltaTime;
 
-            if (currentSpecial >= maxSpecial) canUseSpecial = true;
+            if (currentSpecial >= maxSpecial)
+            {
+                canUseSpecial = true;
+                currentSpecial = maxSpecial;
+            }                
+                
+            uiController.SpecialReady(canUseSpecial);
 
             //if (currentSpecial >= maxSpecial) ActivateSpecial();
         }
@@ -102,13 +111,18 @@ public class PlayerPowers : MonoBehaviour
 
     public void ResetPowers()
     {
+        //Special
+        currentSpecial = 0;
+        canUseSpecial = false;
+
         //Shield
         isShieldUp = false;
         shield.SetActive(false);
         shieldEffect.SetActive(false);
         shieldCharges = defaultShieldCharges;
         shieldDuration = defaultShieldDuration;
-                       
+        
+        //Coin Multiplier
         coinMultiplierDuration = defaultMultiplierDuration;        
     }
 
