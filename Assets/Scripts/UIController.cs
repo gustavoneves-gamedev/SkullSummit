@@ -565,7 +565,7 @@ public class UIController : MonoBehaviour
 
         isCharSelecting = true;
         AudioController.audioController.SwitchMusicPlay(1, charCode);
-        uiAnimation.PlayEntranceAnimation();
+        uiAnimation.PlayEntranceAnimation(charCode);
 
     }
 
@@ -577,6 +577,7 @@ public class UIController : MonoBehaviour
             characterMenuArray[charCode + 1].SetActive(true);
             characterMenuArray[charCode].SetActive(false);
             charCode++;
+            uiAnimation.PlayEntranceAnimation(charCode);
             AudioController.audioController.SwitchMusicPlay(1, charCode);
         }
     }
@@ -589,6 +590,7 @@ public class UIController : MonoBehaviour
             characterMenuArray[charCode - 1].SetActive(true);
             characterMenuArray[charCode].SetActive(false);
             charCode--;
+            uiAnimation.PlayEntranceAnimation(charCode);
             AudioController.audioController.SwitchMusicPlay(1, charCode);
         }
     }

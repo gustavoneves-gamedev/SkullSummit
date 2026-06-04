@@ -82,7 +82,7 @@ public class UIAnimation : MonoBehaviour
         }
     }
 
-    public void PlayEntranceAnimation()
+    public void PlayEntranceAnimation(int charCode = -1)
     {
         if (!cachedPositions)
         {
@@ -92,9 +92,9 @@ public class UIAnimation : MonoBehaviour
         CancelTweens();
         SetStartState();
 
-        AnimateCharacter();
-        AnimateUpgradeCards();
-        AnimateSelectButton();
+        AnimateCharacter(charCode);
+        AnimateUpgradeCards(charCode);
+        AnimateSelectButton(); //NÃO ESTÁ FUNCIONANDO AINDA!!
     }
 
     public void SkipAnimation()
@@ -191,53 +191,130 @@ public class UIAnimation : MonoBehaviour
         SetCanvasGroupAlpha(selectCowboyButtonCanvasGroup, 1f);
     }
 
-    private void AnimateCharacter()
+    private void AnimateCharacter(int charCode = -1)
     {
-        if (cowboyImage == null)
-            return;
-
-        LeanTween.move(cowboyImage, ToVector3(characterFinalPosition), characterDuration)
+        if (charCode == 0)
+        {
+            LeanTween.move(cowboyImage, ToVector3(characterFinalPosition), characterDuration)
             .setEase(LeanTweenType.easeOutCubic)
             .setIgnoreTimeScale(ignoreTimeScale);
 
-        if (cowboyCanvasGroup != null)
-        {
+
             LeanTween.alphaCanvas(cowboyCanvasGroup, 1f, characterDuration)
                 .setEase(LeanTweenType.easeOutCubic)
                 .setIgnoreTimeScale(ignoreTimeScale);
+
         }
-    }
-
-    private void AnimateUpgradeCards()
-    {
-        if (upgradeCowboyCards == null)
-            return;
-
-        for (int i = 0; i < upgradeCowboyCards.Length; i++)
+        else if (charCode == 1)
         {
-            if (upgradeCowboyCards[i] == null)
-                continue;
+            LeanTween.move(samuraiImage, ToVector3(characterFinalPosition), characterDuration)
+            .setEase(LeanTweenType.easeOutCubic)
+            .setIgnoreTimeScale(ignoreTimeScale);
 
-            float delay = firstUpgradeDelay + i * upgradeStaggerDelay;
 
-            LeanTween.move(upgradeCowboyCards[i], ToVector3(upgradeFinalPositions[i]), upgradeDuration)
-                .setDelay(delay)
+            LeanTween.alphaCanvas(samuraiCanvasGroup, 1f, characterDuration)
                 .setEase(LeanTweenType.easeOutCubic)
                 .setIgnoreTimeScale(ignoreTimeScale);
 
-            CanvasGroup cardCanvasGroup = GetUpgradeCanvasGroup(i);
+        }
+        else if (charCode == 2)
+        {
+            LeanTween.move(dullahanImage, ToVector3(characterFinalPosition), characterDuration)
+            .setEase(LeanTweenType.easeOutCubic)
+            .setIgnoreTimeScale(ignoreTimeScale);
 
-            if (cardCanvasGroup != null)
+
+            LeanTween.alphaCanvas(dullahanCanvasGroup, 1f, characterDuration)
+                .setEase(LeanTweenType.easeOutCubic)
+                .setIgnoreTimeScale(ignoreTimeScale);
+
+        }
+
+
+    }
+
+    private void AnimateUpgradeCards(int charCode = -1)
+    {
+        if (charCode == 0)
+        {
+            for (int i = 0; i < upgradeCowboyCards.Length; i++)
             {
+                //if (upgradeCowboyCards[i] == null)
+                //    continue;
+
+                float delay = firstUpgradeDelay + i * upgradeStaggerDelay;
+
+                LeanTween.move(upgradeCowboyCards[i], ToVector3(upgradeFinalPositions[i]), upgradeDuration)
+                    .setDelay(delay)
+                    .setEase(LeanTweenType.easeOutCubic)
+                    .setIgnoreTimeScale(ignoreTimeScale);
+
+                //CanvasGroup cardCanvasGroup = GetUpgradeCanvasGroup(i);
+                CanvasGroup cardCanvasGroup = upgradeCowboyCanvasGroups[i];
+
+
                 LeanTween.alphaCanvas(cardCanvasGroup, 1f, upgradeDuration)
                     .setDelay(delay)
                     .setEase(LeanTweenType.easeOutCubic)
                     .setIgnoreTimeScale(ignoreTimeScale);
+
             }
         }
+        else if (charCode == 1)
+        {
+            for (int i = 0; i < upgradeSamuraiCards.Length; i++)
+            {
+                //if (upgradeCowboyCards[i] == null)
+                //    continue;
+
+                float delay = firstUpgradeDelay + i * upgradeStaggerDelay;
+
+                LeanTween.move(upgradeSamuraiCards[i], ToVector3(upgradeFinalPositions[i]), upgradeDuration)
+                    .setDelay(delay)
+                    .setEase(LeanTweenType.easeOutCubic)
+                    .setIgnoreTimeScale(ignoreTimeScale);
+
+                //CanvasGroup cardCanvasGroup = GetUpgradeCanvasGroup(i);
+                CanvasGroup cardCanvasGroup = upgradeSamuraiCanvasGroups[i];
+
+
+                LeanTween.alphaCanvas(cardCanvasGroup, 1f, upgradeDuration)
+                    .setDelay(delay)
+                    .setEase(LeanTweenType.easeOutCubic)
+                    .setIgnoreTimeScale(ignoreTimeScale);
+
+            }
+        }
+        else if (charCode == 2)
+        {
+            for (int i = 0; i < upgradeDullahanCards.Length; i++)
+            {
+                //if (upgradeCowboyCards[i] == null)
+                //    continue;
+
+                float delay = firstUpgradeDelay + i * upgradeStaggerDelay;
+
+                LeanTween.move(upgradeDullahanCards[i], ToVector3(upgradeFinalPositions[i]), upgradeDuration)
+                    .setDelay(delay)
+                    .setEase(LeanTweenType.easeOutCubic)
+                    .setIgnoreTimeScale(ignoreTimeScale);
+
+                //CanvasGroup cardCanvasGroup = GetUpgradeCanvasGroup(i);
+                CanvasGroup cardCanvasGroup = upgradeDullahanCanvasGroups[i];
+
+
+                LeanTween.alphaCanvas(cardCanvasGroup, 1f, upgradeDuration)
+                    .setDelay(delay)
+                    .setEase(LeanTweenType.easeOutCubic)
+                    .setIgnoreTimeScale(ignoreTimeScale);
+
+            }
+        }
+
+
     }
 
-    private void AnimateSelectButton()
+    private void AnimateSelectButton() //NÃO ESTÁ FUNCIONANDO AINDA!!
     {
         if (selectCowboyButton == null)
             return;
