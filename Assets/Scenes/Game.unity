@@ -38520,7 +38520,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -55.02545}
+  m_AnchoredPosition: {x: 0, y: -55.02539}
   m_SizeDelta: {x: 0, y: -110.05009}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &575059952
@@ -68876,11 +68876,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 434d786a7a4db499d9f171858a0cd935, type: 3}
   characterSelectionMusics:
   - {fileID: 8300000, guid: c73494bc302ede64aa938cbbe8a322c6, type: 3}
-  - {fileID: 8300000, guid: cd0c9bfebdcbb684e9a78fc1dc2fdd93, type: 3}
+  - {fileID: 8300000, guid: abcb148c40f2a38408d41c1d6bfb1941, type: 3}
   - {fileID: 8300000, guid: eb5e4095ef9e4a146aba72656ab1a926, type: 3}
   levelSelectionMusics:
   - {fileID: 8300000, guid: 252c6314e885ff44ab8f8af4a36e621c, type: 3}
-  - {fileID: 8300000, guid: cb7cb970c08ea8e4ca09b40cda23445b, type: 3}
+  - {fileID: 8300000, guid: e525656a31cd9d34a9058b57e95c7168, type: 3}
   - {fileID: 8300000, guid: 28672f1770b731641a5b5330266beb9c, type: 3}
   masterVolume: {fileID: 840755711}
   musicVolume: {fileID: 1450965058}
