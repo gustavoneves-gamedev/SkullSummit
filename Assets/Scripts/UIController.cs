@@ -29,6 +29,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject[] characterMenuArray;
     private int charCode = 0;
     private bool isCharSelecting;
+    private bool firstCall = true;
 
     [Header("CharacterUpgradeMenu")]
     #region Character Upgrades
@@ -388,11 +389,13 @@ public class UIController : MonoBehaviour
         uiAnimation = gameObject.GetComponent<UIAnimation>();
 
         AudioController.audioController.SwitchMusic(1);
-
+        
+                
         //coins.text = puxar informação do local de salvamento
         //InitializeStore(); //puxar informações do local de salvamento
         TopMainMenuUpdate();
     }
+
 
     #region General Menu
 
@@ -566,6 +569,9 @@ public class UIController : MonoBehaviour
         isCharSelecting = true;
         AudioController.audioController.SwitchMusicPlay(1, charCode);
         uiAnimation.PlayEntranceAnimation(charCode);
+        uiAnimation.FirstCall(charCode, firstCall);
+
+        firstCall = false;
 
     }
 
@@ -574,7 +580,7 @@ public class UIController : MonoBehaviour
 
         if (isCharSelecting && charCode + 1 < characterMenuArray.Length)
         {
-            characterMenuArray[charCode + 1].SetActive(true);
+            characterMenuArray[charCode + 1].SetActive(true);            
             characterMenuArray[charCode].SetActive(false);
             charCode++;
             uiAnimation.PlayEntranceAnimation(charCode);

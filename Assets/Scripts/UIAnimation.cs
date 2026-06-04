@@ -53,15 +53,30 @@ public class UIAnimation : MonoBehaviour
     [SerializeField] private bool playOnEnable = true;
     [SerializeField] private bool ignoreTimeScale = true;
 
-    private Vector2 characterFinalPosition;
-    private Vector2[] upgradeFinalPositions;
+    private Vector2 cowboyCharacterFinalPosition;
+    private Vector2[] upgradeCowboyFinalPositions;
     private Vector2 buttonFinalPosition;
 
-    private bool cachedPositions;
+    private Vector2 samuraiCharacterFinalPosition;
+    private Vector2[] upgradeSamuraiFinalPositions;
+
+    private Vector2 dullahanCharacterFinalPosition;
+    private Vector2[] upgradeDullahanFinalPositions;
+
+    private bool cachedCowboyPositions;
+    private bool cowboyFirstTime = true;
+    private bool cachedSamuraiPositions;
+    private bool samuraiFirstTime = true;
+    private bool cachedDullahanPositions;
+    private bool dullahanFirstTime = true;
+    private float initialDelay = 0f;
+
 
     private void Awake()
     {
-        CacheFinalPositions();
+        CacheFinalPositions(0);
+        CacheFinalPositions(1);
+        CacheFinalPositions(2);
     }
 
     private void OnEnable()
@@ -76,84 +91,191 @@ public class UIAnimation : MonoBehaviour
     {
         CancelTweens();
 
-        if (cachedPositions)
-        {
-            SetFinalState();
-        }
+        //if (cachedCowboyPositions)
+        //{
+        //    SetFinalState();
+        //}
+    }
+
+    private void Start()
+    {
+        // Invoke("Initialize", .4f);
+    }
+
+    private void Initialize()
+    {
+        PlayEntranceAnimation(0);
+        PlayEntranceAnimation(1);
+        PlayEntranceAnimation(2);
+
+        //CacheFinalPositions(0);
+        //CacheFinalPositions(1);
+        //CacheFinalPositions(2);
     }
 
     public void PlayEntranceAnimation(int charCode = -1)
     {
-        if (!cachedPositions)
+        if (!cachedCowboyPositions)
         {
-            CacheFinalPositions();
+            CacheFinalPositions(0);
+            Debug.Log("Cowboy foi chamado");
         }
 
-        CancelTweens();
-        SetStartState();
+        if (!cachedSamuraiPositions)
+        {
+            CacheFinalPositions(1);
+            Debug.Log("Samurai foi chamado");
+        }
+
+        if (!cachedDullahanPositions)
+        {
+            CacheFinalPositions(2);
+            Debug.Log("Dullahan foi chamado");
+        }
+
+        // CacheFinalPositions(charCode);
+        CancelTweens(charCode);
+        SetStartState(charCode);
 
         AnimateCharacter(charCode);
         AnimateUpgradeCards(charCode);
         AnimateSelectButton(); //NÃO ESTÁ FUNCIONANDO AINDA!!
     }
 
+    public void FirstCall(int charCode = 0, bool wasFirstCall = false)
+    {
+        if (!wasFirstCall) return;
+        
+        if (charCode == 0) cowboyFirstTime = false;
+        else if (charCode == 1) samuraiFirstTime = false;
+        else if (charCode == 2) dullahanFirstTime = false;
+    }
+
     public void SkipAnimation()
     {
         CancelTweens();
-        SetFinalState();
+        //SetFinalState();
     }
 
-    public void CacheFinalPositions()
+    public void CacheFinalPositions(int charCode = -1)
     {
-        Canvas.ForceUpdateCanvases();
 
-        if (cowboyImage != null)
+        //charCode = 0;
+        if (charCode == 0)
         {
-            characterFinalPosition = cowboyImage.anchoredPosition;
-        }
 
-        if (upgradeCowboyCards != null)
-        {
-            upgradeFinalPositions = new Vector2[upgradeCowboyCards.Length];
+            Canvas.ForceUpdateCanvases();
+
+            cowboyCharacterFinalPosition = cowboyImage.anchoredPosition;
+
+            upgradeCowboyFinalPositions = new Vector2[upgradeCowboyCards.Length];
 
             for (int i = 0; i < upgradeCowboyCards.Length; i++)
             {
-                if (upgradeCowboyCards[i] != null)
-                {
-                    upgradeFinalPositions[i] = upgradeCowboyCards[i].anchoredPosition;
-                }
+                upgradeCowboyFinalPositions[i] = upgradeCowboyCards[i].anchoredPosition;
             }
-        }
 
-        if (selectCowboyButton != null)
+            //NÃO ESTÁ FUNCIONANDO AINDA!!
+            if (selectCowboyButton != null)
+            {
+                buttonFinalPosition = selectCowboyButton.anchoredPosition;
+            }
+
+            cachedCowboyPositions = true;
+        }
+        else if (charCode == 1)
         {
-            buttonFinalPosition = selectCowboyButton.anchoredPosition;
+            Canvas.ForceUpdateCanvases();
+
+            samuraiCharacterFinalPosition = samuraiImage.anchoredPosition;
+
+            upgradeSamuraiFinalPositions = new Vector2[upgradeSamuraiCards.Length];
+
+            for (int i = 0; i < upgradeSamuraiCards.Length; i++)
+            {
+                upgradeSamuraiFinalPositions[i] = upgradeSamuraiCards[i].anchoredPosition;
+            }
+
+            //NÃO ESTÁ FUNCIONANDO AINDA!!
+            if (selectSamuraiButton != null)
+            {
+                buttonFinalPosition = selectSamuraiButton.anchoredPosition;
+            }
+
+            cachedSamuraiPositions = true;
+        }
+        else if (charCode == 2)
+        {
+            Canvas.ForceUpdateCanvases();
+
+            dullahanCharacterFinalPosition = dullahanImage.anchoredPosition;
+
+            upgradeDullahanFinalPositions = new Vector2[upgradeDullahanCards.Length];
+
+            for (int i = 0; i < upgradeDullahanCards.Length; i++)
+            {
+                upgradeDullahanFinalPositions[i] = upgradeDullahanCards[i].anchoredPosition;
+            }
+
+            //NÃO ESTÁ FUNCIONANDO AINDA!!
+            if (selectDullahanButton != null)
+            {
+                buttonFinalPosition = selectDullahanButton.anchoredPosition;
+            }
+
+            cachedDullahanPositions = true;
         }
 
-        cachedPositions = true;
+
     }
 
-    private void SetStartState()
+    private void SetStartState(int charCode = -1)
     {
-        if (cowboyImage != null)
+        if (charCode == 0)
         {
-            cowboyImage.anchoredPosition = characterFinalPosition + characterStartOffset;
-        }
+            cowboyImage.anchoredPosition = cowboyCharacterFinalPosition + characterStartOffset;
 
-        SetCanvasGroupAlpha(cowboyCanvasGroup, 0f);
+            SetCanvasGroupAlpha(cowboyCanvasGroup, 0f);
 
-        if (upgradeCowboyCards != null)
-        {
             for (int i = 0; i < upgradeCowboyCards.Length; i++)
             {
-                if (upgradeCowboyCards[i] == null)
-                    continue;
+                //if (upgradeCowboyCards[i] == null)
+                //    continue;
 
-                upgradeCowboyCards[i].anchoredPosition = upgradeFinalPositions[i] + upgradeStartOffset;
-                SetCanvasGroupAlpha(GetUpgradeCanvasGroup(i), 0f);
+                upgradeCowboyCards[i].anchoredPosition = upgradeCowboyFinalPositions[i] + upgradeStartOffset;
+                SetCanvasGroupAlpha(upgradeCowboyCanvasGroups[i], 0f);
+
+            }
+        }
+        else if (charCode == 1)
+        {
+            samuraiImage.anchoredPosition = samuraiCharacterFinalPosition + characterStartOffset;
+
+            SetCanvasGroupAlpha(samuraiCanvasGroup, 0f);
+
+            for (int i = 0; i < upgradeSamuraiCards.Length; i++)
+            {
+                upgradeSamuraiCards[i].anchoredPosition = upgradeSamuraiFinalPositions[i] + upgradeStartOffset;
+                SetCanvasGroupAlpha(upgradeSamuraiCanvasGroups[i], 0f);
+
+            }
+        }
+        else if (charCode == 2)
+        {
+            dullahanImage.anchoredPosition = dullahanCharacterFinalPosition + characterStartOffset;
+
+            SetCanvasGroupAlpha(dullahanCanvasGroup, 0f);
+
+            for (int i = 0; i < upgradeDullahanCards.Length; i++)
+            {
+                upgradeDullahanCards[i].anchoredPosition = upgradeDullahanFinalPositions[i] + upgradeStartOffset;
+                SetCanvasGroupAlpha(upgradeSamuraiCanvasGroups[i], 0f);
+
             }
         }
 
+
+        //NÃO ESTÁ FUNCIONANDO AINDA
         if (selectCowboyButton != null)
         {
             selectCowboyButton.anchoredPosition = buttonFinalPosition + buttonStartOffset;
@@ -162,40 +284,49 @@ public class UIAnimation : MonoBehaviour
         SetCanvasGroupAlpha(selectCowboyButtonCanvasGroup, 0f);
     }
 
-    private void SetFinalState()
-    {
-        if (cowboyImage != null)
-        {
-            cowboyImage.anchoredPosition = characterFinalPosition;
-        }
+    //private void SetFinalState()
+    //{
+    //    return;
+    //    cowboyImage.anchoredPosition = cowboyCharacterFinalPosition;
+    //    samuraiImage.anchoredPosition = samuraiCharacterFinalPosition;
+    //    dullahanImage.anchoredPosition = dullahanCharacterFinalPosition;
 
-        SetCanvasGroupAlpha(cowboyCanvasGroup, 1f);
 
-        if (upgradeCowboyCards != null)
-        {
-            for (int i = 0; i < upgradeCowboyCards.Length; i++)
-            {
-                if (upgradeCowboyCards[i] == null)
-                    continue;
+    //    SetCanvasGroupAlpha(cowboyCanvasGroup, 1f);
 
-                upgradeCowboyCards[i].anchoredPosition = upgradeFinalPositions[i];
-                SetCanvasGroupAlpha(GetUpgradeCanvasGroup(i), 1f);
-            }
-        }
+    //    for (int i = 0; i < upgradeCowboyCards.Length; i++)
+    //    {
+    //        //if (upgradeCowboyCards[i] == null)
+    //        //    continue;
 
-        if (selectCowboyButton != null)
-        {
-            selectCowboyButton.anchoredPosition = buttonFinalPosition;
-        }
+    //        upgradeCowboyCards[i].anchoredPosition = upgradeCowboyFinalPositions[i];
+    //        SetCanvasGroupAlpha(upgradeCowboyCanvasGroups[i], 1f);
 
-        SetCanvasGroupAlpha(selectCowboyButtonCanvasGroup, 1f);
-    }
+    //        upgradeSamuraiCards[i].anchoredPosition = upgradeSamuraiFinalPositions[i];
+    //        SetCanvasGroupAlpha(upgradeSamuraiCanvasGroups[i], 1f);
+
+    //        upgradeDullahanCards[i].anchoredPosition = upgradeDullahanFinalPositions[i];
+    //        SetCanvasGroupAlpha(upgradeDullahanCanvasGroups[i], 1f);
+    //    }
+
+    //    //NÃO ESTÁ FUNCIONANDO AINDA
+    //    if (selectCowboyButton != null)
+    //    {
+    //        selectCowboyButton.anchoredPosition = buttonFinalPosition;
+    //    }
+
+    //    SetCanvasGroupAlpha(selectCowboyButtonCanvasGroup, 1f);
+    //}
 
     private void AnimateCharacter(int charCode = -1)
     {
         if (charCode == 0)
         {
-            LeanTween.move(cowboyImage, ToVector3(characterFinalPosition), characterDuration)
+            if (cowboyFirstTime) initialDelay = .2f;
+            else initialDelay = 0f;
+
+            LeanTween.move(cowboyImage, ToVector3(cowboyCharacterFinalPosition), characterDuration)
+            .setDelay(initialDelay)
             .setEase(LeanTweenType.easeOutCubic)
             .setIgnoreTimeScale(ignoreTimeScale);
 
@@ -207,7 +338,12 @@ public class UIAnimation : MonoBehaviour
         }
         else if (charCode == 1)
         {
-            LeanTween.move(samuraiImage, ToVector3(characterFinalPosition), characterDuration)
+
+            if (samuraiFirstTime) initialDelay = .2f;
+            else initialDelay = 0f;
+
+            LeanTween.move(samuraiImage, ToVector3(samuraiCharacterFinalPosition), characterDuration)
+            .setDelay(initialDelay)
             .setEase(LeanTweenType.easeOutCubic)
             .setIgnoreTimeScale(ignoreTimeScale);
 
@@ -216,12 +352,18 @@ public class UIAnimation : MonoBehaviour
                 .setEase(LeanTweenType.easeOutCubic)
                 .setIgnoreTimeScale(ignoreTimeScale);
 
+            samuraiFirstTime = false;
+
         }
         else if (charCode == 2)
         {
-            LeanTween.move(dullahanImage, ToVector3(characterFinalPosition), characterDuration)
-            .setEase(LeanTweenType.easeOutCubic)
-            .setIgnoreTimeScale(ignoreTimeScale);
+            if (dullahanFirstTime) initialDelay = .2f;
+            else initialDelay = 0f;
+
+                LeanTween.move(dullahanImage, ToVector3(dullahanCharacterFinalPosition), characterDuration)
+                .setDelay(initialDelay)
+                .setEase(LeanTweenType.easeOutCubic)
+                .setIgnoreTimeScale(ignoreTimeScale);
 
 
             LeanTween.alphaCanvas(dullahanCanvasGroup, 1f, characterDuration)
@@ -242,9 +384,9 @@ public class UIAnimation : MonoBehaviour
                 //if (upgradeCowboyCards[i] == null)
                 //    continue;
 
-                float delay = firstUpgradeDelay + i * upgradeStaggerDelay;
+                float delay = firstUpgradeDelay + initialDelay + i * upgradeStaggerDelay;
 
-                LeanTween.move(upgradeCowboyCards[i], ToVector3(upgradeFinalPositions[i]), upgradeDuration)
+                LeanTween.move(upgradeCowboyCards[i], ToVector3(upgradeCowboyFinalPositions[i]), upgradeDuration)
                     .setDelay(delay)
                     .setEase(LeanTweenType.easeOutCubic)
                     .setIgnoreTimeScale(ignoreTimeScale);
@@ -259,6 +401,8 @@ public class UIAnimation : MonoBehaviour
                     .setIgnoreTimeScale(ignoreTimeScale);
 
             }
+
+            cowboyFirstTime = false;
         }
         else if (charCode == 1)
         {
@@ -267,9 +411,9 @@ public class UIAnimation : MonoBehaviour
                 //if (upgradeCowboyCards[i] == null)
                 //    continue;
 
-                float delay = firstUpgradeDelay + i * upgradeStaggerDelay;
+                float delay = firstUpgradeDelay + initialDelay + i * upgradeStaggerDelay;
 
-                LeanTween.move(upgradeSamuraiCards[i], ToVector3(upgradeFinalPositions[i]), upgradeDuration)
+                LeanTween.move(upgradeSamuraiCards[i], ToVector3(upgradeSamuraiFinalPositions[i]), upgradeDuration)
                     .setDelay(delay)
                     .setEase(LeanTweenType.easeOutCubic)
                     .setIgnoreTimeScale(ignoreTimeScale);
@@ -284,6 +428,8 @@ public class UIAnimation : MonoBehaviour
                     .setIgnoreTimeScale(ignoreTimeScale);
 
             }
+
+            samuraiFirstTime = false;
         }
         else if (charCode == 2)
         {
@@ -292,9 +438,9 @@ public class UIAnimation : MonoBehaviour
                 //if (upgradeCowboyCards[i] == null)
                 //    continue;
 
-                float delay = firstUpgradeDelay + i * upgradeStaggerDelay;
+                float delay = firstUpgradeDelay + initialDelay + i * upgradeStaggerDelay;
 
-                LeanTween.move(upgradeDullahanCards[i], ToVector3(upgradeFinalPositions[i]), upgradeDuration)
+                LeanTween.move(upgradeDullahanCards[i], ToVector3(upgradeDullahanFinalPositions[i]), upgradeDuration)
                     .setDelay(delay)
                     .setEase(LeanTweenType.easeOutCubic)
                     .setIgnoreTimeScale(ignoreTimeScale);
@@ -309,9 +455,9 @@ public class UIAnimation : MonoBehaviour
                     .setIgnoreTimeScale(ignoreTimeScale);
 
             }
+
+            dullahanFirstTime = false;
         }
-
-
     }
 
     private void AnimateSelectButton() //NÃO ESTÁ FUNCIONANDO AINDA!!
@@ -333,20 +479,14 @@ public class UIAnimation : MonoBehaviour
         }
     }
 
-    private void CancelTweens()
+    private void CancelTweens(int charCode = -1)
     {
-        if (cowboyImage != null)
+        if (charCode == 0)
         {
             LeanTween.cancel(cowboyImage.gameObject);
-        }
 
-        if (cowboyCanvasGroup != null)
-        {
             LeanTween.cancel(cowboyCanvasGroup.gameObject);
-        }
 
-        if (upgradeCowboyCards != null)
-        {
             for (int i = 0; i < upgradeCowboyCards.Length; i++)
             {
                 if (upgradeCowboyCards[i] != null)
@@ -354,7 +494,49 @@ public class UIAnimation : MonoBehaviour
                     LeanTween.cancel(upgradeCowboyCards[i].gameObject);
                 }
 
-                CanvasGroup cardCanvasGroup = GetUpgradeCanvasGroup(i);
+                CanvasGroup cardCanvasGroup = upgradeCowboyCanvasGroups[i];
+
+                if (cardCanvasGroup != null)
+                {
+                    LeanTween.cancel(cardCanvasGroup.gameObject);
+                }
+            }
+        }
+        else if (charCode == 1)
+        {
+            LeanTween.cancel(samuraiImage.gameObject);
+
+            LeanTween.cancel(samuraiCanvasGroup.gameObject);
+
+            for (int i = 0; i < upgradeSamuraiCards.Length; i++)
+            {
+                if (upgradeSamuraiCards[i] != null)
+                {
+                    LeanTween.cancel(upgradeSamuraiCards[i].gameObject);
+                }
+
+                CanvasGroup cardCanvasGroup = upgradeSamuraiCanvasGroups[i];
+
+                if (cardCanvasGroup != null)
+                {
+                    LeanTween.cancel(cardCanvasGroup.gameObject);
+                }
+            }
+        }
+        else if (charCode == 2)
+        {
+            LeanTween.cancel(dullahanImage.gameObject);
+
+            LeanTween.cancel(dullahanCanvasGroup.gameObject);
+
+            for (int i = 0; i < upgradeDullahanCards.Length; i++)
+            {
+                if (upgradeDullahanCards[i] != null)
+                {
+                    LeanTween.cancel(upgradeDullahanCards[i].gameObject);
+                }
+
+                CanvasGroup cardCanvasGroup = upgradeDullahanCanvasGroups[i];
 
                 if (cardCanvasGroup != null)
                 {
@@ -363,10 +545,14 @@ public class UIAnimation : MonoBehaviour
             }
         }
 
+
+        //NÃO ESTÁ FUNCIONANDO
+
         if (selectCowboyButton != null)
         {
             LeanTween.cancel(selectCowboyButton.gameObject);
         }
+
 
         if (selectCowboyButtonCanvasGroup != null)
         {
@@ -374,16 +560,6 @@ public class UIAnimation : MonoBehaviour
         }
     }
 
-    private CanvasGroup GetUpgradeCanvasGroup(int index)
-    {
-        if (upgradeCowboyCanvasGroups == null)
-            return null;
-
-        if (index < 0 || index >= upgradeCowboyCanvasGroups.Length)
-            return null;
-
-        return upgradeCowboyCanvasGroups[index];
-    }
 
     private void SetCanvasGroupAlpha(CanvasGroup canvasGroup, float alpha)
     {

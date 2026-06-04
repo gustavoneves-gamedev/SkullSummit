@@ -522,7 +522,7 @@ namespace DentedPixel.LTExamples
             yield return new WaitForSeconds(expectedTime);
             Time.timeScale = 1f;
 
-            int ltCount = 0;
+            int ltCount = 0;            
             GameObject[] allGos = FindObjectsOfType(typeof(GameObject)) as GameObject[];
             foreach (GameObject go in allGos)
             {
