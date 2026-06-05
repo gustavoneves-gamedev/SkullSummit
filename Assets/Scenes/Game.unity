@@ -5968,7 +5968,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1000
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e9705bc93e8d9f947bcf06066f7dd393, type: 2}
   m_sharedMaterial: {fileID: -3797268997254227981, guid: e9705bc93e8d9f947bcf06066f7dd393, type: 2}
@@ -5995,8 +5995,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 82
+  m_fontSizeBase: 82
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -24324,9 +24324,9 @@ MonoBehaviour:
   heightMultiplier: {fileID: 1892676918}
   obstaclesBonus: {fileID: 2073187726}
   totalCoins: {fileID: 97006130}
-  heightAdd: {fileID: 0}
-  obstaclesAdd: {fileID: 0}
-  totalRubies: {fileID: 0}
+  heightAdd: {fileID: 316892250}
+  obstaclesAdd: {fileID: 385553496}
+  totalRubies: {fileID: 682003755}
   playerRoot: {fileID: 0}
 --- !u!4 &393168559
 Transform:
@@ -42270,7 +42270,7 @@ GameObject:
   - component: {fileID: 682003756}
   - component: {fileID: 682003755}
   m_Layer: 5
-  m_Name: Coins Text (TMP)
+  m_Name: RubiesText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42315,7 +42315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e9705bc93e8d9f947bcf06066f7dd393, type: 2}
   m_sharedMaterial: {fileID: -3797268997254227981, guid: e9705bc93e8d9f947bcf06066f7dd393, type: 2}
@@ -42342,8 +42342,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 82
+  m_fontSizeBase: 82
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -44268,7 +44268,7 @@ GameObject:
   - component: {fileID: 716181866}
   - component: {fileID: 716181865}
   m_Layer: 5
-  m_Name: CoinsTittle (1)
+  m_Name: RubiesTittle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

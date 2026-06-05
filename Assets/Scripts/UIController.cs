@@ -574,12 +574,12 @@ public class UIController : MonoBehaviour
 
         if (height != 0)
         {
-            heightMultiplier.text = "+" + height.ToString("F0");
+            heightAdd.text = "+" + height.ToString("F0");
         }
 
         if (obstacles != 0)
         {
-            obstaclesBonus.text = "+" + obstacles.ToString("F0");
+            obstaclesAdd.text = "+" + obstacles.ToString("F0");
         }
 
         this.totalRubies.text = totalRubies.ToString("F0");
