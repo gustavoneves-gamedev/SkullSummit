@@ -103,7 +103,8 @@ public class GameController : MonoBehaviour
         }
         else if (isCalculatingRubyRewards)
         {
-
+            CalulateHeightRubies();
+            CalulateObstacleRubies();
         }
 
     }
@@ -270,11 +271,13 @@ public class GameController : MonoBehaviour
             if (x >= y)
             {
                 x = 0;
-                canProccedSecond = false;
                 canProccedFirst = false;
+                canProccedSecond = false;
                 canProccedThird = false;
 
-                hasBeganCalculating = false;
+                isCalculatingCoinRewards = false;
+                isCalculatingRubyRewards = true;
+                //hasBeganCalculating = false;
             }
         }
         else
@@ -293,6 +296,69 @@ public class GameController : MonoBehaviour
         }
 
            
+    }
+
+    #endregion
+
+    #region Rewards Rubies
+
+    private void CalulateHeightRubies()
+    {
+        if (canProccedFirst || canProccedSecond) return;
+
+        if (x < 1) x += 1 * Time.deltaTime;
+        else x = 1;
+
+        uiController.RewardsCoinMenu(runNormalCoins, 0, 0, 0);
+
+        if (x >= 1)
+        {
+            x = 0;
+            canProccedFirst = true;
+        }
+    }
+
+    private void CalulateObstacleRubies()
+    {
+        if (!canProccedFirst) return;
+
+        if (canProccedSecond)
+        {
+            float y = (runNormalCoins * (1 + (height / 10000f))) + obstaclesDestroyed * 10f;
+
+            if (x < y) x += (y / 1.5f) * Time.deltaTime;
+            else x = y;
+
+            uiController.RewardsCoinMenu(0, 0, 0, x);
+
+            if (x >= y)
+            {
+                x = 0;
+                canProccedFirst = false;
+                canProccedSecond = false;
+                canProccedThird = false;
+
+                //isCalculatingCoinRewards = false;
+                //isCalculatingRubyRewards = true;
+                hasBeganCalculating = false;
+            }
+        }
+        else
+        {
+
+            if (x < 1) x += 1 * Time.deltaTime;
+            else x = 1;
+
+            uiController.RewardsCoinMenu(0, 0, obstaclesDestroyed * 10f, 0);
+
+            if (x >= 1)
+            {
+                x = 0;
+                canProccedSecond = true;
+            }
+        }
+
+
     }
 
     #endregion
