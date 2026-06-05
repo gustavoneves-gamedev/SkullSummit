@@ -388,7 +388,7 @@ public class UIController : MonoBehaviour
         playerRoot = GameController.gameController.playerRoot;
         uiAnimation = gameObject.GetComponent<UIAnimation>();
 
-        AudioController.audioController.SwitchMusic(1);
+        AudioController.audioController.SwitchMusicPlay();
         
                 
         //coins.text = puxar informação do local de salvamento
@@ -522,7 +522,12 @@ public class UIController : MonoBehaviour
 
         //playerRoot.EndRun();
         GameController.gameController.isRunning = false;
-        if (AudioController.audioController.currentMusicCode != 0) AudioController.audioController.SwitchMusic(0);
+
+        if (AudioController.audioController.currentMusicCode != 0)
+        {
+            AudioController.audioController.SwitchMusicPlay();
+        }
+           
 
         //playerRoot.isGamePaused = false;        
         Time.timeScale = 1;

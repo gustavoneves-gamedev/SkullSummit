@@ -10,9 +10,10 @@ public class AudioController : MonoBehaviour
     public int currentMusicCode = 0;
     public AudioSource mySoundBox;
     public AudioMixer myMixer;
-    public AudioClip[] musics;
+    public AudioClip[] menuMusics;
     public AudioClip[] characterSelectionMusics;
     public AudioClip[] levelSelectionMusics;
+    public AudioClip[] runMusics;
     //0 - MenuCowboy
     //1 - Cowboy Level part 1
     //2 - Cowboy Level part 2
@@ -60,16 +61,16 @@ public class AudioController : MonoBehaviour
 
     private void Update() //MEGA PROVISÓRIO!!
     {
-        if (isPlayingRunMusic) timeToChangeMusic -= Time.deltaTime;
+        //if (isPlayingRunMusic) timeToChangeMusic -= Time.deltaTime;
 
-        if (isPlayingRunMusic && timeToChangeMusic <= 7f)
-        {
-            mySoundBox.clip = musics[2];
-            mySoundBox.pitch = 1.1f;
-            mySoundBox.Play();
-            mySoundBox.loop = true;
-            isPlayingRunMusic = false;
-        }
+        //if (isPlayingRunMusic && timeToChangeMusic <= 7f)
+        //{
+        //    mySoundBox.clip = menuMusics[2];
+        //    mySoundBox.pitch = 1.1f;
+        //    mySoundBox.Play();
+        //    mySoundBox.loop = true;
+        //    isPlayingRunMusic = false;
+        //}
     }
 
     public void Initialize()
@@ -119,18 +120,23 @@ public class AudioController : MonoBehaviour
     public void SwitchMusicPlay(int musicGroup = 0, int music = 0)
     {
         //currentMusicCode = music;
-
-        if (musicGroup == 1)
+        if (musicGroup == 0)
+        {
+            mySoundBox.clip = menuMusics[music];            
+            mySoundBox.loop = true;
+            mySoundBox.Play();
+        }
+        else if (musicGroup == 1)
         {
             mySoundBox.clip = characterSelectionMusics[music];
-            isPlayingRunMusic = false;
+            //isPlayingRunMusic = false;
             mySoundBox.loop = true;
             mySoundBox.Play();
         }
         else if (musicGroup == 2)
         {
             mySoundBox.clip = levelSelectionMusics[music];
-            isPlayingRunMusic = false;
+            //isPlayingRunMusic = false;
             mySoundBox.loop = true;
             mySoundBox.Play();
         }
@@ -139,28 +145,28 @@ public class AudioController : MonoBehaviour
     }
 
 
-    public void SwitchMusic(int music)
-    {
-        currentMusicCode = music;
+    //public void SwitchMusic(int music)
+    //{
+    //    currentMusicCode = music;
 
-        if (music == 0)
-        {
-            mySoundBox.clip = musics[0];
-            isPlayingRunMusic = false;
-            mySoundBox.loop = true;
-            mySoundBox.Play();
-        }
-        if (music == 1)
-        {
-            mySoundBox.clip = musics[1];
-            timeToChangeMusic = mySoundBox.clip.length;
-            isPlayingRunMusic = true;
-            mySoundBox.loop = false;
-            mySoundBox.Play();
-        }
+    //    if (music == 0)
+    //    {
+    //        mySoundBox.clip = menuMusics[0];
+    //        isPlayingRunMusic = false;
+    //        mySoundBox.loop = true;
+    //        mySoundBox.Play();
+    //    }
+    //    if (music == 1)
+    //    {
+    //        mySoundBox.clip = menuMusics[1];
+    //        timeToChangeMusic = mySoundBox.clip.length;
+    //        isPlayingRunMusic = true;
+    //        mySoundBox.loop = false;
+    //        mySoundBox.Play();
+    //    }
 
-        //mySoundBox.loop = true;
-        //mySoundBox.Play();
-    }
+    //    //mySoundBox.loop = true;
+    //    //mySoundBox.Play();
+    //}
 
 }
