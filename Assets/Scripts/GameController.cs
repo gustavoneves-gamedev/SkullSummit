@@ -91,15 +91,13 @@ public class GameController : MonoBehaviour
         
         if (isCalculatingStatistics)
         {
-            
-
             CalculateHeight();
             CalculateCoinsCollected();
             CalculateObstaclesDestroyed();
         }
         else if (isCalculatingCoinRewards)
         {
-
+            CalulateBaseCoins();
         }
         else if (isCalculatingRubyRewards)
         {
@@ -136,6 +134,8 @@ public class GameController : MonoBehaviour
         playerRoot.ResetPosition(worldPos);
     }
 
+    #region End Run
+
     public void EndRun(float height)
     {
         isRunning = false;
@@ -147,22 +147,21 @@ public class GameController : MonoBehaviour
 
         uiController.StaticsMenu(0, 0, 0, 0, true);
 
+        //DAQUI PARA BAIXO PRECISARÁ SER REVISTO!!
         coins += runNormalCoins;
 
         uiController.TopMainMenuUpdate();
 
         //uiController.StaticsMenu(height, runNormalCoins, runRubies, obstaclesDestroyed);
 
-
-
         UpdateBestHeight(height);
         UpdateLeaderboard(height);
     }
 
+    #region Statistics
     private void CalculateHeight()
     {
         if (canProccedFirst) return;
-
 
         if (x < height) x += (height / 2f) * Time.deltaTime;
         else x = height;
@@ -209,7 +208,18 @@ public class GameController : MonoBehaviour
             hasBeganCalculating = false;
         }
     }
+    #endregion
 
+    #region Rewards Coins
+
+    private void CalulateBaseCoins()
+    {
+
+    }
+
+    #endregion
+
+    #endregion
 
     #region Leaderboard Temp
 

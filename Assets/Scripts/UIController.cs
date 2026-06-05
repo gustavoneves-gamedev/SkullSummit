@@ -332,7 +332,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private Image specialFill;
 
 
-    [Header("Stats Menu")]    
+    [Header("Statistics Menu")]
+    #region Statistics Menu
+    [Header("Statistics")]
     [SerializeField] private GameObject statsMenu;
     [SerializeField] private TextMeshProUGUI[] levelNames;
     [SerializeField] private TextMeshProUGUI heightClimbed;
@@ -350,7 +352,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI heightAdd;
     [SerializeField] private TextMeshProUGUI obstaclesAdd;
     [SerializeField] private TextMeshProUGUI totalRubies;
-
+    #endregion
 
     [Header("Reference")]
     public PlayerRoot playerRoot;
@@ -397,7 +399,7 @@ public class UIController : MonoBehaviour
     }
 
 
-    #region General Menu
+    #region Main Menu
 
     public void BeginRun()
     {
@@ -416,6 +418,44 @@ public class UIController : MonoBehaviour
     {
         coins.text = GameController.gameController.coins.ToString();
     }
+
+    public void BackToMainMenu()
+    {
+        statsMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+        resurrectionMenu.SetActive(false);
+        HUD.SetActive(false);
+        leaderboard.SetActive(false);
+        characterSelectionMenu.SetActive(false);
+        levelSelectionMenu.SetActive(false);
+        shopMenu.SetActive(false);
+        optionsMenu.SetActive(false);
+        topMenu.SetActive(true);
+
+        //playerRoot.EndRun();
+        GameController.gameController.isRunning = false;
+
+        if (AudioController.audioController.currentMusicCode != 0)
+        {
+            AudioController.audioController.SwitchMusicPlay();
+        }
+
+
+        //playerRoot.isGamePaused = false;        
+        Time.timeScale = 1;
+
+        if (!isLevelSelecting && !isCharSelecting)
+        {
+            GameController.gameController.InitilizeLevelStatics();
+            GameController.gameController.ResetPlayerPosition();
+        }
+
+        isCharSelecting = false;
+        isLevelSelecting = false;
+        mainMenu.SetActive(true);
+    }
+
+    #endregion
 
     #region Options Menu
     public void ActivateOptionsMenu()
@@ -488,6 +528,8 @@ public class UIController : MonoBehaviour
     }
     #endregion
 
+    #region Statics Menu
+
     public void StaticsMenu(float height = 0, float coins = 0, float rubies = 0, 
         float obstaclesDestroyed = 0, bool runJustEnded = false)
     {
@@ -496,52 +538,38 @@ public class UIController : MonoBehaviour
             pauseMenu.SetActive(false);
             HUD.SetActive(false);
             statsMenu.SetActive(true);
-        }
-        
+        }        
 
         heightClimbed.text = height.ToString("F0");
         coinsCollected.text = coins.ToString("F0");
         //rubiesCollected.text = rubies.ToString("F0");
-        obstacles.text = obstaclesDestroyed.ToString("F0");
-
-        
+        obstacles.text = obstaclesDestroyed.ToString("F0");        
     }
 
-    public void BackToMainMenu()
+    public void RewardsCoinMenu( float coins = 0, float height = 0,
+        float obstaclesDestroyed = 0, float totalCoins = 0)
     {
-        statsMenu.SetActive(false);
-        pauseMenu.SetActive(false);
-        resurrectionMenu.SetActive(false);
-        HUD.SetActive(false);
-        leaderboard.SetActive(false);
-        characterSelectionMenu.SetActive(false);
-        levelSelectionMenu.SetActive(false);
-        shopMenu.SetActive(false);
-        optionsMenu.SetActive(false);
-        topMenu.SetActive(true);
-
-        //playerRoot.EndRun();
-        GameController.gameController.isRunning = false;
-
-        if (AudioController.audioController.currentMusicCode != 0)
+        if (coins != 0)
         {
-            AudioController.audioController.SwitchMusicPlay();
-        }
-           
-
-        //playerRoot.isGamePaused = false;        
-        Time.timeScale = 1;
-
-        if (!isLevelSelecting && !isCharSelecting)
-        {
-            GameController.gameController.InitilizeLevelStatics();
-            GameController.gameController.ResetPlayerPosition();
+            baseCoins.text = coins.ToString("F0");
         }
 
-        isCharSelecting = false;
-        isLevelSelecting = false;
-        mainMenu.SetActive(true);
+        if (height != 0)
+        {
+            heightMultiplier.text = height.ToString("F0");
+        }
+
+        if (obstaclesDestroyed != 0)
+        {
+            obstaclesBonus.text = obstaclesDestroyed.ToString("F0");
+        }
+
+        //rubiesCollected.text = rubies.ToString("F0");
+        
+
+        this.totalCoins.text = totalCoins.ToString("F0");
     }
+
 
     #endregion
 
