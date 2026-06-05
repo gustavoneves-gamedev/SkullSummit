@@ -24320,10 +24320,10 @@ MonoBehaviour:
   coinsCollected: {fileID: 1714285917}
   rubiesCollected: {fileID: 0}
   obstacles: {fileID: 1843163203}
-  baseCoins: {fileID: 0}
-  heightMultiplier: {fileID: 0}
-  obstaclesBonus: {fileID: 0}
-  totalCoins: {fileID: 0}
+  baseCoins: {fileID: 680622805}
+  heightMultiplier: {fileID: 1892676918}
+  obstaclesBonus: {fileID: 2073187726}
+  totalCoins: {fileID: 97006130}
   heightAdd: {fileID: 0}
   obstaclesAdd: {fileID: 0}
   totalRubies: {fileID: 0}
@@ -108980,7 +108980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1817082299
 RectTransform:
   m_ObjectHideFlags: 0

@@ -88,7 +88,7 @@ public class GameController : MonoBehaviour
 
         if (!hasBeganCalculating) return;
 
-        
+
         if (isCalculatingStatistics)
         {
             CalculateHeight();
@@ -98,6 +98,8 @@ public class GameController : MonoBehaviour
         else if (isCalculatingCoinRewards)
         {
             CalulateBaseCoins();
+            CalulateHeightMultiplier();
+            CalulateObstacleBonus();
         }
         else if (isCalculatingRubyRewards)
         {
@@ -161,7 +163,7 @@ public class GameController : MonoBehaviour
     #region Statistics
     private void CalculateHeight()
     {
-        if (canProccedFirst) return;
+        if (canProccedFirst || canProccedSecond) return;
 
         if (x < height) x += (height / 2f) * Time.deltaTime;
         else x = height;
@@ -187,8 +189,8 @@ public class GameController : MonoBehaviour
         if (x >= runNormalCoins)
         {
             x = 0;
-            canProccedFirst = false;
             canProccedSecond = true;
+            canProccedFirst = false;
         }
     }
 
@@ -205,7 +207,12 @@ public class GameController : MonoBehaviour
         {
             x = 0;
             canProccedSecond = false;
-            hasBeganCalculating = false;
+            canProccedFirst = false;
+
+            //hasBeganCalculating = false; //TEMPORÁRIO -> IRÁ PARAR O CÓDIGO
+
+            isCalculatingStatistics = false;
+            isCalculatingCoinRewards = true;
         }
     }
     #endregion
@@ -214,7 +221,78 @@ public class GameController : MonoBehaviour
 
     private void CalulateBaseCoins()
     {
+        if (canProccedFirst || canProccedSecond) return;
 
+        if (x < 1) x += 1 * Time.deltaTime;
+        else x = 1;
+
+        uiController.RewardsCoinMenu(runNormalCoins, 0, 0, 0);
+
+        if (x >= 1)
+        {            
+            x = 0;
+            canProccedFirst = true;
+        }
+    }
+
+    private void CalulateHeightMultiplier()
+    {
+        if (!canProccedFirst) return;
+
+        float y = runNormalCoins * (1 + (height / 10000f));
+
+        if (x < 1) x += 1 * Time.deltaTime;
+        else x = 1;
+
+        uiController.RewardsCoinMenu(0, height / 10000, 0, 0);
+
+        if (x >= 1)
+        {            
+            x = 0;
+            canProccedSecond = true;
+            canProccedFirst = false;
+        }
+    }
+
+    private void CalulateObstacleBonus()
+    {
+        if (!canProccedSecond) return;
+
+        if (canProccedThird)
+        {
+            float y = (runNormalCoins * (1 + (height / 10000f))) + obstaclesDestroyed * 10f;
+
+            if (x < y) x += (y / 1.5f) * Time.deltaTime;
+            else x = y;
+
+            uiController.RewardsCoinMenu(0, 0, 0, x);
+
+            if (x >= y)
+            {
+                x = 0;
+                canProccedSecond = false;
+                canProccedFirst = false;
+                canProccedThird = false;
+
+                hasBeganCalculating = false;
+            }
+        }
+        else
+        {
+            
+            if (x < 1) x += 1 * Time.deltaTime;
+            else x = 1;
+
+            uiController.RewardsCoinMenu(0, 0, obstaclesDestroyed * 10f, 0);
+
+            if (x >= 1)
+            {
+                x = 0;                
+                canProccedThird = true;
+            }
+        }
+
+           
     }
 
     #endregion
