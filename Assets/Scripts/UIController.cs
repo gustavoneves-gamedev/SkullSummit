@@ -549,8 +549,7 @@ public class UIController : MonoBehaviour
     public void RewardsCoinMenu( float coins = 0, float height = 0,
         float obstaclesDestroyed = 0, float totalCoins = 0)
     {
-
-        
+                
         if (coins != 0)
         {
             baseCoins.text = coins.ToString("F0");
@@ -566,12 +565,25 @@ public class UIController : MonoBehaviour
             obstaclesBonus.text = "+" + obstaclesDestroyed.ToString("F0");
         }
 
-        //rubiesCollected.text = rubies.ToString("F0");
-        
-
         this.totalCoins.text = totalCoins.ToString("F0");
     }
 
+    public void RewardsRubyMenu(float height = 0,
+        float obstacles = 0, float totalRubies = 0)
+    {
+
+        if (height != 0)
+        {
+            heightMultiplier.text = "+" + height.ToString("F0");
+        }
+
+        if (obstacles != 0)
+        {
+            obstaclesBonus.text = "+" + obstacles.ToString("F0");
+        }
+
+        this.totalRubies.text = totalRubies.ToString("F0");
+    }
 
     #endregion
 
