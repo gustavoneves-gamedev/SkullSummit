@@ -150,7 +150,7 @@ public class GameController : MonoBehaviour
         hasBeganCalculating = true;
         isCalculatingStatistics = true;
 
-        uiController.StaticsMenu(0, 0, 0, 0, true);
+        uiController.StaticsMenu(0, 0, 0, true, false);
 
         //DAQUI PARA BAIXO PRECISARÁ SER REVISTO!!
         coins += runNormalCoins;
@@ -175,6 +175,8 @@ public class GameController : MonoBehaviour
 
         if (x >= height)
         {
+            x = height;
+            uiController.StaticsMenu(x,0,0,false,true);
             x = 0;
             canProccedFirst = true;
         }
@@ -187,10 +189,12 @@ public class GameController : MonoBehaviour
         if (x < runNormalCoins) x += (runNormalCoins / 2f) * Time.deltaTime;
         else x = runNormalCoins;
 
-        uiController.StaticsMenu(height, x);
+        uiController.StaticsMenu(0, x);
 
         if (x >= runNormalCoins)
         {
+            x = runNormalCoins;
+            uiController.StaticsMenu(0, x, 0, false, true);
             x = 0;
             canProccedSecond = true;
             canProccedFirst = false;
@@ -204,10 +208,12 @@ public class GameController : MonoBehaviour
         if (x < obstaclesDestroyed) x += (obstaclesDestroyed / 2f) * Time.deltaTime;
         else x = obstaclesDestroyed;
 
-        uiController.StaticsMenu(height, runNormalCoins, 0, x);
+        uiController.StaticsMenu(0, 0, x);
 
         if (x >= obstaclesDestroyed)
         {
+            x = obstaclesDestroyed;
+            uiController.StaticsMenu(0, 0, x, false, true);
             x = 0;
             canProccedSecond = false;
             canProccedThird = true;
@@ -218,10 +224,10 @@ public class GameController : MonoBehaviour
     {
         if (!canProccedThird) return;
 
-        if (x < 1) x += 1 * Time.deltaTime;
-        else x = 1;
+        if (x < .3f) x += 1* Time.deltaTime;
+        else x = .3f;
 
-        if (x >= 1)
+        if (x >= .3f)
         {
             x = 1;
             canProccedSecond = false;
@@ -242,8 +248,8 @@ public class GameController : MonoBehaviour
     {
         if (canProccedFirst || canProccedSecond || canProccedThird || canProccedFourth) return;
 
-        if (x < 1) x += 1 * Time.deltaTime;
-        else x = 1;
+        //if (x < 1) x += 1 * Time.deltaTime;
+        //else x = 1;
 
         //if (x >= 1)
         //{
@@ -295,6 +301,8 @@ public class GameController : MonoBehaviour
 
             if (x >= y)
             {
+                x = y;
+                uiController.RewardsCoinMenu(0, 0, 0, x, true);
                 x = 0;
                 canProccedFirst = false;
                 canProccedSecond = false;
@@ -312,11 +320,10 @@ public class GameController : MonoBehaviour
             if (x < 1) x += 1 * Time.deltaTime;
             else x = 1;
 
-            uiController.RewardsCoinMenu(0, 0, obstaclesDestroyed * 10f, 0);
-
             if (x >= 1)
             {
                 x = 0;
+                uiController.RewardsCoinMenu(0, 0, obstaclesDestroyed * 10f, 0, true);
                 canProccedThird = true;
             }
         }

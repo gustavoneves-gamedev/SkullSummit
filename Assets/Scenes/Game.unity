@@ -5922,6 +5922,7 @@ GameObject:
   - component: {fileID: 97006129}
   - component: {fileID: 97006131}
   - component: {fileID: 97006130}
+  - component: {fileID: 97006132}
   m_Layer: 5
   m_Name: Coins Text (TMP)
   m_TagString: Untagged
@@ -6048,6 +6049,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97006128}
   m_CullTransparentMesh: 1
+--- !u!225 &97006132
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97006128}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &98627317
 GameObject:
   m_ObjectHideFlags: 0
@@ -11818,6 +11831,7 @@ GameObject:
   - component: {fileID: 189682267}
   - component: {fileID: 189682269}
   - component: {fileID: 189682268}
+  - component: {fileID: 189682270}
   m_Layer: 5
   m_Name: TMP_HeightClimbed
   m_TagString: Untagged
@@ -11944,6 +11958,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189682266}
   m_CullTransparentMesh: 1
+--- !u!225 &189682270
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189682266}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &190249799
 GameObject:
   m_ObjectHideFlags: 0
@@ -18398,6 +18424,7 @@ GameObject:
   - component: {fileID: 316892249}
   - component: {fileID: 316892251}
   - component: {fileID: 316892250}
+  - component: {fileID: 316892252}
   m_Layer: 5
   m_Name: TMP_HeightClimbed
   m_TagString: Untagged
@@ -18524,6 +18551,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316892248}
   m_CullTransparentMesh: 1
+--- !u!225 &316892252
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316892248}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &318164114
 GameObject:
   m_ObjectHideFlags: 0
@@ -23288,6 +23327,7 @@ GameObject:
   - component: {fileID: 385553495}
   - component: {fileID: 385553497}
   - component: {fileID: 385553496}
+  - component: {fileID: 385553498}
   m_Layer: 5
   m_Name: TMP_Obstacles
   m_TagString: Untagged
@@ -23414,6 +23454,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385553494}
   m_CullTransparentMesh: 1
+--- !u!225 &385553498
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385553494}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &386072517
 GameObject:
   m_ObjectHideFlags: 0
@@ -24317,9 +24369,11 @@ MonoBehaviour:
   - {fileID: 722002421}
   - {fileID: 1872041861}
   heightClimbed: {fileID: 189682268}
+  heightClimbedRect: {fileID: 189682267}
   coinsCollected: {fileID: 1714285917}
-  rubiesCollected: {fileID: 0}
+  coinsCollectedRect: {fileID: 1714285916}
   obstacles: {fileID: 1843163203}
+  obstaclesRect: {fileID: 1843163202}
   baseCoins: {fileID: 680622805}
   baseCoinsRect: {fileID: 680622804}
   heightMultiplier: {fileID: 1892676918}
@@ -24327,10 +24381,14 @@ MonoBehaviour:
   obstaclesBonus: {fileID: 2073187726}
   obstaclesBonusRect: {fileID: 2073187725}
   totalCoins: {fileID: 97006130}
+  totalCoinsRect: {fileID: 97006129}
   heightAdd: {fileID: 316892250}
+  heightAddRect: {fileID: 316892249}
   obstaclesAdd: {fileID: 385553496}
+  obstaclesAddRect: {fileID: 385553495}
   totalRubies: {fileID: 682003755}
-  popScale: 1.25
+  totalRubiesRect: {fileID: 682003754}
+  popScale: 2
   growDuration: 0.12
   shrinkDuration: 0.12
   ignoreTimeScale: 1
@@ -42289,6 +42347,7 @@ GameObject:
   - component: {fileID: 682003754}
   - component: {fileID: 682003756}
   - component: {fileID: 682003755}
+  - component: {fileID: 682003757}
   m_Layer: 5
   m_Name: RubiesText (TMP)
   m_TagString: Untagged
@@ -42415,6 +42474,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682003753}
   m_CullTransparentMesh: 1
+--- !u!225 &682003757
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682003753}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &684579239
 GameObject:
   m_ObjectHideFlags: 0
@@ -102913,6 +102984,7 @@ GameObject:
   - component: {fileID: 1714285916}
   - component: {fileID: 1714285918}
   - component: {fileID: 1714285917}
+  - component: {fileID: 1714285919}
   m_Layer: 5
   m_Name: TMP_Coins
   m_TagString: Untagged
@@ -103039,6 +103111,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714285915}
   m_CullTransparentMesh: 1
+--- !u!225 &1714285919
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714285915}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1717255203
 GameObject:
   m_ObjectHideFlags: 0
@@ -110444,6 +110528,7 @@ GameObject:
   - component: {fileID: 1843163202}
   - component: {fileID: 1843163204}
   - component: {fileID: 1843163203}
+  - component: {fileID: 1843163205}
   m_Layer: 5
   m_Name: TMP_Obstacles
   m_TagString: Untagged
@@ -110570,6 +110655,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843163201}
   m_CullTransparentMesh: 1
+--- !u!225 &1843163205
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843163201}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1843978973
 GameObject:
   m_ObjectHideFlags: 0

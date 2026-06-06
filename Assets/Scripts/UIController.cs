@@ -337,9 +337,11 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject statsMenu;
     [SerializeField] private TextMeshProUGUI[] levelNames;
     [SerializeField] private TextMeshProUGUI heightClimbed;
+    [SerializeField] private RectTransform heightClimbedRect;
     [SerializeField] private TextMeshProUGUI coinsCollected;
-    [SerializeField] private TextMeshProUGUI rubiesCollected;
+    [SerializeField] private RectTransform coinsCollectedRect;    
     [SerializeField] private TextMeshProUGUI obstacles;
+    [SerializeField] private RectTransform obstaclesRect;
 
     [Header("Coin Reward")]
     [SerializeField] private TextMeshProUGUI baseCoins;
@@ -349,11 +351,15 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI obstaclesBonus;
     [SerializeField] private RectTransform obstaclesBonusRect;
     [SerializeField] private TextMeshProUGUI totalCoins;
+    [SerializeField] private RectTransform totalCoinsRect;
 
     [Header("Ruby Reward")]    
     [SerializeField] private TextMeshProUGUI heightAdd;
+    [SerializeField] private RectTransform heightAddRect;
     [SerializeField] private TextMeshProUGUI obstaclesAdd;
+    [SerializeField] private RectTransform obstaclesAddRect;
     [SerializeField] private TextMeshProUGUI totalRubies;
+    [SerializeField] private RectTransform totalRubiesRect;
     #endregion
 
     [Header("Pop Effect")]
@@ -563,20 +569,40 @@ public class UIController : MonoBehaviour
 
     #region Statics Menu
 
-    public void StaticsMenu(float height = 0, float coins = 0, float rubies = 0, 
-        float obstaclesDestroyed = 0, bool runJustEnded = false)
+    public void StaticsMenu(float height = 0, float coins = 0, 
+        float obstaclesDestroyed = 0, bool runJustEnded = false, bool shouldPop = false)
     {
         if (runJustEnded)
         {
             pauseMenu.SetActive(false);
             HUD.SetActive(false);
             statsMenu.SetActive(true);
+        }
+
+        if (height != 0)
+        {
+            heightClimbed.text = height.ToString("F0");
+
+            if (shouldPop) PlayTextPop(heightClimbedRect);
+        }
+
+        if (coins != 0)
+        {
+            coinsCollected.text = coins.ToString("F0");
+
+            if (shouldPop) PlayTextPop(coinsCollectedRect);
         }        
 
-        heightClimbed.text = height.ToString("F0");
-        coinsCollected.text = coins.ToString("F0");
-        //rubiesCollected.text = rubies.ToString("F0");
-        obstacles.text = obstaclesDestroyed.ToString("F0");        
+        if (obstaclesDestroyed != 0)
+        {
+            obstacles.text = obstaclesDestroyed.ToString("F0");
+
+            if (shouldPop) PlayTextPop(obstaclesRect);
+        }
+
+        //heightClimbed.text = height.ToString("F0");
+        //coinsCollected.text = coins.ToString("F0");        
+        //obstacles.text = obstaclesDestroyed.ToString("F0");        
     }
 
     public void RewardsCoinMenu( float coins = 0, float height = 0,
@@ -600,9 +626,17 @@ public class UIController : MonoBehaviour
         if (obstaclesDestroyed != 0)
         {
             obstaclesBonus.text = "+" + obstaclesDestroyed.ToString("F0");
+
+            if (shouldPop) PlayTextPop(obstaclesBonusRect);
         }
 
-        this.totalCoins.text = totalCoins.ToString("F0");
+        if (totalCoins != 0)
+        {
+            this.totalCoins.text = totalCoins.ToString("F0");
+
+            if (shouldPop) PlayTextPop(totalCoinsRect);
+        }
+            
     }
 
     public void RewardsRubyMenu(float height = 0,
