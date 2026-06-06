@@ -6012,7 +6012,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -24321,12 +24321,19 @@ MonoBehaviour:
   rubiesCollected: {fileID: 0}
   obstacles: {fileID: 1843163203}
   baseCoins: {fileID: 680622805}
+  baseCoinsRect: {fileID: 680622804}
   heightMultiplier: {fileID: 1892676918}
+  heightMultiplierRect: {fileID: 1892676917}
   obstaclesBonus: {fileID: 2073187726}
+  obstaclesBonusRect: {fileID: 2073187725}
   totalCoins: {fileID: 97006130}
   heightAdd: {fileID: 316892250}
   obstaclesAdd: {fileID: 385553496}
   totalRubies: {fileID: 682003755}
+  popScale: 1.25
+  growDuration: 0.12
+  shrinkDuration: 0.12
+  ignoreTimeScale: 1
   playerRoot: {fileID: 0}
 --- !u!4 &393168559
 Transform:
@@ -42057,6 +42064,7 @@ GameObject:
   - component: {fileID: 680622804}
   - component: {fileID: 680622806}
   - component: {fileID: 680622805}
+  - component: {fileID: 680622807}
   m_Layer: 5
   m_Name: TMP_Coins
   m_TagString: Untagged
@@ -42130,8 +42138,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -42183,6 +42191,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680622803}
   m_CullTransparentMesh: 1
+--- !u!225 &680622807
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680622803}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &681202408
 GameObject:
   m_ObjectHideFlags: 0
@@ -42359,7 +42379,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -113048,6 +113068,7 @@ GameObject:
   - component: {fileID: 1892676917}
   - component: {fileID: 1892676919}
   - component: {fileID: 1892676918}
+  - component: {fileID: 1892676920}
   m_Layer: 5
   m_Name: TMP_HeightClimbed
   m_TagString: Untagged
@@ -113121,8 +113142,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -113174,6 +113195,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892676916}
   m_CullTransparentMesh: 1
+--- !u!225 &1892676920
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892676916}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1893179590
 GameObject:
   m_ObjectHideFlags: 0
@@ -123335,6 +123368,7 @@ GameObject:
   - component: {fileID: 2073187725}
   - component: {fileID: 2073187727}
   - component: {fileID: 2073187726}
+  - component: {fileID: 2073187728}
   m_Layer: 5
   m_Name: TMP_Obstacles
   m_TagString: Untagged
@@ -123408,8 +123442,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -123461,6 +123495,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2073187724}
   m_CullTransparentMesh: 1
+--- !u!225 &2073187728
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073187724}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2073850698
 GameObject:
   m_ObjectHideFlags: 0

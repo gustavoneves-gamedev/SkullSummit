@@ -331,7 +331,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private Image specialBackground;
     [SerializeField] private Image specialFill;
 
-
     [Header("Statistics Menu")]
     #region Statistics Menu
     [Header("Statistics")]
@@ -344,8 +343,11 @@ public class UIController : MonoBehaviour
 
     [Header("Coin Reward")]
     [SerializeField] private TextMeshProUGUI baseCoins;
+    [SerializeField] private RectTransform baseCoinsRect;
     [SerializeField] private TextMeshProUGUI heightMultiplier;
+    [SerializeField] private RectTransform heightMultiplierRect;
     [SerializeField] private TextMeshProUGUI obstaclesBonus;
+    [SerializeField] private RectTransform obstaclesBonusRect;
     [SerializeField] private TextMeshProUGUI totalCoins;
 
     [Header("Ruby Reward")]    
@@ -353,6 +355,13 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI obstaclesAdd;
     [SerializeField] private TextMeshProUGUI totalRubies;
     #endregion
+
+    [Header("Pop Effect")]
+    [SerializeField] private float popScale = 1.25f;
+    [SerializeField] private float growDuration = 0.12f;
+    [SerializeField] private float shrinkDuration = 0.12f;
+    [SerializeField] private bool ignoreTimeScale = true;
+    private Vector3 originalScale;
 
     [Header("Reference")]
     public PlayerRoot playerRoot;
@@ -398,6 +407,30 @@ public class UIController : MonoBehaviour
         TopMainMenuUpdate();
     }
 
+    #region UI LeanTween
+
+    public void PlayTextPop(RectTransform target)
+    {
+        RectTransform textRect = target;
+
+        originalScale = target.localScale;
+
+        LeanTween.cancel(textRect.gameObject);
+
+        textRect.localScale = originalScale;
+
+        LeanTween.scale(textRect, originalScale * popScale, growDuration)
+            .setEase(LeanTweenType.easeOutBack)
+            .setIgnoreTimeScale(ignoreTimeScale)
+            .setOnComplete(() =>
+            {
+                LeanTween.scale(textRect, originalScale, shrinkDuration)
+                    .setEase(LeanTweenType.easeOutCubic)
+                    .setIgnoreTimeScale(ignoreTimeScale);
+            });
+    }
+
+    #endregion
 
     #region Main Menu
 
@@ -547,17 +580,21 @@ public class UIController : MonoBehaviour
     }
 
     public void RewardsCoinMenu( float coins = 0, float height = 0,
-        float obstaclesDestroyed = 0, float totalCoins = 0)
+        float obstaclesDestroyed = 0, float totalCoins = 0, bool shouldPop = false)
     {
                 
         if (coins != 0)
         {
             baseCoins.text = coins.ToString("F0");
+
+            if(shouldPop) PlayTextPop(baseCoinsRect);
         }
 
         if (height != 0)
         {
             heightMultiplier.text = "x" + (1 + height).ToString("F2");
+
+            if (shouldPop) PlayTextPop(heightMultiplierRect);
         }
 
         if (obstaclesDestroyed != 0)

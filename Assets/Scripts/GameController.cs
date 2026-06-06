@@ -223,7 +223,7 @@ public class GameController : MonoBehaviour
 
         if (x >= 1)
         {
-            x = 0;
+            x = 1;
             canProccedSecond = false;
             canProccedFirst = false;
             canProccedThird = false;
@@ -245,11 +245,17 @@ public class GameController : MonoBehaviour
         if (x < 1) x += 1 * Time.deltaTime;
         else x = 1;
 
-        uiController.RewardsCoinMenu(runNormalCoins, 0, 0, 0);
+        //if (x >= 1)
+        //{
+        //    uiController.RewardsCoinMenu(runNormalCoins, 0, 0, 0, true);
+        //}
+        //else
+        //    uiController.RewardsCoinMenu(runNormalCoins, 0, 0, 0);
 
         if (x >= 1)
         {
             x = 0;
+            uiController.RewardsCoinMenu(runNormalCoins, 0, 0, 0, true);
             canProccedFirst = true;
         }
     }
@@ -263,11 +269,12 @@ public class GameController : MonoBehaviour
         if (x < 1) x += 1 * Time.deltaTime;
         else x = 1;
 
-        uiController.RewardsCoinMenu(0, height / 10000, 0, 0);
+        //uiController.RewardsCoinMenu(0, height / 10000, 0, 0);
 
         if (x >= 1)
         {
             x = 0;
+            uiController.RewardsCoinMenu(0, height / 10000, 0, 0, true);
             canProccedSecond = true;
             canProccedFirst = false;
         }
@@ -324,7 +331,6 @@ public class GameController : MonoBehaviour
 
         if (x >= 1)
         {
-
             x = 0;
             canProccedFirst = false;
             canProccedSecond = false;
