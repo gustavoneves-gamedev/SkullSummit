@@ -150,7 +150,7 @@ public class GameController : MonoBehaviour
         hasBeganCalculating = true;
         isCalculatingStatistics = true;
 
-        uiController.StaticsMenu(0, 0, 0, true, false);
+        uiController.StaticsMenu(-1, -1, -1, true, false);
         
         //Soma das moedas
         //float y = ((runNormalCoins * (1 + (height / 10000f))) + obstaclesDestroyed * 10f);
@@ -402,6 +402,7 @@ public class GameController : MonoBehaviour
             if (x >= y)
             {
                 x = y;
+                if (x <= 0) x = -1;
                 uiController.RewardsRubyMenu(0, 0, x, true);
                 x = 0;
                 canProccedFirst = false;

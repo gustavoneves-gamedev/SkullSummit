@@ -577,11 +577,15 @@ public class UIController : MonoBehaviour
         {
             pauseMenu.SetActive(false);
             HUD.SetActive(false);
+
+            RewardsCoinMenu(-1, -1, -1, -1);
+            RewardsRubyMenu(-1,-1,-1);
             statsMenu.SetActive(true);
         }
 
         if (height != 0)
         {
+            if(height < 0) height = 0;
             heightClimbed.text = height.ToString("F0");
 
             if (shouldPop) PlayTextPop(heightClimbedRect);
@@ -589,6 +593,7 @@ public class UIController : MonoBehaviour
 
         if (coins != 0)
         {
+            if (coins < 0) coins = 0;
             coinsCollected.text = coins.ToString("F0");
 
             if (shouldPop) PlayTextPop(coinsCollectedRect);
@@ -596,6 +601,7 @@ public class UIController : MonoBehaviour
 
         if (obstaclesDestroyed != 0)
         {
+            if (obstaclesDestroyed < 0) obstaclesDestroyed = 0;
             obstacles.text = obstaclesDestroyed.ToString("F0");
 
             if (shouldPop) PlayTextPop(obstaclesRect);
@@ -612,6 +618,7 @@ public class UIController : MonoBehaviour
                 
         if (coins != 0)
         {
+            if (coins < 0) coins = 0;
             baseCoins.text = coins.ToString("F0");
 
             if(shouldPop) PlayTextPop(baseCoinsRect);
@@ -619,6 +626,7 @@ public class UIController : MonoBehaviour
 
         if (height != 0)
         {
+            if (height < 0) height = 0;
             heightMultiplier.text = "x" + (1 + height).ToString("F2");
 
             if (shouldPop) PlayTextPop(heightMultiplierRect);
@@ -626,6 +634,7 @@ public class UIController : MonoBehaviour
 
         if (obstaclesDestroyed != 0)
         {
+            if (obstaclesDestroyed < 0) obstaclesDestroyed = 0;
             obstaclesBonus.text = "+" + obstaclesDestroyed.ToString("F0");
 
             if (shouldPop) PlayTextPop(obstaclesBonusRect);
@@ -633,6 +642,7 @@ public class UIController : MonoBehaviour
 
         if (totalCoins != 0)
         {
+            if (totalCoins < 0) totalCoins = 0;
             this.totalCoins.text = totalCoins.ToString("F0");
 
             if (shouldPop) PlayTextPop(totalCoinsRect);
