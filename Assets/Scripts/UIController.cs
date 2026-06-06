@@ -640,20 +640,34 @@ public class UIController : MonoBehaviour
     }
 
     public void RewardsRubyMenu(float height = 0,
-        float obstacles = 0, float totalRubies = 0)
+        float obstacles = 0, float totalRubies = 0, bool shouldPop = false)
     {
 
         if (height != 0)
         {
+            if(height < 0) height = 0;
             heightAdd.text = "+" + height.ToString("F0");
+
+            if (shouldPop) PlayTextPop(heightAddRect);
         }
 
         if (obstacles != 0)
         {
+            if (obstacles < 0) obstacles = 0;
             obstaclesAdd.text = "+" + obstacles.ToString("F0");
+
+            if (shouldPop) PlayTextPop(obstaclesAddRect);
         }
 
-        this.totalRubies.text = totalRubies.ToString("F0");
+        if (totalRubies != 0)
+        {
+            if (totalRubies < 0) totalRubies = 0;
+            this.totalRubies.text = totalRubies.ToString("F0");
+
+            if (shouldPop) PlayTextPop(totalRubiesRect);
+        }
+
+       
     }
 
     #endregion
