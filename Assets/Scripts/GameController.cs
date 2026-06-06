@@ -151,9 +151,16 @@ public class GameController : MonoBehaviour
         isCalculatingStatistics = true;
 
         uiController.StaticsMenu(0, 0, 0, true, false);
+        
+        //Soma das moedas
+        //float y = ((runNormalCoins * (1 + (height / 10000f))) + obstaclesDestroyed * 10f);
+        int y = (int)(runNormalCoins * (1 + (this.height / 10000f)));
+        y += (int)(obstaclesDestroyed * 10f);
+        coins += y;
 
-        //DAQUI PARA BAIXO PRECISARÁ SER REVISTO!!
-        coins += runNormalCoins;
+        //Soma dos Rubis
+        y = (int)height / 500 + (int)obstaclesDestroyed / 10;
+        rubies += y;
 
         uiController.TopMainMenuUpdate();
 
@@ -292,7 +299,10 @@ public class GameController : MonoBehaviour
 
         if (canProccedThird)
         {
-            float y = (runNormalCoins * (1 + (height / 10000f))) + obstaclesDestroyed * 10f;
+            //float y = (int)(runNormalCoins * (1 + (height / 10000f))) + obstaclesDestroyed * 10f;
+
+            int y = (int)(runNormalCoins * (1 + (height / 10000f)));
+            y += (int)(obstaclesDestroyed * 10f);
 
             if (x < y) x += (y / 1.5f) * Time.deltaTime;
             else x = y;
@@ -365,9 +375,7 @@ public class GameController : MonoBehaviour
         int y = 0;
         if (height / 500 > 1) y = (int)height / 500;
         else y = -1;
-        //if (height / 500 > 1) y = (int)height / 500;
-
-        //uiController.RewardsRubyMenu(y, 0, 0);
+        //if (height / 5000 > 1) y = (int)height / 5000;// DESABILITEI PARA TESTES        
 
         if (x >= 1)
         {
@@ -384,7 +392,7 @@ public class GameController : MonoBehaviour
         if (canProccedSecond)
         {
             float y = (int)height / 500 + (int)obstaclesDestroyed / 10;
-            //float y = (int)height / 500 + (int)obstaclesDestroyed / 10; // PARA TESTES
+            //float y = (int)height / 5000 + (int)obstaclesDestroyed / 100; // DESABILITEI PARA TESTES
 
             if (x < y) x += (y / 1.5f) * Time.deltaTime;
             else x = y;
@@ -414,9 +422,9 @@ public class GameController : MonoBehaviour
             int y = 0;
             if (obstaclesDestroyed / 10 > 1) y = (int)obstaclesDestroyed / 10;
             else y = -1;
-            //if (obstaclesDestroyed / 10 > 1) y = (int)obstaclesDestroyed / 10;
+            //if (obstaclesDestroyed / 100 > 1) y = (int)obstaclesDestroyed / 100;
 
-            uiController.RewardsRubyMenu(0, y, 0);
+            //uiController.RewardsRubyMenu(0, y, 0);
 
             if (x >= 1)
             {
@@ -470,7 +478,9 @@ public class GameController : MonoBehaviour
 
     public void UpdateRunCoins(int normalCoins = 0, int rubies = 0)
     {
-        runNormalCoins += Mathf.RoundToInt(normalCoins * playerRoot.playerPowers.coinMultiplier);
+        if (!isRunning) return;
+        
+        runNormalCoins += (int)(normalCoins * playerRoot.playerPowers.coinMultiplier);
 
         runRubies += rubies;
 

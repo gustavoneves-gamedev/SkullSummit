@@ -24389,8 +24389,8 @@ MonoBehaviour:
   totalRubies: {fileID: 682003755}
   totalRubiesRect: {fileID: 682003754}
   popScale: 2
-  growDuration: 0.12
-  shrinkDuration: 0.12
+  growDuration: 0.24
+  shrinkDuration: 0.24
   ignoreTimeScale: 1
   playerRoot: {fileID: 0}
 --- !u!4 &393168559

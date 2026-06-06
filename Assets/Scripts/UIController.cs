@@ -455,7 +455,8 @@ public class UIController : MonoBehaviour
 
     public void TopMainMenuUpdate()
     {
-        coins.text = GameController.gameController.coins.ToString();
+        coins.text = GameController.gameController.coins.ToString("F0");
+        rubies.text = GameController.gameController.rubies.ToString("F0");
     }
 
     public void BackToMainMenu()
@@ -1759,7 +1760,7 @@ public class UIController : MonoBehaviour
 
     #endregion
 
-    #region Run HUD
+    #region Run
 
     private void UpdateStaminaHUD(float stamina)
     {
