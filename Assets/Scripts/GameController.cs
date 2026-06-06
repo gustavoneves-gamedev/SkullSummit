@@ -94,12 +94,14 @@ public class GameController : MonoBehaviour
             CalculateHeight();
             CalculateCoinsCollected();
             CalculateObstaclesDestroyed();
+            ProccedToRewardCoins();
         }
         else if (isCalculatingCoinRewards)
         {
             CalulateBaseCoins();
             CalulateHeightMultiplier();
             CalulateObstacleBonus();
+            ProccedToRewardRubies();
         }
         else if (isCalculatingRubyRewards)
         {
@@ -164,7 +166,7 @@ public class GameController : MonoBehaviour
     #region Statistics
     private void CalculateHeight()
     {
-        if (canProccedFirst || canProccedSecond) return;
+        if (canProccedFirst || canProccedSecond || canProccedThird) return;
 
         if (x < height) x += (height / 2f) * Time.deltaTime;
         else x = height;
@@ -208,21 +210,37 @@ public class GameController : MonoBehaviour
         {
             x = 0;
             canProccedSecond = false;
-            canProccedFirst = false;
+            canProccedThird = true;
+        }
+    }
 
-            //hasBeganCalculating = false; //TEMPORÁRIO -> IRÁ PARAR O CÓDIGO
+    private void ProccedToRewardCoins()
+    {
+        if (!canProccedThird) return;
+
+        if (x < 1) x += 1 * Time.deltaTime;
+        else x = 1;
+
+        if (x >= 1)
+        {
+            x = 0;
+            canProccedSecond = false;
+            canProccedFirst = false;
+            canProccedThird = false;
 
             isCalculatingStatistics = false;
             isCalculatingCoinRewards = true;
         }
+
     }
+
     #endregion
 
     #region Rewards Coins
 
     private void CalulateBaseCoins()
     {
-        if (canProccedFirst || canProccedSecond) return;
+        if (canProccedFirst || canProccedSecond || canProccedThird || canProccedFourth) return;
 
         if (x < 1) x += 1 * Time.deltaTime;
         else x = 1;
@@ -230,7 +248,7 @@ public class GameController : MonoBehaviour
         uiController.RewardsCoinMenu(runNormalCoins, 0, 0, 0);
 
         if (x >= 1)
-        {            
+        {
             x = 0;
             canProccedFirst = true;
         }
@@ -248,7 +266,7 @@ public class GameController : MonoBehaviour
         uiController.RewardsCoinMenu(0, height / 10000, 0, 0);
 
         if (x >= 1)
-        {            
+        {
             x = 0;
             canProccedSecond = true;
             canProccedFirst = false;
@@ -274,15 +292,16 @@ public class GameController : MonoBehaviour
                 canProccedFirst = false;
                 canProccedSecond = false;
                 canProccedThird = false;
+                canProccedFourth = true;
 
-                isCalculatingCoinRewards = false;
-                isCalculatingRubyRewards = true;
+                //isCalculatingCoinRewards = false;
+                //isCalculatingRubyRewards = true;
                 //hasBeganCalculating = false;
             }
         }
         else
         {
-            
+
             if (x < 1) x += 1 * Time.deltaTime;
             else x = 1;
 
@@ -290,12 +309,33 @@ public class GameController : MonoBehaviour
 
             if (x >= 1)
             {
-                x = 0;                
+                x = 0;
                 canProccedThird = true;
             }
         }
+    }
 
-           
+    private void ProccedToRewardRubies()
+    {
+        if (!canProccedFourth) return;
+
+        if (x < 1) x += 1 * Time.deltaTime;
+        else x = 1;
+
+        if (x >= 1)
+        {
+
+            x = 0;
+            canProccedFirst = false;
+            canProccedSecond = false;
+            canProccedThird = false;
+            canProccedFourth = false;
+
+            isCalculatingCoinRewards = false;
+            isCalculatingRubyRewards = true;
+
+        }
+
     }
 
     #endregion
@@ -310,8 +350,8 @@ public class GameController : MonoBehaviour
         else x = 1;
 
         int y = 0;
-        //if(height/5000 > 1) y = (int)height/5000;
-        if (height / 500 > 1) y = (int)height / 500;
+        if (height / 5000 > 1) y = (int)height / 5000;
+        //if (height / 500 > 1) y = (int)height / 500;
 
         uiController.RewardsRubyMenu(y, 0, 0);
 
@@ -328,8 +368,8 @@ public class GameController : MonoBehaviour
 
         if (canProccedSecond)
         {
-           // float y = (int)height / 5000 + (int)obstaclesDestroyed / 100;
-            float y = (int)height / 500 + (int)obstaclesDestroyed / 10; // PARA TESTES
+            float y = (int)height / 5000 + (int)obstaclesDestroyed / 100;
+            //float y = (int)height / 500 + (int)obstaclesDestroyed / 10; // PARA TESTES
 
             if (x < y) x += (y / 1.5f) * Time.deltaTime;
             else x = y;
@@ -355,8 +395,8 @@ public class GameController : MonoBehaviour
             else x = 1;
 
             int y = 0;
-            //if (obstaclesDestroyed / 100 > 1) y = (int)obstaclesDestroyed / 100;
-            if (obstaclesDestroyed / 10 > 1) y = (int)obstaclesDestroyed / 10;
+            if (obstaclesDestroyed / 100 > 1) y = (int)obstaclesDestroyed / 100;
+            //if (obstaclesDestroyed / 10 > 1) y = (int)obstaclesDestroyed / 10;
 
             uiController.RewardsRubyMenu(0, y, 0);
 
