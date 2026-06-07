@@ -8,7 +8,12 @@ public class UIController : MonoBehaviour
     [Header("MainMenu")]
     [SerializeField] private GameObject mainMenu;//É tudo no Menu Principal
     //[SerializeField] private GameObject menu;
-    [SerializeField] private GameObject tapToPlayText;
+    [SerializeField] private GameObject tapToPlayText;    
+
+    [Header("MainMenu")]
+    [SerializeField] private GameObject tutorialControl;
+    [SerializeField] private GameObject movementTutorial;
+
 
     [Header("Options")]
     [SerializeField] private GameObject optionsMenu;
@@ -372,11 +377,22 @@ public class UIController : MonoBehaviour
     [Header("Reference")]
     public PlayerRoot playerRoot;
     private UIAnimation uiAnimation;
+    private bool isTutorialOn;
 
     void Start()
     {
         GameController.gameController.uiController = this;
-        mainMenu.SetActive(true);
+
+        if (GameController.gameController.isFirstPlay == true)
+        {
+            tutorialControl.SetActive(false);
+        }
+        else
+        {
+            tutorialControl.SetActive(true);
+        }
+
+        mainMenu.SetActive(true);        
         topMenu.SetActive(true);
         pauseMenu.SetActive(false);
         resurrectionMenu.SetActive(false);
@@ -398,6 +414,7 @@ public class UIController : MonoBehaviour
         UpdateHeightClimbed();
         UpdateStaminaHUD(playerRoot.currentStamina / playerRoot.maxStamina);
         UpdateSpecialHUD(playerRoot.playerPowers.currentSpecial / playerRoot.playerPowers.maxSpecial);
+
     }
 
     private void Initialize()//COMENTÁRIOS IMPORTANTES AQUI
@@ -443,6 +460,7 @@ public class UIController : MonoBehaviour
     public void BeginRun()
     {
         mainMenu.SetActive(false);
+        tutorialControl.SetActive(true);
         statsMenu.SetActive(false);
         topMenu.SetActive(false);
 
@@ -1909,5 +1927,13 @@ public class UIController : MonoBehaviour
 
     #endregion
 
+    #region Tutorial
+
+    public void ControlTutorial()
+    {
+
+    }
+
+    #endregion
 
 }
