@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
     [Header("MainMenu")]
     [SerializeField] private GameObject mainMenu;//É tudo no Menu Principal
     //[SerializeField] private GameObject menu;
-    [SerializeField] private GameObject tapToPlayText;    
+    [SerializeField] private GameObject tapToPlayText;
 
     [Header("Tutorial")]
     [SerializeField] private GameObject skipTutorial;
@@ -28,12 +28,13 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject specialTutorial;
     private bool specialTutorialDone;
     [SerializeField] private GameObject specialTutorialButton;
-    
+
 
 
     [Header("Options")]
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject volumeMenu;
+    [SerializeField] private GameObject tutorialMenu;
 
     [Header("TopMenu")]
     [SerializeField] private GameObject topMenu;
@@ -57,7 +58,7 @@ public class UIController : MonoBehaviour
     #region Cowboy Upgrades
     [Header("Cowboy Stamina")]
     [SerializeField] private TextMeshProUGUI cowboyStaminaIndicator;
-    [SerializeField] private TextMeshProUGUI cowboyStaminaLevel;    
+    [SerializeField] private TextMeshProUGUI cowboyStaminaLevel;
     [SerializeField] private Slider cowboyStaminaVisualUpgrade;
     [SerializeField] private GameObject cowboyStaminaCost;
     [SerializeField] private TextMeshProUGUI cowboyStaminaUpgradeCoinCost;
@@ -279,7 +280,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject coinMultiplierDurationMaxLevelImage;
 
     [Header("ShopMenu - Resurrection Amulet")]
-    [SerializeField] private TextMeshProUGUI resurrectionAmuletName;    
+    [SerializeField] private TextMeshProUGUI resurrectionAmuletName;
     [SerializeField] private TextMeshProUGUI resurrectionAmuletLevel;
     [SerializeField] private TextMeshProUGUI resurrectionAmuletUpgradedIndicator;
     [SerializeField] private Slider resurrectionAmuletVisualUpgrade;
@@ -360,7 +361,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI heightClimbed;
     [SerializeField] private RectTransform heightClimbedRect;
     [SerializeField] private TextMeshProUGUI coinsCollected;
-    [SerializeField] private RectTransform coinsCollectedRect;    
+    [SerializeField] private RectTransform coinsCollectedRect;
     [SerializeField] private TextMeshProUGUI obstacles;
     [SerializeField] private RectTransform obstaclesRect;
 
@@ -374,7 +375,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI totalCoins;
     [SerializeField] private RectTransform totalCoinsRect;
 
-    [Header("Ruby Reward")]    
+    [Header("Ruby Reward")]
     [SerializeField] private TextMeshProUGUI heightAdd;
     [SerializeField] private RectTransform heightAddRect;
     [SerializeField] private TextMeshProUGUI obstaclesAdd;
@@ -417,7 +418,7 @@ public class UIController : MonoBehaviour
             tutorialControl.SetActive(true);
         }
 
-        mainMenu.SetActive(true);        
+        mainMenu.SetActive(true);
         topMenu.SetActive(true);
         pauseMenu.SetActive(false);
         resurrectionMenu.SetActive(false);
@@ -448,8 +449,8 @@ public class UIController : MonoBehaviour
         uiAnimation = gameObject.GetComponent<UIAnimation>();
 
         AudioController.audioController.SwitchMusicPlay();
-        
-                
+
+
         //coins.text = puxar informação do local de salvamento
         //InitializeStore(); //puxar informações do local de salvamento
         TopMainMenuUpdate();
@@ -493,7 +494,7 @@ public class UIController : MonoBehaviour
         GameController.gameController.BeginRun();
 
         HUD.SetActive(true); //Colocar um efeito de fade in aqui 
-        
+
     }
 
     public void TopMainMenuUpdate()
@@ -523,6 +524,8 @@ public class UIController : MonoBehaviour
             AudioController.audioController.SwitchMusicPlay();
         }
 
+        StopCoroutine(TutorialRoutine());
+        StopAllCoroutines();
 
         //playerRoot.isGamePaused = false;        
         Time.timeScale = 1;
@@ -549,11 +552,17 @@ public class UIController : MonoBehaviour
     public void ReturnToOptionsMenu()
     {
         volumeMenu.SetActive(false);
+        tutorialMenu.SetActive(false);
     }
 
     public void VolumeMenu()
     {
         volumeMenu.SetActive(true);
+    }
+
+    public void TutorialMenu()
+    {
+        tutorialMenu.SetActive(true);
     }
 
     public void DeactivateOptionsMenu()
@@ -613,7 +622,7 @@ public class UIController : MonoBehaviour
 
     #region Statics Menu
 
-    public void StaticsMenu(float height = 0, float coins = 0, 
+    public void StaticsMenu(float height = 0, float coins = 0,
         float obstaclesDestroyed = 0, bool runJustEnded = false, bool shouldPop = false)
     {
         if (runJustEnded)
@@ -622,13 +631,13 @@ public class UIController : MonoBehaviour
             HUD.SetActive(false);
 
             RewardsCoinMenu(-1, -1, -1, -1);
-            RewardsRubyMenu(-1,-1,-1);
+            RewardsRubyMenu(-1, -1, -1);
             statsMenu.SetActive(true);
         }
 
         if (height != 0)
         {
-            if(height < 0) height = 0;
+            if (height < 0) height = 0;
             heightClimbed.text = height.ToString("F0");
 
             if (shouldPop) PlayTextPop(heightClimbedRect);
@@ -640,7 +649,7 @@ public class UIController : MonoBehaviour
             coinsCollected.text = coins.ToString("F0");
 
             if (shouldPop) PlayTextPop(coinsCollectedRect);
-        }        
+        }
 
         if (obstaclesDestroyed != 0)
         {
@@ -655,16 +664,16 @@ public class UIController : MonoBehaviour
         //obstacles.text = obstaclesDestroyed.ToString("F0");        
     }
 
-    public void RewardsCoinMenu( float coins = 0, float height = 0,
+    public void RewardsCoinMenu(float coins = 0, float height = 0,
         float obstaclesDestroyed = 0, float totalCoins = 0, bool shouldPop = false)
     {
-                
+
         if (coins != 0)
         {
             if (coins < 0) coins = 0;
             baseCoins.text = coins.ToString("F0");
 
-            if(shouldPop) PlayTextPop(baseCoinsRect);
+            if (shouldPop) PlayTextPop(baseCoinsRect);
         }
 
         if (height != 0)
@@ -690,7 +699,7 @@ public class UIController : MonoBehaviour
 
             if (shouldPop) PlayTextPop(totalCoinsRect);
         }
-            
+
     }
 
     public void RewardsRubyMenu(float height = 0,
@@ -699,7 +708,7 @@ public class UIController : MonoBehaviour
 
         if (height != 0)
         {
-            if(height < 0) height = 0;
+            if (height < 0) height = 0;
             heightAdd.text = "+" + height.ToString("F0");
 
             if (shouldPop) PlayTextPop(heightAddRect);
@@ -721,7 +730,7 @@ public class UIController : MonoBehaviour
             if (shouldPop) PlayTextPop(totalRubiesRect);
         }
 
-       
+
     }
 
     #endregion
@@ -749,7 +758,7 @@ public class UIController : MonoBehaviour
     public void CharacterSelection()
     {
         characterSelectionMenu.SetActive(true);
-        
+
         characterMenuArray[charCode].SetActive(true);
 
         isCharSelecting = true;
@@ -766,7 +775,7 @@ public class UIController : MonoBehaviour
 
         if (isCharSelecting && charCode + 1 < characterMenuArray.Length)
         {
-            characterMenuArray[charCode + 1].SetActive(true);            
+            characterMenuArray[charCode + 1].SetActive(true);
             characterMenuArray[charCode].SetActive(false);
             charCode++;
             uiAnimation.PlayEntranceAnimation(charCode);
@@ -1135,7 +1144,7 @@ public class UIController : MonoBehaviour
     public void UpdateDullahanStaminaUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-                
+
         dullahanStaminaIndicator.text = "Stamina (" + (80 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
@@ -1172,7 +1181,7 @@ public class UIController : MonoBehaviour
     public void UpdateDullahanDefenseUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-                
+
         dullahanDefenseIndicator.text = "Defense (" + (7 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
@@ -1209,7 +1218,7 @@ public class UIController : MonoBehaviour
     public void UpdateDullahanResistanceUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-       
+
 
         dullahanResistanceIndicator.text = "Resistance (" + (4 + upgradeBonus) + ")";
 
@@ -1247,7 +1256,7 @@ public class UIController : MonoBehaviour
     public void UpdateDullahanAttackUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        
+
         dullahanAttackIndicator.text = "Attack (" + (2 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
@@ -1311,7 +1320,7 @@ public class UIController : MonoBehaviour
         {
             characterMenuArray[charCode + 1].SetActive(true);
             characterMenuArray[charCode].SetActive(false);
-            charCode++;            
+            charCode++;
         }
     }
 
@@ -1393,7 +1402,7 @@ public class UIController : MonoBehaviour
     #region Resurrection Amulet
     public void UpdateResurrectionAmuletPurchaseUI(int quantity = 0, int coinCost = 1000, int rubyCost = 0)
     {
-        
+
         resurrectionAmuletPurchaseDescription.text = "In Inventory: " + quantity;
 
         if (coinCost >= 1000000)
@@ -1501,13 +1510,13 @@ public class UIController : MonoBehaviour
         {
             staminaPotionLevel.text = "Lv. " + (level);
         }
-            
+
         staminaPotionUpgradedIndicator.text = "Stamina Recover (10+" + (level * 5) + ")";
         staminaPotionVisualUpgrade.value = level;
 
         if (coinCost >= 10000)
         {
-            staminaPotionUpgradeCoinCost.text = coinCost/1000 + "k";
+            staminaPotionUpgradeCoinCost.text = coinCost / 1000 + "k";
         }
         else
         {
@@ -1542,7 +1551,7 @@ public class UIController : MonoBehaviour
         {
             shieldChargeLevel.text = "Lv. " + (level);
         }
-                
+
         shieldChargeUpgradedIndicator.text = "Shield Recover (1+" + (level) + ")";
         shieldChargeVisualUpgrade.value = level;
 
@@ -1562,11 +1571,11 @@ public class UIController : MonoBehaviour
             shieldChargeUpgradeRubyCost.text = rubyCost.ToString();
 
         }
-        
+
     }
 
     public void UpdateShieldDurationUpgradeUI(int upgradeBonus = 0, int level = 0,
-                                                int coinCost = 1000, int rubyCost = 0,  int maxLevel = 10)
+                                                int coinCost = 1000, int rubyCost = 0, int maxLevel = 10)
     {
         shieldDurationName.text = "Shield Duration (" + (20 + upgradeBonus) + ")";
 
@@ -1648,8 +1657,8 @@ public class UIController : MonoBehaviour
     public void UpdateCoinMultiplierDurationUpgradeUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        
-        
+
+
         coinMultiplierDurationName.text = "Coin Multiplier Duration (" + (16 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
@@ -1691,7 +1700,7 @@ public class UIController : MonoBehaviour
     public void UpdateResurrectionAmuletUpgradeUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        resurrectionAmuletName.text = "Resurrection Amulet (" + (20 + upgradeBonus) + ")";        
+        resurrectionAmuletName.text = "Resurrection Amulet (" + (20 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
         {
@@ -1704,7 +1713,7 @@ public class UIController : MonoBehaviour
             resurrectionAmuletLevel.text = "Lv. " + (level);
         }
 
-        resurrectionAmuletUpgradedIndicator.text = "Stamina Restored (20+" + (level*20) + ")";
+        resurrectionAmuletUpgradedIndicator.text = "Stamina Restored (20+" + (level * 20) + ")";
         resurrectionAmuletVisualUpgrade.value = level;
 
         if (coinCost >= 10000)
@@ -1745,8 +1754,8 @@ public class UIController : MonoBehaviour
         {
             specialBoostLevel.text = "Lv. " + (level);
         }
-                
-        specialBoostUpgradedIndicator.text = "Special Restored (10+" + (level*5) + ")";
+
+        specialBoostUpgradedIndicator.text = "Special Restored (10+" + (level * 5) + ")";
         specialBoostVisualUpgrade.value = level;
 
         if (coinCost >= 10000)
@@ -1773,7 +1782,7 @@ public class UIController : MonoBehaviour
     public void UpdateAdrenalineUpgradeUI(int upgradeBonus = 0, int level = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int maxLevel = 0)
     {
-        
+
         adrenalineName.text = "Adrenaline (" + (10 + upgradeBonus) + ")";
 
         if (level >= maxLevel)
@@ -1786,8 +1795,8 @@ public class UIController : MonoBehaviour
         {
             adrenalineLevel.text = "Lv. " + (level);
         }
-        
-        adrenalineUpgradedIndicator.text = "Stamina Restored (10+" + (level*5) + ")";
+
+        adrenalineUpgradedIndicator.text = "Stamina Restored (10+" + (level * 5) + ")";
         adrenalineVisualUpgrade.value = level;
 
         if (coinCost >= 10000)
@@ -1849,7 +1858,7 @@ public class UIController : MonoBehaviour
 
     public void SpecialReady(bool canUseSpecial)
     {
-        if(canUseSpecial) specialIndicator.Play();
+        if (canUseSpecial) specialIndicator.Play();
         else specialIndicator.Stop();
     }
 
@@ -1966,6 +1975,18 @@ public class UIController : MonoBehaviour
         GameController.gameController.isFirstPlay = false;
     }
 
+    public void ReactivateTutorial()
+    {
+        GameController.gameController.isTutorialIncomplete = true;
+
+        movementTutorialDone = false;
+        shootTutorialDone = false;
+        staminaTutorialDone = false;
+        specialTutorialDone = false;
+
+        tutorialMenu.SetActive(false);
+    }
+
     public void TutorialPause()
     {
         playerRoot.canRun = false;
@@ -1988,8 +2009,6 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    
-
     public void BeginTutorial()
     {
         StartCoroutine(TutorialRoutine());
@@ -2009,7 +2028,7 @@ public class UIController : MonoBehaviour
 
             movementTutorialButton.SetActive(true);
             movementTutorialDone = true;
-        } 
+        }
 
         yield return new WaitForSeconds(7f);
 
@@ -2022,8 +2041,8 @@ public class UIController : MonoBehaviour
             yield return new WaitForSecondsRealtime(2f);
 
             shootTutorialButton.SetActive(true);
-            
-        }           
+
+        }
 
         yield return new WaitForSeconds(4.5f);
 
@@ -2037,15 +2056,15 @@ public class UIController : MonoBehaviour
 
             staminaTutorialButton.SetActive(true);
             staminaTutorialDone = true;
-        }            
+        }
     }
 
     public void DropTutorial()
     {
         shootTutorial.SetActive(false);
-        
+
         StartCoroutine(DropsTutorialRoutine());
-        
+
     }
 
     private IEnumerator DropsTutorialRoutine()
