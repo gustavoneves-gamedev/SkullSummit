@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: CactusMaterial
+    second: {fileID: 2100000, guid: ed716aaa4b103514a9ee6d1869abeca5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: CampMaterial
     second: {fileID: 2100000, guid: e0af86c4b50e78f43bc4f02853e5031a, type: 2}
   - first:
@@ -19,6 +24,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: ChunkMaterial
     second: {fileID: 2100000, guid: e575b1e59c006324bad10906fe66b576, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ChunkMod
+    second: {fileID: 2100000, guid: 8f09bb0c945333048904e006019c1356, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -44,6 +54,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Rough
     second: {fileID: 2100000, guid: aa9b08dd9e2f0f34da3d1e1c343d5989, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VertexMetalMaterial
+    second: {fileID: 2100000, guid: 461ae9b03379d1147b06c4d5ce9c6acf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VertexWoodMaterial
+    second: {fileID: 2100000, guid: 56c0c82c821468d4c8c8f94b201eb8df, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
