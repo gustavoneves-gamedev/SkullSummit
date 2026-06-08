@@ -1963,13 +1963,6 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void MovementTutorial()
-    {
-        
-        tutorialTimer = 2f;        
-        StartCoroutine(TutorialRoutine());
-    }
-
     public void BeginTutorial()
     {
         StartCoroutine(TutorialRoutine());
@@ -1991,7 +1984,7 @@ public class UIController : MonoBehaviour
             movementTutorialDone = true;
         } 
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
 
         if (!shootTutorialDone)
         {
@@ -2007,7 +2000,7 @@ public class UIController : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        if (!staminaTutorialDone)
+        if (!staminaTutorialDone && GameController.gameController.isRunning)
         {
             TutorialPause();
 
@@ -2020,34 +2013,25 @@ public class UIController : MonoBehaviour
         }            
     }
 
-    public void ShootTutorial()
-    {
-        
-        tutorialTimer = 2f;
-        StartCoroutine(ShootTutorialRountine());
-    }
-
-    private IEnumerator ShootTutorialRountine()
-    {
-        shootTutorial.SetActive(true);
-
-        yield return new WaitForSecondsRealtime(tutorialTimer);
-
-        shootTutorialButton.SetActive(true);
-
-        shootTutorialDone = true;
-    }
-
-    public void StaminaTutorial()
-    {
-        staminaTutorial.SetActive(true);
-        tutorialTimer = 2f;
-    }
-
     public void SpecialTutorial()
     {
+        if (specialTutorialDone) return;
+
+        StartCoroutine(SpecialTutorialRoutine());
+    }
+
+    private IEnumerator SpecialTutorialRoutine()
+    {
+        TutorialPause();
+
         specialTutorial.SetActive(true);
-        tutorialTimer = 2f;
+
+        yield return new WaitForSecondsRealtime(2f);
+
+        specialTutorialButton.SetActive(true);
+        specialTutorialDone = true;
+
+        GameController.gameController.isTutorialIncomplete = false;
     }
 
     #endregion

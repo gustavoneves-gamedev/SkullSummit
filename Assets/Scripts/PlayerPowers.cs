@@ -93,9 +93,12 @@ public class PlayerPowers : MonoBehaviour
             {
                 canUseSpecial = true;
                 currentSpecial = maxSpecial;
+
+                if (GameController.gameController.isTutorialIncomplete) uiController.SpecialTutorial();
             }                
                 
-            uiController.SpecialReady(canUseSpecial);
+            if(currentSpecial >= maxSpecial*0.95f) uiController.SpecialReady(true);
+
 
             //if (currentSpecial >= maxSpecial) ActivateSpecial();
         }
