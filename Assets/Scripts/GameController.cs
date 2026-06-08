@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public float coins;
     public float rubies;
     public string playerName = "Player";
+    public bool isFirstPlay = true;
     public bool isTutorialIncomplete = true;
 
     [Header("Leaderboard")]

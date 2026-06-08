@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject tapToPlayText;    
 
     [Header("Tutorial")]
+    [SerializeField] private GameObject skipTutorial;
     [SerializeField] private GameObject tutorialControl;
     [SerializeField] private GameObject movementTutorial;
     private bool movementTutorialDone;
@@ -398,7 +399,16 @@ public class UIController : MonoBehaviour
     {
         GameController.gameController.uiController = this;
 
-        if (GameController.gameController.isTutorialIncomplete == true)
+        if (GameController.gameController.isFirstPlay)
+        {
+            skipTutorial.SetActive(true);
+        }
+        else
+        {
+            skipTutorial.SetActive(false);
+        }
+
+        if (GameController.gameController.isTutorialIncomplete)
         {
             tutorialControl.SetActive(false);
         }
@@ -1943,6 +1953,18 @@ public class UIController : MonoBehaviour
     #endregion
 
     #region Tutorial
+
+    public void SkipTutorial(bool shouldSkip = false)
+    {
+        if (shouldSkip)
+        {
+            GameController.gameController.isTutorialIncomplete = false;
+            tutorialControl.SetActive(true);
+        }
+
+        skipTutorial.SetActive(false);
+        GameController.gameController.isFirstPlay = false;
+    }
 
     public void TutorialPause()
     {

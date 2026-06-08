@@ -54,8 +54,8 @@ public class PlayerPowers : MonoBehaviour
         GameController.gameController.playerPowers = this;
         player = GetComponent<PlayerRoot>();
 
-        Invoke("InitilizeReferences", .2f);
         Invoke("ResetPowers", .2f);
+        Invoke("InitilizeReferences", .2f);
     }
 
     void Update()
@@ -97,7 +97,7 @@ public class PlayerPowers : MonoBehaviour
                 if (GameController.gameController.isTutorialIncomplete) uiController.SpecialTutorial();
             }                
                 
-            if(currentSpecial >= maxSpecial*0.95f) uiController.SpecialReady(true);
+            if(currentSpecial >= maxSpecial*0.95f && currentSpecial >= 18) uiController.SpecialReady(true);
 
 
             //if (currentSpecial >= maxSpecial) ActivateSpecial();
@@ -110,6 +110,7 @@ public class PlayerPowers : MonoBehaviour
     {
         inventory = GameController.gameController.inventory;
         uiController = GameController.gameController.uiController;
+        uiController.SpecialReady(false);
     }
 
     public void ResetPowers()
