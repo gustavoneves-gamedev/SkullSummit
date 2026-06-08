@@ -14,6 +14,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Rough
     second: {fileID: 2100000, guid: aa9b08dd9e2f0f34da3d1e1c343d5989, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VertexMetalMaterial
+    second: {fileID: 2100000, guid: 461ae9b03379d1147b06c4d5ce9c6acf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VertexWoodMaterial
+    second: {fileID: 2100000, guid: 56c0c82c821468d4c8c8f94b201eb8df, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

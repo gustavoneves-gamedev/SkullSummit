@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Madeira
-    second: {fileID: 2100000, guid: 14abe8143e3fa064f9544a242164a544, type: 2}
+    second: {fileID: 2100000, guid: 56c0c82c821468d4c8c8f94b201eb8df, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Metal
-    second: {fileID: 2100000, guid: 919a14696006346418747f7ce7ad79ac, type: 2}
+    second: {fileID: 2100000, guid: 461ae9b03379d1147b06c4d5ce9c6acf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
