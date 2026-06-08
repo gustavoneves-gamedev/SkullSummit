@@ -19,13 +19,15 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject shootTutorial;
     private bool shootTutorialDone;
     [SerializeField] private GameObject shootTutorialButton;
+    [SerializeField] private GameObject dropsTutorial;
+    [SerializeField] private GameObject dropsTutorialButton;
     [SerializeField] private GameObject staminaTutorial;
     private bool staminaTutorialDone;
     [SerializeField] private GameObject staminaTutorialButton;
     [SerializeField] private GameObject specialTutorial;
     private bool specialTutorialDone;
     [SerializeField] private GameObject specialTutorialButton;
-    private float tutorialTimer;
+    
 
 
     [Header("Options")]
@@ -1954,6 +1956,7 @@ public class UIController : MonoBehaviour
     {
         movementTutorial.SetActive(false);
         shootTutorial.SetActive(false);
+        dropsTutorial.SetActive(false);
         staminaTutorial.SetActive(false);
         specialTutorial.SetActive(false);
 
@@ -1962,6 +1965,8 @@ public class UIController : MonoBehaviour
 
         Time.timeScale = 1f;
     }
+
+    
 
     public void BeginTutorial()
     {
@@ -1995,7 +2000,7 @@ public class UIController : MonoBehaviour
             yield return new WaitForSecondsRealtime(2f);
 
             shootTutorialButton.SetActive(true);
-            shootTutorialDone = true;
+            
         }           
 
         yield return new WaitForSeconds(4.5f);
@@ -2011,6 +2016,25 @@ public class UIController : MonoBehaviour
             staminaTutorialButton.SetActive(true);
             staminaTutorialDone = true;
         }            
+    }
+
+    public void DropTutorial()
+    {
+        shootTutorial.SetActive(false);
+        
+        StartCoroutine(DropsTutorialRoutine());
+        
+    }
+
+    private IEnumerator DropsTutorialRoutine()
+    {
+
+        dropsTutorial.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(2f);
+
+        dropsTutorialButton.SetActive(true);
+        shootTutorialDone = true;
     }
 
     public void SpecialTutorial()
