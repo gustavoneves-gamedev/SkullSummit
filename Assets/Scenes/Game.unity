@@ -13629,7 +13629,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 284.61243}
+  m_AnchoredPosition: {x: 0, y: 89}
   m_SizeDelta: {x: -140, y: -1346.0531}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199508979
@@ -15130,7 +15130,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 56.9}
+  m_AnchoredPosition: {x: 0, y: -138.71243}
   m_SizeDelta: {x: 704.6, y: 185.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220417128
@@ -15153,7 +15153,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Can be activated anytime at options menu
+  m_text: You can turn it back on anytime in Options.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e9705bc93e8d9f947bcf06066f7dd393, type: 2}
   m_sharedMaterial: {fileID: -3797268997254227981, guid: e9705bc93e8d9f947bcf06066f7dd393, type: 2}
@@ -24018,7 +24018,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 420}
+  m_AnchoredPosition: {x: 0, y: 224.38756}
   m_SizeDelta: {x: 704.6, y: 185.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &340298674
@@ -33992,7 +33992,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 277.7691}
+  m_AnchoredPosition: {x: 0, y: 82.15666}
   m_SizeDelta: {x: -180, y: -1404.2722}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472719455
@@ -66775,7 +66775,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Activate Tutorial?
+  m_text: Enable Tutorial?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e9705bc93e8d9f947bcf06066f7dd393, type: 2}
   m_sharedMaterial: {fileID: -3797268997254227981, guid: e9705bc93e8d9f947bcf06066f7dd393, type: 2}
@@ -87658,7 +87658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Kinda of obvious, it's a runner after all, not Crimson Desert ;)
+  m_text: Kinda of obvious, it's a runner after all, not Crimson Desert.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e9705bc93e8d9f947bcf06066f7dd393, type: 2}
   m_sharedMaterial: {fileID: -3797268997254227981, guid: e9705bc93e8d9f947bcf06066f7dd393, type: 2}
@@ -122203,7 +122203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 180, y: 230}
+  m_AnchoredPosition: {x: 180, y: 34.387558}
   m_SizeDelta: {x: 209.7, y: 131.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1850528818
@@ -128363,7 +128363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -180, y: 230}
+  m_AnchoredPosition: {x: -180, y: 34.387558}
   m_SizeDelta: {x: 209.7, y: 131.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1949935202
@@ -134535,7 +134535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: What else would you expect from this menu in a Runner Game?
+  m_text: It runs the tutorial. Shocking, right?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e9705bc93e8d9f947bcf06066f7dd393, type: 2}
   m_sharedMaterial: {fileID: -3797268997254227981, guid: e9705bc93e8d9f947bcf06066f7dd393, type: 2}
