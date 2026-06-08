@@ -1984,7 +1984,7 @@ public class UIController : MonoBehaviour
             movementTutorialDone = true;
         } 
 
-        yield return new WaitForSeconds(8.5f);
+        yield return new WaitForSeconds(7f);
 
         if (!shootTutorialDone)
         {
@@ -1998,7 +1998,7 @@ public class UIController : MonoBehaviour
             shootTutorialDone = true;
         }           
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4.5f);
 
         if (!staminaTutorialDone && GameController.gameController.isRunning)
         {
