@@ -1984,7 +1984,7 @@ public class UIController : MonoBehaviour
             movementTutorialDone = true;
         } 
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(8.5f);
 
         if (!shootTutorialDone)
         {
