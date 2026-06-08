@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,9 +11,21 @@ public class UIController : MonoBehaviour
     //[SerializeField] private GameObject menu;
     [SerializeField] private GameObject tapToPlayText;    
 
-    [Header("MainMenu")]
+    [Header("Tutorial")]
     [SerializeField] private GameObject tutorialControl;
     [SerializeField] private GameObject movementTutorial;
+    private bool movementTutorialDone;
+    [SerializeField] private GameObject movementTutorialButton;
+    [SerializeField] private GameObject shootTutorial;
+    private bool shootTutorialDone;
+    [SerializeField] private GameObject shootTutorialButton;
+    [SerializeField] private GameObject staminaTutorial;
+    private bool staminaTutorialDone;
+    [SerializeField] private GameObject staminaTutorialButton;
+    [SerializeField] private GameObject specialTutorial;
+    private bool specialTutorialDone;
+    [SerializeField] private GameObject specialTutorialButton;
+    private float tutorialTimer;
 
 
     [Header("Options")]
@@ -383,7 +396,7 @@ public class UIController : MonoBehaviour
     {
         GameController.gameController.uiController = this;
 
-        if (GameController.gameController.isFirstPlay == true)
+        if (GameController.gameController.isTutorialIncomplete == true)
         {
             tutorialControl.SetActive(false);
         }
@@ -1929,9 +1942,112 @@ public class UIController : MonoBehaviour
 
     #region Tutorial
 
-    public void ControlTutorial()
+    public void TutorialPause()
     {
+        playerRoot.canRun = false;
+        playerRoot.isGamePaused = true;
 
+        Time.timeScale = 0;
+    }
+
+    public void TutorialResume()
+    {
+        movementTutorial.SetActive(false);
+        shootTutorial.SetActive(false);
+        staminaTutorial.SetActive(false);
+        specialTutorial.SetActive(false);
+
+        playerRoot.isGamePaused = false;
+        playerRoot.canRun = true;
+
+        Time.timeScale = 1f;
+    }
+
+    public void MovementTutorial()
+    {
+        
+        tutorialTimer = 2f;        
+        StartCoroutine(TutorialRoutine());
+    }
+
+    public void BeginTutorial()
+    {
+        StartCoroutine(TutorialRoutine());
+    }
+
+    private IEnumerator TutorialRoutine()
+    {
+        yield return new WaitForSeconds(2f);
+
+        if (!movementTutorialDone)
+        {
+            TutorialPause();
+
+            movementTutorial.SetActive(true);
+
+            yield return new WaitForSecondsRealtime(2f);
+
+            movementTutorialButton.SetActive(true);
+            movementTutorialDone = true;
+        } 
+
+        yield return new WaitForSeconds(5f);
+
+        if (!shootTutorialDone)
+        {
+            TutorialPause();
+
+            shootTutorial.SetActive(true);
+
+            yield return new WaitForSecondsRealtime(2f);
+
+            shootTutorialButton.SetActive(true);
+            shootTutorialDone = true;
+        }           
+
+        yield return new WaitForSeconds(3f);
+
+        if (!staminaTutorialDone)
+        {
+            TutorialPause();
+
+            staminaTutorial.SetActive(true);
+
+            yield return new WaitForSecondsRealtime(2f);
+
+            staminaTutorialButton.SetActive(true);
+            staminaTutorialDone = true;
+        }            
+    }
+
+    public void ShootTutorial()
+    {
+        
+        tutorialTimer = 2f;
+        StartCoroutine(ShootTutorialRountine());
+    }
+
+    private IEnumerator ShootTutorialRountine()
+    {
+        shootTutorial.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(tutorialTimer);
+
+        shootTutorialButton.SetActive(true);
+
+        shootTutorialDone = true;
+    }
+
+    public void StaminaTutorial()
+    {
+        staminaTutorial.SetActive(true);
+        tutorialTimer = 2f;
+    }
+
+    public void SpecialTutorial()
+    {
+        specialTutorial.SetActive(true);
+        tutorialTimer = 2f;
     }
 
     #endregion

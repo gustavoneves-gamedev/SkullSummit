@@ -188,6 +188,8 @@ public class PlayerRoot : MonoBehaviour
         //Serve para preparar a parte de munição da HUD
         uiController.InitializeAmmoUI(characterCode, maxAmmo);
 
+        if(GameController.gameController.isTutorialIncomplete) uiController.BeginTutorial();
+
         canRun = true;
     }
 
@@ -230,7 +232,6 @@ public class PlayerRoot : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C) && playerPowers.canUseSpecial)
         {
             playerPowers.ActivateSpecial();
-
         }
 
     }
