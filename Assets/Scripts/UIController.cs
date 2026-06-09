@@ -404,7 +404,9 @@ public class UIController : MonoBehaviour
     void Start()
     {
         GameController.gameController.uiController = this;
-        
+
+        LoadScreen.SetActive(true);
+
         StartCoroutine(LoadGame());
 
         if (GameController.gameController.isTutorialIncomplete)
