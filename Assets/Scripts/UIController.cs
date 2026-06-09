@@ -8,6 +8,8 @@ public class UIController : MonoBehaviour
 
     [Header("Load")]
     [SerializeField] private GameObject LoadScreen;
+    [SerializeField] private Slider LoadScreenSlider;
+    private bool isLoading;
 
     [Header("MainMenu")]
     [SerializeField] private GameObject mainMenu;//É tudo no Menu Principal
@@ -402,9 +404,7 @@ public class UIController : MonoBehaviour
     void Start()
     {
         GameController.gameController.uiController = this;
-
         
-
         StartCoroutine(LoadGame());
 
         if (GameController.gameController.isTutorialIncomplete)
@@ -433,6 +433,19 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
+        if (isLoading)
+        {
+            LoadScreenSlider.value += 40f * Time.deltaTime;
+
+            if (LoadScreenSlider.value >= 100f)
+            {
+                LoadScreenSlider.value = 100f;
+                LoadScreen.SetActive(false);
+                isLoading = false;
+            }
+        }
+        
+        
         if (!GameController.gameController.isRunning) return;
 
         UpdateHeightClimbed();
@@ -1970,6 +1983,8 @@ public class UIController : MonoBehaviour
         }
 
         skipTutorial.SetActive(false);
+       // LoadScreen.SetActive(false);
+        isLoading = true;
         AudioController.audioController.SwitchMusicPlay();
         GameController.gameController.isFirstPlay = false;
     }
@@ -2108,6 +2123,8 @@ public class UIController : MonoBehaviour
     //}
     private IEnumerator LoadGame()
     {
+        isLoading = true;
+
         yield return new WaitForSeconds(2f);
 
         if (GameController.gameController.isFirstPlay)
@@ -2118,9 +2135,10 @@ public class UIController : MonoBehaviour
         {
             skipTutorial.SetActive(false);
             AudioController.audioController.SwitchMusicPlay();
-        }  
-        
+            LoadScreen.SetActive(false);
+        }
 
+        isLoading = false;
     }
 
     #endregion
