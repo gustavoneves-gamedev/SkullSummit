@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     [Header("Run Results")]
     public bool isRunning;
     private float x = 0; //Serve para ser somado no menu de estatísticas
+    private bool isSfxOn;
     private bool canProccedFirst;
     private bool canProccedSecond;
     private bool canProccedThird;
@@ -177,6 +178,12 @@ public class GameController : MonoBehaviour
     {
         if (canProccedFirst || canProccedSecond || canProccedThird) return;
 
+        if (!isSfxOn)
+        {
+            AudioController.audioController.SwitchVFXPlay(1, 0);
+            isSfxOn = true;
+        }
+
         if (x < height) x += (height / 2f) * Time.deltaTime;
         else x = height;
 
@@ -188,12 +195,21 @@ public class GameController : MonoBehaviour
             uiController.StaticsMenu(x, 0, 0, false, true);
             x = 0;
             canProccedFirst = true;
+
+            AudioController.audioController.StopVFXPlay();
+            isSfxOn = false;
         }
     }
 
     private void CalculateCoinsCollected()
     {
         if (!canProccedFirst) return;
+
+        if (!isSfxOn)
+        {
+            AudioController.audioController.SwitchVFXPlay(1, 1);
+            isSfxOn = true;
+        }
 
         if (x < runNormalCoins) x += (runNormalCoins / 2f) * Time.deltaTime;
         else x = runNormalCoins;
@@ -207,12 +223,21 @@ public class GameController : MonoBehaviour
             x = 0;
             canProccedSecond = true;
             canProccedFirst = false;
+
+            AudioController.audioController.StopVFXPlay();
+            isSfxOn = false;
         }
     }
 
     private void CalculateObstaclesDestroyed()
     {
         if (!canProccedSecond) return;
+
+        if (!isSfxOn)
+        {
+            AudioController.audioController.SwitchVFXPlay(1, 2);
+            isSfxOn = true;
+        }
 
         if (x < obstaclesDestroyed) x += (obstaclesDestroyed / 2f) * Time.deltaTime;
         else x = obstaclesDestroyed;
@@ -226,6 +251,9 @@ public class GameController : MonoBehaviour
             x = 0;
             canProccedSecond = false;
             canProccedThird = true;
+
+            AudioController.audioController.StopVFXPlay();
+            isSfxOn = false;
         }
     }
 
@@ -271,6 +299,7 @@ public class GameController : MonoBehaviour
         {
             x = 0;
             uiController.RewardsCoinMenu(runNormalCoins, 0, 0, 0, true);
+            AudioController.audioController.SwitchVFXPlay(1, 3);
             canProccedFirst = true;
         }
     }
@@ -290,6 +319,7 @@ public class GameController : MonoBehaviour
         {
             x = 0;
             uiController.RewardsCoinMenu(0, height / 10000, 0, 0, true);
+            AudioController.audioController.SwitchVFXPlay(1, 3);
             canProccedSecond = true;
             canProccedFirst = false;
         }
@@ -302,6 +332,7 @@ public class GameController : MonoBehaviour
         if (canProccedThird)
         {
             //float y = (int)(runNormalCoins * (1 + (height / 10000f))) + obstaclesDestroyed * 10f;
+            
 
             int y = (int)(runNormalCoins * (1 + (height / 10000f)));
             y += (int)(obstaclesDestroyed * 10f);
@@ -315,11 +346,14 @@ public class GameController : MonoBehaviour
             {
                 x = y;
                 uiController.RewardsCoinMenu(0, 0, 0, x, true);
+                AudioController.audioController.SwitchVFXPlay(1, 4);
                 x = 0;
                 canProccedFirst = false;
                 canProccedSecond = false;
                 canProccedThird = false;
                 canProccedFourth = true;
+
+                //AudioController.audioController.StopVFXPlay();
 
                 //isCalculatingCoinRewards = false;
                 //isCalculatingRubyRewards = true;
@@ -336,6 +370,7 @@ public class GameController : MonoBehaviour
             {
                 x = 0;
                 uiController.RewardsCoinMenu(0, 0, obstaclesDestroyed * 10f, 0, true);
+                AudioController.audioController.SwitchVFXPlay(1, 3);
                 canProccedThird = true;
             }
         }
@@ -382,6 +417,7 @@ public class GameController : MonoBehaviour
         if (x >= 1)
         {
             uiController.RewardsRubyMenu(y, 0, 0, true);
+            AudioController.audioController.SwitchVFXPlay(1, 3);
             x = 0;
             canProccedFirst = true;
         }
@@ -393,8 +429,11 @@ public class GameController : MonoBehaviour
 
         if (canProccedSecond)
         {
+            
+
             float y = (int)height / 500 + (int)obstaclesDestroyed / 10;
             //float y = (int)height / 5000 + (int)obstaclesDestroyed / 100; // DESABILITEI PARA TESTES
+
 
             if (x < y) x += (y / 1.5f) * Time.deltaTime;
             else x = y;
@@ -404,8 +443,12 @@ public class GameController : MonoBehaviour
             if (x >= y)
             {
                 x = y;
-                if (x <= 0) x = -1;
+
+                if (x <= 0) x = -1;                
+                else AudioController.audioController.SwitchVFXPlay(1, 5);                
+
                 uiController.RewardsRubyMenu(0, 0, x, true);
+                //AudioController.audioController.StopVFXPlay();
                 x = 0;
                 canProccedFirst = false;
                 canProccedSecond = false;
@@ -432,6 +475,7 @@ public class GameController : MonoBehaviour
             if (x >= 1)
             {
                 uiController.RewardsRubyMenu(0, y, 0, true);
+                AudioController.audioController.SwitchVFXPlay(1, 3);
                 x = 0;
                 canProccedSecond = true;
             }

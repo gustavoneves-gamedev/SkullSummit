@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
@@ -9,14 +10,16 @@ public class AudioController : MonoBehaviour
     [Header("Audio Objects")]
     public int currentMusicCode = 0;
     public AudioSource mySoundBox;
+    public AudioSource myVFXBox;
     public AudioMixer myMixer;
     public AudioClip[] menuMusics;
     public AudioClip[] characterSelectionMusics;
     public AudioClip[] levelSelectionMusics;
     public AudioClip[] runMusics;
-    //0 - MenuCowboy
-    //1 - Cowboy Level part 1
-    //2 - Cowboy Level part 2
+
+    [Header("VFX Objects")]
+    public AudioClip[] menuSfxs;
+    public AudioClip[] statisticsSfxs;
 
     [Header("Volume Sliders")]
     [SerializeField] private Slider masterVolume;
@@ -52,7 +55,7 @@ public class AudioController : MonoBehaviour
     void Start()
     {
         audioController = this;
-        mySoundBox = GetComponent<AudioSource>();
+        //mySoundBox = GetComponent<AudioSource>();
         masterVolume.value = currentMasterVolume;
         musicVolume.value = currentMusicVolume;
         SFXVolume.value = currentSFXVolume;
@@ -144,29 +147,40 @@ public class AudioController : MonoBehaviour
         
     }
 
+    public void SwitchVFXPlay(int VFXGroup = 0, int music = 0)
+    {
+        
+        if (VFXGroup == 0) //Open
+        {
+            myVFXBox.clip = menuSfxs[music];
+            //mySoundBox.loop = true;
+            myVFXBox.loop = false;
+            myVFXBox.Play();
+        }
+        else if (VFXGroup == 1)
+        {
+            if(music >= statisticsSfxs.Length) return;
+            myVFXBox.clip = statisticsSfxs[music];            
 
-    //public void SwitchMusic(int music)
-    //{
-    //    currentMusicCode = music;
+            if(music >= 3) myVFXBox.loop = false;
+            else myVFXBox.loop = true;
 
-    //    if (music == 0)
-    //    {
-    //        mySoundBox.clip = menuMusics[0];
-    //        isPlayingRunMusic = false;
-    //        mySoundBox.loop = true;
-    //        mySoundBox.Play();
-    //    }
-    //    if (music == 1)
-    //    {
-    //        mySoundBox.clip = menuMusics[1];
-    //        timeToChangeMusic = mySoundBox.clip.length;
-    //        isPlayingRunMusic = true;
-    //        mySoundBox.loop = false;
-    //        mySoundBox.Play();
-    //    }
+            myVFXBox.Play();
+        }
+        else if (VFXGroup == 2)
+        {
+            myVFXBox.clip = menuSfxs[music];
+            //isPlayingRunMusic = false;
+            //myVFXBox.loop = true;
+            myVFXBox.Play();
+        }
+    }
 
-    //    //mySoundBox.loop = true;
-    //    //mySoundBox.Play();
-    //}
+    public void StopVFXPlay()
+    {
+        myVFXBox.loop = false;
+        myVFXBox.Stop();
+    }
+
 
 }

@@ -446,8 +446,8 @@ public class UIController : MonoBehaviour
                 isLoading = false;
             }
         }
-        
-        
+
+
         if (!GameController.gameController.isRunning) return;
 
         UpdateHeightClimbed();
@@ -461,7 +461,7 @@ public class UIController : MonoBehaviour
         playerRoot = GameController.gameController.playerRoot;
         uiAnimation = gameObject.GetComponent<UIAnimation>();
 
-       // AudioController.audioController.SwitchMusicPlay();
+        // AudioController.audioController.SwitchMusicPlay();
 
 
         //coins.text = puxar informação do local de salvamento
@@ -560,27 +560,33 @@ public class UIController : MonoBehaviour
     public void ActivateOptionsMenu()
     {
         optionsMenu.SetActive(true);
+        AudioController.audioController.SwitchVFXPlay();
     }
 
     public void ReturnToOptionsMenu()
     {
         volumeMenu.SetActive(false);
         tutorialMenu.SetActive(false);
+        AudioController.audioController.SwitchVFXPlay(0, 1);
+
     }
 
     public void VolumeMenu()
     {
         volumeMenu.SetActive(true);
+        AudioController.audioController.SwitchVFXPlay();
     }
 
     public void TutorialMenu()
     {
         tutorialMenu.SetActive(true);
+        AudioController.audioController.SwitchVFXPlay();
     }
 
     public void DeactivateOptionsMenu()
     {
         optionsMenu.SetActive(false);
+        AudioController.audioController.SwitchVFXPlay(0, 1);
     }
 
     #endregion
@@ -1985,7 +1991,7 @@ public class UIController : MonoBehaviour
         }
 
         skipTutorial.SetActive(false);
-       // LoadScreen.SetActive(false);
+        // LoadScreen.SetActive(false);
         isLoading = true;
         AudioController.audioController.SwitchMusicPlay();
         GameController.gameController.isFirstPlay = false;
