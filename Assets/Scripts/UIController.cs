@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
 
+    [Header("Load")]
+    [SerializeField] private GameObject LoadScreen;
+
     [Header("MainMenu")]
     [SerializeField] private GameObject mainMenu;//É tudo no Menu Principal
     //[SerializeField] private GameObject menu;
@@ -400,14 +403,9 @@ public class UIController : MonoBehaviour
     {
         GameController.gameController.uiController = this;
 
-        if (GameController.gameController.isFirstPlay)
-        {
-            skipTutorial.SetActive(true);
-        }
-        else
-        {
-            skipTutorial.SetActive(false);
-        }
+        
+
+        StartCoroutine(LoadGame());
 
         if (GameController.gameController.isTutorialIncomplete)
         {
@@ -448,7 +446,7 @@ public class UIController : MonoBehaviour
         playerRoot = GameController.gameController.playerRoot;
         uiAnimation = gameObject.GetComponent<UIAnimation>();
 
-        AudioController.audioController.SwitchMusicPlay();
+       // AudioController.audioController.SwitchMusicPlay();
 
 
         //coins.text = puxar informação do local de salvamento
@@ -1972,6 +1970,7 @@ public class UIController : MonoBehaviour
         }
 
         skipTutorial.SetActive(false);
+        AudioController.audioController.SwitchMusicPlay();
         GameController.gameController.isFirstPlay = false;
     }
 
@@ -2097,6 +2096,31 @@ public class UIController : MonoBehaviour
         specialTutorialDone = true;
 
         GameController.gameController.isTutorialIncomplete = false;
+    }
+
+    #endregion
+
+    #region Load Screen
+
+    //private void LoadScreen()
+    //{
+    //    StartCoroutine(LoadGame());
+    //}
+    private IEnumerator LoadGame()
+    {
+        yield return new WaitForSeconds(2f);
+
+        if (GameController.gameController.isFirstPlay)
+        {
+            skipTutorial.SetActive(true);
+        }
+        else
+        {
+            skipTutorial.SetActive(false);
+            AudioController.audioController.SwitchMusicPlay();
+        }  
+        
+
     }
 
     #endregion
