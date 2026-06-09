@@ -36414,7 +36414,7 @@ MonoBehaviour:
       - m_Target: {fileID: 393168558}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: BackToMainMenu
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -72916,6 +72916,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ec572a92db8566b4f88a884c8ea747e5, type: 3}
   - {fileID: 8300000, guid: 149799bb420faa44b9a9e8a8cb615f7d, type: 3}
   - {fileID: 8300000, guid: 56ae99f40f910414cbeb15964239bb8a, type: 3}
+  purchasesSfxs:
+  - {fileID: 8300000, guid: 7b033ec03baad054ba5a14cd56f8e2cc, type: 3}
+  - {fileID: 8300000, guid: 7b033ec03baad054ba5a14cd56f8e2cc, type: 3}
   masterVolume: {fileID: 840755711}
   musicVolume: {fileID: 1450965058}
   SFXVolume: {fileID: 208422127}
@@ -75874,7 +75877,7 @@ MonoBehaviour:
       - m_Target: {fileID: 393168558}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: BackToMainMenu
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -81575,7 +81578,7 @@ MonoBehaviour:
       - m_Target: {fileID: 393168558}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: BackToMainMenu
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -92977,7 +92980,7 @@ MonoBehaviour:
       - m_Target: {fileID: 393168558}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: BackToMainMenu
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -114333,7 +114336,7 @@ MonoBehaviour:
       - m_Target: {fileID: 393168558}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: BackToMainMenu
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -124849,7 +124852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1817082299
 RectTransform:
   m_ObjectHideFlags: 0
@@ -125568,14 +125571,14 @@ MonoBehaviour:
       - m_Target: {fileID: 393168558}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: BackToMainMenu
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1833793873
 MonoBehaviour:
@@ -134464,7 +134467,7 @@ MonoBehaviour:
       - m_Target: {fileID: 393168558}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: BackToMainMenu
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

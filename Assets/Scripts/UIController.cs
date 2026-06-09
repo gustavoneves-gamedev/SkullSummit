@@ -516,7 +516,7 @@ public class UIController : MonoBehaviour
         rubies.text = GameController.gameController.rubies.ToString("F0");
     }
 
-    public void BackToMainMenu()
+    public void BackToMainMenu(bool shouldPlayPositiveSfx = false)
     {
         statsMenu.SetActive(false);
         pauseMenu.SetActive(false);
@@ -536,6 +536,9 @@ public class UIController : MonoBehaviour
         {
             AudioController.audioController.SwitchMusicPlay();
         }
+
+        if(shouldPlayPositiveSfx) AudioController.audioController.SwitchVFXPlay();
+        else AudioController.audioController.SwitchVFXPlay(0, 1);
 
         StopCoroutine(TutorialRoutine());
         StopAllCoroutines();
@@ -595,6 +598,7 @@ public class UIController : MonoBehaviour
     public void PauseMenu()
     {
         pauseMenu.SetActive(true);
+        AudioController.audioController.SwitchVFXPlay();
 
         playerRoot.canRun = false;
         playerRoot.isGamePaused = true;
@@ -631,6 +635,8 @@ public class UIController : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         resurrectionMenu.SetActive(false);
+
+        AudioController.audioController.SwitchVFXPlay();
 
         playerRoot.isGamePaused = false;
         playerRoot.canRun = true;
@@ -759,6 +765,7 @@ public class UIController : MonoBehaviour
     public void ShowLeaderboard()
     {
         leaderboard.SetActive(true);
+        AudioController.audioController.SwitchVFXPlay();
     }
 
     public void UpdateLeaderboardDisplay(int index, string name = "", float height = 0)
@@ -791,6 +798,7 @@ public class UIController : MonoBehaviour
 
     public void NextCharacter()
     {
+        AudioController.audioController.SwitchVFXPlay();
 
         if (isCharSelecting && charCode + 1 < characterMenuArray.Length)
         {
@@ -804,6 +812,7 @@ public class UIController : MonoBehaviour
 
     public void PreviousCharacter()
     {
+        AudioController.audioController.SwitchVFXPlay();
 
         if (isCharSelecting && charCode - 1 >= 0)
         {
@@ -846,21 +855,25 @@ public class UIController : MonoBehaviour
     public void UpgradeCharacterStamina(int charCode)
     {
         ProgressManager.progressManager.UpgradeStamina(charCode);
+        AudioController.audioController.SwitchVFXPlay(2,1);
     }
 
     public void UpgradeCharacterDefense(int charCode)
     {
         ProgressManager.progressManager.UpgradeDefense(charCode);
+        AudioController.audioController.SwitchVFXPlay(2, 1);
     }
 
     public void UpgradeCharacterResistance(int charCode)
     {
         ProgressManager.progressManager.UpgradeResistance(charCode);
+        AudioController.audioController.SwitchVFXPlay(2, 1);
     }
 
     public void UpgradeCharacterAttack(int charCode)
     {
         ProgressManager.progressManager.UpgradeAttack(charCode);
+        AudioController.audioController.SwitchVFXPlay(2, 1);
     }
 
     #endregion
@@ -1327,7 +1340,7 @@ public class UIController : MonoBehaviour
 
     public void NextLevel()
     {
-
+        AudioController.audioController.SwitchVFXPlay();
         if (isLevelSelecting && levelCode + 1 < levelMenuArray.Length)
         {
             levelMenuArray[levelCode + 1].SetActive(true);
@@ -1345,7 +1358,7 @@ public class UIController : MonoBehaviour
 
     public void PreviousLevel()
     {
-
+        AudioController.audioController.SwitchVFXPlay();
         if (isLevelSelecting && levelCode - 1 >= 0)
         {
             levelMenuArray[levelCode - 1].SetActive(true);
@@ -1396,18 +1409,21 @@ public class UIController : MonoBehaviour
     public void ShopMenu()
     {
         shopMenu.SetActive(true);
+        AudioController.audioController.SwitchVFXPlay();
     }
 
     public void PurchaseMenu()
     {
         //purchaseMenu.SetActive(true);
         itemUpgradeMenu.SetActive(false);
+        AudioController.audioController.SwitchVFXPlay();
     }
 
     public void ItemUpgradeMenu()
     {
         itemUpgradeMenu.SetActive(true);
         //purchaseMenu.SetActive(false);
+        AudioController.audioController.SwitchVFXPlay();
     }
     #endregion
 
@@ -1416,6 +1432,7 @@ public class UIController : MonoBehaviour
     public void PurchaseItem(int itemCode = 0)
     {
         GameController.gameController.inventory.ItemPurchase(itemCode);
+        AudioController.audioController.SwitchVFXPlay(2, 0);
     }
 
     #region Resurrection Amulet
@@ -1511,6 +1528,7 @@ public class UIController : MonoBehaviour
     public void UpgradeItem(int itemCode = 0)
     {
         GameController.gameController.inventory.ItemUpgrade(itemCode);
+        AudioController.audioController.SwitchVFXPlay(2, 1);//TEMPORÁRIO
     }
 
     #region Stamina Potion Upgrade

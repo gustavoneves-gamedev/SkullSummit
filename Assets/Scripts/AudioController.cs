@@ -20,6 +20,7 @@ public class AudioController : MonoBehaviour
     [Header("VFX Objects")]
     public AudioClip[] menuSfxs;
     public AudioClip[] statisticsSfxs;
+    public AudioClip[] purchasesSfxs;
 
     [Header("Volume Sliders")]
     [SerializeField] private Slider masterVolume;
@@ -150,16 +151,17 @@ public class AudioController : MonoBehaviour
     public void SwitchVFXPlay(int VFXGroup = 0, int music = 0)
     {
         
-        if (VFXGroup == 0) //Open
+        if (VFXGroup == 0)
         {
             myVFXBox.clip = menuSfxs[music];
-            //mySoundBox.loop = true;
+            
             myVFXBox.loop = false;
             myVFXBox.Play();
         }
         else if (VFXGroup == 1)
         {
             if(music >= statisticsSfxs.Length) return;
+
             myVFXBox.clip = statisticsSfxs[music];            
 
             if(music >= 3) myVFXBox.loop = false;
@@ -169,9 +171,11 @@ public class AudioController : MonoBehaviour
         }
         else if (VFXGroup == 2)
         {
-            myVFXBox.clip = menuSfxs[music];
-            //isPlayingRunMusic = false;
-            //myVFXBox.loop = true;
+            if (music >= statisticsSfxs.Length) return;
+
+            myVFXBox.clip = purchasesSfxs[music];
+            
+            myVFXBox.loop = false;
             myVFXBox.Play();
         }
     }
