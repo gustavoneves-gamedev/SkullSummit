@@ -28,7 +28,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: ChunkMod
-    second: {fileID: 2100000, guid: a586f86831fee79429125d8892354e49, type: 2}
+    second: {fileID: 2100000, guid: 8f09bb0c945333048904e006019c1356, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
