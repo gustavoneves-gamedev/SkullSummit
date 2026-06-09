@@ -323,7 +323,8 @@ public class PlayerRoot : MonoBehaviour
 
         if (tapCount == 1)
         {
-            Invoke("CallAttack", .25f);
+            //Invoke("CallAttack", .25f);
+            CallAttack();
         }
 
         if (tapCount == 2)

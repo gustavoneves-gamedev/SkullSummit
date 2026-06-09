@@ -153,6 +153,8 @@ public class GameController : MonoBehaviour
         hasBeganCalculating = true;
         isCalculatingStatistics = true;
 
+        AudioController.audioController.StopMusicPlay();
+
         uiController.StaticsMenu(-1, -1, -1, true, false);
         
         //Soma das moedas
