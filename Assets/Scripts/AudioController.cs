@@ -148,6 +148,12 @@ public class AudioController : MonoBehaviour
         
     }
 
+    public void StopMusicPlay()
+    {
+        mySoundBox.loop = false;
+        mySoundBox.Stop();
+    }
+
     public void SwitchVFXPlay(int VFXGroup = 0, int music = 0)
     {
         

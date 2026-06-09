@@ -307,7 +307,7 @@ public class PlayerRoot : MonoBehaviour
 
         float timeNow = Time.time;
 
-        if (timeNow - lastTapTime < 0.2f)
+        if (timeNow - lastTapTime < 0.25f)
             tapCount++;
         else
             tapCount = 1;
@@ -323,19 +323,19 @@ public class PlayerRoot : MonoBehaviour
 
         if (tapCount == 1)
         {
-            if (canAttack == true)
-                Attack();
-            else if (currentAmmo <= 0)
-                Debug.Log("Sem munição suficiente");
-            else if (cooldownRemaining >= 0)
-                Debug.Log("Ataque em cooldown ainda");
+            Invoke("CallAttack", .25f);
         }
 
-        //if (tapCount == 2)
-        //{
-        //    CancelInvoke();
-        //    Invoke("DoubleTap", 0.3f);
-        //}
+        if (tapCount == 2)
+        {
+            CancelInvoke();
+
+            if (playerPowers.canUseSpecial)
+            {
+                CancelInvoke();
+                playerPowers.ActivateSpecial();
+            }
+        }
         //if (tapCount == 3)
         //{
         //    CancelInvoke();
@@ -556,6 +556,16 @@ public class PlayerRoot : MonoBehaviour
     #endregion
 
     #region Attack    
+
+    private void CallAttack()
+    {
+        if (canAttack == true)
+            Attack();
+        else if (currentAmmo <= 0)
+            Debug.Log("Sem munição suficiente");
+        else if (cooldownRemaining >= 0)
+            Debug.Log("Ataque em cooldown ainda");
+    }
 
     private void AttackTimeCounter()
     {
