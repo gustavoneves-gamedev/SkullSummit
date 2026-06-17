@@ -9,15 +9,17 @@ public class AudioController : MonoBehaviour
 
     [Header("Audio Objects")]
     public int currentMusicCode = 0;
-    public AudioSource mySoundBox;
-    public AudioSource myVFXBox;
+    public AudioSource mySoundBox;    
     public AudioMixer myMixer;
     public AudioClip[] menuMusics;
     public AudioClip[] characterSelectionMusics;
     public AudioClip[] levelSelectionMusics;
     public AudioClip[] runMusics;
+    private int lastMusicX = 0;
+    private int lastMusicY = 0;
 
     [Header("VFX Objects")]
+    public AudioSource myVFXBox;
     public AudioClip[] menuSfxs;
     public AudioClip[] statisticsSfxs;
     public AudioClip[] purchasesSfxs;
@@ -61,20 +63,6 @@ public class AudioController : MonoBehaviour
         musicVolume.value = currentMusicVolume;
         SFXVolume.value = currentSFXVolume;
         Initialize();
-    }
-
-    private void Update() //MEGA PROVISÓRIO!!
-    {
-        //if (isPlayingRunMusic) timeToChangeMusic -= Time.deltaTime;
-
-        //if (isPlayingRunMusic && timeToChangeMusic <= 7f)
-        //{
-        //    mySoundBox.clip = menuMusics[2];
-        //    mySoundBox.pitch = 1.1f;
-        //    mySoundBox.Play();
-        //    mySoundBox.loop = true;
-        //    isPlayingRunMusic = false;
-        //}
     }
 
     public void Initialize()
@@ -121,8 +109,16 @@ public class AudioController : MonoBehaviour
 
     #endregion
 
+    public void PlayLastMusic()
+    {
+        SwitchMusicPlay(lastMusicX, lastMusicY);
+    }
+
     public void SwitchMusicPlay(int musicGroup = 0, int music = 0)
     {
+        lastMusicX = musicGroup;
+        lastMusicY = music;
+        
         //currentMusicCode = music;
         if (musicGroup == 0)
         {

@@ -537,8 +537,14 @@ public class UIController : MonoBehaviour
             AudioController.audioController.SwitchMusicPlay();
         }
 
-        if(shouldPlayPositiveSfx) AudioController.audioController.SwitchVFXPlay();
+        if (shouldPlayPositiveSfx)
+        {
+            AudioController.audioController.PlayLastMusic();
+            AudioController.audioController.SwitchVFXPlay();
+        }
         else AudioController.audioController.SwitchVFXPlay(0, 1);
+
+        
 
         StopCoroutine(TutorialRoutine());
         StopAllCoroutines();
