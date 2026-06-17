@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
     public float runNormalCoins;
     public float runRubies;
     public float obstaclesDestroyed;
+    [SerializeField] private GameObject skipButton;
 
 
     [Header("Levels")]
@@ -91,7 +92,6 @@ public class GameController : MonoBehaviour
 
         if (!hasBeganCalculating) return;
 
-
         if (isCalculatingStatistics)
         {
             CalculateHeight();
@@ -114,7 +114,38 @@ public class GameController : MonoBehaviour
 
     }
 
+    public void SkipStatistics()
+    {
+        if (!hasBeganCalculating) return;
 
+        if (isCalculatingStatistics)
+        {
+            isCalculatingStatistics = false;
+
+            AudioController.audioController.StopVFXPlay();
+
+            uiController.StaticsMenu(height, runNormalCoins, obstaclesDestroyed, false, true);
+
+            canProccedFirst = false;
+            canProccedSecond = false;
+            canProccedThird = false;
+            canProccedFourth = false;
+
+            isCalculatingCoinRewards = true;           
+
+        }
+        else if (isCalculatingCoinRewards || isCalculatingRubyRewards)
+        {
+
+
+
+            skipButton.SetActive(false);
+        }
+
+
+    }
+
+    #region Begin Run Event
     //IPC: ANOTAÇÃO IMPORTANTE LOGO ABAIXO!!!
     public void BeginRun()
     {
@@ -141,6 +172,7 @@ public class GameController : MonoBehaviour
 
         playerRoot.ResetPosition(worldPos);
     }
+    #endregion
 
     #region End Run
 
@@ -150,13 +182,14 @@ public class GameController : MonoBehaviour
 
         this.height = height;
 
+        skipButton.SetActive(true);
         hasBeganCalculating = true;
         isCalculatingStatistics = true;
 
         AudioController.audioController.StopMusicPlay();
 
         uiController.StaticsMenu(-1, -1, -1, true, false);
-        
+
         //Soma das moedas
         //float y = ((runNormalCoins * (1 + (height / 10000f))) + obstaclesDestroyed * 10f);
         int y = (int)(runNormalCoins * (1 + (this.height / 10000f)));
@@ -178,7 +211,7 @@ public class GameController : MonoBehaviour
     #region Statistics
     private void CalculateHeight()
     {
-        if (canProccedFirst || canProccedSecond || canProccedThird) return;
+        if (canProccedFirst || canProccedSecond || canProccedThird || !isCalculatingStatistics) return;
 
         if (!isSfxOn)
         {
@@ -334,7 +367,7 @@ public class GameController : MonoBehaviour
         if (canProccedThird)
         {
             //float y = (int)(runNormalCoins * (1 + (height / 10000f))) + obstaclesDestroyed * 10f;
-            
+
 
             int y = (int)(runNormalCoins * (1 + (height / 10000f)));
             y += (int)(obstaclesDestroyed * 10f);
@@ -431,7 +464,7 @@ public class GameController : MonoBehaviour
 
         if (canProccedSecond)
         {
-            
+
 
             float y = (int)height / 500 + (int)obstaclesDestroyed / 10;
             //float y = (int)height / 5000 + (int)obstaclesDestroyed / 100; // DESABILITEI PARA TESTES
@@ -446,8 +479,8 @@ public class GameController : MonoBehaviour
             {
                 x = y;
 
-                if (x <= 0) x = -1;                
-                else AudioController.audioController.SwitchVFXPlay(1, 5);                
+                if (x <= 0) x = -1;
+                else AudioController.audioController.SwitchVFXPlay(1, 5);
 
                 uiController.RewardsRubyMenu(0, 0, x, true);
                 //AudioController.audioController.StopVFXPlay();
@@ -455,6 +488,8 @@ public class GameController : MonoBehaviour
                 canProccedFirst = false;
                 canProccedSecond = false;
                 canProccedThird = false;
+
+                skipButton.SetActive(false);
 
                 //isCalculatingCoinRewards = false;
                 isCalculatingRubyRewards = false;
@@ -528,7 +563,7 @@ public class GameController : MonoBehaviour
     public void UpdateRunCoins(int normalCoins = 0, int rubies = 0)
     {
         if (!isRunning) return;
-        
+
         runNormalCoins += (int)(normalCoins * playerRoot.playerPowers.coinMultiplier);
 
         runRubies += rubies;

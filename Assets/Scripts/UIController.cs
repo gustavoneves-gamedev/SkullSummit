@@ -34,8 +34,6 @@ public class UIController : MonoBehaviour
     private bool specialTutorialDone;
     [SerializeField] private GameObject specialTutorialButton;
 
-
-
     [Header("Options")]
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject volumeMenu;
