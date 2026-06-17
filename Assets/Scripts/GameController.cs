@@ -110,7 +110,7 @@ public class GameController : MonoBehaviour
         {
             CalulateHeightRubies();
             CalulateObstacleRubies();
-        }
+        }       
 
     }
 
@@ -120,24 +120,53 @@ public class GameController : MonoBehaviour
 
         if (isCalculatingStatistics)
         {
-            isCalculatingStatistics = false;
+            //isCalculatingStatistics = false;
+
+            canProccedFirst = false;
+            canProccedSecond = false;
+            x = 0;
+            canProccedThird = true;
+            canProccedFourth = false;
 
             AudioController.audioController.StopVFXPlay();
 
             uiController.StaticsMenu(height, runNormalCoins, obstaclesDestroyed, false, true);
 
-            canProccedFirst = false;
-            canProccedSecond = false;
-            canProccedThird = false;
-            canProccedFourth = false;
+            
 
-            isCalculatingCoinRewards = true;           
+            //isCalculatingCoinRewards = true;            
 
         }
         else if (isCalculatingCoinRewards || isCalculatingRubyRewards)
         {
+            isCalculatingCoinRewards = false;
+            isCalculatingRubyRewards = false;
 
+            AudioController.audioController.StopVFXPlay();
 
+            int y = (int)(runNormalCoins * (1 + (height / 10000f)));
+            y += (int)(obstaclesDestroyed * 10f);
+
+            uiController.RewardsCoinMenu(runNormalCoins, height / 10000, obstaclesDestroyed * 10f, y, true);            
+
+            y = 0;
+            if (height / 500 > 1) y = (int)height / 500;
+            else y = -1;
+            uiController.RewardsRubyMenu(y, 0, 0, true);
+
+            y = 0;
+            if (obstaclesDestroyed / 10 > 1) y = (int)obstaclesDestroyed / 10;
+            else y = -1;
+            uiController.RewardsRubyMenu(0, y, 0, true);
+
+            y = (int)height / 500 + (int)obstaclesDestroyed / 10;
+            if (y <= 0) y = -1;
+            uiController.RewardsRubyMenu(0, 0, y, true);
+
+            canProccedFirst = false;
+            canProccedSecond = false;
+            canProccedThird = false;
+            canProccedFourth = false;
 
             skipButton.SetActive(false);
         }
@@ -464,7 +493,6 @@ public class GameController : MonoBehaviour
 
         if (canProccedSecond)
         {
-
 
             float y = (int)height / 500 + (int)obstaclesDestroyed / 10;
             //float y = (int)height / 5000 + (int)obstaclesDestroyed / 100; // DESABILITEI PARA TESTES

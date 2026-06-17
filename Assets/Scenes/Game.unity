@@ -115351,6 +115351,7 @@ MonoBehaviour:
   runNormalCoins: 0
   runRubies: 0
   obstaclesDestroyed: 0
+  skipButton: {fileID: 2102399566}
   levelArray:
   - {fileID: 11400000, guid: 385a9f067cbaa0f40b474dfb39ce639c, type: 2}
   - {fileID: 11400000, guid: 66b7427d1265c3a47a73006548432fe0, type: 2}
