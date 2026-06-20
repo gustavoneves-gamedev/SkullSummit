@@ -23,7 +23,7 @@ public class ObstacleRoot : MonoBehaviour
 
     [Header("Pool Conexion")]
     private float timer;
-    private float lifetime = 50f;
+    private float lifetime = 60f;
 
     [Header("Collision")]
     [SerializeField] private ParticleSystem destroyVFX;
@@ -194,7 +194,7 @@ public class ObstacleRoot : MonoBehaviour
 
         defaultMovementSpeed = movementSpeed;
         movementSpeed = 0;
-        Invoke("Deactivate", 10f);
+        //Invoke("Deactivate", 10f);
         GameController.gameController.ObstaclesDestroyedCounter();
     }
 

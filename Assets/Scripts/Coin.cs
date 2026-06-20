@@ -11,6 +11,7 @@ public class Coin : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private ParticleSystem multiplierVFX;
     [SerializeField] private ParticleSystem collectVFX;
+    private Quaternion defaultRotation = Quaternion.identity;
 
     
     private void OnEnable()
@@ -19,6 +20,10 @@ public class Coin : MonoBehaviour
         if (audioSource == null) audioSource = GetComponent<AudioSource>();
 
         meshRenderer.enabled = true;
+
+        if (defaultRotation == Quaternion.identity) defaultRotation = transform.rotation;
+        else transform.rotation = defaultRotation;
+
     }
 
     // Update is called once per frame

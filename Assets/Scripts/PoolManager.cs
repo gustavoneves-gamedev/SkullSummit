@@ -14,7 +14,7 @@ public class PoolManager : MonoBehaviour
     [Header("Coin Stack")]
     [SerializeField] private GameObject coinStackPrefab;
     [SerializeField] private Transform coinStackParent;
-    [SerializeField] private int initialCoinStackPoolSize = 10;
+    [SerializeField] private int initialCoinStackPoolSize = 20;
 
     [Header("Cowboy Obstacles")]
     [SerializeField] private GameObject[] cowboyStaticObstaclesPrefabs;
@@ -52,9 +52,13 @@ public class PoolManager : MonoBehaviour
         {
             CreateObstacles(0);
             CreateObstacles(1);
-            CreateObstacles(2);            
+            CreateObstacles(2);
         }
 
+        for (int i = 0; i < initialObstaclesPoolSize; i++)
+        {
+            CreateObstacles(0);
+        }
     }
 
     #region Create Objects
@@ -142,7 +146,7 @@ public class PoolManager : MonoBehaviour
                 return obj;
             }
         }
-        return CreateBulletObject();
+        return CreateCoinStack();
     }
 
     public GameObject GetObstaclePrefab(int obstacleCode = 0)

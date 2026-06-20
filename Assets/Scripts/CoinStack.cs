@@ -8,6 +8,8 @@ public class CoinStack : MonoBehaviour
 
     private void OnEnable()
     {
+        timer = 0;
+
         for (int i = 0; i < coins.Length; i++)
         {
             coins[i].SetActive(true);
@@ -16,10 +18,18 @@ public class CoinStack : MonoBehaviour
     
     void Update()
     {
-        if (GameController.gameController.isRunning) return;
+        if (!GameController.gameController.isRunning)
+        {
+            Deactivate();
+            return;
+        }
+
         Timer();
 
-        if (GameController.gameController.playerRoot.gameObject.transform.position.z > transform.position.z + 10f) Deactivate();
+        if (GameController.gameController.playerRoot.gameObject.transform.position.z > transform.position.z + 10f)
+        {
+            Deactivate();
+        }
     }
 
     private void Timer()

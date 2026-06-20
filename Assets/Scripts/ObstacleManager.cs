@@ -122,12 +122,17 @@ public class ObstacleManager : MonoBehaviour
         for (int i = 0; i < coinSpawnRate; i++)
         {
             row = rb.Next(0, matriz.GetLength(0));
-            lane = rb.Next(0, matriz.GetLength(1));            
+            lane = rb.Next(0, matriz.GetLength(1));
 
             if (matriz[row, lane].isFreeForCoins)
             {
-                Instantiate(coinStacks[rb.Next(0, coinStacks.Length)], matriz[row, lane].
-                    transform.position, matriz[row, lane].transform.rotation);
+                //Instantiate(coinStacks[rb.Next(0, coinStacks.Length)], matriz[row, lane].
+                //    transform.position, matriz[row, lane].transform.rotation);
+
+                GameObject obj = PoolManager.poolManager.GetCoinStackPrefab();
+
+                obj.transform.position = matriz[row, lane].transform.position;
+                obj.transform.rotation = matriz[row, lane].transform.rotation;
 
                 matriz[row, lane].isFreeForCoins = false;
                 if (row - 1 >= 0) matriz[row - 1, lane].isFreeForCoins = false;

@@ -90128,7 +90128,7 @@ MonoBehaviour:
   initialBulletPoolSize: 10
   coinStackPrefab: {fileID: 7060795182263168816, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
   coinStackParent: {fileID: 1894122781}
-  initialCoinStackPoolSize: 10
+  initialCoinStackPoolSize: 20
   cowboyStaticObstaclesPrefabs:
   - {fileID: 6023950075848797583, guid: dd57475a01b9c3a42b84ee2bbd4e7293, type: 3}
   - {fileID: 1728778713127497232, guid: bb5fa3a96349e9c488c4d3bcb44bbed7, type: 3}
@@ -90141,7 +90141,7 @@ MonoBehaviour:
   - {fileID: 2146039844}
   - {fileID: 17732145}
   - {fileID: 1801760685}
-  initialObstaclesPoolSize: 15
+  initialObstaclesPoolSize: 10
   bulletPool: []
   coinStackPool: []
   cowboyStaticObstaclesPool: []
