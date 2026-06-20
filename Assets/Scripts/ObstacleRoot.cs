@@ -99,6 +99,8 @@ public class ObstacleRoot : MonoBehaviour
 
         }
 
+        if(player.gameObject.transform.position.z > transform.position.z + 10f) Deactivate();
+
         Timer();
 
         if (GameController.gameController.isRunning) return;

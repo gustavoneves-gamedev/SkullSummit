@@ -11,6 +11,11 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private Transform bulletParent;
     [SerializeField] private int initialBulletPoolSize = 10;
 
+    [Header("Coin Stack")]
+    [SerializeField] private GameObject coinStackPrefab;
+    [SerializeField] private Transform coinStackParent;
+    [SerializeField] private int initialCoinStackPoolSize = 10;
+
     [Header("Cowboy Obstacles")]
     [SerializeField] private GameObject[] cowboyStaticObstaclesPrefabs;
     [SerializeField] private GameObject[] cowboyBigMovableObstaclesPrefabs;
@@ -20,6 +25,7 @@ public class PoolManager : MonoBehaviour
 
     [Header("Pools")]
     [SerializeField] private List<GameObject> bulletPool = new List<GameObject>();
+    [SerializeField] private List<GameObject> coinStackPool = new List<GameObject>();
 
     [Header("CowboyPools")]
     [SerializeField] private List<GameObject> cowboyStaticObstaclesPool = new List<GameObject>();   
@@ -35,6 +41,11 @@ public class PoolManager : MonoBehaviour
         for (int i = 0; i < initialBulletPoolSize; i++)
         {
             CreateBulletObject();
+        }
+
+        for (int i = 0; i < initialCoinStackPoolSize; i++)
+        {
+            CreateCoinStack();
         }
 
         for (int i = 0; i < initialObstaclesPoolSize; i++)
@@ -97,13 +108,33 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-    #endregion
+    private GameObject CreateCoinStack()
+    {
+        GameObject obj = Instantiate(coinStackPrefab, coinStackParent);
+        obj.SetActive(false);
+        coinStackPool.Add(obj);
+        return obj;
+    }
 
+    #endregion
 
     #region Get Objects
     public GameObject GetBulletPrefab()
     {
         foreach (GameObject obj in bulletPool)
+        {
+            if (!obj.activeSelf)
+            {
+                obj.SetActive(true);
+                return obj;
+            }
+        }
+        return CreateBulletObject();
+    }
+
+    public GameObject GetCoinStackPrefab()
+    {
+        foreach (GameObject obj in coinStackPool)
         {
             if (!obj.activeSelf)
             {
@@ -186,4 +217,5 @@ public class PoolManager : MonoBehaviour
     }
 
     #endregion
+
 }

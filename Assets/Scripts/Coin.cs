@@ -12,17 +12,20 @@ public class Coin : MonoBehaviour
     [SerializeField] private ParticleSystem multiplierVFX;
     [SerializeField] private ParticleSystem collectVFX;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    
+    private void OnEnable()
     {
-        Destroy(gameObject, 30f);
-        meshRenderer = GetComponent<MeshRenderer>();
-        audioSource = GetComponent<AudioSource>();
+        if (meshRenderer == null) meshRenderer = GetComponent<MeshRenderer>();
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
+
+        meshRenderer.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!GameController.gameController.isRunning) return;
+
         if (GameController.gameController.playerPowers.isCoinMultiplierOn)
         {
             if (meshRenderer.enabled == false) return;
@@ -58,7 +61,7 @@ public class Coin : MonoBehaviour
             coinAura.SetActive(false);
             audioSource.Play();
             collectVFX.Play();
-            Destroy(gameObject, 2f);
+            //Destroy(gameObject, 2f);
         }
     }
 

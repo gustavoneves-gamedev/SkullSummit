@@ -2,16 +2,40 @@ using UnityEngine;
 
 public class CoinStack : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Destroy(gameObject, 30f);
-    }
+    [SerializeField] private float lifetime = 50f;
+    private float timer;
+    [SerializeField] private GameObject[] coins;
 
-    // Update is called once per frame
+    private void OnEnable()
+    {
+        for (int i = 0; i < coins.Length; i++)
+        {
+            coins[i].SetActive(true);
+        }
+    }
+    
     void Update()
     {
         if (GameController.gameController.isRunning) return;
-        Destroy(gameObject, 1f);
+        Timer();
+
+        if (GameController.gameController.playerRoot.gameObject.transform.position.z > transform.position.z + 10f) Deactivate();
     }
+
+    private void Timer()
+    {
+        timer += Time.deltaTime;
+
+        if (timer >= lifetime)
+        {
+            Deactivate();
+        }
+    }
+
+    public void Deactivate()
+    {
+        gameObject.SetActive(false);
+        timer = 0;
+    }
+
 }
