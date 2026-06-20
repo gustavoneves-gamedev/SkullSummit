@@ -872,6 +872,7 @@ public class UIController : MonoBehaviour
         GameController.gameController.playerRoot.Initialize(characterID.Samurai);
         charCode = 1;
         SetRunIcon(charCode);
+
         BackToMainMenu();
     }
 
@@ -881,6 +882,7 @@ public class UIController : MonoBehaviour
         GameController.gameController.playerRoot.Initialize(characterID.Alpinista);
         charCode = 2;
         SetRunIcon(charCode);
+
         BackToMainMenu();
     }
     #endregion
