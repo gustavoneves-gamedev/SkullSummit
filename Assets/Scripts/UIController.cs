@@ -54,6 +54,7 @@ public class UIController : MonoBehaviour
     [Header("CharacterMenu")]
     [SerializeField] private GameObject characterSelectionMenu;
     [SerializeField] private GameObject[] characterMenuArray;
+    [SerializeField] private GameObject[] characterRunIcons;
     private int charCode = 0;
     private bool isCharSelecting;
     private bool firstCall = true;
@@ -845,11 +846,23 @@ public class UIController : MonoBehaviour
         }
     }
 
+    private void SetRunIcon(int charCode = 0)
+    {
+        for (int i = 0; i < characterRunIcons.Length; i++)
+        {
+            characterRunIcons[i].SetActive(false);            
+        }
+
+        characterRunIcons[charCode].SetActive(true);
+    }
+
     public void SelectCowboy()
     {
         GameController.gameController.playerRoot.selectedCharacter = characterID.Cowboy;
-        GameController.gameController.playerRoot.Initialize(characterID.Cowboy);
+        GameController.gameController.playerRoot.Initialize(characterID.Cowboy);        
         charCode = 0;
+        SetRunIcon(charCode);
+
         BackToMainMenu();
     }
 
@@ -858,6 +871,7 @@ public class UIController : MonoBehaviour
         GameController.gameController.playerRoot.selectedCharacter = characterID.Samurai;
         GameController.gameController.playerRoot.Initialize(characterID.Samurai);
         charCode = 1;
+        SetRunIcon(charCode);
         BackToMainMenu();
     }
 
@@ -866,6 +880,7 @@ public class UIController : MonoBehaviour
         GameController.gameController.playerRoot.selectedCharacter = characterID.Alpinista;
         GameController.gameController.playerRoot.Initialize(characterID.Alpinista);
         charCode = 2;
+        SetRunIcon(charCode);
         BackToMainMenu();
     }
     #endregion
