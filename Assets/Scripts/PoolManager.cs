@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,25 +5,49 @@ public class PoolManager : MonoBehaviour
 {
     public static PoolManager poolManager;
 
+    
     [Header("Bullet")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletParent;
-    [SerializeField] private int initialSize = 10;
+    [SerializeField] private int initialBulletPoolSize = 10;
+
+    [Header("Cowboy Obstacles")]
+    [SerializeField] private GameObject[] cowboyStaticObstaclesPrefabs;
+    [SerializeField] private GameObject[] cowboyBigMovableObstaclesPrefabs;
+    [SerializeField] private GameObject[] cowboySmallMovableObstaclesPrefabs;
+    [SerializeField] private Transform[] cowboyObstaclesParent;
+    [SerializeField] private int initialObstaclesPoolSize = 10;
 
     [Header("Pools")]
     [SerializeField] private List<GameObject> bulletPool = new List<GameObject>();
 
+    [Header("CowboyPools")]
+    [SerializeField] private List<GameObject> cowboyStaticObstaclesPool = new List<GameObject>();   
+    [SerializeField] private List<GameObject> cowboyMovableBigObstaclesPool = new List<GameObject>();
+    [SerializeField] private List<GameObject> cowboyMovableSmallObstaclesPool = new List<GameObject>();
+
+
+
     private void Awake()
     {
         poolManager = this;
-        
-        for (int i = 0; i < initialSize; i++)
+
+        for (int i = 0; i < initialBulletPoolSize; i++)
         {
-            CreateObject();
+            CreateBulletObject();
         }
+
+        for (int i = 0; i < initialObstaclesPoolSize; i++)
+        {
+            CreateObstacles(0);
+            CreateObstacles(1);
+            CreateObstacles(2);            
+        }
+
     }
 
-    private GameObject CreateObject()
+    #region Create Objects
+    private GameObject CreateBulletObject()
     {
         GameObject obj = Instantiate(bulletPrefab, bulletParent);
         obj.SetActive(false);
@@ -32,6 +55,52 @@ public class PoolManager : MonoBehaviour
         return obj;
     }
 
+    private GameObject CreateObstacles(int obstacleCode = 0)
+    {
+        int x = 0;
+
+        if (obstacleCode == 0)
+        {
+            x = Random.Range(0, cowboyStaticObstaclesPrefabs.Length);
+
+            GameObject obj = Instantiate(cowboyStaticObstaclesPrefabs[x], 
+                cowboyObstaclesParent[obstacleCode]);
+
+            obj.SetActive(false);
+            cowboyStaticObstaclesPool.Add(obj);
+
+            return obj;
+        }
+        else if (obstacleCode == 1)
+        {
+            x = Random.Range(0, cowboyBigMovableObstaclesPrefabs.Length);
+
+            GameObject obj = Instantiate(cowboyBigMovableObstaclesPrefabs[x],
+                cowboyObstaclesParent[obstacleCode]);
+
+            obj.SetActive(false);
+            cowboyMovableBigObstaclesPool.Add(obj);
+
+            return obj;
+        }
+        else
+        {
+            x = Random.Range(0, cowboySmallMovableObstaclesPrefabs.Length);
+
+            GameObject obj = Instantiate(cowboySmallMovableObstaclesPrefabs[x],
+                cowboyObstaclesParent[obstacleCode]);
+
+            obj.SetActive(false);
+            cowboyMovableSmallObstaclesPool.Add(obj);
+
+            return obj;
+        }
+    }
+
+    #endregion
+
+
+    #region Get Objects
     public GameObject GetBulletPrefab()
     {
         foreach (GameObject obj in bulletPool)
@@ -40,8 +109,78 @@ public class PoolManager : MonoBehaviour
             {
                 obj.SetActive(true);
                 return obj;
-            }            
+            }
         }
-        return CreateObject();
+        return CreateBulletObject();
     }
+
+    public GameObject GetObstaclePrefab(int obstacleCode = 0)
+    {
+
+        if (obstacleCode == 0)
+        {
+
+            GameObject obstacle = cowboyStaticObstaclesPool[Random.Range(0, cowboyStaticObstaclesPool.Count)];
+
+            if (obstacle.activeSelf)
+            {
+                foreach (GameObject obj in cowboyStaticObstaclesPool)
+                {
+                    if (!obj.activeSelf)
+                    {
+                        obj.SetActive(true);
+                        return obj;
+                    }
+                }
+            }
+            else
+            {
+                return obstacle;
+            }
+
+        }
+        else if (obstacleCode == 1)
+        {
+            GameObject obstacle = cowboyMovableBigObstaclesPool[Random.Range(0, cowboyMovableBigObstaclesPool.Count)];
+
+            if (obstacle.activeSelf)
+            {
+                foreach (GameObject obj in cowboyMovableBigObstaclesPool)
+                {
+                    if (!obj.activeSelf)
+                    {
+                        obj.SetActive(true);
+                        return obj;
+                    }
+                }
+            }
+            else
+            {
+                return obstacle;
+            }
+        }
+        else
+        {
+            GameObject obstacle = cowboyMovableSmallObstaclesPool[Random.Range(0, cowboyMovableSmallObstaclesPool.Count)];
+
+            if (obstacle.activeSelf)
+            {
+                foreach (GameObject obj in cowboyMovableSmallObstaclesPool)
+                {
+                    if (!obj.activeSelf)
+                    {
+                        obj.SetActive(true);
+                        return obj;
+                    }
+                }
+            }
+            else
+            {
+                return obstacle;
+            }
+        }
+        return CreateObstacles(obstacleCode);
+    }
+
+    #endregion
 }

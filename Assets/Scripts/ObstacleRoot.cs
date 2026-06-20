@@ -76,43 +76,43 @@ public class ObstacleRoot : MonoBehaviour
 
     void Start()
     {
-        Destroy(gameObject, 30f);
-        player = GameController.gameController.playerRoot;
+        //Destroy(gameObject, 30f);
+        //player = GameController.gameController.playerRoot;
 
-        rotateSpeedA = Random.Range(10f, 20f);
-        rotateSpeedB = Random.Range(10f, 20f);
-        rotateSpeedC = Random.Range(25f, 50f);
+        //rotateSpeedA = Random.Range(10f, 20f);
+        //rotateSpeedB = Random.Range(10f, 20f);
+        //rotateSpeedC = Random.Range(25f, 50f);
 
-        if (GameController.gameController.playerRoot.heightClimbed >= 1500)
-        {
-            staminaSpawnUpperRate--;
-            shieldSpawnUpperRate--;
-            coinSpawnUpperRate--;
-        }
-        else if (GameController.gameController.playerRoot.heightClimbed >= 4000)
-        {
-            staminaSpawnUpperRate -= 2;
-            shieldSpawnUpperRate -= 2;
-            coinSpawnUpperRate -= 2;
-        }
-        else if (GameController.gameController.playerRoot.heightClimbed >= 10000)
-        {
-            staminaSpawnUpperRate -= 4;
-            shieldSpawnUpperRate -= 4;
-            coinSpawnUpperRate -= 4;
-        }
+        //if (GameController.gameController.playerRoot.heightClimbed >= 1500)
+        //{
+        //    staminaSpawnUpperRate--;
+        //    shieldSpawnUpperRate--;
+        //    coinSpawnUpperRate--;
+        //}
+        //else if (GameController.gameController.playerRoot.heightClimbed >= 4000)
+        //{
+        //    staminaSpawnUpperRate -= 2;
+        //    shieldSpawnUpperRate -= 2;
+        //    coinSpawnUpperRate -= 2;
+        //}
+        //else if (GameController.gameController.playerRoot.heightClimbed >= 10000)
+        //{
+        //    staminaSpawnUpperRate -= 4;
+        //    shieldSpawnUpperRate -= 4;
+        //    coinSpawnUpperRate -= 4;
+        //}
 
-        if (obsctacleType == 1)
-        {
-            transform.position += Vector3.up * 3.2f;
-            itemToSpawn = ItemToSpawn();
-        }
+        //if (obsctacleType == 1)
+        //{
+        //    transform.position += Vector3.up * 3.2f;
+        //    itemToSpawn = ItemToSpawn();
+        //}
 
-        if (obsctacleType == 2)
-        {
-            transform.position += Vector3.up * 1.2f;
-            itemToSpawn = ItemToSpawn();
-        }
+        //if (obsctacleType == 2)
+        //{
+        //    transform.position += Vector3.up * 1.2f;
+        //    itemToSpawn = ItemToSpawn();
+        //}
     }
 
 
@@ -200,8 +200,9 @@ public class ObstacleRoot : MonoBehaviour
             Destroy(itemSpawned, 5f);
         }
 
+        //ISSO ACONTECE QUANDO UM OBSTÁCULO BATE NO OUTRO
         ObstacleRoot root = hit.GetComponentInParent<ObstacleRoot>();
-        if (root != null) Destroy(root.gameObject);
+        if (root != null) root.Deactivate();
 
         //Destruirá o objeto apenas se for a bala
         if (hit.CompareTag("Bullet"))
