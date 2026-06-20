@@ -30,7 +30,8 @@ public class CollisionDetector : MonoBehaviour
             {
                 if (obstacleRoot.obsctacleType == 0)
                 {
-                    Destroy(other.gameObject);
+                    other.GetComponent<Bullet>().Deactivate();
+                    //Destroy(other.gameObject);
                 }
                 else
                 {

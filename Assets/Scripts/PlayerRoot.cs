@@ -188,7 +188,7 @@ public class PlayerRoot : MonoBehaviour
         //Serve para preparar a parte de munição da HUD
         uiController.InitializeAmmoUI(characterCode, maxAmmo);
 
-        if(GameController.gameController.isTutorialIncomplete) uiController.BeginTutorial();
+        if (GameController.gameController.isTutorialIncomplete) uiController.BeginTutorial();
 
         canRun = true;
     }
@@ -600,9 +600,17 @@ public class PlayerRoot : MonoBehaviour
     private void Attack()
     {
         //Debug.Log("Ataquei!!");
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        Bullet bulletScript = bullet.GetComponent<Bullet>();
+
+        GameObject bulletPrefabRef = PoolManager.poolManager.GetBulletPrefab();
+
+        bulletPrefabRef.transform.position = transform.position;
+        bulletPrefabRef.transform.rotation = transform.rotation;
+        Bullet bulletScript = bulletPrefabRef.GetComponent<Bullet>();
         bulletScript.bulletSpeed = movementSpeed + attackSpeed;
+
+        //GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        //Bullet bulletScript = bullet.GetComponent<Bullet>();
+        //bulletScript.bulletSpeed = movementSpeed + attackSpeed;
         // bulletScript.Movement();
 
         //Atualiza a quantidade de munição mostrada na HUD

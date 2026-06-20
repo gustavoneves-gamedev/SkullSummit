@@ -7,7 +7,7 @@ public class ObstacleRoot : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float movementSpeed = 10f;
     public int obsctacleType = 0;// 1 - Obstáculo móvel grande
-                                                   // 2 - Obstáculo móvel pequeno
+                                 // 2 - Obstáculo móvel pequeno
 
     [Header("Items")]
     [SerializeField] private GameObject[] items; //0 - Stamina; 1 - Shield; 2 - CoinMultiplier
@@ -20,6 +20,9 @@ public class ObstacleRoot : MonoBehaviour
     [SerializeField] private int shieldSpawnUpperRate = 10;
     [SerializeField] private int coinSpawnUpperRate = 18;
 
+    [Header("Pool Conexion")]
+    private float timer;
+    private float lifetime = 10f;
 
     [Header("Collision")]
     [SerializeField] private ParticleSystem destroyVFX;
@@ -30,6 +33,46 @@ public class ObstacleRoot : MonoBehaviour
     private PlayerRoot player;
     //private Collider collider;
 
+    private void OnEnable()
+    {
+        //Destroy(gameObject, 30f);
+        player = GameController.gameController.playerRoot;
+
+        rotateSpeedA = Random.Range(10f, 20f);
+        rotateSpeedB = Random.Range(10f, 20f);
+        rotateSpeedC = Random.Range(25f, 50f);
+
+        if (GameController.gameController.playerRoot.heightClimbed >= 1500)
+        {
+            staminaSpawnUpperRate--;
+            shieldSpawnUpperRate--;
+            coinSpawnUpperRate--;
+        }
+        else if (GameController.gameController.playerRoot.heightClimbed >= 4000)
+        {
+            staminaSpawnUpperRate -= 2;
+            shieldSpawnUpperRate -= 2;
+            coinSpawnUpperRate -= 2;
+        }
+        else if (GameController.gameController.playerRoot.heightClimbed >= 10000)
+        {
+            staminaSpawnUpperRate -= 4;
+            shieldSpawnUpperRate -= 4;
+            coinSpawnUpperRate -= 4;
+        }
+
+        if (obsctacleType == 1)
+        {
+            transform.position += Vector3.up * 3.2f;
+            itemToSpawn = ItemToSpawn();
+        }
+
+        if (obsctacleType == 2)
+        {
+            transform.position += Vector3.up * 1.2f;
+            itemToSpawn = ItemToSpawn();
+        }
+    }
 
     void Start()
     {
@@ -87,8 +130,11 @@ public class ObstacleRoot : MonoBehaviour
 
         }
 
+        Timer();
+
         if (GameController.gameController.isRunning) return;
-        Destroy(gameObject, 1f);
+        //Destroy(gameObject, 1f);
+        Deactivate();
     }
 
     private GameObject ItemToSpawn()
@@ -158,12 +204,32 @@ public class ObstacleRoot : MonoBehaviour
         if (root != null) Destroy(root.gameObject);
 
         //Destruirá o objeto apenas se for a bala
-        if(hit.CompareTag("Bullet")) Destroy(hit);
+        if (hit.CompareTag("Bullet"))
+        {
+            hit.GetComponent<Bullet>().Deactivate();
+           // Destroy(hit);
+        }
+
 
         movementSpeed = 0;
         Destroy(gameObject, 10f);
         GameController.gameController.ObstaclesDestroyedCounter();
     }
 
+    private void Timer()
+    {
+        timer += Time.deltaTime;
+
+        if (timer >= lifetime)
+        {
+            Deactivate();
+        }
+    }
+
+    public void Deactivate()
+    {
+        gameObject.SetActive(false);
+        timer = 0;
+    }
 
 }
