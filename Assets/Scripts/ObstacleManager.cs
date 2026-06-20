@@ -12,8 +12,8 @@ public class ObstacleManager : MonoBehaviour
     private bool matrizFlowControl = true;
 
     [Header("Obstacles")]
-    [SerializeField] private GameObject[] staticObstacles;
-    [SerializeField] private GameObject[] movableObstacles;
+    //[SerializeField] private GameObject[] staticObstacles;
+    //[SerializeField] private GameObject[] movableObstacles;
 
     [Header("Coins")]
     [SerializeField] private GameObject[] coinStacks;
@@ -96,9 +96,15 @@ public class ObstacleManager : MonoBehaviour
             if (matriz[row, lane].isFreeForStaticObstacle)
             {
                
-                Instantiate(staticObstacles[rb.Next(0, staticObstacles.Length)], matriz[row, lane].
-                    transform.position, matriz[row, lane].transform.rotation);
-                
+                //Instantiate(staticObstacles[rb.Next(0, staticObstacles.Length)], matriz[row, lane].
+                //    transform.position, matriz[row, lane].transform.rotation);
+
+                GameObject obj = PoolManager.poolManager.GetObstaclePrefab(0);
+
+                obj.transform.position = matriz[row, lane].transform.position;
+                obj.transform.rotation = matriz[row, lane].transform.rotation;
+                obj.SetActive(true);
+
                 //Obstáculos pesados
                 matriz[row, lane].isFreeForStaticObstacle = false;
                 matriz[row, 0].isFreeForStaticObstacle = false;
@@ -125,7 +131,7 @@ public class ObstacleManager : MonoBehaviour
 
                 matriz[row, lane].isFreeForCoins = false;
                 if (row - 1 >= 0) matriz[row - 1, lane].isFreeForCoins = false;
-                if (row + 1 < staticObstacles.Length) matriz[row + 1, lane].isFreeForCoins = false;
+                if (row + 1 < matriz.GetLength(0)) matriz[row + 1, lane].isFreeForCoins = false;
             }
         }
 
@@ -136,12 +142,18 @@ public class ObstacleManager : MonoBehaviour
 
             if (matriz[row, lane].isFreeForMovableObstacle)
             {
-                Instantiate(movableObstacles[rb.Next(0, movableObstacles.Length)], matriz[row, lane].
-                    transform.position, matriz[row, lane].transform.rotation);
+                //Instantiate(movableObstacles[rb.Next(0, movableObstacles.Length)], matriz[row, lane].
+                //    transform.position, matriz[row, lane].transform.rotation);
+
+                GameObject obj = PoolManager.poolManager.GetObstaclePrefab(rb.Next(1, 3));
+
+                obj.transform.position = matriz[row, lane].transform.position;
+                obj.transform.rotation = matriz[row, lane].transform.rotation;
+                obj.SetActive(true);
 
                 matriz[row, lane].isFreeForMovableObstacle = false;
                 if (row - 1 >= 0) matriz[row - 1, lane].isFreeForMovableObstacle = false;
-                if (row + 1 < staticObstacles.Length) matriz[row + 1, lane].isFreeForMovableObstacle = false;
+                if (row + 1 < matriz.GetLength(0)) matriz[row + 1, lane].isFreeForMovableObstacle = false;
             }
 
         }

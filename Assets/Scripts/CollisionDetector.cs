@@ -62,25 +62,6 @@ public class CollisionDetector : MonoBehaviour
 
         }
 
-        //if (other.CompareTag("Bullet"))
-        //{
-        //    //Debug.Log("Colidi com a bala");
-
-        //    if (index == 1)
-        //    {
-        //        if (obstacleRoot.obsctacleType == 0)
-        //        {
-        //            Destroy(other.gameObject);
-        //        }
-        //        else
-        //        {
-        //            obstacleRoot.WasHit(other.gameObject);
-        //            gameObject.SetActive(false);
-        //        }
-        //    }
-        //}
-
-        //if (!gameObject.activeSelf) return;
 
         if (other.CompareTag("MovableObstacle") && transform.position.z - playerRoot.transform.position.z <= 50f)
         {

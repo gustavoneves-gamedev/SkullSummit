@@ -128,13 +128,14 @@ public class PoolManager : MonoBehaviour
                 {
                     if (!obj.activeSelf)
                     {
-                        obj.SetActive(true);
+                        //obj.SetActive(true);
                         return obj;
                     }
                 }
             }
             else
             {
+                //obstacle.SetActive(true);
                 return obstacle;
             }
 
@@ -149,13 +150,14 @@ public class PoolManager : MonoBehaviour
                 {
                     if (!obj.activeSelf)
                     {
-                        obj.SetActive(true);
+                        //obj.SetActive(true);
                         return obj;
                     }
                 }
             }
             else
             {
+                //obstacle.SetActive(true);
                 return obstacle;
             }
         }
@@ -169,13 +171,14 @@ public class PoolManager : MonoBehaviour
                 {
                     if (!obj.activeSelf)
                     {
-                        obj.SetActive(true);
+                        //obj.SetActive(true);
                         return obj;
                     }
                 }
             }
             else
             {
+                //obstacle.SetActive(true);
                 return obstacle;
             }
         }

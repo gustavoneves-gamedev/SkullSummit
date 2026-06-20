@@ -291,6 +291,7 @@ MonoBehaviour:
   shieldSpawnUpperRate: 10
   coinSpawnUpperRate: 18
   destroyVFX: {fileID: 3476618246440777507}
+  collisionDetector: {fileID: 3317556526748554520}
 --- !u!65 &2804782007431372651
 BoxCollider:
   m_ObjectHideFlags: 0
