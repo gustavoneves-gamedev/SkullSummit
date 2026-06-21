@@ -119,7 +119,6 @@ public class PlayerRoot : MonoBehaviour
 
     }
 
-
     private void InitializePlayer(int charCode)
     {
         characterCode = charCode;
@@ -303,7 +302,6 @@ public class PlayerRoot : MonoBehaviour
     }
     private void DetectTaps()
     {
-
 
         float timeNow = Time.time;
 

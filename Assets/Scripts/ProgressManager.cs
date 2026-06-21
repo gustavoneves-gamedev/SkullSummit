@@ -116,7 +116,6 @@ public class ProgressManager : MonoBehaviour
     }
 
 
-
     #region Upgrade Buttons
     public void UpgradeStamina(int charCode)
     {
@@ -198,8 +197,6 @@ public class ProgressManager : MonoBehaviour
             cowboyReloadUpgrades++;
             UpdateCowboyAttackUI();
         }
-
-        
     }
 
     private void UpgradeSamurai(statType stat)
