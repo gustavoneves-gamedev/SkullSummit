@@ -13,6 +13,8 @@ public class CharacterAnimationController : MonoBehaviour
     private static readonly int Hit = Animator.StringToHash("Hit");
     private static readonly int Die = Animator.StringToHash("Die");
 
+    [SerializeField] private ParticleSystem fireVFX;
+
     private PlayerRoot playerRoot;
 
     private void Awake()
@@ -26,11 +28,20 @@ public class CharacterAnimationController : MonoBehaviour
         playerRoot = GameController.gameController.playerRoot;
     }
 
+    #region Idle
     public void PlayIdle()
     {
         SetClimbing(false);
         animator.SetTrigger(Idle);
     }
+
+    public void DullahanFire(int play)
+    {
+        if (play == 1) fireVFX.Play();
+        else fireVFX.Stop();
+    }
+
+    #endregion
 
     #region Climb
     public void SetClimbing(bool value)
@@ -76,6 +87,12 @@ public class CharacterAnimationController : MonoBehaviour
     public void PlayAttack()
     {
         animator.SetTrigger(Attack);
+    }
+
+    public void OnAttackShootFrame()
+    {
+        Debug.Log("Disparo no frame correto da animação.");
+        playerRoot.Attack();
     }
 
     public void PlayHit()

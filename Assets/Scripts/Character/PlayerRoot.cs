@@ -92,7 +92,7 @@ public class PlayerRoot : MonoBehaviour
     public void ResetPosition(Vector3 worldPos)
     {
         cc.enabled = false;
-        Debug.Log("Fui rotacionado no GameController");
+        //Debug.Log("Fui rotacionado no GameController");
         //transform.position = worldPos + Vector3.forward;
         transform.position = worldPos;
         //transform.rotation = new Quaternion(0,0,0,0);
@@ -106,7 +106,7 @@ public class PlayerRoot : MonoBehaviour
     {
         //cc.enabled = false;
 
-        Debug.Log("Fui rotacionado no player");
+        //Debug.Log("Fui rotacionado no player");
 
         //transform.position = worldPos + Vector3.forward;
         //transform.position = worldPos;
@@ -624,7 +624,10 @@ public class PlayerRoot : MonoBehaviour
     private void CallAttack()
     {
         if (canAttack == true)
-            Attack();
+        {
+            activeAnimator.PlayAttack();
+            //Attack();
+        }
         else if (currentAmmo <= 0)
             Debug.Log("Sem munição suficiente");
         else if (cooldownRemaining >= 0)
@@ -660,13 +663,14 @@ public class PlayerRoot : MonoBehaviour
 
     }
 
-    private void Attack()
+    public void Attack()
     {
         //Debug.Log("Ataquei!!");
+                
 
         GameObject bulletPrefabRef = PoolManager.poolManager.GetBulletPrefab();
 
-        bulletPrefabRef.transform.position = transform.position;
+        bulletPrefabRef.transform.position = transform.position + Vector3.forward;
         bulletPrefabRef.transform.rotation = transform.rotation;
         Bullet bulletScript = bulletPrefabRef.GetComponent<Bullet>();
         bulletScript.bulletSpeed = movementSpeed + attackSpeed;
