@@ -418,14 +418,14 @@ public class PlayerRoot : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) && desiredLane < 1 && !isChangingLane)
         {
             desiredLane = desiredLane + 1;
-            activeCharacterAnimController.PlayLaneChangeLeft();
+            if(activeCharacterAnimController != null) activeCharacterAnimController.PlayLaneChange(1);
             //isChangingLane = true;
         }
 
         if (Input.GetKeyDown(KeyCode.A) && desiredLane > -1 && !isChangingLane)
         {
             desiredLane = desiredLane - 1;
-            activeCharacterAnimController.PlayLaneChangeRight();
+            if (activeCharacterAnimController != null) activeCharacterAnimController.PlayLaneChange(-1);
             //isChangingLane = true;
         }
 
