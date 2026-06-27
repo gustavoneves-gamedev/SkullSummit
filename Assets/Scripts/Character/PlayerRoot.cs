@@ -99,22 +99,22 @@ public class PlayerRoot : MonoBehaviour
 
         cc.enabled = true;
 
-        
-    }
-
-    private void SetRotation()
-    {
-        //cc.enabled = false;
-
-        //Debug.Log("Fui rotacionado no player");
-
-        //transform.position = worldPos + Vector3.forward;
-        //transform.position = worldPos;
-        //transform.rotation = new Quaternion(0, 0, 180, 0);
-
-        //cc.enabled = true;
 
         cc.transform.rotation = new Quaternion(0, 0, 180, 0);
+    }
+
+    private void SetIdleRotation()
+    {
+        //Debug.Log("Fui rotacionado no Set Idle Rotation do player");
+
+        cc.transform.rotation = new Quaternion(0, 0, 180, 0);
+    }
+
+    private void SetRunRotation()
+    {
+        //Debug.Log("Fui rotacionado no Set Run Rotation do player");
+
+        cc.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
     public void Initialize(characterID selectedChar)
@@ -139,7 +139,7 @@ public class PlayerRoot : MonoBehaviour
         if (selectedChar == characterID.Alpinista)
             InitializePlayer(2);
 
-        SetRotation();
+        SetIdleRotation();
     }
 
     private void InitializePlayer(int charCode)
@@ -193,6 +193,7 @@ public class PlayerRoot : MonoBehaviour
     {
         uiController = GameController.gameController.uiController;
 
+        SetRunRotation();
 
         scenePlane.transform.localPosition = originalPosition;
 
@@ -216,7 +217,6 @@ public class PlayerRoot : MonoBehaviour
         //Serve para preparar a parte de munição da HUD
         uiController.InitializeAmmoUI(characterCode, maxAmmo);
 
-        cc.transform.rotation = new Quaternion(0, 0, 0, 0);
 
         if (GameController.gameController.isTutorialIncomplete) uiController.BeginTutorial();
 
@@ -233,7 +233,7 @@ public class PlayerRoot : MonoBehaviour
         canRun = false;
         isDead = true;
         hasStaminaEnded = false;
-        SetRotation();
+        SetIdleRotation();
 
         if (activeAnimator != null)
         {
@@ -276,7 +276,10 @@ public class PlayerRoot : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (canAttack == true)
-                Attack();
+            {
+                if (activeAnimator != null) activeAnimator.PlayAttack();
+                else Attack();
+            }
             else if (currentAmmo <= 0)
                 Debug.Log("Sem munição suficiente");
             else if (cooldownRemaining >= 0)
@@ -625,8 +628,8 @@ public class PlayerRoot : MonoBehaviour
     {
         if (canAttack == true)
         {
-            activeAnimator.PlayAttack();
-            //Attack();
+            if (activeAnimator != null) activeAnimator.PlayAttack();
+            else Attack();
         }
         else if (currentAmmo <= 0)
             Debug.Log("Sem munição suficiente");
@@ -666,14 +669,33 @@ public class PlayerRoot : MonoBehaviour
     public void Attack()
     {
         //Debug.Log("Ataquei!!");
-                
+        if (characterCode == 0)
+        {
+            GameObject bulletPrefabRef = PoolManager.poolManager.GetCowboyBulletPrefab();
 
-        GameObject bulletPrefabRef = PoolManager.poolManager.GetBulletPrefab();
+            bulletPrefabRef.transform.position = transform.position + Vector3.forward * 3f;
+            bulletPrefabRef.transform.rotation = transform.rotation;
+            Bullet bulletScript = bulletPrefabRef.GetComponent<Bullet>();
+            bulletScript.bulletSpeed = movementSpeed + attackSpeed;
+        }
+        else if (characterCode == 1)
+        {
+            GameObject bulletPrefabRef = PoolManager.poolManager.GetSamuraiBulletPrefab();
 
-        bulletPrefabRef.transform.position = transform.position + Vector3.forward;
-        bulletPrefabRef.transform.rotation = transform.rotation;
-        Bullet bulletScript = bulletPrefabRef.GetComponent<Bullet>();
-        bulletScript.bulletSpeed = movementSpeed + attackSpeed;
+            bulletPrefabRef.transform.position = transform.position + Vector3.forward * 3f;
+            bulletPrefabRef.transform.rotation = transform.rotation;
+            Bullet bulletScript = bulletPrefabRef.GetComponent<Bullet>();
+            bulletScript.bulletSpeed = movementSpeed + attackSpeed;
+        }
+        else
+        {
+            GameObject bulletPrefabRef = PoolManager.poolManager.GetDullahanBulletPrefab();
+
+            bulletPrefabRef.transform.position = transform.position + Vector3.forward * 3f;
+            bulletPrefabRef.transform.rotation = transform.rotation;
+            Bullet bulletScript = bulletPrefabRef.GetComponent<Bullet>();
+            bulletScript.bulletSpeed = movementSpeed + attackSpeed;
+        }
 
         //GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         //Bullet bulletScript = bullet.GetComponent<Bullet>();
@@ -682,6 +704,8 @@ public class PlayerRoot : MonoBehaviour
 
         //Atualiza a quantidade de munição mostrada na HUD
         currentAmmo--;
+
+
         uiController.UpdateAmmoQuantity(currentAmmo);
 
         cooldownRemaining = cooldown;
@@ -745,7 +769,7 @@ public class PlayerRoot : MonoBehaviour
         canRun = false;
         isDead = true;
         hasStaminaEnded = false;
-        SetRotation();
+        SetRunRotation();
 
         GameController.gameController.EndRun(heightClimbed);
 

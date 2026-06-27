@@ -6,9 +6,13 @@ public class PoolManager : MonoBehaviour
     public static PoolManager poolManager;
 
     
-    [Header("Bullet")]
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform bulletParent;
+    [Header("Bullet")]    
+    [SerializeField] private GameObject cowboyBulletPrefab;
+    [SerializeField] private GameObject samuraiBulletPrefab;
+    [SerializeField] private GameObject dullahanBulletPrefab;
+    [SerializeField] private Transform cowboyBulletParent;
+    [SerializeField] private Transform samuraiBulletParent;
+    [SerializeField] private Transform dullahanBulletParent;
     [SerializeField] private int initialBulletPoolSize = 10;
 
     [Header("Coin Stack")]
@@ -23,8 +27,10 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private Transform[] cowboyObstaclesParent;
     [SerializeField] private int initialObstaclesPoolSize = 10;
 
-    [Header("Pools")]
-    [SerializeField] private List<GameObject> bulletPool = new List<GameObject>();
+    [Header("Bullets")]
+    [SerializeField] private List<GameObject> cowboyBulletPool = new List<GameObject>();
+    [SerializeField] private List<GameObject> samuraiBulletPool = new List<GameObject>();
+    [SerializeField] private List<GameObject> dullahanBulletPool = new List<GameObject>();
     [SerializeField] private List<GameObject> coinStackPool = new List<GameObject>();
 
     [Header("CowboyPools")]
@@ -40,7 +46,9 @@ public class PoolManager : MonoBehaviour
 
         for (int i = 0; i < initialBulletPoolSize; i++)
         {
-            CreateBulletObject();
+            CreateCowboyBulletObject();
+            CreateSamuraiBulletObject();
+            CreateDullahanBulletObject();
         }
 
         for (int i = 0; i < initialCoinStackPoolSize; i++)
@@ -62,11 +70,27 @@ public class PoolManager : MonoBehaviour
     }
 
     #region Create Objects
-    private GameObject CreateBulletObject()
+    private GameObject CreateCowboyBulletObject()
     {
-        GameObject obj = Instantiate(bulletPrefab, bulletParent);
+        GameObject obj = Instantiate(cowboyBulletPrefab, cowboyBulletParent);
         obj.SetActive(false);
-        bulletPool.Add(obj);
+        cowboyBulletPool.Add(obj);
+        return obj;
+    }
+
+    private GameObject CreateSamuraiBulletObject()
+    {
+        GameObject obj = Instantiate(samuraiBulletPrefab, samuraiBulletParent);
+        obj.SetActive(false);
+        samuraiBulletPool.Add(obj);
+        return obj;
+    }
+
+    private GameObject CreateDullahanBulletObject()
+    {
+        GameObject obj = Instantiate(dullahanBulletPrefab, dullahanBulletParent);
+        obj.SetActive(false);
+        dullahanBulletPool.Add(obj);
         return obj;
     }
 
@@ -123,9 +147,9 @@ public class PoolManager : MonoBehaviour
     #endregion
 
     #region Get Objects
-    public GameObject GetBulletPrefab()
+    public GameObject GetCowboyBulletPrefab()
     {
-        foreach (GameObject obj in bulletPool)
+        foreach (GameObject obj in cowboyBulletPool)
         {
             if (!obj.activeSelf)
             {
@@ -133,8 +157,35 @@ public class PoolManager : MonoBehaviour
                 return obj;
             }
         }
-        return CreateBulletObject();
+        return CreateCowboyBulletObject();
     }
+
+    public GameObject GetSamuraiBulletPrefab()
+    {
+        foreach (GameObject obj in samuraiBulletPool)
+        {
+            if (!obj.activeSelf)
+            {
+                obj.SetActive(true);
+                return obj;
+            }
+        }
+        return CreateSamuraiBulletObject();
+    }
+
+    public GameObject GetDullahanBulletPrefab()
+    {
+        foreach (GameObject obj in dullahanBulletPool)
+        {
+            if (!obj.activeSelf)
+            {
+                obj.SetActive(true);
+                return obj;
+            }
+        }
+        return CreateDullahanBulletObject();
+    }
+
 
     public GameObject GetCoinStackPrefab()
     {

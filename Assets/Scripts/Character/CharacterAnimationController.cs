@@ -47,6 +47,7 @@ public class CharacterAnimationController : MonoBehaviour
     public void SetClimbing(bool value)
     {
         animator.SetBool(IsClimbing, value);
+        DullahanFire(0);
     }
 
     public void SetClimbSpeed(float speed)
@@ -91,7 +92,7 @@ public class CharacterAnimationController : MonoBehaviour
 
     public void OnAttackShootFrame()
     {
-        Debug.Log("Disparo no frame correto da animação.");
+        //Debug.Log("Disparo no frame correto da animação.");
         playerRoot.Attack();
     }
 
