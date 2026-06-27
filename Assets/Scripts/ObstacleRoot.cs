@@ -53,21 +53,21 @@ public class ObstacleRoot : MonoBehaviour
 
         if (GameController.gameController.playerRoot.heightClimbed >= 1500)
         {
-            staminaSpawnUpperRate--;
-            shieldSpawnUpperRate--;
-            coinSpawnUpperRate--;
+            staminaSpawnUpperRate = 5;
+            shieldSpawnUpperRate = 9;
+            coinSpawnUpperRate = 17;
         }
         else if (GameController.gameController.playerRoot.heightClimbed >= 4000)
         {
-            staminaSpawnUpperRate -= 2;
-            shieldSpawnUpperRate -= 2;
-            coinSpawnUpperRate -= 2;
+            staminaSpawnUpperRate = 4;
+            shieldSpawnUpperRate -= 8;
+            coinSpawnUpperRate -= 16;
         }
         else if (GameController.gameController.playerRoot.heightClimbed >= 10000)
         {
-            staminaSpawnUpperRate -= 4;
-            shieldSpawnUpperRate -= 4;
-            coinSpawnUpperRate -= 4;
+            staminaSpawnUpperRate = 2;
+            shieldSpawnUpperRate = 4;
+            coinSpawnUpperRate = 10;
         }
 
         if (obsctacleType == 1)

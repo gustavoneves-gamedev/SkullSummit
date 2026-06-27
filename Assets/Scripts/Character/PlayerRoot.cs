@@ -70,6 +70,7 @@ public class PlayerRoot : MonoBehaviour
     public characterID selectedCharacter = characterID.Cowboy;
     [SerializeField] private CharacterData[] characterDatas;
     [SerializeField] private GameObject[] characterModels;
+    private CharacterAnimationController activeCharacterAnimController;
     private int characterCode = 0;
     private UIController uiController;
 
@@ -122,6 +123,8 @@ public class PlayerRoot : MonoBehaviour
     private void InitializePlayer(int charCode)
     {
         characterCode = charCode;
+
+        activeCharacterAnimController = characterModels[charCode].GetComponent<CharacterAnimationController>();
 
         maxStamina = characterDatas[charCode].baseMaxStamina + ProgressManager.progressManager.staminaIncrement;
 
@@ -190,6 +193,11 @@ public class PlayerRoot : MonoBehaviour
         if (GameController.gameController.isTutorialIncomplete) uiController.BeginTutorial();
 
         canRun = true;
+
+        if (activeCharacterAnimController != null)
+        {
+            activeCharacterAnimController.SetClimbing(true);
+        }
     }
 
 
