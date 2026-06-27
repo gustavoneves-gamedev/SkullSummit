@@ -71,7 +71,7 @@ public class PlayerRoot : MonoBehaviour
     public characterID selectedCharacter = characterID.Cowboy;
     [SerializeField] private CharacterData[] characterDatas;
     [SerializeField] private GameObject[] characterModels;
-    private CharacterAnimationController activeCharacterAnimController;
+    private CharacterAnimationController activeAnimator;
     private int characterCode = 0;
     private UIController uiController;
 
@@ -125,7 +125,7 @@ public class PlayerRoot : MonoBehaviour
     {
         characterCode = charCode;
 
-        activeCharacterAnimController = characterModels[charCode].GetComponent<CharacterAnimationController>();
+        activeAnimator = characterModels[charCode].GetComponent<CharacterAnimationController>();
 
         maxStamina = characterDatas[charCode].baseMaxStamina + ProgressManager.progressManager.staminaIncrement;
 
@@ -196,9 +196,9 @@ public class PlayerRoot : MonoBehaviour
 
         canRun = true;
 
-        if (activeCharacterAnimController != null)
+        if (activeAnimator != null)
         {
-            activeCharacterAnimController.SetClimbing(true);
+            activeAnimator.SetClimbing(true);
         }
     }
 
@@ -418,14 +418,14 @@ public class PlayerRoot : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) && desiredLane < 1 && !isChangingLane)
         {
             desiredLane = desiredLane + 1;
-            if(activeCharacterAnimController != null) activeCharacterAnimController.PlayLaneChange(1);
+            if (activeAnimator != null) activeAnimator.PlayLaneChange(1);
             //isChangingLane = true;
         }
 
         if (Input.GetKeyDown(KeyCode.A) && desiredLane > -1 && !isChangingLane)
         {
             desiredLane = desiredLane - 1;
-            if (activeCharacterAnimController != null) activeCharacterAnimController.PlayLaneChange(-1);
+            if (activeAnimator != null) activeAnimator.PlayLaneChange(-1);
             //isChangingLane = true;
         }
 
@@ -451,6 +451,8 @@ public class PlayerRoot : MonoBehaviour
 
         movementSpeed += .5f * Time.deltaTime;
 
+        activeAnimator.SetClimbSpeed(1 + ((movementSpeed - defaultInitialSpeed) * 0.1f));
+
         if (movementSpeed >= maxSpeed) movementSpeed = maxSpeed;
     }
 
@@ -462,7 +464,8 @@ public class PlayerRoot : MonoBehaviour
     {
         if (playerPowers.isSpecialOn) return;
 
-        movementSpeed = initialSpeed;
+        //movementSpeed = initialSpeed;
+        //activeAnimator.SetClimbSpeed(1 + ((movementSpeed - defaultInitialSpeed) * 0.1f));
 
         initialSpeed = defaultInitialSpeed;
 
@@ -483,6 +486,9 @@ public class PlayerRoot : MonoBehaviour
             defaultAcelerationCooldown = .5f;
         }
 
+        movementSpeed = initialSpeed;
+        activeAnimator.SetClimbSpeed(1 + ((movementSpeed - defaultInitialSpeed) * 0.1f));
+
         acelerationCooldown = defaultAcelerationCooldown;
 
     }
@@ -493,11 +499,13 @@ public class PlayerRoot : MonoBehaviour
         {
             maxSpeed *= 1.5f;
             movementSpeed = maxSpeed;
+            activeAnimator.SetClimbSpeed(1 + ((movementSpeed - defaultInitialSpeed) * 0.1f));
         }
         else
         {
             maxSpeed /= 1.5f;
             movementSpeed = maxSpeed;
+            activeAnimator.SetClimbSpeed(1 + ((movementSpeed - defaultInitialSpeed) * 0.1f));
         }
     }
 
@@ -668,9 +676,9 @@ public class PlayerRoot : MonoBehaviour
 
     private void OnDeathEvent()
     {
-        if (activeCharacterAnimController != null)
+        if (activeAnimator != null)
         {
-            activeCharacterAnimController.PlayDeath();
+            activeAnimator.PlayDeath();
         }
         else
         {
@@ -689,9 +697,9 @@ public class PlayerRoot : MonoBehaviour
 
         GameController.gameController.EndRun(heightClimbed);
 
-        if (activeCharacterAnimController != null)
+        if (activeAnimator != null)
         {
-            activeCharacterAnimController.PlayIdle();
+            activeAnimator.PlayIdle();
         }
     }
 

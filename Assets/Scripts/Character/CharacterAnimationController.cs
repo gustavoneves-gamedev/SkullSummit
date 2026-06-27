@@ -6,6 +6,7 @@ public class CharacterAnimationController : MonoBehaviour
 
     private static readonly int Idle = Animator.StringToHash("Idle");
     private static readonly int IsClimbing = Animator.StringToHash("IsClimbing");
+    private static readonly int ClimbSpeed = Animator.StringToHash("ClimbSpeed");
     private static readonly int MoveLeft = Animator.StringToHash("MoveLeft");
     private static readonly int MoveRight = Animator.StringToHash("MoveRight");
     private static readonly int Attack = Animator.StringToHash("Attack");
@@ -30,10 +31,19 @@ public class CharacterAnimationController : MonoBehaviour
         animator.SetTrigger(Idle);
     }
 
+    #region Climb
     public void SetClimbing(bool value)
     {
         animator.SetBool(IsClimbing, value);
     }
+
+    public void SetClimbSpeed(float speed)
+    {
+        animator.SetFloat(ClimbSpeed, speed);
+    }
+
+
+    #endregion
 
     public void PlayLaneChange(int direction)
     {
