@@ -6,6 +6,7 @@ public class PlayerRoot : MonoBehaviour
     [Header("Run")]
     public bool canRun;
     private bool isDead;
+    private bool hasStaminaEnded;
     public bool isGamePaused;
     public float heightClimbed;
     private float initialHeight;
@@ -173,6 +174,7 @@ public class PlayerRoot : MonoBehaviour
 
         staminaConsumptionRate = 1;
         isDead = false;
+        hasStaminaEnded = false;
         isGamePaused = false;
         desiredLane = 0;
         currentStamina = maxStamina;
@@ -416,12 +418,14 @@ public class PlayerRoot : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) && desiredLane < 1 && !isChangingLane)
         {
             desiredLane = desiredLane + 1;
+            activeCharacterAnimController.PlayLaneChangeLeft();
             //isChangingLane = true;
         }
 
         if (Input.GetKeyDown(KeyCode.A) && desiredLane > -1 && !isChangingLane)
         {
             desiredLane = desiredLane - 1;
+            activeCharacterAnimController.PlayLaneChangeRight();
             //isChangingLane = true;
         }
 
@@ -632,13 +636,27 @@ public class PlayerRoot : MonoBehaviour
     #region Death
     private void OnStaminaEnd()
     {
-        uiController.EndRunChoiceMenu(playerPowers.ressurrectionAmuletQuantity);
+        if (hasStaminaEnded) return;
+
+        hasStaminaEnded = true;
+
+        if (playerPowers.ressurrectionAmuletQuantity <= 0)
+        {
+            OnDeathEvent();
+            //ContinueRunChoice(false);
+        }
+        else
+        {
+            uiController.EndRunChoiceMenu(playerPowers.ressurrectionAmuletQuantity);
+        }
+
     }
 
     public void ContinueRunChoice(bool willContinue)
     {
         if (willContinue)
         {
+            hasStaminaEnded = false;
             playerPowers.ActivateResurrectionAmulet();
         }
         else
@@ -650,11 +668,33 @@ public class PlayerRoot : MonoBehaviour
 
     private void OnDeathEvent()
     {
+        if (activeCharacterAnimController != null)
+        {
+            activeCharacterAnimController.PlayDeath();
+        }
+        else
+        {
+            canRun = false;
+            isDead = true;
+
+            GameController.gameController.EndRun(heightClimbed);
+        }
+    }
+
+    public void DeathByAnimationEvent()
+    {
         canRun = false;
         isDead = true;
+        hasStaminaEnded = false;
 
         GameController.gameController.EndRun(heightClimbed);
+
+        if (activeCharacterAnimController != null)
+        {
+            activeCharacterAnimController.PlayIdle();
+        }
     }
+
     #endregion
 
     private void OnTriggerEnter(Collider other)
