@@ -72,6 +72,8 @@ public class PlayerRoot : MonoBehaviour
     [SerializeField] private CharacterData[] characterDatas;
     [SerializeField] private GameObject[] characterModels;
     private CharacterAnimationController activeAnimator;
+    [SerializeField] private CameraFollow mainCamera;
+    private bool isFollowingPlayer;
     private int characterCode = 0;
     private UIController uiController;
 
@@ -90,11 +92,29 @@ public class PlayerRoot : MonoBehaviour
     public void ResetPosition(Vector3 worldPos)
     {
         cc.enabled = false;
-
+        Debug.Log("Fui rotacionado no GameController");
         //transform.position = worldPos + Vector3.forward;
         transform.position = worldPos;
+        //transform.rotation = new Quaternion(0,0,0,0);
 
         cc.enabled = true;
+
+        
+    }
+
+    private void SetRotation()
+    {
+        //cc.enabled = false;
+
+        Debug.Log("Fui rotacionado no player");
+
+        //transform.position = worldPos + Vector3.forward;
+        //transform.position = worldPos;
+        //transform.rotation = new Quaternion(0, 0, 180, 0);
+
+        //cc.enabled = true;
+
+        cc.transform.rotation = new Quaternion(0, 0, 180, 0);
     }
 
     public void Initialize(characterID selectedChar)
@@ -119,6 +139,7 @@ public class PlayerRoot : MonoBehaviour
         if (selectedChar == characterID.Alpinista)
             InitializePlayer(2);
 
+        SetRotation();
     }
 
     private void InitializePlayer(int charCode)
@@ -154,7 +175,10 @@ public class PlayerRoot : MonoBehaviour
 
     public void BeginRunAnimation()
     {
+        isFollowingPlayer = false;
 
+
+        mainCamera.TransitionToRun();
         //PlayRunAnimation -> Terei que elaborar isso aqui, definir qual animação deverá tocar (jogador está no checkpoin
         //ou no início da Run?)
 
@@ -192,6 +216,8 @@ public class PlayerRoot : MonoBehaviour
         //Serve para preparar a parte de munição da HUD
         uiController.InitializeAmmoUI(characterCode, maxAmmo);
 
+        cc.transform.rotation = new Quaternion(0, 0, 0, 0);
+
         if (GameController.gameController.isTutorialIncomplete) uiController.BeginTutorial();
 
         canRun = true;
@@ -199,6 +225,19 @@ public class PlayerRoot : MonoBehaviour
         if (activeAnimator != null)
         {
             activeAnimator.SetClimbing(true);
+        }
+    }
+
+    public void BackToMainMenu()
+    {
+        canRun = false;
+        isDead = true;
+        hasStaminaEnded = false;
+        SetRotation();
+
+        if (activeAnimator != null)
+        {
+            activeAnimator.PlayIdle();
         }
     }
 
@@ -216,6 +255,12 @@ public class PlayerRoot : MonoBehaviour
 
         //Calcula a altura escalada pelo jogador - APRIMORAR
         heightClimbed = transform.position.z - initialHeight;
+
+        if (heightClimbed >= 12 && !isFollowingPlayer)
+        {
+            mainCamera.FollowPlayer();
+            isFollowingPlayer = true;
+        }
 
         DetectSwipes();
         //DetectTaps();
@@ -676,6 +721,8 @@ public class PlayerRoot : MonoBehaviour
 
     private void OnDeathEvent()
     {
+        isFollowingPlayer = false;
+
         if (activeAnimator != null)
         {
             activeAnimator.PlayDeath();
@@ -694,6 +741,7 @@ public class PlayerRoot : MonoBehaviour
         canRun = false;
         isDead = true;
         hasStaminaEnded = false;
+        SetRotation();
 
         GameController.gameController.EndRun(heightClimbed);
 

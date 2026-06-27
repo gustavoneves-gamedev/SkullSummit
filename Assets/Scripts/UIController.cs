@@ -532,6 +532,7 @@ public class UIController : MonoBehaviour
 
         //playerRoot.EndRun();
         GameController.gameController.isRunning = false;
+        playerRoot.BackToMainMenu();
 
         if (AudioController.audioController.currentMusicCode != 0)
         {
@@ -1415,6 +1416,7 @@ public class UIController : MonoBehaviour
     public void SelectCowboyLevel()
     {
         GameController.gameController.currentLevelID = levelID.CowboyLevel;
+        GameController.gameController.activeLevelCode = 0;
         GameController.gameController.currentLevelCheckpoint = GameController.gameController.cowboyLevelCheckpoint;
         GameController.gameController.InitilizeLevelStatics();
         GameController.gameController.ResetPlayerPosition();
@@ -1424,6 +1426,7 @@ public class UIController : MonoBehaviour
     public void SelectSamuraiLevel()
     {
         GameController.gameController.currentLevelID = levelID.SamuraiLevel;
+        GameController.gameController.activeLevelCode = 1;
         GameController.gameController.currentLevelCheckpoint = GameController.gameController.samuraiLevelCheckpoint;
         GameController.gameController.InitilizeLevelStatics();
         GameController.gameController.ResetPlayerPosition();
@@ -1433,6 +1436,7 @@ public class UIController : MonoBehaviour
     public void SelectAlpinistaLevel()
     {
         GameController.gameController.currentLevelID = levelID.AlpinistaLevel;
+        GameController.gameController.activeLevelCode = 2;
         GameController.gameController.currentLevelCheckpoint = GameController.gameController.alpinistaLevelCheckpoint;
         GameController.gameController.InitilizeLevelStatics();
         GameController.gameController.ResetPlayerPosition();

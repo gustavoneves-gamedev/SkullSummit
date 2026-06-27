@@ -8,11 +8,16 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float specialCameraSpeed = 3f;
     private Quaternion defaultRotation;
     private bool hasCameraChanged;
+    private bool isTransitioning;
 
     [Header("Camera Position")]
     [SerializeField] private float y = 19.01f;
     [SerializeField] private float z = 3.54f;
     private float x;
+    private float w;
+
+    [SerializeField] private Transform idleTransform;
+    [SerializeField] private Transform transitionTransform;
 
     private PlayerRoot player;
     private Transform targetToFollow;
@@ -29,6 +34,7 @@ public class CameraFollow : MonoBehaviour
         player = GameController.gameController.playerRoot;
         targetToFollow = player.transform;
         defaultRotation = transform.rotation;
+        targetToFollow = idleTransform;
     }
 
     // Update is called once per frame
@@ -36,17 +42,59 @@ public class CameraFollow : MonoBehaviour
     {
         if (Time.timeScale == 0 || player == null) return;
 
-        //currentPosition = defaultPosition;
-        if (GameController.gameController.isRunning) SpecialCameraTransition();
 
-        x = Mathf.Lerp(transform.position.x,targetToFollow.position.x + positionOffset.x,cameraSpeed * Time.deltaTime);
-        
+        if (GameController.gameController.isRunning && !isTransitioning)
+        {
+            //currentPosition = defaultPosition;
+            if (GameController.gameController.isRunning) SpecialCameraTransition();
 
-        //transform.position = new Vector3(x, transform.position.y, targetToFollow.position.z + positionOffset.z);
-        
-        transform.position = new Vector3(x, targetToFollow.position.y + y, 
-            targetToFollow.position.z + z);
+            x = Mathf.Lerp(transform.position.x, targetToFollow.position.x + positionOffset.x, cameraSpeed * Time.deltaTime);
+
+
+            //transform.position = new Vector3(x, transform.position.y, targetToFollow.position.z + positionOffset.z);
+
+            transform.position = new Vector3(x, targetToFollow.position.y + y,
+                targetToFollow.position.z + z);
+        }
+        else if (GameController.gameController.isRunning && isTransitioning)
+        {
+            //currentPosition = defaultPosition;
+            if (GameController.gameController.isRunning) SpecialCameraTransition();
+
+            x = Mathf.Lerp(transform.position.x, targetToFollow.position.x + positionOffset.x, cameraSpeed * Time.deltaTime);
+
+            //w = Mathf.Lerp(transform.position.z, targetToFollow.position.z, cameraSpeed * Time.deltaTime);
+            transform.position = new Vector3(x, transform.position.y, targetToFollow.position.z + positionOffset.z);
+
+            transform.position = new Vector3(x, targetToFollow.position.y + y,
+                targetToFollow.position.z + z);
+
+            //transform.position = new Vector3(x, targetToFollow.position.y + y, w);
+        }
+        else
+        {
+            gameObject.transform.position = idleTransform.position;
+            gameObject.transform.rotation = idleTransform.rotation;
+        }
+
+           
     }
+
+    public void TransitionToRun()
+    {
+        targetToFollow = transitionTransform;
+        gameObject.transform.rotation = transitionTransform.rotation;
+        cameraSpeed = 15f;
+        isTransitioning = true;
+    }
+
+    public void FollowPlayer()
+    {
+        targetToFollow = player.transform;
+        cameraSpeed = 7.5f;
+        isTransitioning = false;
+    }
+
 
     private void SpecialCameraTransition()
     {

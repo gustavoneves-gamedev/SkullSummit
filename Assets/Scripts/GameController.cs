@@ -42,6 +42,8 @@ public class GameController : MonoBehaviour
     public float currentLevelCheckpointDistance;
     public float currentLevelHeight;
     private bool isStartingOnCheckpoint;
+    public int activeLevelCode = 0;
+    [SerializeField] private GameObject[] startRocks;
 
     [Header("Cowboy Level")]
     public int cowboyLevelCheckpoint;
@@ -619,6 +621,13 @@ public class GameController : MonoBehaviour
 
             }
         }
+
+        for (int i = 0; i < startRocks.Length; i++)
+        {
+            startRocks[i].SetActive(false);
+        }
+
+        startRocks[activeLevelCode].SetActive(true);
 
         levelManager.InitializeLevel(currentLevelID, currentLevelCheckpointDistance, currentLevelHeight);
 
