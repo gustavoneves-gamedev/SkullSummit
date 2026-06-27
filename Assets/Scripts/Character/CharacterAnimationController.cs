@@ -13,7 +13,10 @@ public class CharacterAnimationController : MonoBehaviour
     private static readonly int Hit = Animator.StringToHash("Hit");
     private static readonly int Die = Animator.StringToHash("Die");
 
-    [SerializeField] private ParticleSystem fireVFX;
+    [Header("Dullahan VFXs")]
+    [SerializeField] private ParticleSystem fireIdleVFX;
+    [SerializeField] private ParticleSystem pumpkinReloadVFX;
+    [SerializeField] private ParticleSystem shootFireVFX;
 
     private PlayerRoot playerRoot;
 
@@ -37,8 +40,8 @@ public class CharacterAnimationController : MonoBehaviour
 
     public void DullahanFire(int play)
     {
-        if (play == 1) fireVFX.Play();
-        else fireVFX.Stop();
+        if (play == 1) fireIdleVFX.Play();
+        else fireIdleVFX.Stop();
     }
 
     #endregion
@@ -85,16 +88,32 @@ public class CharacterAnimationController : MonoBehaviour
         animator.SetTrigger(MoveRight);
     }
 
+    #region Attack
+
     public void PlayAttack()
     {
         animator.SetTrigger(Attack);
     }
 
+    public void Reload(bool canAttack)
+    {
+        if(canAttack) pumpkinReloadVFX.Play();
+        else pumpkinReloadVFX.Stop();
+    }
+
+    public void LitHandOnFire()
+    {
+        shootFireVFX.Play();
+    }
+
     public void OnAttackShootFrame()
     {
         //Debug.Log("Disparo no frame correto da animação.");
+        shootFireVFX.Stop();
         playerRoot.Attack();
     }
+
+    #endregion
 
     public void PlayHit()
     {
