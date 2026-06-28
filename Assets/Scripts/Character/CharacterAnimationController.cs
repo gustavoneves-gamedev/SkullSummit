@@ -116,6 +116,8 @@ public class CharacterAnimationController : MonoBehaviour
         //Debug.Log("Disparo no frame correto da animação.");
         if(shootFireVFX != null) shootFireVFX.Stop();
 
+        if(playerRoot == null) playerRoot = GameController.gameController.playerRoot;
+
         playerRoot.Attack();
     }
 

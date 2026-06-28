@@ -657,9 +657,6 @@ public class PlayerRoot : MonoBehaviour
                     activeAnimator.Reload(false);
                 }
             }
-
-
-
         }
         else if (cooldownRemaining >= 0)
             Debug.Log("Ataque em cooldown ainda");
