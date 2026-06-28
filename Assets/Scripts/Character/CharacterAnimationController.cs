@@ -35,6 +35,7 @@ public class CharacterAnimationController : MonoBehaviour
     public void PlayIdle()
     {
         SetClimbing(false);
+        SetClimbSpeed(1f);
         animator.SetTrigger(Idle);
     }
 
