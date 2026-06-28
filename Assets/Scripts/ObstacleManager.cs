@@ -95,15 +95,34 @@ public class ObstacleManager : MonoBehaviour
 
             if (matriz[row, lane].isFreeForStaticObstacle)
             {
-               
+
                 //Instantiate(staticObstacles[rb.Next(0, staticObstacles.Length)], matriz[row, lane].
                 //    transform.position, matriz[row, lane].transform.rotation);
 
-                GameObject obj = PoolManager.poolManager.GetCowboyObstaclePrefab(0);
+                if (GameController.gameController.activeLevelCode == 0)
+                {
+                    GameObject obj = PoolManager.poolManager.GetCowboyObstaclePrefab(0);
 
-                obj.transform.position = matriz[row, lane].transform.position;
-                obj.transform.rotation = matriz[row, lane].transform.rotation;
-                obj.SetActive(true);
+                    obj.transform.position = matriz[row, lane].transform.position;
+                    obj.transform.rotation = matriz[row, lane].transform.rotation;
+                    obj.SetActive(true);
+                }
+                else if (GameController.gameController.activeLevelCode == 1)
+                {
+                    GameObject obj = PoolManager.poolManager.GetSamuraiObstaclePrefab(0);
+
+                    obj.transform.position = matriz[row, lane].transform.position;
+                    obj.transform.rotation = matriz[row, lane].transform.rotation;
+                    obj.SetActive(true);
+                }
+                else
+                {
+                    GameObject obj = PoolManager.poolManager.GetDullahanObstaclePrefab(0);
+
+                    obj.transform.position = matriz[row, lane].transform.position;
+                    obj.transform.rotation = matriz[row, lane].transform.rotation;
+                    obj.SetActive(true);
+                }
 
                 //Obstáculos pesados
                 matriz[row, lane].isFreeForStaticObstacle = false;
@@ -150,11 +169,37 @@ public class ObstacleManager : MonoBehaviour
                 //Instantiate(movableObstacles[rb.Next(0, movableObstacles.Length)], matriz[row, lane].
                 //    transform.position, matriz[row, lane].transform.rotation);
 
-                GameObject obj = PoolManager.poolManager.GetCowboyObstaclePrefab(rb.Next(1, 3));
+                //GameObject obj = PoolManager.poolManager.GetCowboyObstaclePrefab(rb.Next(1, 3));
 
-                obj.transform.position = matriz[row, lane].transform.position;
-                obj.transform.rotation = matriz[row, lane].transform.rotation;
-                obj.SetActive(true);
+                //obj.transform.position = matriz[row, lane].transform.position;
+                //obj.transform.rotation = matriz[row, lane].transform.rotation;
+                //obj.SetActive(true);
+
+                if (GameController.gameController.activeLevelCode == 0)
+                {
+                    GameObject obj = PoolManager.poolManager.GetCowboyObstaclePrefab(rb.Next(1, 3));
+
+                    obj.transform.position = matriz[row, lane].transform.position;
+                    obj.transform.rotation = matriz[row, lane].transform.rotation;
+                    obj.SetActive(true);
+                }
+                else if (GameController.gameController.activeLevelCode == 1)
+                {
+                    GameObject obj = PoolManager.poolManager.GetSamuraiObstaclePrefab(rb.Next(1, 3));
+
+                    obj.transform.position = matriz[row, lane].transform.position;
+                    obj.transform.rotation = matriz[row, lane].transform.rotation;
+                    obj.SetActive(true);
+                }
+                else
+                {
+                    GameObject obj = PoolManager.poolManager.GetDullahanObstaclePrefab(rb.Next(1, 3));
+
+                    obj.transform.position = matriz[row, lane].transform.position;
+                    obj.transform.rotation = matriz[row, lane].transform.rotation;
+                    obj.SetActive(true);
+                }
+
 
                 matriz[row, lane].isFreeForMovableObstacle = false;
                 if (row - 1 >= 0) matriz[row - 1, lane].isFreeForMovableObstacle = false;
