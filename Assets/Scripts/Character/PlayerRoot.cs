@@ -680,7 +680,12 @@ public class PlayerRoot : MonoBehaviour
         if (cooldownRemaining <= 0 && currentAmmo >= 1)
         {
             canAttack = true;
-            activeAnimator.Reload(true);
+
+            if (activeAnimator != null)
+            {
+                activeAnimator.Reload(true);
+            }
+            
         }
         else if (cooldownRemaining >= 0)
         {
