@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b8d692b23a44ef64ebe90115d70fe419
+guid: b63d84dc2a14391499ed3c7c59f29c37
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,38 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ChunkBMaterial
-    second: {fileID: 2100000, guid: 0e0d73e0b4e473e429da41623bef05ca, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: JaponeseTrunkMaterial
-    second: {fileID: 2100000, guid: f40ad3263a8e05245b571ea984e0436d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: RedFenceMaterial
-    second: {fileID: 2100000, guid: c55758d9a5cd3624eb55cf08d4e05006, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: SwordMaterial
-    second: {fileID: 2100000, guid: 9636f7bb4ceef51468cbd3f5bc874fc0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ToriiGateMaterial
-    second: {fileID: 2100000, guid: 1cab0863b7b7f4940b69b62f73051382, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: ToroMaterial
     second: {fileID: 2100000, guid: 1f202d73e704d16449833a4a5d730885, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: VaseMaterial
-    second: {fileID: 2100000, guid: bd799a729ca0aa64a9e90341afa2ed35, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
