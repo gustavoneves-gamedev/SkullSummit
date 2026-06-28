@@ -90833,7 +90833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PoolManager
   cowboyBulletPrefab: {fileID: 1660143786184666047, guid: 5fe07d05cf45334499f0822e44430f1c, type: 3}
-  samuraiBulletPrefab: {fileID: 1660143786184666047, guid: 5fe07d05cf45334499f0822e44430f1c, type: 3}
+  samuraiBulletPrefab: {fileID: 1660143786184666047, guid: 1f72b44387a14694ba52fae711c46458, type: 3}
   dullahanBulletPrefab: {fileID: 1660143786184666047, guid: c7e8ea9825d6d974f909bdbdf85a77b6, type: 3}
   cowboyBulletParent: {fileID: 613544527}
   samuraiBulletParent: {fileID: 2122453031}

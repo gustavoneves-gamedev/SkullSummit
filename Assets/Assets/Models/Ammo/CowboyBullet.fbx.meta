@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3c63e3079ee807341809c181a7a52cf6
+guid: 497d8d3f725233e45bd42ea43a5dbea5
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ShurikenMaterial
-    second: {fileID: 2100000, guid: 143428362cd6536489c1aa7955dc9687, type: 2}
+      name: Material
+    second: {fileID: 2100000, guid: 8cb54062af689eb4c962ef1b7f532d72, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
