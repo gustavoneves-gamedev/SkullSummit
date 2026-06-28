@@ -1034,6 +1034,93 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9935178}
   m_CullTransparentMesh: 1
+--- !u!1001 &10100092
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 206703267}
+    m_Modifications:
+    - target: {fileID: 8344457795463251512, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_Name
+      value: BigRockSamurai
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344457795463251512, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -84.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.70710623
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.70710623
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0008825661
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0008825661
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 269.857
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+--- !u!4 &10100093 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+  m_PrefabInstance: {fileID: 10100092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &10100094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8344457795463251512, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+  m_PrefabInstance: {fileID: 10100092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &10510601
 GameObject:
   m_ObjectHideFlags: 0
@@ -14939,6 +15026,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5107426409595438478}
+  - {fileID: 10100093}
   - {fileID: 1205810329}
   - {fileID: 1241725993}
   m_Father: {fileID: 0}
@@ -90762,9 +90850,13 @@ MonoBehaviour:
   - {fileID: 17732145}
   - {fileID: 1801760685}
   initialObstaclesPoolSize: 10
-  samuraiStaticObstaclesPrefabs: []
-  samuraiBigMovableObstaclesPrefabs: []
-  samuraiSmallMovableObstaclesPrefabs: []
+  samuraiStaticObstaclesPrefabs:
+  - {fileID: 6023950075848797583, guid: ad65a45262eaa214682bbb84cbcdaca2, type: 3}
+  samuraiBigMovableObstaclesPrefabs:
+  - {fileID: 8459530097593972147, guid: 740182a59ed901444b15fac4ed53f2e0, type: 3}
+  samuraiSmallMovableObstaclesPrefabs:
+  - {fileID: 5359629852202726598, guid: 8c2ae1d2de48ddb448b9258e534b05ab, type: 3}
+  - {fileID: 5359629852202726598, guid: 637eb9ba91eff354894aed924096d28a, type: 3}
   samuraiObstaclesParent:
   - {fileID: 393585370}
   - {fileID: 741480638}
@@ -116479,7 +116571,7 @@ MonoBehaviour:
   activeLevelCode: 0
   startRocks:
   - {fileID: 5596542698708459316}
-  - {fileID: 1205810328}
+  - {fileID: 10100094}
   - {fileID: 1241725992}
   cowboyLevelCheckpoint: 0
   cowboyLevelBestHeight: 0
@@ -147060,6 +147152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JaponeseTrunk
       objectReference: {fileID: 0}
+    - target: {fileID: 7559757154868761215, guid: 9f36a1ab4fb162a4eaf4116e994e1ebc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -147076,6 +147172,10 @@ PrefabInstance:
     - target: {fileID: 8344457795463251512, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
       propertyPath: m_Name
       value: FireRock
+      objectReference: {fileID: 0}
+    - target: {fileID: 8344457795463251512, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8684814250400799874, guid: d1c5f69854cf83543ab8ca42c9935891, type: 3}
       propertyPath: m_LocalPosition.x
@@ -147308,6 +147408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vase
       objectReference: {fileID: 0}
+    - target: {fileID: 3602570589846595740, guid: 5f05514ed57e35b429772bf15745938d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4230347286705812006, guid: 5f05514ed57e35b429772bf15745938d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -58.91
@@ -147471,6 +147575,10 @@ PrefabInstance:
     - target: {fileID: 5751231942051633032, guid: 13d25068e44fbef40a2c1b474ca007cf, type: 3}
       propertyPath: m_Name
       value: Lamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5751231942051633032, guid: 13d25068e44fbef40a2c1b474ca007cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
