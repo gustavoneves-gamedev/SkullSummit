@@ -535,7 +535,11 @@ public class PlayerRoot : MonoBehaviour
         }
 
         movementSpeed = initialSpeed;
-        activeAnimator.SetClimbSpeed(1 + ((movementSpeed - defaultInitialSpeed) * 0.1f));
+
+        if (activeAnimator != null)
+        {
+            activeAnimator.SetClimbSpeed(1 + ((movementSpeed - defaultInitialSpeed) * 0.1f));
+        }
 
         acelerationCooldown = defaultAcelerationCooldown;
 
@@ -640,7 +644,7 @@ public class PlayerRoot : MonoBehaviour
                     //activeAnimator.PlayAttack();
                     Debug.Log("Sem munição suficiente");
                 }
-                else if(characterCode == 1)
+                else if (characterCode == 1)
                 {
                     // activeAnimator.PlayAttack();
                     Debug.Log("Sem munição suficiente");
@@ -650,9 +654,9 @@ public class PlayerRoot : MonoBehaviour
                     activeAnimator.Reload(false);
                 }
             }
-                
 
-            
+
+
         }
         else if (cooldownRemaining >= 0)
             Debug.Log("Ataque em cooldown ainda");
@@ -685,7 +689,7 @@ public class PlayerRoot : MonoBehaviour
             {
                 activeAnimator.Reload(true);
             }
-            
+
         }
         else if (cooldownRemaining >= 0)
         {
