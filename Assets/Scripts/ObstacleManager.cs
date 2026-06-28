@@ -99,7 +99,7 @@ public class ObstacleManager : MonoBehaviour
                 //Instantiate(staticObstacles[rb.Next(0, staticObstacles.Length)], matriz[row, lane].
                 //    transform.position, matriz[row, lane].transform.rotation);
 
-                GameObject obj = PoolManager.poolManager.GetObstaclePrefab(0);
+                GameObject obj = PoolManager.poolManager.GetCowboyObstaclePrefab(0);
 
                 obj.transform.position = matriz[row, lane].transform.position;
                 obj.transform.rotation = matriz[row, lane].transform.rotation;
@@ -150,7 +150,7 @@ public class ObstacleManager : MonoBehaviour
                 //Instantiate(movableObstacles[rb.Next(0, movableObstacles.Length)], matriz[row, lane].
                 //    transform.position, matriz[row, lane].transform.rotation);
 
-                GameObject obj = PoolManager.poolManager.GetObstaclePrefab(rb.Next(1, 3));
+                GameObject obj = PoolManager.poolManager.GetCowboyObstaclePrefab(rb.Next(1, 3));
 
                 obj.transform.position = matriz[row, lane].transform.position;
                 obj.transform.rotation = matriz[row, lane].transform.rotation;
