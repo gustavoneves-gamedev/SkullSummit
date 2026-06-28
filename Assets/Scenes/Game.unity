@@ -37782,9 +37782,9 @@ MonoBehaviour:
   - {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
   samuraiLevelPrefabs:
   - {fileID: 1252624854937656911, guid: 3fc3be4e9fb2e604bafbd9c76bc0a651, type: 3}
-  - {fileID: 1252624854937656911, guid: 77cd303690394e5459049f8405630e7a, type: 3}
   - {fileID: 1252624854937656911, guid: 3fc3be4e9fb2e604bafbd9c76bc0a651, type: 3}
-  - {fileID: 1252624854937656911, guid: 77cd303690394e5459049f8405630e7a, type: 3}
+  - {fileID: 1252624854937656911, guid: 3fc3be4e9fb2e604bafbd9c76bc0a651, type: 3}
+  - {fileID: 1252624854937656911, guid: 3fc3be4e9fb2e604bafbd9c76bc0a651, type: 3}
   alpinistaLevelPrefabs:
   - {fileID: 1252624854937656911, guid: 9f297531ec1481e409dab49ede0ed242, type: 3}
   startSpawn: {fileID: 206703267}

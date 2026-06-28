@@ -499,7 +499,10 @@ public class PlayerRoot : MonoBehaviour
 
         movementSpeed += .5f * Time.deltaTime;
 
-        activeAnimator.SetClimbSpeed(1 + ((movementSpeed - defaultInitialSpeed) * 0.1f));
+        if (activeAnimator != null)
+        {
+            activeAnimator.SetClimbSpeed(1 + ((movementSpeed - defaultInitialSpeed) * 0.1f));
+        }            
 
         if (movementSpeed >= maxSpeed) movementSpeed = maxSpeed;
     }
