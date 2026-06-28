@@ -90919,11 +90919,17 @@ MonoBehaviour:
   samuraiStaticObstaclesPrefabs: []
   samuraiBigMovableObstaclesPrefabs: []
   samuraiSmallMovableObstaclesPrefabs: []
-  samuraiObstaclesParent: []
+  samuraiObstaclesParent:
+  - {fileID: 393585370}
+  - {fileID: 741480638}
+  - {fileID: 1915718648}
   dullahanStaticObstaclesPrefabs: []
   dullahanBigMovableObstaclesPrefabs: []
   dullahanSmallMovableObstaclesPrefabs: []
-  dullahanObstaclesParent: []
+  dullahanObstaclesParent:
+  - {fileID: 296049458}
+  - {fileID: 1886766786}
+  - {fileID: 883994826}
   cowboyBulletPool: []
   samuraiBulletPool: []
   dullahanBulletPool: []
