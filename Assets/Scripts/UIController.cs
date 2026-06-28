@@ -39,7 +39,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject volumeMenu;
     [SerializeField] private GameObject tutorialMenu;
     [SerializeField] private GameObject creditsMenu;
-    [SerializeField] private GameObject credits;
+    //[SerializeField] private GameObject credits;
 
     [Header("TopMenu")]
     [SerializeField] private GameObject topMenu;
@@ -597,16 +597,20 @@ public class UIController : MonoBehaviour
     public void CreditsMenu()
     {
         creditsMenu.SetActive(true);
-        credits.SetActive(true);
+        //credits.SetActive(true);
         DeactivateOptionsMenu();
         AudioController.audioController.SwitchVFXPlay();
+        AudioController.audioController.SwitchMusicPlay(0, 1);
+        Invoke("CloseCreditsMenu", 3.14f);
     }
 
     public void CloseCreditsMenu()
     {
+        CancelInvoke();
         creditsMenu.SetActive(false);
-        credits.SetActive(false);
+        //credits.SetActive(false);
         AudioController.audioController.SwitchVFXPlay();
+        AudioController.audioController.SwitchMusicPlay();
     }
 
     public void DeactivateOptionsMenu()
