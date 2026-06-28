@@ -632,7 +632,28 @@ public class PlayerRoot : MonoBehaviour
             else Attack();
         }
         else if (currentAmmo <= 0)
-            Debug.Log("Sem munição suficiente");
+        {
+            if (activeAnimator != null)
+            {
+                if (characterCode == 0)
+                {
+                    //activeAnimator.PlayAttack();
+                    Debug.Log("Sem munição suficiente");
+                }
+                else if(characterCode == 1)
+                {
+                    // activeAnimator.PlayAttack();
+                    Debug.Log("Sem munição suficiente");
+                }
+                else
+                {
+                    activeAnimator.Reload(false);
+                }
+            }
+                
+
+            
+        }
         else if (cooldownRemaining >= 0)
             Debug.Log("Ataque em cooldown ainda");
     }
@@ -644,6 +665,7 @@ public class PlayerRoot : MonoBehaviour
             if (reloadTimeRemaining <= 0)
             {
                 currentAmmo++;
+                activeAnimator.Reload(true);
                 ammoReadySFX.Play();
                 reloadTimeRemaining = reloadTime;
             }
@@ -658,6 +680,7 @@ public class PlayerRoot : MonoBehaviour
         if (cooldownRemaining <= 0 && currentAmmo >= 1)
         {
             canAttack = true;
+            activeAnimator.Reload(true);
         }
         else if (cooldownRemaining >= 0)
         {
@@ -704,6 +727,11 @@ public class PlayerRoot : MonoBehaviour
 
         //Atualiza a quantidade de munição mostrada na HUD
         currentAmmo--;
+
+        if (currentAmmo <= 0 && characterCode == 2)
+        {
+            activeAnimator.Reload(false);
+        }
 
 
         uiController.UpdateAmmoQuantity(currentAmmo);
