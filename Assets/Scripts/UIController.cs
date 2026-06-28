@@ -601,7 +601,7 @@ public class UIController : MonoBehaviour
         DeactivateOptionsMenu();
         AudioController.audioController.SwitchVFXPlay();
         AudioController.audioController.SwitchMusicPlay(0, 1);
-        Invoke("CloseCreditsMenu", 3.14f);
+        Invoke("CloseCreditsMenu", 195.5f);
     }
 
     public void CloseCreditsMenu()
