@@ -43209,7 +43209,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -55.02643}
+  m_AnchoredPosition: {x: 0, y: -55.026245}
   m_SizeDelta: {x: 0, y: -110.05009}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &575059952
@@ -48078,6 +48078,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &659701205 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4827224534040743750, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+  m_PrefabInstance: {fileID: 4813382045633849443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &660053102
 GameObject:
   m_ObjectHideFlags: 0
@@ -147267,6 +147272,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1431287401}
     - target: {fileID: 2586103653087468127, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: 'characterModels.Array.data[1]'
+      value: 
+      objectReference: {fileID: 659701205}
+    - target: {fileID: 2586103653087468127, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
       propertyPath: 'characterModels.Array.data[2]'
       value: 
       objectReference: {fileID: 4813382045633849444}
@@ -147363,7 +147372,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2256591609571127849, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2967247556712209944, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
       insertIndex: -1

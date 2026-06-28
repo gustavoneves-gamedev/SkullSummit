@@ -40,6 +40,8 @@ public class CharacterAnimationController : MonoBehaviour
 
     public void DullahanFire(int play)
     {
+        if (fireIdleVFX == null) return;
+        
         if (play == 1) fireIdleVFX.Play();
         else fireIdleVFX.Stop();
     }
@@ -97,6 +99,8 @@ public class CharacterAnimationController : MonoBehaviour
 
     public void Reload(bool canAttack)
     {
+        if (pumpkinReloadVFX == null) return;
+        
         if(canAttack) pumpkinReloadVFX.Play();
         else pumpkinReloadVFX.Stop();
     }
@@ -109,7 +113,8 @@ public class CharacterAnimationController : MonoBehaviour
     public void OnAttackShootFrame()
     {
         //Debug.Log("Disparo no frame correto da animação.");
-        shootFireVFX.Stop();
+        if(shootFireVFX != null) shootFireVFX.Stop();
+
         playerRoot.Attack();
     }
 
