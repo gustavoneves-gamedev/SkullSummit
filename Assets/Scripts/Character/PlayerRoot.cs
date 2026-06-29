@@ -322,6 +322,7 @@ public class PlayerRoot : MonoBehaviour
                             if (canRun && desiredLane < 1 && !isChangingLane)
                             {
                                 desiredLane = desiredLane + 1;
+                                if (activeAnimator != null) activeAnimator.PlayLaneChange(1);
                                 tapCount = 0;
                                 //isChangingLane = true;
                             }
@@ -332,6 +333,7 @@ public class PlayerRoot : MonoBehaviour
                             if (canRun && desiredLane > -1 && !isChangingLane)
                             {
                                 desiredLane = desiredLane - 1;
+                                if (activeAnimator != null) activeAnimator.PlayLaneChange(-1);
                                 tapCount = 0;
                                 //isChangingLane = true;
                             }
