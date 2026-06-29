@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7332a8e781f97cc4bb1d686084ac8c52
+guid: e1a7509f78d9e434bb672623e282c8a5
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,23 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ChunkCMaterial
+      name: StoneFrozenTombMaterial
     second: {fileID: 2100000, guid: 8629c1e84ee98c444a70f235e6fa3491, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: OniRidgeMaterial
-    second: {fileID: 2100000, guid: ed64f59468580d848bfeb254009ec737, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: SkullMaterial
-    second: {fileID: 2100000, guid: 7659790d03484e942bee843aaed18e6c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: VertexWoodMaterial
-    second: {fileID: 2100000, guid: 9355a3ad515ed5f4faf6211437f39b5c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -88,7 +73,7 @@ ModelImporter:
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
     strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60

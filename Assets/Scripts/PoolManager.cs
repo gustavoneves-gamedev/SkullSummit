@@ -88,8 +88,8 @@ public class PoolManager : MonoBehaviour
             CreateSamuraiObstacles(1);
             CreateSamuraiObstacles(2);
 
-            //CreateDullahanObstacles(0);
-            //CreateDullahanObstacles(1);
+            CreateDullahanObstacles(0);
+            CreateDullahanObstacles(1);
             //CreateDullahanObstacles(2);
         }
 

@@ -90866,9 +90866,13 @@ MonoBehaviour:
   - {fileID: 393585370}
   - {fileID: 741480638}
   - {fileID: 1915718648}
-  dullahanStaticObstaclesPrefabs: []
-  dullahanBigMovableObstaclesPrefabs: []
-  dullahanSmallMovableObstaclesPrefabs: []
+  dullahanStaticObstaclesPrefabs:
+  - {fileID: 6023950075848797583, guid: 99096a0b812f0294687a43ab19d2d642, type: 3}
+  dullahanBigMovableObstaclesPrefabs:
+  - {fileID: 8459530097593972147, guid: 5156c3973cd035f4f974878bc5beb0b8, type: 3}
+  dullahanSmallMovableObstaclesPrefabs:
+  - {fileID: 5359629852202726598, guid: 8b13541fb2976cc468de8d23cfa2c1e3, type: 3}
+  - {fileID: 5359629852202726598, guid: 5ae5e3f9052b38641b6c5e66d56a91a1, type: 3}
   dullahanObstaclesParent:
   - {fileID: 296049458}
   - {fileID: 1886766786}
