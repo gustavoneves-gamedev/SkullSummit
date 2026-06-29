@@ -90,14 +90,14 @@ public class PoolManager : MonoBehaviour
 
             CreateDullahanObstacles(0);
             CreateDullahanObstacles(1);
-            //CreateDullahanObstacles(2);
+            CreateDullahanObstacles(2);
         }
 
         for (int i = 0; i < initialObstaclesPoolSize; i++)
         {
             CreateCowboyObstacles(0);
             CreateSamuraiObstacles(0);
-            //CreateDullahanObstacles(0);
+            CreateDullahanObstacles(0);
         }
     }
 
