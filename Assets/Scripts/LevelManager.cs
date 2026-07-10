@@ -25,8 +25,8 @@ public class LevelManager : MonoBehaviour
     //[SerializeField] private GameObject finishLinePrefab;
     //private GameObject finishLine;
     private bool hasChangedCheckpoint;//Essa bool detecta se houve troca de zona ou não
-    private GameObject currentPrefab;
-    private GameObject lastPrefab;
+    [SerializeField] private GameObject currentPrefab;
+    [SerializeField] private GameObject lastPrefab;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
