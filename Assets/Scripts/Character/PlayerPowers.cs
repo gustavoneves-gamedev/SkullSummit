@@ -269,7 +269,7 @@ public class PlayerPowers : MonoBehaviour
 
     public void AlocateSpecialBoost(int quantity = 0)
     {
-        if (specialBoostQuantity <= 0) return;
+        //if (specialBoostQuantity <= 0) return;
 
         alocatedspecialBoostQuantity += quantity;
         if (alocatedspecialBoostQuantity <= 0) alocatedspecialBoostQuantity = 0;
@@ -327,7 +327,7 @@ public class PlayerPowers : MonoBehaviour
     public void AlocateAdrenalineQuantity(int quantity = 0)
     {
         
-        if (adrenalineQuantity <= 0) return;
+        //if (adrenalineQuantity <= 0) return;
 
         alocatedAdrenalineQuantity += quantity;
         if (alocatedAdrenalineQuantity <= 0) alocatedAdrenalineQuantity = 0;

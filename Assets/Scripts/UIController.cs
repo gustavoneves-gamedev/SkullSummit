@@ -1986,6 +1986,9 @@ public class UIController : MonoBehaviour
         SpecialBoostAlocation(0,playerRoot.playerPowers.specialBoostQuantity);
         AdrenalineAlocation(0,playerRoot.playerPowers.adrenalineQuantity);
 
+        SpecialBoostIndicator();
+        AdrenalineIndicator();
+
         itemSelectionMenu.SetActive(true);
         Time.timeScale = 0f;
     }
