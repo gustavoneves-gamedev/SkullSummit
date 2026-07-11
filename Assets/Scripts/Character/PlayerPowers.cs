@@ -270,11 +270,14 @@ public class PlayerPowers : MonoBehaviour
     public void AlocateSpecialBoost(int quantity = 0)
     {
         //if (specialBoostQuantity <= 0) return;
+        
+        if (specialBoostQuantity > 0 && quantity > 0) alocatedspecialBoostQuantity += quantity;
+        else if (quantity < 0) alocatedspecialBoostQuantity += quantity;
 
-        alocatedspecialBoostQuantity += quantity;
+        if(alocatedspecialBoostQuantity + 0.5f > 0 && quantity < 0) specialBoostQuantity -= quantity;
+        else if (quantity > 0) specialBoostQuantity -= quantity;
+
         if (alocatedspecialBoostQuantity <= 0) alocatedspecialBoostQuantity = 0;
-
-        specialBoostQuantity -= quantity;
         if (specialBoostQuantity <= 0) specialBoostQuantity = 0;
 
         uiController.SpecialBoostIndicator(alocatedspecialBoostQuantity);
@@ -328,11 +331,13 @@ public class PlayerPowers : MonoBehaviour
     {
         
         //if (adrenalineQuantity <= 0) return;
+        if(adrenalineQuantity > 0 && quantity > 0) alocatedAdrenalineQuantity += quantity;
+        else if (quantity < 0) alocatedAdrenalineQuantity += quantity;
 
-        alocatedAdrenalineQuantity += quantity;
+        if (alocatedAdrenalineQuantity + 0.5f > 0 && quantity < 0) adrenalineQuantity -= quantity;
+        else if (quantity > 0) adrenalineQuantity -= quantity;
+
         if (alocatedAdrenalineQuantity <= 0) alocatedAdrenalineQuantity = 0;
-
-        adrenalineQuantity -= quantity;
         if (adrenalineQuantity <= 0) adrenalineQuantity = 0;
 
         uiController.AdrenalineIndicator(alocatedAdrenalineQuantity);
