@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -580,6 +581,11 @@ public class UIController : MonoBehaviour
 
         isCharSelecting = false;
         isLevelSelecting = false;
+
+        //RESETA OS ITENS ALOCADOS
+        SpecialBoostIndicator(0);
+        AdrenalineIndicator(0);
+
         mainMenu.SetActive(true);
     }
 
@@ -2004,7 +2010,7 @@ public class UIController : MonoBehaviour
     {
         if (quantity <= 0)
         {
-            if (activeSpecialBoost.activeSelf) activeSpecialBoost.SetActive(false);
+            activeSpecialBoost.SetActive(false);
         }
         else
         {
@@ -2027,7 +2033,7 @@ public class UIController : MonoBehaviour
     {
         if (quantity <= 0)
         {
-            if (activeAdrenaline.activeSelf) activeAdrenaline.SetActive(false);
+            activeAdrenaline.SetActive(false);
         }
         else
         {

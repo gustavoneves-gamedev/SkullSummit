@@ -241,6 +241,8 @@ public class GameController : MonoBehaviour
         uiController.TopMainMenuUpdate();
 
         //uiController.StaticsMenu(height, runNormalCoins, runRubies, obstaclesDestroyed);
+        uiController.SpecialBoostIndicator(0);
+        uiController.AdrenalineIndicator(0);
 
         UpdateBestHeight(height);
         UpdateLeaderboard(height);

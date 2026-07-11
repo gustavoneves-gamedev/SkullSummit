@@ -98,7 +98,7 @@ public class PlayerPowers : MonoBehaviour
                 if (GameController.gameController.isTutorialIncomplete) uiController.SpecialTutorial();
             }                
                 
-            if(currentSpecial >= maxSpecial*0.95f && currentSpecial >= 18) uiController.SpecialReady(true);
+            if(currentSpecial >= maxSpecial*0.98f && currentSpecial >= 18) uiController.SpecialReady(true);
 
 
             //if (currentSpecial >= maxSpecial) ActivateSpecial();
@@ -291,6 +291,7 @@ public class PlayerPowers : MonoBehaviour
 
         AddToSpecial(specialBoostRestauration);
         alocatedspecialBoostQuantity--;
+        uiController.SpecialBoostIndicator(alocatedspecialBoostQuantity);
     }
 
     #endregion
@@ -351,6 +352,7 @@ public class PlayerPowers : MonoBehaviour
 
         player.UpdateStamina(adrenalineRestauration);
         alocatedAdrenalineQuantity--;
+        uiController.AdrenalineIndicator(alocatedAdrenalineQuantity);
     }
 
     #endregion

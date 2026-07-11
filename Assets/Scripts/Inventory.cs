@@ -110,7 +110,7 @@ public class Inventory : MonoBehaviour
         //ADRENALINE
         AdrenalineInitialization();
         UIAdrenalineUpdate();
-        AdrenalinePurchase();
+        UpdateAdrenalinePurchaseUI();
     }
 
     #region Item Initialization
@@ -292,6 +292,10 @@ public class Inventory : MonoBehaviour
         if (specialBoostQuantity >= 99) return;
 
         specialBoostQuantity++;
+
+        GameController.gameController.playerPowers.
+            InitializeSpecialBoost(specialBoostQuantity, specialBoostRestauration);
+
         UpdateSpecialBoostPurchaseUI();
     }
 
@@ -313,6 +317,10 @@ public class Inventory : MonoBehaviour
     {
         if (adrenalineQuantity >= 99) return;
         adrenalineQuantity++;
+
+        GameController.gameController.playerPowers.
+            InitializeAdrenaline(adrenalineQuantity, adrenalineRestauration);
+
         UpdateAdrenalinePurchaseUI();
     }
 
