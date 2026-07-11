@@ -55,7 +55,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject characterSelectionMenu;
     [SerializeField] private GameObject[] characterMenuArray;
     [SerializeField] private GameObject[] characterRunIcons;
-    private int charCode = 0;
+    private int charCode = 1; //TEMPORÁRIO => VOLTAR PARA ZERO QUANDO O COWBOY ESTIVER PRONTO
     private bool isCharSelecting;
     private bool firstCall = true;
 

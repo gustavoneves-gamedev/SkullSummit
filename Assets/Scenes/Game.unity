@@ -148260,6 +148260,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1431287401}
     - target: {fileID: 2586103653087468127, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: selectedCharacter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586103653087468127, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
       propertyPath: 'characterModels.Array.data[0]'
       value: 
       objectReference: {fileID: 1664003025}
@@ -148444,6 +148448,10 @@ PrefabInstance:
       value: 63.443295
       objectReference: {fileID: 0}
     - target: {fileID: 4252081613470140162, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252081613470140162, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -148537,7 +148545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4827224534040743750, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4827224534040743750, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
       propertyPath: m_TagString

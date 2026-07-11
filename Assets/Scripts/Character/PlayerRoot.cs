@@ -68,13 +68,13 @@ public class PlayerRoot : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private CharacterController cc;
-    public characterID selectedCharacter = characterID.Cowboy;
+    public characterID selectedCharacter = characterID.Samurai;//TEMPORÁRIO => VOLTAR PARA ZERO QUANDO O COWBOY ESTIVER PRONTO
     [SerializeField] private CharacterData[] characterDatas;
     [SerializeField] private GameObject[] characterModels;
     private CharacterAnimationController activeAnimator;
     [SerializeField] private CameraFollow mainCamera;
     private bool isFollowingPlayer;
-    private int characterCode = 0;
+    private int characterCode = 1; //TEMPORÁRIO => VOLTAR PARA ZERO QUANDO O COWBOY ESTIVER PRONTO
     private UIController uiController;
 
     void Start()
