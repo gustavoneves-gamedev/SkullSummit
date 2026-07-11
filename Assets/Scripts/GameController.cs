@@ -31,6 +31,9 @@ public class GameController : MonoBehaviour
     public float runRubies;
     public float obstaclesDestroyed;
     [SerializeField] private GameObject skipButton;
+    private bool canSkipFirst = true;
+    private bool canSkipSecond = true;
+    private bool canSkipThird = true;
 
 
     [Header("Levels")]
@@ -112,7 +115,7 @@ public class GameController : MonoBehaviour
         {
             CalulateHeightRubies();
             CalulateObstacleRubies();
-        }       
+        }
 
     }
 
@@ -120,9 +123,10 @@ public class GameController : MonoBehaviour
     {
         if (!hasBeganCalculating) return;
 
-        if (isCalculatingStatistics)
+        if (isCalculatingStatistics && canSkipFirst)
         {
             //isCalculatingStatistics = false;
+            canSkipFirst = false;
 
             canProccedFirst = false;
             canProccedSecond = false;
@@ -134,13 +138,16 @@ public class GameController : MonoBehaviour
 
             uiController.StaticsMenu(height, runNormalCoins, obstaclesDestroyed, false, true);
 
-            
+
 
             //isCalculatingCoinRewards = true;            
 
         }
-        else if (isCalculatingCoinRewards || isCalculatingRubyRewards)
+        else if ((isCalculatingCoinRewards || isCalculatingRubyRewards) && canSkipSecond)
         {
+            canSkipSecond = false;
+            canSkipFirst = true;
+
             isCalculatingCoinRewards = false;
             isCalculatingRubyRewards = false;
 
@@ -149,7 +156,7 @@ public class GameController : MonoBehaviour
             int y = (int)(runNormalCoins * (1 + (height / 10000f)));
             y += (int)(obstaclesDestroyed * 10f);
 
-            uiController.RewardsCoinMenu(runNormalCoins, height / 10000, obstaclesDestroyed * 10f, y, true);            
+            uiController.RewardsCoinMenu(runNormalCoins, height / 10000, obstaclesDestroyed * 10f, y, true);
 
             y = 0;
             if (height / 500 > 1) y = (int)height / 500;
@@ -171,6 +178,7 @@ public class GameController : MonoBehaviour
             canProccedFourth = false;
 
             skipButton.SetActive(false);
+            canSkipSecond = true;
         }
 
 
