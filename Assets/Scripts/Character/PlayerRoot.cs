@@ -5,7 +5,7 @@ public class PlayerRoot : MonoBehaviour
     //TENHO QUE REVER AS FUNÇÕES QUE ENVOLVEM A ALTURA!!
     [Header("Run")]
     public bool canRun;
-    private bool isDead;
+    public bool isDead {  get; private set; }
     private bool hasStaminaEnded;
     public bool isGamePaused;
     public float heightClimbed;
@@ -240,7 +240,6 @@ public class PlayerRoot : MonoBehaviour
             activeAnimator.PlayIdle();
         }
     }
-
 
     void Update()
     {
@@ -778,6 +777,7 @@ public class PlayerRoot : MonoBehaviour
         {
             hasStaminaEnded = false;
             playerPowers.ActivateResurrectionAmulet();
+            GameController.gameController.inventory.UpdateResurrectionPurchaseUI();
         }
         else
         {
@@ -834,7 +834,7 @@ public class PlayerRoot : MonoBehaviour
         if (other.CompareTag("Checkpoint"))
         {
             GameController.gameController.UpdateCheckpoint();
-            playerPowers.staminaUp.Play();
+            playerPowers.staminaUpVFX.Play();
 
             Checkpoint checkpoint = other.GetComponent<Checkpoint>();
             if (checkpoint != null) checkpoint.wasCrossed = true;

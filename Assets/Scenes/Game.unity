@@ -106849,6 +106849,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!198 &1488491170 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6374058686725605676, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+  m_PrefabInstance: {fileID: 4813382045633849443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1489493984
 GameObject:
   m_ObjectHideFlags: 0
@@ -152533,6 +152538,10 @@ PrefabInstance:
       propertyPath: shieldEffect
       value: 
       objectReference: {fileID: 1986199172}
+    - target: {fileID: 6030986945443719198, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: staminaUpVFX
+      value: 
+      objectReference: {fileID: 1488491170}
     - target: {fileID: 6030986945443719198, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
       propertyPath: multiplierDuration
       value: 10

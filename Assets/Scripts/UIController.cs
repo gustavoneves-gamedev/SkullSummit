@@ -2002,6 +2002,8 @@ public class UIController : MonoBehaviour
     public void CloseItemAlocationMenu()
     {
         itemSelectionMenu.SetActive(false);
+        GameController.gameController.inventory.UpdateSpecialBoostPurchaseUI();
+        GameController.gameController.inventory.UpdateAdrenalinePurchaseUI();
         Time.timeScale = 1f;
     }
 

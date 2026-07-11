@@ -273,7 +273,7 @@ public class Inventory : MonoBehaviour
         UpdateResurrectionPurchaseUI();
     }
 
-    private void UpdateResurrectionPurchaseUI()
+    public void UpdateResurrectionPurchaseUI()
     {
         resurrectionAmuletPurchaseCoinCost = 
             resurrectionAmuletData.baseCoinCost * (resurrectionAmuletQuantity + 1);
@@ -299,7 +299,7 @@ public class Inventory : MonoBehaviour
         UpdateSpecialBoostPurchaseUI();
     }
 
-    private void UpdateSpecialBoostPurchaseUI()
+    public void UpdateSpecialBoostPurchaseUI()
     {
         specialBoostPurchaseCoinCost =
             specialBoostData.baseCoinCost * (specialBoostQuantity + 1);
@@ -324,7 +324,7 @@ public class Inventory : MonoBehaviour
         UpdateAdrenalinePurchaseUI();
     }
 
-    private void UpdateAdrenalinePurchaseUI()
+    public void UpdateAdrenalinePurchaseUI()
     {
         adrenalinePurchaseCoinCost =
             adrenalineData.baseCoinCost * (adrenalineQuantity + 1);

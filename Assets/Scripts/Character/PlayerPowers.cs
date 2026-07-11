@@ -12,7 +12,7 @@ public class PlayerPowers : MonoBehaviour
     private float defaultShieldDuration;
 
     [Header("Stamina Potion")]
-    public ParticleSystem staminaUp;
+    public ParticleSystem staminaUpVFX;
     private float potionRestauration;
 
     [Header("Coin Multiplier")]
@@ -66,7 +66,7 @@ public class PlayerPowers : MonoBehaviour
         CoinMultiplierCountdown();
         ShieldCountdown();
 
-        if (player.currentStamina < (player.maxStamina / 5) && alocatedAdrenalineQuantity > 0)
+        if (player.currentStamina < (player.maxStamina / 5) && alocatedAdrenalineQuantity > 0 && !player.isDead)
         {
             ActivateAdrenaline();
         }
@@ -351,6 +351,7 @@ public class PlayerPowers : MonoBehaviour
         if (alocatedAdrenalineQuantity <= 0) return;
 
         player.UpdateStamina(adrenalineRestauration);
+        staminaUpVFX.Play();
         alocatedAdrenalineQuantity--;
         uiController.AdrenalineIndicator(alocatedAdrenalineQuantity);
     }
@@ -371,7 +372,7 @@ public class PlayerPowers : MonoBehaviour
         {
             player.UpdateStamina(potionRestauration);
             //Tocar som de stamina recuperando
-            if (staminaUp != null) staminaUp.Play();
+            if (staminaUpVFX != null) staminaUpVFX.Play();
             other.GetComponent<Items>().PlayFX();
 
         }
