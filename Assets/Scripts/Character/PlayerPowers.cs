@@ -83,6 +83,7 @@ public class PlayerPowers : MonoBehaviour
                 isSpecialOn = false;
                 uiController.SpecialReady(canUseSpecial);
                 player.SpecialSpeed(isSpecialOn);
+                ActivateSpecialBoost();
             }
         }
         else if (!canUseSpecial)
@@ -127,7 +128,11 @@ public class PlayerPowers : MonoBehaviour
         shieldDuration = defaultShieldDuration;
         
         //Coin Multiplier
-        coinMultiplierDuration = defaultMultiplierDuration;        
+        coinMultiplierDuration = defaultMultiplierDuration;
+
+        //Consumables
+        alocatedspecialBoostQuantity = 0;
+        alocatedAdrenalineQuantity = 0;
     }
 
     #region Shield
@@ -267,12 +272,15 @@ public class PlayerPowers : MonoBehaviour
         if (specialBoostQuantity <= 0) return;
 
         alocatedspecialBoostQuantity++;
+        uiController.SpecialBoostIndicator(alocatedspecialBoostQuantity);
+
         specialBoostQuantity--;
         inventory.ConsumeSpecialBoost(specialBoostQuantity);
     }
 
     public void ActivateSpecialBoost()
     {
+        if (alocatedspecialBoostQuantity <= 0) return;
 
         AddToSpecial(specialBoostRestauration);
         alocatedspecialBoostQuantity--;

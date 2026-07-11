@@ -326,6 +326,11 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI runCoins;
     [SerializeField] private TextMeshProUGUI runHeightClimbed;
     [SerializeField] private ParticleSystem specialIndicator;
+    [SerializeField] private GameObject itemTopBar;
+    [SerializeField] private GameObject activeSpecialBoost;
+    [SerializeField] private TextMeshProUGUI specialBoostQuantity;
+    [SerializeField] private GameObject activeAdrenaline;
+    [SerializeField] private TextMeshProUGUI adrenalineQuantity;
 
     [Header("Death Menu")]
     [SerializeField] private GameObject resurrectionMenu;
@@ -1907,6 +1912,7 @@ public class UIController : MonoBehaviour
 
     #region Run
 
+    #region Stamina & Special Bars & RunStats
     private void UpdateStaminaHUD(float stamina)
     {
         staminaSlider.value = stamina;
@@ -1959,6 +1965,25 @@ public class UIController : MonoBehaviour
     {
         specialSlider.value = special;
     }
+    #endregion
+
+    #region Items
+
+    public void SpecialBoostIndicator(int quantity = 0)
+    {
+        if (quantity <= 0)
+        {
+            if (activeSpecialBoost.activeSelf) activeSpecialBoost.SetActive(false);
+        }
+        else
+        {
+            if(!activeSpecialBoost.activeSelf) activeSpecialBoost.SetActive(true);
+
+            specialBoostQuantity.text = quantity.ToString();
+        }
+    }
+
+    #endregion
 
     #region Ammo
     public void InitializeAmmoUI(int characterCode = 0, int maxAmmo = 2)

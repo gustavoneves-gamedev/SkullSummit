@@ -33,7 +33,6 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject skipButton;
     private bool canSkipFirst = true;
     private bool canSkipSecond = true;
-    private bool canSkipThird = true;
 
 
     [Header("Levels")]
