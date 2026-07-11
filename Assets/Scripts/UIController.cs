@@ -332,6 +332,13 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject activeAdrenaline;
     [SerializeField] private TextMeshProUGUI adrenalineQuantity;
 
+    [Header("Item Alocation")]
+    [SerializeField] private GameObject itemSelectionMenu;
+    [SerializeField] private TextMeshProUGUI specialBoostInventoryQuantity;
+    [SerializeField] private TextMeshProUGUI specialBoostAlocatedQuantity;
+    [SerializeField] private TextMeshProUGUI adrenalineInventoryQuantity;
+    [SerializeField] private TextMeshProUGUI adrenalineAlocatedQuantity;
+
     [Header("Death Menu")]
     [SerializeField] private GameObject resurrectionMenu;
     [SerializeField] private Button resurrectionButton;
@@ -427,6 +434,7 @@ public class UIController : MonoBehaviour
         mainMenu.SetActive(true);
         topMenu.SetActive(true);
         pauseMenu.SetActive(false);
+        itemSelectionMenu.SetActive(false);
         resurrectionMenu.SetActive(false);
         characterSelectionMenu.SetActive(false);
         levelSelectionMenu.SetActive(false);
@@ -514,6 +522,11 @@ public class UIController : MonoBehaviour
 
         HUD.SetActive(true); //Colocar um efeito de fade in aqui 
 
+        if (!GameController.gameController.isFirstPlay)
+        {
+            Invoke("OpenItemAlocationMenu", 2f);
+        }
+        
     }
 
     public void TopMainMenuUpdate()
@@ -1968,7 +1981,22 @@ public class UIController : MonoBehaviour
     #endregion
 
     #region Items
+    private void OpenItemAlocationMenu()
+    {
+        SpecialBoostAlocation(0,playerRoot.playerPowers.specialBoostQuantity);
+        AdrenalineAlocation(0,playerRoot.playerPowers.adrenalineQuantity);
 
+        itemSelectionMenu.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void CloseItemAlocationMenu()
+    {
+        itemSelectionMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    #region Special Boost
     public void SpecialBoostIndicator(int quantity = 0)
     {
         if (quantity <= 0)
@@ -1982,6 +2010,38 @@ public class UIController : MonoBehaviour
             specialBoostQuantity.text = quantity.ToString();
         }
     }
+
+    public void SpecialBoostAlocation(int specialBoostAlocatedQuantity = 0, int specialBoostInventoryQuantity = 0)
+    {
+        this.specialBoostAlocatedQuantity.text = specialBoostAlocatedQuantity.ToString();
+        this.specialBoostInventoryQuantity.text = specialBoostInventoryQuantity.ToString();
+    }
+    #endregion
+
+    #region Adrenaline
+
+    public void AdrenalineIndicator(int quantity = 0)
+    {
+        if (quantity <= 0)
+        {
+            if (activeAdrenaline.activeSelf) activeAdrenaline.SetActive(false);
+        }
+        else
+        {
+            if (!activeAdrenaline.activeSelf) activeAdrenaline.SetActive(true);
+
+            adrenalineQuantity.text = quantity.ToString();
+        }
+    }
+
+    public void AdrenalineAlocation(int adrenalineAlocatedQuantity = 0, int adrenalineInventoryQuantity = 0)
+    {
+        this.adrenalineAlocatedQuantity.text = adrenalineAlocatedQuantity.ToString();
+        this.adrenalineInventoryQuantity.text = adrenalineInventoryQuantity.ToString();
+    }
+
+
+    #endregion
 
     #endregion
 

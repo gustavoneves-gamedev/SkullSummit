@@ -35,12 +35,12 @@ public class PlayerPowers : MonoBehaviour
     private int ressurrectionAmuletRestauration;
 
     [Header("Special Boost")] //AINDA NÃO IMPLEMENTADO
-    private int specialBoostQuantity;
+    public int specialBoostQuantity {  get; private set; }
     private int alocatedspecialBoostQuantity;
     private int specialBoostRestauration;
 
     [Header("Adrenaline")]
-    private int adrenalineQuantity;
+    public int adrenalineQuantity { get; private set; }
     private int alocatedAdrenalineQuantity;
     private int adrenalineRestauration;
 
@@ -267,15 +267,19 @@ public class PlayerPowers : MonoBehaviour
         //alocatedspecialBoostQuantity = 2;
     }
 
-    public void AlocateSpecialBoost()
+    public void AlocateSpecialBoost(int quantity = 0)
     {
         if (specialBoostQuantity <= 0) return;
 
-        alocatedspecialBoostQuantity++;
-        uiController.SpecialBoostIndicator(alocatedspecialBoostQuantity);
+        alocatedspecialBoostQuantity += quantity;
+        if (alocatedspecialBoostQuantity <= 0) alocatedspecialBoostQuantity = 0;
 
-        specialBoostQuantity--;
+        specialBoostQuantity -= quantity;
+        if (specialBoostQuantity <= 0) specialBoostQuantity = 0;
+
+        uiController.SpecialBoostIndicator(alocatedspecialBoostQuantity);
         inventory.ConsumeSpecialBoost(specialBoostQuantity);
+        uiController.SpecialBoostAlocation(alocatedspecialBoostQuantity, specialBoostQuantity);
     }
 
     public void ActivateSpecialBoost()
@@ -320,17 +324,25 @@ public class PlayerPowers : MonoBehaviour
         //alocatedAdrenalineQuantity = 2;
     }
 
-    public void AlocateAdrenalineQuantity()
+    public void AlocateAdrenalineQuantity(int quantity = 0)
     {
+        
         if (adrenalineQuantity <= 0) return;
 
-        alocatedAdrenalineQuantity++;
-        adrenalineQuantity--;
+        alocatedAdrenalineQuantity += quantity;
+        if (alocatedAdrenalineQuantity <= 0) alocatedAdrenalineQuantity = 0;
+
+        adrenalineQuantity -= quantity;
+        if (adrenalineQuantity <= 0) adrenalineQuantity = 0;
+
+        uiController.AdrenalineIndicator(alocatedAdrenalineQuantity);
         inventory.ConsumeAdrenaline(adrenalineQuantity);
+        uiController.AdrenalineAlocation(alocatedAdrenalineQuantity, adrenalineQuantity);
     }
 
     public void ActivateAdrenaline()
     {
+        if (alocatedAdrenalineQuantity <= 0) return;
 
         player.UpdateStamina(adrenalineRestauration);
         alocatedAdrenalineQuantity--;
