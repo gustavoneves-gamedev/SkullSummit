@@ -279,7 +279,7 @@ MonoBehaviour:
   - {fileID: 3174585731641995313}
   - {fileID: 5173168529167075486}
   - {fileID: 3838772839510085223}
-  damage: 20
+  damage: 22.5
   movementSpeed: 10
   obsctacleType: 0
   items: []

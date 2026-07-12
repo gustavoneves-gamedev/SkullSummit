@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleRoot
   obstacles:
   - {fileID: 2143422369922630167}
-  damage: 5
+  damage: 10
   movementSpeed: 8
   obsctacleType: 2
   items:

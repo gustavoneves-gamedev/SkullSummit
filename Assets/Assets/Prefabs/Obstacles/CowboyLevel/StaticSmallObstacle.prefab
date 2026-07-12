@@ -148,7 +148,7 @@ MonoBehaviour:
   obstacles:
   - {fileID: 1488189396492892069}
   - {fileID: 7386744502504958339}
-  damage: 10
+  damage: 20
   movementSpeed: 10
   obsctacleType: 0
   items: []

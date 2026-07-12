@@ -15,7 +15,7 @@ MonoBehaviour:
   characterID: 0
   baseCoinCost: 0
   baseEffectCharges: 0
-  levelFactorUpgrade: 7
+  levelFactorUpgrade: 4
   maxLevel: 7
   coinChargeUpgradeCost: e80300008813000010270000204e0000409c000080380100c0d40100ffffffff
   rubyChargeUpgradeCost: 000000000000000002000000050000000a0000001400000032000000ffffffff

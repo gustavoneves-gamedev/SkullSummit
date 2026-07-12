@@ -5,6 +5,7 @@ public class ObstacleRoot : MonoBehaviour
     [Header("Main")]
     [SerializeField] private GameObject[] obstacles;
     [SerializeField] private float damage;
+    private float damageMultiplier = 1;
     [SerializeField] private float movementSpeed = 10f;
     private float defaultMovementSpeed = 0;
     public int obsctacleType = 0;// 1 - Obstáculo móvel grande
@@ -56,18 +57,21 @@ public class ObstacleRoot : MonoBehaviour
             staminaSpawnUpperRate = 5;
             shieldSpawnUpperRate = 9;
             coinSpawnUpperRate = 17;
+            damageMultiplier = 1.5f;
         }
         else if (GameController.gameController.playerRoot.heightClimbed >= 4000)
         {
             staminaSpawnUpperRate = 4;
             shieldSpawnUpperRate -= 8;
             coinSpawnUpperRate -= 16;
+            damageMultiplier = 2f;
         }
         else if (GameController.gameController.playerRoot.heightClimbed >= 10000)
         {
             staminaSpawnUpperRate = 2;
             shieldSpawnUpperRate = 4;
             coinSpawnUpperRate = 10;
+            damageMultiplier = 3f;
         }
 
         if (obsctacleType == 1)
@@ -82,6 +86,7 @@ public class ObstacleRoot : MonoBehaviour
             itemToSpawn = ItemToSpawn();
         }
 
+        damage *= damageMultiplier;
         EnableGameObjects();
     }  
 
@@ -211,6 +216,7 @@ public class ObstacleRoot : MonoBehaviour
     public void Deactivate()
     {
         gameObject.SetActive(false);
+        damage /= damageMultiplier;
         DisableGameObjects();
         timer = 0;
     }
